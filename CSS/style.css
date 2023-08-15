@@ -1,0 +1,109 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background: url(img/img1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    color: white;
+}
+
+.left {
+    /* border: 2px solid red; */
+    display: inline-block;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    margin: 10px;
+    padding: 5px;
+    font-size: 2rem;
+}
+
+.left:hover{
+    text-decoration: underline;
+}
+
+.mid {
+    /* border: 2px solid green; */
+    display: block;
+    margin: 20px auto;
+    width: 557px;
+
+    position: relative;
+    left: 200px;
+
+}
+
+.right {
+    /* border: 2px solid yellow; */
+    display: inline-block;
+    position: absolute;
+    right: 34px;
+    top: 37px;
+}
+
+.navbar {
+    margin: 3px;
+    padding: 4px;
+}
+
+.navbar li {
+    display: inline-block;
+    margin: 7px;
+    padding: 12px;
+    font-size: 1.3rem;
+}
+
+.navbar li a {
+    text-decoration: none;
+    color: white;
+}
+
+.navbar li a:hover,
+.navbar li a.active {
+    color: grey;
+    text-decoration: underline;
+}
+
+.btn {
+    color: black;
+    background-color: white;
+    margin: 2px;
+    padding: 6px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.btn:hover {
+    color: black;
+    background-color: hsla(0, 0%, 100%, 0.714);
+}
+
+.container {
+    /* border: 2px solid green; */
+    margin: 40px 742px;
+    padding: 44px 44px;
+    /* border-radius: 10px; */
+    width: 30%;
+
+}
+
+.form-group input {
+    font-size: 16px;
+    text-align: left;
+    display: block;
+    width: 251px;
+    padding: 5px 5px 5px 12px;
+    border: 2px solid yellowgreen;
+    margin: 10px auto;
+    border-radius: 10px;
+}
+.container h1{
+    text-align: center;
+}
+.container button{
+    display: block;
+    width: 33%;
+    margin: auto;
+}

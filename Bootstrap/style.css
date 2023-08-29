@@ -1,0 +1,157 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Urbanist", sans-serif;
+}
+:root{
+    --bs-dark-color:#1a1d20;
+    --bs-dark-primary:#1c1c1c;
+    --bs-main-color:#fff;
+    --bs-primary-color:#c6c6c6;
+    --secondary-color:#29a9fd;
+    --bs-supporting-color:#c850c0;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+h1,h2,h3,h4,h5{
+    font-family: "Lexend Deca", sans-serif;
+    color: var(--bs-dark-color);
+}
+
+h1{
+    font-size: 3.8rem;
+}
+
+h2{
+    line-height: 2.7rem;
+    font-weight: 600;
+    font-size: 3.4rem;
+}
+
+p{
+    margin: 0;
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--bs-dark-color);
+    letter-spacing: 0.07rem;
+    line-height: 1.55rem;   
+}
+
+a{
+    text-decoration: none;
+}
+
+li{
+    list-style: none;
+}
+
+button, a{
+    font-size: 1.15rem !important;
+    letter-spacing: 0.03rem;
+    word-spacing: 0.1rem;
+}
+
+.common-heading{
+    font-size: 2.8rem;
+    font-weight: 500;
+    letter-spacing: 0.01rem !important;
+}
+
+.common-title{
+    margin-bottom: 4.2rem;
+}
+
+.nav-link{
+    color: var(--bs-main-color) !important;
+    font-weight: bold;
+}
+
+.nav-link:hover{
+    color: var(--secondary-color) !important;
+}
+
+.hero-section .container{
+    display: grid;
+    place-content: center;
+    height: inherit;
+}
+
+.bg-main{
+    height: 83vh;
+    position: relative;
+}
+
+.bg-color{
+    background-color: var(--bs-dark-primary);
+}
+
+.text-light-grey{
+    color: var(--bs-primary-color);
+}
+
+.hero-video--section{
+    position: relative;
+    max-width: 100%;
+    width: 30rem;
+
+    border-radius: 2rem;
+}
+
+.services-section{
+    padding: 4rem 0 3rem 0 !important;
+}
+
+.icon-span{
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-top: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondary-color);
+    color: var(--bs-main-color);
+}
+
+.text-grey{
+    color: var(--bs-primary-color);
+}
+
+@media screen and (max-width:1200px) {
+    .hero-video--section{
+        width: 20rem;
+        border-radius: 1rem;
+    }
+}
+
+@media screen and (max-width:998px){
+    .navbar-toggler{
+        color: var(--bs-main-color);
+    }
+    
+    .navbar-toggler-icon{
+        color: var(--bs-main-color);
+        background-color: var(--bs-main-color);
+    }
+
+    h1{
+        font-size: 2.4rem;
+    }
+
+    section .common-heading{
+        font-size: 2rem;
+    }
+
+    section .para-width{
+        width: auto;
+    }
+
+    .hero-section{
+        height: 100vh;
+    }
+    
+}

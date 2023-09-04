@@ -29,34 +29,40 @@ form.addEventListener('submit',(e) => {
     passwordError.innerHTML = "";
     cpasswwordError.innerHTML = "";
 
-
+    let flag = true;
     // validate the input field
     if (nameInput.value.trim() === '') {
         setErrors(nameError,nameInput,'*Name is required.');
+        flag = false;
     }
 
     const emailPattern =  /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     if(!emailPattern.test(emailInput.value)){
         setErrors(emailError,emailInput,'*Invalid email address');
+        flag = false;
     }
     
     if(phoneInput.value.length!=10){
         setErrors(phoneError,phoneInput,"*Phone number must be 10 digits")
+        flag = false;
     }
 
     const passwordPatttern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
     if(passwordInput.value.length<8){
         setErrors(passwordError,passwordInput,"*Password should be 8 digits long")
+        flag = false;
     }
     else if(!passwordPatttern.test(passwordInput.value)){
         setErrors(passwordError,passwordInput,'*Password must be strong')
+        flag = false;
     }
 
     if(passwordInput.value !== cpasswwordInput.value){
         setErrors(cpasswwordError,cpasswwordInput,"*Confirm password must be same with password")
+        flag = false;
     }
 
-    else{
-        window.alert("form submited successfully");
+    if(flag == true){
+        window.alert("Data added successfully");
     }
 })

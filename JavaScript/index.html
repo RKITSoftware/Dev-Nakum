@@ -44,6 +44,15 @@
             margin: 4px;
             color: red;
         }
+
+        #dropdown{
+            width: 200px; 
+            margin-left: 5px;
+            border-radius: 10px; 
+            background-color: #fff; 
+            font-size: 16px; 
+            color: #333; 
+        }
     </style>
 </head>
 <body>
@@ -72,6 +81,26 @@
             <label for="confirm-password">Confirm Password:</label>
             <input type="password" name="cpass" id="cpass">
             <span id="cpassError" class="error"></span>
+        </div>
+        <div class="formfield">    
+            <input type="checkbox" id="check1" name="checkbox1"> Check 1
+            <input type="checkbox" id="check2" name="checkbox2"> Check 2
+            <span id="checkError" class="error"></span>
+        </div>
+        <div class="formfield">    
+            <input type="radio" id="radio1" name="radioGroup" value="male"> Male
+            <input type="radio" id="radio2" name="radioGroup" value="female"> Female
+            <span id="radioError" class="error"></span>
+        </div>
+        <div class="formfield">   
+            <label for="dropdown">Select Car: </label>
+            <select id="dropdown">
+                <option value="0">Select car</option>
+                <option value="car1">Car 1</option>
+                <option value="car2">Car 2</option>
+                <option value="car3">Car 3</option>
+            </select>              
+            <span id="dropError" class="error"></span>
         </div>
 
         <button class="btn" type="subit">Submit</button>

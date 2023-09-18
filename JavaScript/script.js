@@ -4,12 +4,21 @@ const emailInput = document.getElementById('email');
 const phoneInput = document.getElementById('phone');
 const passwordInput = document.getElementById('pass');
 const cpasswwordInput = document.getElementById('cpass');
+const checkbox1 = document.getElementById("check1");
+const checkbox2 = document.getElementById("check2");
+const radio1 = document.getElementById("radio1");
+const radio2 = document.getElementById("radio2");
+const dropdown = document.getElementById("dropdown");
+
 
 const nameError = document.getElementById('nameError');
 const emailError = document.getElementById('emailError');
 const phoneError = document.getElementById('phoneError');
 const passwordError = document.getElementById('passError');
 const cpasswwordError = document.getElementById('cpassError');
+const checkError = document.getElementById('checkError');
+const radioError = document.getElementById('radioError');
+const dropError = document.getElementById('dropError');
 
 
 // function - set the error at tha positon and focus at input fields
@@ -19,15 +28,26 @@ const setErrors = (id,input,error) => {
     return;
 }
 
+// function - eventlistener - change - get the dropdown value
+let selectedValue = "0"
+dropdown.addEventListener("change",(e) => {
+    selectedValue = dropdown.value;
+    console.log(selectedValue);
+})
+console.log(selectedValue);
+
+
 // function - eventlistener - submit - validate the input
 form.addEventListener('submit',(e) => {
     e.preventDefault();
+    console.log(e);
 
     nameError.innerHTML = "";
     emailError.innerHTML = "";
     phoneError.innerHTML = "";
     passwordError.innerHTML = "";
     cpasswwordError.innerHTML = "";
+    checkError.innerHTML = "";
 
     let flag = true;
     // validate the input field
@@ -59,6 +79,21 @@ form.addEventListener('submit',(e) => {
 
     if(passwordInput.value !== cpasswwordInput.value){
         setErrors(cpasswwordError,cpasswwordInput,"*Confirm password must be same with password")
+        flag = false;
+    }
+    
+    if(!(checkbox1.checked || checkbox2.checked)){
+        setErrors(checkError,checkbox2,"*checkbox must be checked")
+        flag = false;
+    }
+    
+    if(!(radio1.checked || radio2.checked)){
+        setErrors(radioError,radio2,"*select any one of them")
+        flag = false;
+    }
+
+    if (selectedValue == "0"){
+        setErrors(dropError,dropdown,"*select any one of them")
         flag = false;
     }
 

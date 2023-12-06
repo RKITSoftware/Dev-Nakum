@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deferred and Promise</title>
+</head>
+
+<body>
+
+    
+</body>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        // Example using Deferred and Promise with setTimeout
+      
+        function asyncOperation() {
+          var deferred = $.Deferred();
+      
+          //asynchronous operation using setTimeout
+          setTimeout(function() {
+            let data = {
+              fname : "Dev",
+              lname : "Nakum",
+            }
+            var success = Math.random() > 0.5;
+            
+            if (success) {
+              console.log("Operation successful!!!");
+              deferred.resolve(data);
+            } else {
+              console.log("Operation failed!");
+              deferred.reject("Operation failed!");
+            }
+          }, 2000); 
+
+          return deferred.promise();
+        }
+      
+        // Use the promise returned by asyncOperation
+        var promise = asyncOperation();
+        
+        promise.then(function(data) {
+          console.log("Success:", data);
+          return data;
+        }).then(function(result){
+          console.log(result);
+        })
+        .catch(function(error) {
+          console.log("Error:", error);
+        });
+
+
+      </script>
+
+</html>

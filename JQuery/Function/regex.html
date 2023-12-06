@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+
+    // to find the whether 'e' is existing or not -- return true/false
+    const pattern_test = /e/;
+    const result_test = pattern_test.test("sdedjg");
+    console.log(result_test);
+    
+    // to find the whether 'e' is existing or not -- return the object with index
+    const pattern_exec = /e/;
+    const result_exec = pattern_exec.exec("sdedjg");
+    console.log(result_exec);
+
+    // validate the email
+    const email = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
+    const result_email = email.test("dev2003@gmail.com")
+    console.log(result_email);
+
+    // check strting of the string contains 'the' or not 
+    // /i -- case insensitive  
+    const start = /^the/i;
+    const result_start = start.test("theasdba");
+    console.log(result_start);
+
+    // check ending of the string contains 'he' or not 
+    const end = /he$/;
+    const result_end = end.test("shdfjshe");
+    console.log(result_end);
+
+    // check the string contain 3 consecutive digits or not
+    const digit = /\d{3}/;
+    const result_digit = digit.test("jdjsd223");
+    console.log(result_digit);
+
+    // return the number with 1 to 4 with inclusive 
+    const text = "123456789";
+    const result_text = text.match(/[1-4]/g);
+    console.log(result_text);
+
+    console.log("sadas123".match(/^sa/));
+    console.log("shgyghsg".match(/sG$/i));
+
+</script>
+</html> 

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery-selector</title>
+    <style>
+        .new-class{
+            color: blue;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- body part -->
+
+    <p id="p1">Paragraph One</p>
+    <p id="p2">Paragraph Two</p>
+    <button type="button" id="add-class">Add class</button>
+    <button type="button" id="remove-class">Remove class</button>
+    
+    
+    <button type="button" id="after-p2">After</button>
+    <button type="button" id="remove-after-p2">Remove</button>
+    <button type="button" id="clone-p2">clone</button>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+    
+    // document ready event
+    $(function(){
+        // add class on paragraph one
+        $("#add-class").click(function(){
+            $('#p1').addClass("new-class");
+        })
+        // remove class on paragraph one
+        $("#remove-class").click(function(){
+            $('#p1').removeClass("new-class");
+        })
+
+        // Inserts content after p elements
+        $("#after-p2").click(function(){
+            $('#p2').after("<p>Paragraph Three</p>");
+        })
+
+        // remove the p element
+        $("#remove-after-p2").click(function(){
+            $('#p2').next('p').remove();
+        })
+
+        // clone the #p2
+        $("#clone-p2").click(function(){
+            // clone the node withDataAndEvents - true
+            var newnode = $('#p2').clone(true);
+            $('#p2').append(newnode);
+        })
+    })
+</script>
+</html>

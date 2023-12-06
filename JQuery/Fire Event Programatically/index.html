@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery-Event</title>
+    <style>
+        body{
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- body part -->
+
+    <form action="#">
+        <label for="name">Name : </label>
+        <input type="text" name="name" id="name">
+        <button type="button" id="btn" value="">Submit</button>
+        <button type="button" id="btnChange">Change Background</button>
+        <button type="button" id="btnStop" hidden>Stop Change Background</button>
+    </form>
+    
+    <label for="changeName">Enter the text</label>
+    <input type="text" name="change" id="change" value="" style="margin-top: 30px;">
+    <br>display Text: 
+    <span id="display" style="font-weight:bold"></span>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+    
+    // document ready event
+    $(function(){
+
+        //submit button clicked
+        $('#btn').click(function(e){
+            e.preventDefault();
+            let name = $("#name").val();
+            console.log(name);
+            $('#btnChange').click();        // another button is call for change the bachground
+            //$('form').submit();     // submit the form 
+        })
+
+       
+        // function - change the background, its depends upon colorList
+        $('#btnChange').click(function(){
+            let colorList = ['AliceBlue','Aqua','Blue']
+            let idx=0;
+
+            // set time interval for change the bg
+            let chng = setInterval(()=>{
+                if(idx < colorList.length){
+                    $('body').css({
+                        "backgroundColor":colorList[idx++],
+                    })
+                }
+                else{
+                    $('#btnStop').click();      // another hidden button is called for alerting the message
+                    
+                }
+            },1000)
+
+            // stop the interavl
+            let stopInerval = setTimeout(()=>{
+                clearInterval(chng);
+                $('body').css({
+                    "backgroundColor":"white",
+                })
+            },(colorList.length +1) *1000);
+        });
+
+        $('#btnStop').click(function(){
+            alert("Hidden button clicked by it self to stop the change background");
+        })
+
+        $('#change').on('input',function(){
+            let newName = $(this).val();
+            $('#display').text(newName);
+        })
+        
+    })
+</script>
+</html>

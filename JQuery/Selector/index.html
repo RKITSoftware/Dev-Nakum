@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery-selector</title>
+    <style>
+        h3,p{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h3>hidden header</h3>
+    <p>text1 hidden</p>
+    <p>text2 hidden</p>
+    <p>text3 hidden</p>
+    <button type="button" id="hidden-para">clear all text</button>
+    <button type="button" class="display-text">change header color</button>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+    
+    // document ready event
+    $(function(){
+
+        // click on p tag
+        $('p').click(function(){
+            console.log(`clicked on 'p' tag on ${this.innerHTML}`);
+            console.log(this.innerHTML);
+            $(this).hide()      // hide only current p tag which is clicked
+        })
+
+        // click on h3 tag
+        $('h3').click(function(){
+            console.log("clicked on 'h3' tag");
+            $('h3').hide();
+        })
+
+        // id selector
+        $("#hidden-para").click(function(){
+            $('p').hide();
+        })
+
+        // class selector
+        $('.display-text').click(function(){
+            $("h3").css({
+                "color": "blue",
+            })
+        })
+    })
+</script>
+</html>

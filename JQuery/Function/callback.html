@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CallBack Function</title>
+    <style>
+        body{
+            font-size: 2rem;
+        }
+
+        p{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <p id="p1">Text 1</p>
+    <p id="p2">Text 2</p>
+    <p id="p3">Text 3</p>
+    <p id="p4">Text 4</p>
+    <p id="p5">Text 5</p>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+    // document ready event
+    $(function(){
+        // click on p1, it take 1 sec to hide after that p2 is click and so on
+        $('#p1').click(function(){
+            $('#p1').hide(1000,function(){
+                $('#p2').click();
+            })
+        })
+        $('#p2').click(function(){
+            $('#p2').hide(1000,function(){
+                $('#p3').click();
+            })
+        })
+        $('#p3').click(function(){
+            $('#p3').hide(1000,function(){
+                $('#p4').click();
+            })
+        })
+        $('#p4').click(function(){
+            $('#p4').hide(1000,function(){
+                $('#p5').click();
+            })
+        })
+        $('#p5').click(function(){
+            $('#p5').hide(1000,function(){
+                alert("Callback is done")
+            })
+        })
+    })
+    
+</script>
+</html> 

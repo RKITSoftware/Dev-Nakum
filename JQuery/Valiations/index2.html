@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+
+        body{
+            font-size: 1.4rem;
+            background-color: blanchedalmond;
+            display: flex;
+            justify-content: center;
+        }
+
+        #myForm{
+            display: flex;
+            flex-direction: column;
+            margin: 5px;
+            padding: 10px;
+        }
+        .formfield{
+            display:flex;
+            padding: 5px;
+        }
+
+        .formfield input{
+            border-radius: 10px;
+            padding-left: 10px;
+            height: 24px;
+            margin-left: 8px;
+        }
+
+       .btn{
+            width: 60px;
+            height: 30px;
+            border: 3px solid black;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .error{
+            font-size: 1rem;
+            margin: 4px;
+            color: red;
+        }
+
+        #dropdown{
+            width: 200px; 
+            margin-left: 5px;
+            border-radius: 10px; 
+            background-color: #fff; 
+            font-size: 16px; 
+            color: #333; 
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm">
+        <div class="formfield">    
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name">
+            <span id="nameError" class="error"></span>
+        </div>
+        <div class="formfield">    
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email">
+            <span id="emailError" class="error"></span>
+        </div>
+        <div class="formfield">    
+            <label for="phone">Contact Number:</label>
+            <input type="number" name="phone" id="phone">
+            <span id="phoneError" class="error"></span>
+        </div>
+        <div class="formfield">    
+            <label for="password">Password:</label>
+            <input type="password" name="pass" id="pass">
+            <span id="passError" class="error"></span>
+        </div>
+        <div class="formfield">    
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" name="cpass" id="cpass">
+            <span id="cpassError" class="error"></span>
+        </div>
+
+        <button class="btn" type="subit">Submit</button>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js"></script>
+    
+    <script>
+        //  document ready event
+        $(function(){
+            $('#myForm').validate({
+                rules:{
+                    name:"required",
+                    email:{
+                        required:true,
+                        email:true
+                    },
+                    phone:{
+                        required:true,
+                        minlength:10,
+                        maxlength:10, 
+                    },
+                    pass:{
+                        required:true,
+                        minlength:8,
+                        strongPassword:true
+                    },
+                    cpass: {
+                        required: true,
+                        minlength: 8,
+                        equalTo : '#pass'           // compare with password
+                    },
+                },
+
+                // it is an error message
+                message:{
+                    name:"*Name is required.",
+                    email:{
+                        email:"*Enter valid email."
+                    },
+                    phone:{
+                        minlength:"*Length of phone number must be 10 digits.",
+                        maxlength:"*Length of phone number must be 10 digits.",
+                    },
+                    pass:{
+                        minlength:"*Password should be 8 digits long",
+                        strongPassword:"*Password must be strong"
+                    },
+                    cpass:{
+                        required: "*Enter confirm password",
+                        equalTo: "*Confirm password must be same as password"
+                    }
+                },
+
+                // submit the form
+                submitHandler: function (form) {
+                    alert("form submitted"); 
+                },
+            })
+
+            // custom method to validate strong password
+            $.validator.addMethod("strongPassword",function(value){
+                return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(value);
+            },"Password must contain at least one uppercase letter, one lowercase letter, and one digit");
+            
+        })
+    </script>
+</body>
+</html>

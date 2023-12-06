@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery-selector</title>
+    <style>
+        body{
+            display:inline-block;
+        }
+        p,h3{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- body part -->
+    <h3>header</h3>
+    <p id="p1" class="text">text1</p>
+    <p id="p2" class="text">text2</p>
+    <p id="p3" class="text">text3</p>
+    <p class="multi">multiple event</p>
+
+    <form action="#">
+        <label for="name">Name : </label>
+        <input type="text" name="name" id="name">
+        <button type="submit" id="btn">Submit</button>
+    </form>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+    
+    // document ready event
+    $(function(){
+
+        // click event - executes when user click on 'p' tag
+        $('p').click(function(){
+            console.log("click event is occured");
+        })
+        
+        
+        // dbclick event - executes when user double click on 'p' tag
+        $('p').dblclick(function(){
+            console.log("double click event is occured");
+        })
+
+        
+        //mouseenter - executes when user enter the mouse on perticular tag 
+        $('.text').mouseenter(function(){
+            console.log(`mouse is entered in ${this.innerHTML}`);
+        })
+        
+        //mouseleave - executes when user leave the mouse from perticular tag 
+        $('.text').mouseleave(function(){
+            console.log(`mouse has leaved from ${this.innerHTML}`);
+        })
+        
+        //mousedown - when press the mouse key
+        $('#p2').mousedown(function(){
+            console.log(`mouse down in ${this.innerHTML}`);
+        })
+        
+        //mouseup - when release the mouse key
+        $('#p2').mouseup(function(){
+            console.log(`mouse up in ${this.innerHTML}`);
+        })
+
+        //on method 
+        // submit form
+        $('form').on('submit', function(e){
+            e.preventDefault();  //prevents default event, here is form submission
+            console.log("form submitted");
+        })
+
+        //focus
+        $('#name').on('focus',function(){
+            console.log("focus");
+        })
+
+        ///multiple event
+        $('.multi').on({
+            mouseenter : function(){
+                console.log("enter");
+            },
+            mouseleave : function(){
+                console.log("leave");
+            }
+        })
+    })
+</script>
+</html>

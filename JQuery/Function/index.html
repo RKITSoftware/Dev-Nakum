@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function</title>
+   
+</head>
+<body>
+    
+    
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+
+    var numbers = [1, 2, 3, 4, 5];
+
+    // map -- manipute the array 
+    var squaredNumbers = $.map(numbers, function (num) {
+        return num * num;
+    });
+    console.log("map : "+squaredNumbers);
+    
+    // grep -- like a filter in javascript, filter the data 
+    var evens = $.grep(numbers, function (num) {
+        return num % 2 === 0;
+    });
+    console.log("grep: "+evens);
+
+    // extend -- merge the object into target object perform override   
+    var obj1 = { a: 1,b: 2 };
+    var obj2 = {  b: 3, c: 4 };
+    var result = $.extend({}, obj1, obj2);
+    console.log("extend: "+JSON.stringify(result));
+
+    // each -- traverse the array 
+    $.each(numbers, function (index, value) {
+        console.log("Idx: " + index + ", Value: " + value);
+    });
+
+    // merge -- merge the array
+    var array1 = [1, 2,4, 3];
+    var array2 = [4, 5, 6];
+    $.merge(array1, array2);
+    console.log("merge: "+array1);
+
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <title>AJAX</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Registration Form</h2>
+        
+        <form action="">
+
+            <label for="todo">Todo</label>            
+            <input type="number" name="todo" id="todo">
+            <button type="submit" id="btnSubmit" >Submit</button>
+        </form>
+        
+</div>
+
+    
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+<script>
+    // document ready event
+    $(document).ready(function() {
+        $('#btnSubmit').click(function(e){
+            e.preventDefault();
+            let todo= $("#todo").val();
+            
+            let createTodo = $.ajax({
+                url:`https://jsonplaceholder.typicode.com/todos/${todo}`,
+                method:"delete",
+                success:function(result){
+                    console.log("Deleted successfully");
+                    console.log(result);
+                },
+                error:function(error){
+                    console.log("Soething went wrong");
+                    console.log(error);
+                }
+            })
+        })
+    });
+</script>
+</html>

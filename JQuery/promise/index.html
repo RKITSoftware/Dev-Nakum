@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let data = [
+        {
+            fname : "Dev",
+            lname : "Nakum",
+        },
+        {
+            fname : "Kishan",
+            lname : "Nakum",
+        }
+    ]
+
+    let getUserData = ()=>{
+        let resultOfUserData = [];
+        setTimeout(()=>{
+            data.forEach((it,idx)=>{
+                resultOfUserData.push({fname:it.fname,lname:it.lname});
+            })
+            console.log(resultOfUserData);
+        },1000)
+    }
+
+    const createData = (newData)=>{
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                data.push(newData);
+
+                let error = false;
+                if(!error){
+                    console.log("resolve is called");
+                    resolve();
+                }
+                else{
+                    reject("Something went wrong");
+                }
+            },2000)
+        })
+    }
+
+    /*
+    createData({fname:"Maasdah",lname:"xygs"})
+        .then(getUserData)
+        .then(getUserData)
+        .catch((err)=>{
+            console.log(err);
+        })
+    */
+
+
+    const start = async ()=>{
+        await createData({fname:"Maasdah",lname:"xygs"});
+        getUserData();
+    }
+
+    start();
+</script>
+</html>

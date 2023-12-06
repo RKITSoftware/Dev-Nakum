@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+
+        body{
+            font-size: 1.4rem;
+            background-color: blanchedalmond;
+            display: flex;
+            justify-content: center;
+        }
+
+        #myForm{
+            display: flex;
+            flex-direction: column;
+            margin: 5px;
+            padding: 10px;
+        }
+        .formfield{
+            display:flex;
+            padding: 5px;
+        }
+
+        .formfield input{
+            border-radius: 10px;
+            padding-left: 10px;
+            height: 24px;
+            margin-left: 8px;
+        }
+
+       .btn{
+            width: 60px;
+            height: 30px;
+            border: 3px solid black;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .error{
+            font-size: 1rem;
+            margin: 4px;
+            color: red;
+        }
+
+        #dropdown{
+            width: 200px; 
+            margin-left: 5px;
+            border-radius: 10px; 
+            background-color: #fff; 
+            font-size: 16px; 
+            color: #333; 
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm">
+        <div class="formfield">    
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name">
+            <span id="nameError" class="error"></span>
+        </div>
+        <div class="formfield">    
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email">
+            <span id="emailError" class="error"></span>
+        </div>
+        <div class="formfield">    
+            <label for="phone">Contact Number:</label>
+            <input type="number" name="phone" id="phone">
+            <span id="phoneError" class="error"></span>
+        </div>
+        <div class="formfield">    
+            <label for="password">Password:</label>
+            <input type="password" name="pass" id="pass">
+            <span id="passError" class="error"></span>
+        </div>
+        <div class="formfield">    
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" name="cpass" id="cpass">
+            <span id="cpassError" class="error"></span>
+        </div>
+        <div class="formfield">    
+            <input type="checkbox" id="check1" name="checkboxGroup"> Check 1
+            <input type="checkbox" id="check2" name="checkboxGroup"> Check 2
+            <input type="checkbox" id="check3" name="checkboxGroup"> Check 3
+            <input type="checkbox" id="check4" name="checkboxGroup"> Check 4
+            <span id="checkError" class="error"></span>
+        </div>
+        <div class="formfield">    
+            <input type="radio" id="radio1" name="radioGroup" value="male" checked> Male
+            <input type="radio" id="radio2" name="radioGroup" value="female"> Female
+            <span id="radioError" class="error"></span>
+        </div>
+        <div class="formfield">   
+            <label for="dropdown">Select Car: </label>
+            <select id="dropdown">
+                <option value="0">Select car</option>
+                <option value="car1">Car 1</option>
+                <option value="car2">Car 2</option>
+                <option value="car3">Car 3</option>
+            </select>              
+            <span id="dropError" class="error"></span>
+        </div>
+
+        <button class="btn" type="subit">Submit</button>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        //  document ready event
+        $(function(){
+
+            // vallidation of name
+            $('#name').blur(function(){
+                let name = $('#name').val();
+
+                // validate the name for blank sapce
+                if(name.trim()===''){
+                    $('#nameError').text('*Name is required.');
+                    $('#name').focus(); 
+                }
+                else{
+                    $('#nameError').text('');
+                }
+            })
+            
+            // validate the email
+            $('#email').blur(function(){
+                const emailPattern =  /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+                if(!emailPattern.test($(this).val())){
+                    $('#emailError').text('*Enter valid email.');
+                    $('#email').focus(); 
+                }
+                else{
+                    $('#emailError').text('');
+                }
+            })
+
+            // validate the phone number
+            $('#phone').blur(function(){
+                if($(this).val().length!=10){
+                    $('#phoneError').text('*Length of phone number must be 10 digits.');
+                    $('#phone').focus(); 
+                }
+                else{
+                    $('#phoneError').text('');
+                }
+            })
+
+            // validate the password
+            $('#pass').blur(function(){
+                const passwordPatttern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+                // check the lenght of the password
+                if($(this).val().length < 8){
+                    $('#passError').text('*Password should be 8 digits long');
+                    $('#pass').focus();
+                }
+
+                // match with pattern
+                else if(!passwordPatttern.test($(this).val())){
+                    $('#passError').text('*Password must be strong');
+                    $('#pass').focus();
+                }
+                else{
+                    $('#passError').text('');
+                }
+            })
+
+            // validate the password to compare with password
+            $('#cpass').blur(function(){
+                let pass = $('#pass').val();
+                let cpass = $('#cpass').val();
+
+                if(pass!==cpass){
+                    $('#cpassError').text("*Confirm password must be same as password");
+                    $('#cpass').focus();
+                }
+                else{
+                    $('#cpassError').text('');
+                }
+            })
+            
+            // validate the checkbox -- out of all checkbox need to check alteast 2 checkbox
+            $('input[name="checkboxGroup"]').change(function(){
+                if ($("input[name='checkboxGroup']:checked").length < 2){
+                    $('#checkError').text("*Select atleast two checkbox")
+                    $('#check1').focus();
+                }
+                else{
+                    $('#checkError').text("")
+                }
+            })
+
+            /*$('input[name="radioGroup"]').change(function(){
+                if($('input[name="radioGroup"]:checked').length != 1){
+                    $('#radioError').text("*Must be select one option");
+                    $('#radio1').focus();
+                }
+                else{
+                    $('#radioError').text("");
+                }
+            })*/
+
+            // validate the dropdown 
+            $('#dropdown').change(function(){
+                let drpdwn = $('#dropdown').val();
+
+                if(drpdwn==0){
+                    $('#dropError').text("*Please Select any option");
+                    $('#dropdown').focus();
+                }
+                else{
+                    $('#dropError').text("");
+                }
+            })
+            
+            // submit the form
+            $('#myForm').submit(function(e){
+                let name = $('#name').val();
+                let email = $('#email').val();
+                let phone = $('#phone').val();
+                let pass = $('#pass').val();
+                let cpass = $('#cpass').val();
+                                
+                if(name==='' || email==='' || phone==='' || pass==='' || cpass===''){
+                    alert("All fields are required");
+                    e.preventDefault();
+                }
+                
+
+            })
+        })
+    </script>
+</body>
+</html>

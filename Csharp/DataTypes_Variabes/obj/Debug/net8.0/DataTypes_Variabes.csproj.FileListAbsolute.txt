@@ -1,0 +1,15 @@
+C:\Users\AVITA\Desktop\RKIT\Csharp\DataTypes_Variabes\bin\Debug\net8.0\DataTypes_Variabes.exe
+C:\Users\AVITA\Desktop\RKIT\Csharp\DataTypes_Variabes\bin\Debug\net8.0\DataTypes_Variabes.deps.json
+C:\Users\AVITA\Desktop\RKIT\Csharp\DataTypes_Variabes\bin\Debug\net8.0\DataTypes_Variabes.runtimeconfig.json
+C:\Users\AVITA\Desktop\RKIT\Csharp\DataTypes_Variabes\bin\Debug\net8.0\DataTypes_Variabes.dll
+C:\Users\AVITA\Desktop\RKIT\Csharp\DataTypes_Variabes\bin\Debug\net8.0\DataTypes_Variabes.pdb
+C:\Users\AVITA\Desktop\RKIT\Csharp\DataTypes_Variabes\obj\Debug\net8.0\DataTypes_Variabes.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AVITA\Desktop\RKIT\Csharp\DataTypes_Variabes\obj\Debug\net8.0\DataTypes_Variabes.AssemblyInfoInputs.cache
+C:\Users\AVITA\Desktop\RKIT\Csharp\DataTypes_Variabes\obj\Debug\net8.0\DataTypes_Variabes.AssemblyInfo.cs
+C:\Users\AVITA\Desktop\RKIT\Csharp\DataTypes_Variabes\obj\Debug\net8.0\DataTypes_Variabes.csproj.CoreCompileInputs.cache
+C:\Users\AVITA\Desktop\RKIT\Csharp\DataTypes_Variabes\obj\Debug\net8.0\DataTypes_Variabes.sourcelink.json
+C:\Users\AVITA\Desktop\RKIT\Csharp\DataTypes_Variabes\obj\Debug\net8.0\DataTypes_Variabes.dll
+C:\Users\AVITA\Desktop\RKIT\Csharp\DataTypes_Variabes\obj\Debug\net8.0\refint\DataTypes_Variabes.dll
+C:\Users\AVITA\Desktop\RKIT\Csharp\DataTypes_Variabes\obj\Debug\net8.0\DataTypes_Variabes.pdb
+C:\Users\AVITA\Desktop\RKIT\Csharp\DataTypes_Variabes\obj\Debug\net8.0\DataTypes_Variabes.genruntimeconfig.cache
+C:\Users\AVITA\Desktop\RKIT\Csharp\DataTypes_Variabes\obj\Debug\net8.0\ref\DataTypes_Variabes.dll

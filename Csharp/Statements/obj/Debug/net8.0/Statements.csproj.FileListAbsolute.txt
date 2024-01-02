@@ -1,0 +1,15 @@
+C:\Users\AVITA\Desktop\RKIT\Csharp\Statements\bin\Debug\net8.0\Statements.exe
+C:\Users\AVITA\Desktop\RKIT\Csharp\Statements\bin\Debug\net8.0\Statements.deps.json
+C:\Users\AVITA\Desktop\RKIT\Csharp\Statements\bin\Debug\net8.0\Statements.runtimeconfig.json
+C:\Users\AVITA\Desktop\RKIT\Csharp\Statements\bin\Debug\net8.0\Statements.dll
+C:\Users\AVITA\Desktop\RKIT\Csharp\Statements\bin\Debug\net8.0\Statements.pdb
+C:\Users\AVITA\Desktop\RKIT\Csharp\Statements\obj\Debug\net8.0\Statements.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AVITA\Desktop\RKIT\Csharp\Statements\obj\Debug\net8.0\Statements.AssemblyInfoInputs.cache
+C:\Users\AVITA\Desktop\RKIT\Csharp\Statements\obj\Debug\net8.0\Statements.AssemblyInfo.cs
+C:\Users\AVITA\Desktop\RKIT\Csharp\Statements\obj\Debug\net8.0\Statements.csproj.CoreCompileInputs.cache
+C:\Users\AVITA\Desktop\RKIT\Csharp\Statements\obj\Debug\net8.0\Statements.sourcelink.json
+C:\Users\AVITA\Desktop\RKIT\Csharp\Statements\obj\Debug\net8.0\Statements.dll
+C:\Users\AVITA\Desktop\RKIT\Csharp\Statements\obj\Debug\net8.0\refint\Statements.dll
+C:\Users\AVITA\Desktop\RKIT\Csharp\Statements\obj\Debug\net8.0\Statements.pdb
+C:\Users\AVITA\Desktop\RKIT\Csharp\Statements\obj\Debug\net8.0\Statements.genruntimeconfig.cache
+C:\Users\AVITA\Desktop\RKIT\Csharp\Statements\obj\Debug\net8.0\ref\Statements.dll

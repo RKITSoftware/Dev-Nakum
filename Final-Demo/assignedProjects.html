@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Management</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap JS with Popper.js (for dropdowns, tooltips, and popovers) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const userdata = sessionStorage.getItem("userData");
+      const storedUserData = JSON.parse(userdata);
+      const userRole = storedUserData.role;
+      
+      if(userRole=="TRUE"){
+        window.location.href = "/Final-Demo/dashboard.html";
+      }
+    
+    </script>
+  </head>
+  <body>
+    <!-- navbar start-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="./projects.html">PM</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="./projects.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Assigned Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="./login.html"
+                >Logout</a
+              >
+            </li>
+          </ul>
+          
+        </div>
+      </div>
+    </nav>
+    <!-- navbar end-->
+
+    <!-- project name + add project start -->
+    <section>
+      <div class="container border-two mt-4">
+        <div class="row">
+          <div
+            class="fs-3 fw-bold text-lg-start col-12 col-md-12 col-lg-6 d-flex flex-column justify-content-center align-items-center align-items-lg-start"
+          >
+            <p>Projects</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- project name + add project end -->
+
+    <!-- project card start -->
+    <section>
+      <div class="container mt-5">
+        <div class="row g-5" id="assignProject">
+          <!-- card start -->
+
+          <!-- <div class="col-12 col-lg-3 col-xxl-3">
+            <div class="card-box rounded-2 p-1 shadow">
+              <div class="card-body">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <h5 class="card-title">Project title</h5>
+                  </li>
+                  <li class="list-group-item">
+                    <p class="card-text">
+                      Some quick example text to build on the card title and
+                      make up the bulk of the card's content.
+                    </p>
+                  </li>
+
+                  <li class="list-group-item">Current User : 5</li>
+                  <li class="list-group-item">Task : Task 1</li>
+                  <li class="list-group-item">
+                    Completed : No
+                    <img src="./images/yes.jpg" width="25px" alt="" />
+                    <img src="./images/no-10-16.png" width="25px" alt="" />
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- card end -->
+        </div>
+      </div>
+    </section>
+    <!-- project card end -->
+  </body>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js"></script>
+  <script src="./JS/assignedProject.js"></script>
+</html>

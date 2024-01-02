@@ -42,7 +42,7 @@
         var promise = asyncOperation();
         
         promise.then(function(data) {
-          console.log("Success:", data);
+          console.log("Success:", data);    //api call async - task
           return data;
         }).then(function(result){
           console.log(result);

@@ -28,19 +28,22 @@ $(function(){
     })
 
     const addProjectDataAPI = async (addData)=>{
-        let userids =  ["1",""];
-        let data = {
-            pname : addData.pname,
-            pdescription : addData.pdescription,
-            userid: userids, 
-            completed: "no",
-            currrent_user: "1"
-        };
+        let userids =  ["1"];
+        let data = JSON.stringify({
+            "pname" : addData.pname,
+            "pdescription" : addData.pdescription,
+            "userid": userids, 
+            "completed": "no",
+            "currrent_user": "1"
+        });
 
         return $.ajax({
             url : `https://retoolapi.dev/5Jk3mO/project/`,
             method: "post",
             data: data,
+            headers :{
+                "Content-Type" : "Application/json",
+            },
             success : function(result){
                 console.log("Successfully add the data");
                 return result;

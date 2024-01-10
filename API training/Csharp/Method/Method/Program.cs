@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Method
 {
     class Program
     {
         /// <summary>
-        ///     Addition of two number
+        ///     Addition of num2 number
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -20,7 +16,7 @@ namespace Method
         }
 
         /// <summary>
-        ///     multiplication of two number
+        ///     multiplication of num2 number
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -31,7 +27,7 @@ namespace Method
         }
 
         /// <summary>
-        ///     division of two number
+        ///     division of num2 number
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -42,7 +38,7 @@ namespace Method
         }
 
         /// <summary>
-        ///     subtraction of two number
+        ///     subtraction of num2 number
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -52,15 +48,39 @@ namespace Method
             return x > y ? x - y : y - x;
         }
 
+        /// <summary>
+        ///     print the message of passed    
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns>return the defalut parameter</returns>
+        static int DefaultValueMethod(int x, int y=15)
+        {
+            Console.WriteLine($"The value of x is {x}");
+            return y;
+        }
+
+        /// <summary>
+        ///     print the message of default parameter
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        static void DefaultValueAnotherMethod(int x=32, int y=143)
+        {
+            Console.WriteLine($"The value of x is {x} in the default another method");
+            Console.WriteLine($"The value of y is {y} in the default another method");
+        }
+
         public static void Main(string[] args)
         {
-            int one = 10, two = 5;
+            int num1 = 10, num2 = 5;
 
-            Console.WriteLine("Addition is : " + Addition(one, two));
-            Console.WriteLine("Multiplication is : " + Multiplication(one, two));
-            Console.WriteLine("Subtraction is : " + Subtraction(one, two));
-            Console.WriteLine("Division is : " + Division(one, two));
-
+            Console.WriteLine("Addition is " + Addition(num1, num2));
+            Console.WriteLine("Multiplication is " + Multiplication(num1, num2));
+            Console.WriteLine("Subtraction is " + Subtraction(num1, num2));
+            Console.WriteLine("Division is " + Division(num1, num2));
+            Console.WriteLine("The Value of y is " + DefaultValueMethod(num1));
+            DefaultValueAnotherMethod();
         }
 
     }

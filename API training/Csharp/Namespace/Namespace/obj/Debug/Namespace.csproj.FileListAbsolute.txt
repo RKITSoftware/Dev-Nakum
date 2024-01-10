@@ -1,0 +1,8 @@
+F:\Dev - 372\Csharp\Namespace\Namespace\bin\Debug\Namespace.exe.config
+F:\Dev - 372\Csharp\Namespace\Namespace\bin\Debug\Namespace.exe
+F:\Dev - 372\Csharp\Namespace\Namespace\bin\Debug\Namespace.pdb
+F:\Dev - 372\Csharp\Namespace\Namespace\obj\Debug\Namespace.csproj.AssemblyReference.cache
+F:\Dev - 372\Csharp\Namespace\Namespace\obj\Debug\Namespace.csproj.SuggestedBindingRedirects.cache
+F:\Dev - 372\Csharp\Namespace\Namespace\obj\Debug\Namespace.csproj.CoreCompileInputs.cache
+F:\Dev - 372\Csharp\Namespace\Namespace\obj\Debug\Namespace.exe
+F:\Dev - 372\Csharp\Namespace\Namespace\obj\Debug\Namespace.pdb

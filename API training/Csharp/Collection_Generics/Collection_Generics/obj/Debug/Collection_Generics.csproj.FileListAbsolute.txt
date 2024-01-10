@@ -1,0 +1,15 @@
+D:\Dev\Dev-Nakum\Csharp\Collection_Generics\Collection_Generics\bin\Debug\Collection_Generics.exe.config
+D:\Dev\Dev-Nakum\Csharp\Collection_Generics\Collection_Generics\bin\Debug\Collection_Generics.exe
+D:\Dev\Dev-Nakum\Csharp\Collection_Generics\Collection_Generics\bin\Debug\Collection_Generics.pdb
+D:\Dev\Dev-Nakum\Csharp\Collection_Generics\Collection_Generics\obj\Debug\Collection_Generics.csproj.AssemblyReference.cache
+D:\Dev\Dev-Nakum\Csharp\Collection_Generics\Collection_Generics\obj\Debug\Collection_Generics.csproj.CoreCompileInputs.cache
+D:\Dev\Dev-Nakum\Csharp\Collection_Generics\Collection_Generics\obj\Debug\Collection_Generics.exe
+D:\Dev\Dev-Nakum\Csharp\Collection_Generics\Collection_Generics\obj\Debug\Collection_Generics.pdb
+F:\Dev - 372\Csharp\Collection_Generics\Collection_Generics\bin\Debug\Collection_Generics.exe.config
+F:\Dev - 372\Csharp\Collection_Generics\Collection_Generics\bin\Debug\Collection_Generics.exe
+F:\Dev - 372\Csharp\Collection_Generics\Collection_Generics\bin\Debug\Collection_Generics.pdb
+F:\Dev - 372\Csharp\Collection_Generics\Collection_Generics\obj\Debug\Collection_Generics.csproj.AssemblyReference.cache
+F:\Dev - 372\Csharp\Collection_Generics\Collection_Generics\obj\Debug\Collection_Generics.csproj.SuggestedBindingRedirects.cache
+F:\Dev - 372\Csharp\Collection_Generics\Collection_Generics\obj\Debug\Collection_Generics.csproj.CoreCompileInputs.cache
+F:\Dev - 372\Csharp\Collection_Generics\Collection_Generics\obj\Debug\Collection_Generics.exe
+F:\Dev - 372\Csharp\Collection_Generics\Collection_Generics\obj\Debug\Collection_Generics.pdb

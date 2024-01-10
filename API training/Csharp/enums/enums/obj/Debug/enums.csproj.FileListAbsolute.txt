@@ -1,0 +1,8 @@
+F:\Dev - 372\Csharp\enums\enums\bin\Debug\enums.exe.config
+F:\Dev - 372\Csharp\enums\enums\bin\Debug\enums.exe
+F:\Dev - 372\Csharp\enums\enums\bin\Debug\enums.pdb
+F:\Dev - 372\Csharp\enums\enums\obj\Debug\enums.csproj.AssemblyReference.cache
+F:\Dev - 372\Csharp\enums\enums\obj\Debug\enums.csproj.SuggestedBindingRedirects.cache
+F:\Dev - 372\Csharp\enums\enums\obj\Debug\enums.csproj.CoreCompileInputs.cache
+F:\Dev - 372\Csharp\enums\enums\obj\Debug\enums.exe
+F:\Dev - 372\Csharp\enums\enums\obj\Debug\enums.pdb

@@ -1,0 +1,2 @@
+Hello from data file !!!
+This is a testing file for file handling.

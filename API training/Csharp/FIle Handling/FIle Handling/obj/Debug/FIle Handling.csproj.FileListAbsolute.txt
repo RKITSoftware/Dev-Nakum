@@ -1,0 +1,8 @@
+F:\Dev - 372\Csharp\FIle Handling\FIle Handling\bin\Debug\FIle Handling.exe.config
+F:\Dev - 372\Csharp\FIle Handling\FIle Handling\bin\Debug\FIle Handling.exe
+F:\Dev - 372\Csharp\FIle Handling\FIle Handling\bin\Debug\FIle Handling.pdb
+F:\Dev - 372\Csharp\FIle Handling\FIle Handling\obj\Debug\FIle Handling.csproj.AssemblyReference.cache
+F:\Dev - 372\Csharp\FIle Handling\FIle Handling\obj\Debug\FIle Handling.csproj.SuggestedBindingRedirects.cache
+F:\Dev - 372\Csharp\FIle Handling\FIle Handling\obj\Debug\FIle Handling.csproj.CoreCompileInputs.cache
+F:\Dev - 372\Csharp\FIle Handling\FIle Handling\obj\Debug\FIle Handling.exe
+F:\Dev - 372\Csharp\FIle Handling\FIle Handling\obj\Debug\FIle Handling.pdb

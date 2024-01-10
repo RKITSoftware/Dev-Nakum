@@ -1,0 +1,15 @@
+D:\Dev\Dev-Nakum\Csharp\Array-ArrayList\Array-ArrayList\obj\Debug\Array-ArrayList.csproj.AssemblyReference.cache
+D:\Dev\Dev-Nakum\Csharp\Array-ArrayList\Array-ArrayList\obj\Debug\Array-ArrayList.csproj.CoreCompileInputs.cache
+D:\Dev\Dev-Nakum\Csharp\Array-ArrayList\Array-ArrayList\bin\Debug\Array-ArrayList.exe.config
+D:\Dev\Dev-Nakum\Csharp\Array-ArrayList\Array-ArrayList\bin\Debug\Array-ArrayList.exe
+D:\Dev\Dev-Nakum\Csharp\Array-ArrayList\Array-ArrayList\bin\Debug\Array-ArrayList.pdb
+D:\Dev\Dev-Nakum\Csharp\Array-ArrayList\Array-ArrayList\obj\Debug\Array-ArrayList.exe
+D:\Dev\Dev-Nakum\Csharp\Array-ArrayList\Array-ArrayList\obj\Debug\Array-ArrayList.pdb
+F:\Dev - 372\Csharp\Array-ArrayList\Array-ArrayList\bin\Debug\Array-ArrayList.exe.config
+F:\Dev - 372\Csharp\Array-ArrayList\Array-ArrayList\bin\Debug\Array-ArrayList.exe
+F:\Dev - 372\Csharp\Array-ArrayList\Array-ArrayList\bin\Debug\Array-ArrayList.pdb
+F:\Dev - 372\Csharp\Array-ArrayList\Array-ArrayList\obj\Debug\Array-ArrayList.csproj.AssemblyReference.cache
+F:\Dev - 372\Csharp\Array-ArrayList\Array-ArrayList\obj\Debug\Array-ArrayList.csproj.SuggestedBindingRedirects.cache
+F:\Dev - 372\Csharp\Array-ArrayList\Array-ArrayList\obj\Debug\Array-ArrayList.csproj.CoreCompileInputs.cache
+F:\Dev - 372\Csharp\Array-ArrayList\Array-ArrayList\obj\Debug\Array-ArrayList.exe
+F:\Dev - 372\Csharp\Array-ArrayList\Array-ArrayList\obj\Debug\Array-ArrayList.pdb

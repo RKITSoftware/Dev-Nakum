@@ -1,0 +1,8 @@
+F:\Dev - 372\Csharp\DataTables\DataTables\bin\Debug\DataTables.exe.config
+F:\Dev - 372\Csharp\DataTables\DataTables\bin\Debug\DataTables.exe
+F:\Dev - 372\Csharp\DataTables\DataTables\bin\Debug\DataTables.pdb
+F:\Dev - 372\Csharp\DataTables\DataTables\obj\Debug\DataTables.csproj.AssemblyReference.cache
+F:\Dev - 372\Csharp\DataTables\DataTables\obj\Debug\DataTables.csproj.SuggestedBindingRedirects.cache
+F:\Dev - 372\Csharp\DataTables\DataTables\obj\Debug\DataTables.csproj.CoreCompileInputs.cache
+F:\Dev - 372\Csharp\DataTables\DataTables\obj\Debug\DataTables.exe
+F:\Dev - 372\Csharp\DataTables\DataTables\obj\Debug\DataTables.pdb

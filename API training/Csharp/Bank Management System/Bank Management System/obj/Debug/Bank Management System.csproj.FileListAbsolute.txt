@@ -1,0 +1,8 @@
+F:\Dev - 372\Csharp\Bank Management System\Bank Management System\obj\Debug\Bank Management System.csproj.AssemblyReference.cache
+F:\Dev - 372\Csharp\Bank Management System\Bank Management System\obj\Debug\Bank Management System.csproj.SuggestedBindingRedirects.cache
+F:\Dev - 372\Csharp\Bank Management System\Bank Management System\obj\Debug\Bank Management System.csproj.CoreCompileInputs.cache
+F:\Dev - 372\Csharp\Bank Management System\Bank Management System\bin\Debug\Bank Management System.exe.config
+F:\Dev - 372\Csharp\Bank Management System\Bank Management System\bin\Debug\Bank Management System.exe
+F:\Dev - 372\Csharp\Bank Management System\Bank Management System\bin\Debug\Bank Management System.pdb
+F:\Dev - 372\Csharp\Bank Management System\Bank Management System\obj\Debug\Bank Management System.exe
+F:\Dev - 372\Csharp\Bank Management System\Bank Management System\obj\Debug\Bank Management System.pdb

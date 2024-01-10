@@ -1,0 +1,8 @@
+F:\Dev - 372\Csharp\Types of Classes\Types of Classes\bin\Debug\Types of Classes.exe.config
+F:\Dev - 372\Csharp\Types of Classes\Types of Classes\bin\Debug\Types of Classes.exe
+F:\Dev - 372\Csharp\Types of Classes\Types of Classes\bin\Debug\Types of Classes.pdb
+F:\Dev - 372\Csharp\Types of Classes\Types of Classes\obj\Debug\Types of Classes.csproj.AssemblyReference.cache
+F:\Dev - 372\Csharp\Types of Classes\Types of Classes\obj\Debug\Types of Classes.csproj.SuggestedBindingRedirects.cache
+F:\Dev - 372\Csharp\Types of Classes\Types of Classes\obj\Debug\Types of Classes.csproj.CoreCompileInputs.cache
+F:\Dev - 372\Csharp\Types of Classes\Types of Classes\obj\Debug\Types of Classes.exe
+F:\Dev - 372\Csharp\Types of Classes\Types of Classes\obj\Debug\Types of Classes.pdb

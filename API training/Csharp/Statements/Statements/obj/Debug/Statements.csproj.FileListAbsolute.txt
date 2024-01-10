@@ -1,0 +1,8 @@
+F:\Dev - 372\Csharp\Statements\Statements\bin\Debug\Statements.exe.config
+F:\Dev - 372\Csharp\Statements\Statements\bin\Debug\Statements.exe
+F:\Dev - 372\Csharp\Statements\Statements\bin\Debug\Statements.pdb
+F:\Dev - 372\Csharp\Statements\Statements\obj\Debug\Statements.csproj.AssemblyReference.cache
+F:\Dev - 372\Csharp\Statements\Statements\obj\Debug\Statements.csproj.SuggestedBindingRedirects.cache
+F:\Dev - 372\Csharp\Statements\Statements\obj\Debug\Statements.csproj.CoreCompileInputs.cache
+F:\Dev - 372\Csharp\Statements\Statements\obj\Debug\Statements.exe
+F:\Dev - 372\Csharp\Statements\Statements\obj\Debug\Statements.pdb

@@ -1,0 +1,8 @@
+F:\Dev - 372\Csharp\DataTypes_Variabes\DataTypes_Variabes\bin\Debug\DataTypes_Variabes.exe.config
+F:\Dev - 372\Csharp\DataTypes_Variabes\DataTypes_Variabes\bin\Debug\DataTypes_Variabes.exe
+F:\Dev - 372\Csharp\DataTypes_Variabes\DataTypes_Variabes\bin\Debug\DataTypes_Variabes.pdb
+F:\Dev - 372\Csharp\DataTypes_Variabes\DataTypes_Variabes\obj\Debug\DataTypes_Variabes.csproj.AssemblyReference.cache
+F:\Dev - 372\Csharp\DataTypes_Variabes\DataTypes_Variabes\obj\Debug\DataTypes_Variabes.csproj.SuggestedBindingRedirects.cache
+F:\Dev - 372\Csharp\DataTypes_Variabes\DataTypes_Variabes\obj\Debug\DataTypes_Variabes.csproj.CoreCompileInputs.cache
+F:\Dev - 372\Csharp\DataTypes_Variabes\DataTypes_Variabes\obj\Debug\DataTypes_Variabes.exe
+F:\Dev - 372\Csharp\DataTypes_Variabes\DataTypes_Variabes\obj\Debug\DataTypes_Variabes.pdb

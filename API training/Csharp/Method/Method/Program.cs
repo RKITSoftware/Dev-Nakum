@@ -2,6 +2,11 @@
 
 namespace Method
 {
+    class Employee
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
+    }
     class Program
     {
         /// <summary>
@@ -71,6 +76,12 @@ namespace Method
             Console.WriteLine($"The value of y is {y} in the default another method");
         }
 
+        static void IncrementNumber(ref int num,int num2)
+        {
+            num++;
+            num2++;
+        }
+
         public static void Main(string[] args)
         {
             int num1 = 10, num2 = 5;
@@ -81,7 +92,45 @@ namespace Method
             Console.WriteLine("Division is " + Division(num1, num2));
             Console.WriteLine("The Value of y is " + DefaultValueMethod(num1));
             DefaultValueAnotherMethod();
+
+
+            dynamic dynamicVariable = 10;
+            Console.WriteLine("Dynamic Variable: " + dynamicVariable);
+
+            dynamicVariable = "Hello, dynamic!";
+            Console.WriteLine("Dynamic Variable: " + dynamicVariable);
+
+            dynamicVariable = new { Name = "John", Age = 30 };
+            Console.WriteLine($"Name: {dynamicVariable.Name}, Age: {dynamicVariable.Age}");
+            dynamic objDynEmployee = new Employee();
+            objDynEmployee.Name = "Dev";
+            objDynEmployee.Age= 21;
+            Console.WriteLine($"Dynamic - Employee name : {objDynEmployee.Name}");
+            Console.WriteLine($"Dynamic - Employee Age : {objDynEmployee.Age}");
+
+            object objectVariable = 10;
+            Console.WriteLine("Object Variable: " + objectVariable);
+
+            objectVariable = "Hello, object!";
+            Console.WriteLine("Object Variable: " + objectVariable);
+
+            // Explicit casting is needed
+            string stringValue = (string)objectVariable;
+            Console.WriteLine("Casted String Value: " + stringValue);
+
+            object objEmployee = new Employee();
+            ((Employee)objEmployee).Name = "Dev";
+            Console.WriteLine($"Object - Employee name : {((Employee)objEmployee).Name}");
+
+
+            int num3 = 1;
+            int num4 = 1;
+            Console.WriteLine($"original number : {num3}");
+            IncrementNumber(ref num3,num4);
+            Console.WriteLine($"incremented number with reference: {num3}");
+            Console.WriteLine($"incremented number without reference: {num4}");
         }
+
 
     }
 }

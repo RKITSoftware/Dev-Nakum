@@ -1,0 +1,38 @@
+-- assending order
+SELECT 
+	P01F01,
+	P01F02,
+    P01F03,
+    P01F04,
+    P01F05
+FROM 
+	EMP01 
+ORDER BY 
+	P01F02;
+
+-- descending order
+SELECT 
+	P01F01,
+	P01F02,
+    P01F03,
+    P01F04,
+    P01F05
+FROM 
+	EMP01 
+ORDER BY 
+	P01F02
+DESC;
+
+-- MULTIPLE
+SELECT 
+	P01F01,
+	P01F02,
+    P01F03,
+    P01F04,
+    P01F05
+FROM 
+	EMP01 
+ORDER BY 
+	P01F02
+DESC, 
+	P01F02;

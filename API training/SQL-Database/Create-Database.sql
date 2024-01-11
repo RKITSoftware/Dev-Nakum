@@ -1,0 +1,5 @@
+CREATE DATABASE Employee;
+
+USE Employee;
+
+CREATE DATABASE ExtraDB;

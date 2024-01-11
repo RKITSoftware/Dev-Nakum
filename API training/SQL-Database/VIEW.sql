@@ -1,0 +1,57 @@
+-- Create the view 
+CREATE VIEW
+	VIEW_EMP01
+AS SELECT 
+	P01F01,
+    P01F02,
+    P01F04
+FROM
+	EMP01;
+
+# Display view 
+SELECT 
+	P01F01,
+    P01F02,
+    P01F04
+FROM
+	VIEW_EMP01;
+    
+    
+# update the view
+UPDATE 
+	VIEW_EMP01
+SET
+	P01F02 = CONCAT("SUPER ", P01F02)
+WHERE
+	P01F02 LIKE "A%";
+    
+
+# view with joins 
+CREATE OR REPLACE VIEW 
+	VIEW_EMP02_DEP01
+AS SELECT 
+	P02F01,
+    P02F02,
+    P01F02 
+FROM 
+	EMP02 
+LEFT JOIN 
+	DEP01 
+ON 
+	EMP02.P02F03 = DEP01.P01F01;
+    
+# DISPLAY VIEW WITH JOINS
+SELECT 
+	P02F01,
+    P02F02,
+    P01F02 
+FROM 
+	VIEW_EMP02_DEP01; 
+
+# update the base table
+UPDATE 
+	EMP02
+SET
+	P02F02 = "Dev"
+WHERE 
+	P02F01 = 5;

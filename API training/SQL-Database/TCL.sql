@@ -36,3 +36,29 @@ INSERT INTO
 );
 
 ROLLBACK;
+
+
+
+BEGIN;
+-- Inserting data into the table (after the transaction)
+INSERT INTO 
+	EMP03 (
+    P03F01, 
+    P03F02
+) VALUES (
+	4, 
+    'before save point Transaction Demo'
+);
+
+SAVEPOINT SVE_PT;
+
+INSERT INTO 
+	EMP03 (
+    P03F01, 
+    P03F02
+) VALUES (
+	5, 
+    'after save point Transaction Demo'
+);
+
+ROLLBACK TO SVE_PT;

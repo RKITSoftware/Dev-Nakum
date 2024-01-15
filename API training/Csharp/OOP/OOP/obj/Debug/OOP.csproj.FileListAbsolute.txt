@@ -1,0 +1,8 @@
+F:\Dev - 372\GUI Training\API training\Csharp\OOP\OOP\bin\Debug\OOP.exe.config
+F:\Dev - 372\GUI Training\API training\Csharp\OOP\OOP\bin\Debug\OOP.exe
+F:\Dev - 372\GUI Training\API training\Csharp\OOP\OOP\bin\Debug\OOP.pdb
+F:\Dev - 372\GUI Training\API training\Csharp\OOP\OOP\obj\Debug\OOP.csproj.AssemblyReference.cache
+F:\Dev - 372\GUI Training\API training\Csharp\OOP\OOP\obj\Debug\OOP.csproj.SuggestedBindingRedirects.cache
+F:\Dev - 372\GUI Training\API training\Csharp\OOP\OOP\obj\Debug\OOP.csproj.CoreCompileInputs.cache
+F:\Dev - 372\GUI Training\API training\Csharp\OOP\OOP\obj\Debug\OOP.exe
+F:\Dev - 372\GUI Training\API training\Csharp\OOP\OOP\obj\Debug\OOP.pdb

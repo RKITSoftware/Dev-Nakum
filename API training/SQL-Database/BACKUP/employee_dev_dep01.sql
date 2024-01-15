@@ -16,28 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `stu01`
+-- Table structure for table `dep01`
 --
 
-DROP TABLE IF EXISTS `stu01`;
+DROP TABLE IF EXISTS `dep01`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `stu01` (
-  `U01F01` int NOT NULL AUTO_INCREMENT COMMENT 'Id',
-  `U01F02` varchar(20) DEFAULT NULL COMMENT 'Name',
-  `U01F03` int DEFAULT NULL COMMENT 'Age',
-  PRIMARY KEY (`U01F01`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `dep01` (
+  `P01F01` int NOT NULL AUTO_INCREMENT COMMENT 'Id',
+  `P01F02` varchar(50) DEFAULT NULL COMMENT 'Name',
+  PRIMARY KEY (`P01F01`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `stu01`
+-- Dumping data for table `dep01`
 --
 
-LOCK TABLES `stu01` WRITE;
-/*!40000 ALTER TABLE `stu01` DISABLE KEYS */;
-INSERT INTO `stu01` VALUES (1,'John Doe',20),(2,'Jane Smith',22),(3,'Bob Johnson',21),(4,'Dev Nakum',25),(5,'Raj',25);
-/*!40000 ALTER TABLE `stu01` ENABLE KEYS */;
+LOCK TABLES `dep01` WRITE;
+/*!40000 ALTER TABLE `dep01` DISABLE KEYS */;
+INSERT INTO `dep01` VALUES (1,'HR'),(2,'IT'),(3,'Finance'),(4,'Account');
+/*!40000 ALTER TABLE `dep01` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -49,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-11 12:37:10
+-- Dump completed on 2024-01-15 12:42:44

@@ -16,28 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `stu01`
+-- Table structure for table `emp02`
 --
 
-DROP TABLE IF EXISTS `stu01`;
+DROP TABLE IF EXISTS `emp02`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `stu01` (
-  `U01F01` int NOT NULL AUTO_INCREMENT COMMENT 'Id',
-  `U01F02` varchar(20) DEFAULT NULL COMMENT 'Name',
-  `U01F03` int DEFAULT NULL COMMENT 'Age',
-  PRIMARY KEY (`U01F01`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `emp02` (
+  `P02F01` int NOT NULL AUTO_INCREMENT COMMENT 'Id',
+  `P02F02` varchar(50) DEFAULT NULL COMMENT 'Name',
+  `P02F03` int DEFAULT NULL COMMENT 'department_id',
+  PRIMARY KEY (`P02F01`),
+  KEY `P02F03` (`P02F03`),
+  CONSTRAINT `emp02_ibfk_1` FOREIGN KEY (`P02F03`) REFERENCES `dep01` (`P01F01`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `stu01`
+-- Dumping data for table `emp02`
 --
 
-LOCK TABLES `stu01` WRITE;
-/*!40000 ALTER TABLE `stu01` DISABLE KEYS */;
-INSERT INTO `stu01` VALUES (1,'John Doe',20),(2,'Jane Smith',22),(3,'Bob Johnson',21),(4,'Dev Nakum',25),(5,'Raj',25);
-/*!40000 ALTER TABLE `stu01` ENABLE KEYS */;
+LOCK TABLES `emp02` WRITE;
+/*!40000 ALTER TABLE `emp02` DISABLE KEYS */;
+INSERT INTO `emp02` VALUES (1,'John Doe',1),(2,'Jane Smith',2),(3,'Bob Johnson',1),(4,'Alice Brown',3),(5,'Dev',NULL),(6,'Raj',NULL);
+/*!40000 ALTER TABLE `emp02` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -49,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-11 12:37:10
+-- Dump completed on 2024-01-15 12:42:44

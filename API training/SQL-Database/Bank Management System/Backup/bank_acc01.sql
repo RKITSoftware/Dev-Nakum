@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: employee_dev
+-- Host: 127.0.0.1    Database: bank
 -- ------------------------------------------------------
 -- Server version	8.0.27
 
@@ -16,28 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `stu01`
+-- Table structure for table `acc01`
 --
 
-DROP TABLE IF EXISTS `stu01`;
+DROP TABLE IF EXISTS `acc01`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `stu01` (
-  `U01F01` int NOT NULL AUTO_INCREMENT COMMENT 'Id',
-  `U01F02` varchar(20) DEFAULT NULL COMMENT 'Name',
-  `U01F03` int DEFAULT NULL COMMENT 'Age',
-  PRIMARY KEY (`U01F01`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `acc01` (
+  `C01F01` int NOT NULL AUTO_INCREMENT COMMENT 'Id',
+  `C01F02` varchar(10) NOT NULL COMMENT 'Type - Saving or Current',
+  `C01F03` int NOT NULL COMMENT 'Balance',
+  `C01F04` int DEFAULT NULL COMMENT 'Customer Id',
+  PRIMARY KEY (`C01F01`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `stu01`
+-- Dumping data for table `acc01`
 --
 
-LOCK TABLES `stu01` WRITE;
-/*!40000 ALTER TABLE `stu01` DISABLE KEYS */;
-INSERT INTO `stu01` VALUES (1,'John Doe',20),(2,'Jane Smith',22),(3,'Bob Johnson',21),(4,'Dev Nakum',25),(5,'Raj',25);
-/*!40000 ALTER TABLE `stu01` ENABLE KEYS */;
+LOCK TABLES `acc01` WRITE;
+/*!40000 ALTER TABLE `acc01` DISABLE KEYS */;
+INSERT INTO `acc01` VALUES (1,'Saving',6650,1),(2,'Current',3000,2),(3,'Saving',7000,3),(4,'Saving',4000,4),(5,'Current',6000,5),(6,'Saving',6500,6),(7,'Current',2000,7),(8,'Saving',10000,8),(9,'Saving',3000,9),(10,'Current',5000,10),(11,'Saving',9000,11),(12,'Current',4000,12),(13,'Saving',6000,13),(14,'Saving',12000,14),(15,'Current',8000,15),(16,'Current',7000,16),(17,'Saving',11000,17),(18,'Saving',15000,18),(19,'Current',10000,19),(20,'Saving',13000,20);
+/*!40000 ALTER TABLE `acc01` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -49,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-11 12:37:10
+-- Dump completed on 2024-01-15 10:52:58

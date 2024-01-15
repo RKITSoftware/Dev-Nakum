@@ -16,38 +16,38 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Temporary view structure for view `view_emp01`
+-- Temporary view structure for view `vws_employee`
 --
 
-DROP TABLE IF EXISTS `view_emp01`;
-/*!50001 DROP VIEW IF EXISTS `view_emp01`*/;
+DROP TABLE IF EXISTS `vws_employee`;
+/*!50001 DROP VIEW IF EXISTS `vws_employee`*/;
 SET @saved_cs_client     = @@character_set_client;
 /*!50503 SET character_set_client = utf8mb4 */;
-/*!50001 CREATE VIEW `view_emp01` AS SELECT 
+/*!50001 CREATE VIEW `vws_employee` AS SELECT 
  1 AS `P01F01`,
  1 AS `P01F02`,
  1 AS `P01F04`*/;
 SET character_set_client = @saved_cs_client;
 
 --
--- Temporary view structure for view `view_emp02_dep01`
+-- Temporary view structure for view `vws_emp_depart`
 --
 
-DROP TABLE IF EXISTS `view_emp02_dep01`;
-/*!50001 DROP VIEW IF EXISTS `view_emp02_dep01`*/;
+DROP TABLE IF EXISTS `vws_emp_depart`;
+/*!50001 DROP VIEW IF EXISTS `vws_emp_depart`*/;
 SET @saved_cs_client     = @@character_set_client;
 /*!50503 SET character_set_client = utf8mb4 */;
-/*!50001 CREATE VIEW `view_emp02_dep01` AS SELECT 
+/*!50001 CREATE VIEW `vws_emp_depart` AS SELECT 
  1 AS `P02F01`,
  1 AS `P02F02`,
  1 AS `P01F02`*/;
 SET character_set_client = @saved_cs_client;
 
 --
--- Final view structure for view `view_emp01`
+-- Final view structure for view `vws_employee`
 --
 
-/*!50001 DROP VIEW IF EXISTS `view_emp01`*/;
+/*!50001 DROP VIEW IF EXISTS `vws_employee`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
@@ -56,16 +56,16 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`Admin`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `view_emp01` AS select `emp01`.`P01F01` AS `P01F01`,`emp01`.`P01F02` AS `P01F02`,`emp01`.`P01F04` AS `P01F04` from `emp01` */;
+/*!50001 VIEW `vws_employee` AS select `emp01`.`P01F01` AS `P01F01`,`emp01`.`P01F02` AS `P01F02`,`emp01`.`P01F04` AS `P01F04` from `emp01` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
--- Final view structure for view `view_emp02_dep01`
+-- Final view structure for view `vws_emp_depart`
 --
 
-/*!50001 DROP VIEW IF EXISTS `view_emp02_dep01`*/;
+/*!50001 DROP VIEW IF EXISTS `vws_emp_depart`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
@@ -74,7 +74,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`Admin`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `view_emp02_dep01` AS select `emp02`.`P02F01` AS `P02F01`,`emp02`.`P02F02` AS `P02F02`,`dep01`.`P01F02` AS `P01F02` from (`emp02` left join `dep01` on((`emp02`.`P02F03` = `dep01`.`P01F01`))) */;
+/*!50001 VIEW `vws_emp_depart` AS select `emp02`.`P02F01` AS `P02F01`,`emp02`.`P02F02` AS `P02F02`,`dep01`.`P01F02` AS `P01F02` from (`emp02` left join `dep01` on((`emp02`.`P02F03` = `dep01`.`P01F01`))) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -88,4 +88,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-11 12:37:10
+-- Dump completed on 2024-01-15 12:42:45

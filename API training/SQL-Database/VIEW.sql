@@ -1,6 +1,8 @@
+use employee_dev;
+
 -- Create the view 
-CREATE VIEW
-	VIEW_EMP01
+CREATE OR REPLACE VIEW
+	vws_employee
 AS SELECT 
 	P01F01,
     P01F02,
@@ -14,12 +16,12 @@ SELECT
     P01F02,
     P01F04
 FROM
-	VIEW_EMP01;
+	vws_employee;
     
     
 # update the view
 UPDATE 
-	VIEW_EMP01
+	vws_employee
 SET
 	P01F02 = CONCAT("SUPER ", P01F02)
 WHERE
@@ -28,7 +30,7 @@ WHERE
 
 # view with joins 
 CREATE OR REPLACE VIEW 
-	VIEW_EMP02_DEP01
+	vws_emp_depart
 AS SELECT 
 	P02F01,
     P02F02,
@@ -46,7 +48,7 @@ SELECT
     P02F02,
     P01F02 
 FROM 
-	VIEW_EMP02_DEP01; 
+	vws_emp_depart; 
 
 # update the base table
 UPDATE 
@@ -55,3 +57,8 @@ SET
 	P02F02 = "Dev"
 WHERE 
 	P02F01 = 5;
+    
+
+#delete the view 
+DROP VIEW 
+	VIEW_EMP02_DEP01;

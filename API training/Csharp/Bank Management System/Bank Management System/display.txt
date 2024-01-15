@@ -1,0 +1,8 @@
+
+UserId : 1
+FirstName : dev
+LastName : nakum
+Email : dewdasd
+Phone : 598656565
+Money : 0
+

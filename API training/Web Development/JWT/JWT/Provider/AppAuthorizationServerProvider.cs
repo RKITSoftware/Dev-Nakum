@@ -47,7 +47,7 @@ namespace JWT.Provider
                     identity.AddClaim(new Claim(ClaimTypes.Role, role.Trim()));    
                 }
 
-                //valdiate the identity
+                //validate the identity
                 context.Validated(identity);
             }
             

@@ -75,7 +75,7 @@ namespace Exception.Controllers
         /// <returns>throw an exception</returns>
         [HttpGet]
         [Route("api/info/filter/{id}")]
-        public IHttpActionResult FetExceptionFilter(int id)
+        public IHttpActionResult CustomExceptionFilter(int id)
         {
             var user = lstInfo.FirstOrDefault(x => x.Id == id);
             if (user == null)

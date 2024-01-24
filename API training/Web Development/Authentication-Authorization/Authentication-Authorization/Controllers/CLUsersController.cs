@@ -13,9 +13,13 @@ namespace Authentication_Authorization.Controllers
     [Authentication]
     public class CLUsersController : ApiController
     {
+        /// <summary>
+        /// get all the user list
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("api/users")]
-        [AuthorizationAttribute(Roles = "admin")]
+        [Authorization(Roles = "admin")]
         public HttpResponseMessage GetAllUser()
         {
             return Request.CreateResponse(HttpStatusCode.OK, Users.GetAllUser());

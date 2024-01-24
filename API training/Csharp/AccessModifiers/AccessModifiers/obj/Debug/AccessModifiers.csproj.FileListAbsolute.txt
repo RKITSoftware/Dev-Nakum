@@ -6,3 +6,11 @@ F:\Dev - 372\Csharp\AccessModifiers\AccessModifiers\obj\Debug\AccessModifiers.cs
 F:\Dev - 372\Csharp\AccessModifiers\AccessModifiers\obj\Debug\AccessModifiers.csproj.CoreCompileInputs.cache
 F:\Dev - 372\Csharp\AccessModifiers\AccessModifiers\obj\Debug\AccessModifiers.exe
 F:\Dev - 372\Csharp\AccessModifiers\AccessModifiers\obj\Debug\AccessModifiers.pdb
+F:\Dev - 372\New folder\API training\Csharp\AccessModifiers\AccessModifiers\bin\Debug\AccessModifiers.exe.config
+F:\Dev - 372\New folder\API training\Csharp\AccessModifiers\AccessModifiers\bin\Debug\AccessModifiers.exe
+F:\Dev - 372\New folder\API training\Csharp\AccessModifiers\AccessModifiers\bin\Debug\AccessModifiers.pdb
+F:\Dev - 372\New folder\API training\Csharp\AccessModifiers\AccessModifiers\obj\Debug\AccessModifiers.csproj.AssemblyReference.cache
+F:\Dev - 372\New folder\API training\Csharp\AccessModifiers\AccessModifiers\obj\Debug\AccessModifiers.csproj.SuggestedBindingRedirects.cache
+F:\Dev - 372\New folder\API training\Csharp\AccessModifiers\AccessModifiers\obj\Debug\AccessModifiers.csproj.CoreCompileInputs.cache
+F:\Dev - 372\New folder\API training\Csharp\AccessModifiers\AccessModifiers\obj\Debug\AccessModifiers.exe
+F:\Dev - 372\New folder\API training\Csharp\AccessModifiers\AccessModifiers\obj\Debug\AccessModifiers.pdb

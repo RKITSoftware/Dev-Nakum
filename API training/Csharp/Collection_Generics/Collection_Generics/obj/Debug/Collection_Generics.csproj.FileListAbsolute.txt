@@ -13,3 +13,11 @@ F:\Dev - 372\Csharp\Collection_Generics\Collection_Generics\obj\Debug\Collection
 F:\Dev - 372\Csharp\Collection_Generics\Collection_Generics\obj\Debug\Collection_Generics.csproj.CoreCompileInputs.cache
 F:\Dev - 372\Csharp\Collection_Generics\Collection_Generics\obj\Debug\Collection_Generics.exe
 F:\Dev - 372\Csharp\Collection_Generics\Collection_Generics\obj\Debug\Collection_Generics.pdb
+F:\Dev - 372\New folder\API training\Csharp\Collection_Generics\Collection_Generics\bin\Debug\Collection_Generics.exe.config
+F:\Dev - 372\New folder\API training\Csharp\Collection_Generics\Collection_Generics\bin\Debug\Collection_Generics.exe
+F:\Dev - 372\New folder\API training\Csharp\Collection_Generics\Collection_Generics\bin\Debug\Collection_Generics.pdb
+F:\Dev - 372\New folder\API training\Csharp\Collection_Generics\Collection_Generics\obj\Debug\Collection_Generics.csproj.AssemblyReference.cache
+F:\Dev - 372\New folder\API training\Csharp\Collection_Generics\Collection_Generics\obj\Debug\Collection_Generics.csproj.SuggestedBindingRedirects.cache
+F:\Dev - 372\New folder\API training\Csharp\Collection_Generics\Collection_Generics\obj\Debug\Collection_Generics.csproj.CoreCompileInputs.cache
+F:\Dev - 372\New folder\API training\Csharp\Collection_Generics\Collection_Generics\obj\Debug\Collection_Generics.exe
+F:\Dev - 372\New folder\API training\Csharp\Collection_Generics\Collection_Generics\obj\Debug\Collection_Generics.pdb

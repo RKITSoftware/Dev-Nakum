@@ -1,0 +1,12 @@
+F:\Dev - 372\New folder\API training\Csharp\References\References\bin\Debug\References.exe.config
+F:\Dev - 372\New folder\API training\Csharp\References\References\bin\Debug\References.exe
+F:\Dev - 372\New folder\API training\Csharp\References\References\bin\Debug\References.pdb
+F:\Dev - 372\New folder\API training\Csharp\References\References\bin\Debug\AnotherReferenceProject.exe
+F:\Dev - 372\New folder\API training\Csharp\References\References\bin\Debug\AnotherReferenceProject.pdb
+F:\Dev - 372\New folder\API training\Csharp\References\References\bin\Debug\AnotherReferenceProject.exe.config
+F:\Dev - 372\New folder\API training\Csharp\References\References\obj\Debug\References.csproj.AssemblyReference.cache
+F:\Dev - 372\New folder\API training\Csharp\References\References\obj\Debug\References.csproj.SuggestedBindingRedirects.cache
+F:\Dev - 372\New folder\API training\Csharp\References\References\obj\Debug\References.csproj.CoreCompileInputs.cache
+F:\Dev - 372\New folder\API training\Csharp\References\References\obj\Debug\References.csproj.CopyComplete
+F:\Dev - 372\New folder\API training\Csharp\References\References\obj\Debug\References.exe
+F:\Dev - 372\New folder\API training\Csharp\References\References\obj\Debug\References.pdb

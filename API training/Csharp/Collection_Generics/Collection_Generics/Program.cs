@@ -8,12 +8,15 @@ using System.Runtime.ConstrainedExecution;
 
 namespace Collection_Generics
 {
-    // Generic class 
+    /// <summary>
+    /// Generic class that contain generic method 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     class Generic<T>
     {
-        #region Public Method 
         public T Value { get; set; }
 
+        #region Public Method 
         /// <summary>
         ///     Display message and value for generic data types
         /// </summary>
@@ -380,7 +383,7 @@ namespace Collection_Generics
         public static void Main(string[] args)
         {
             // crete the collection of integer
-            CreateCollection();
+            //CreateCollection();
 
             // create the generic class and objects
             //CreateGenericClass();
@@ -398,7 +401,7 @@ namespace Collection_Generics
             //CreateDictionary();
 
             //Sorted dictionary
-            //CreateSortedDictionary();
+            CreateSortedDictionary();
 
             //Hashtable
             //CreateHashTable();

@@ -3,8 +3,18 @@ using System.Data;
 
 namespace DataTables
 {
+    /// <summary>
+    /// Create the data table 
+    /// add rows
+    /// delete the row
+    /// update the row
+    /// </summary>
     class Program
     {
+        /// <summary>
+        /// display all the rows from data table
+        /// </summary>
+        /// <param name="dataTable"></param>
         public static void DisplayData(DataTable dataTable)
         {
             // Iterating the data Table

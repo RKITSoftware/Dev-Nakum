@@ -1,16 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AnotherReferenceProject
 {
+    /// <summary>
+    /// contains the method to display the message
+    /// </summary>
     public class Program
     {
-        public void Print()
+        /// <summary>
+        /// Display the message
+        /// </summary>
+        public static void Print()
         {
-            Console.WriteLine("Display into another namespace");
+            Console.WriteLine("Display into another projects");
         }
         static void Main(string[] args)
         {

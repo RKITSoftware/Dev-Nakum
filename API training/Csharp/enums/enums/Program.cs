@@ -20,18 +20,24 @@ namespace enums
         November,
         December
     }
+    /// <summary>
+    /// Class that contains properties of customer
+    /// </summary>
     class Customer
     {
-        #region Public Method
+        #region Public Properties
         public string Name { get; set; }
         public string Gender { get; set; }
 
         public int Month { get; set; }
         #endregion
     }
+
+    /// <summary>
+    /// class which performs enumeration operation 
+    /// </summary>
     class Program
     {
-       
         static void Main(string[] args)
         {
             // custoners array 

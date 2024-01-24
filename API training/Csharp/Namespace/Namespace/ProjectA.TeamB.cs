@@ -2,6 +2,9 @@
 
 namespace ProjectA.TeamB
 {
+    /// <summary>
+    /// class which contains the method to display the message
+    /// </summary>
     class ClassA
     {
         #region Public Method

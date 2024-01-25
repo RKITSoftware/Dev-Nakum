@@ -19,13 +19,13 @@ namespace StringClass
             Console.WriteLine($"Lowercase : {name.ToLower()}");
 
             // remove the space in between word
-            Console.WriteLine($"Remnove the space : {name.Trim()}");
+            Console.WriteLine($"Remove the space : {name.Trim()}");
             
             // find the index of first character
             Console.WriteLine($"Index of N is: {name.IndexOf('N')}");
 
             // find the index of first character
-            Console.WriteLine($"Last Index of N is : {name.LastIndexOf('Na')}");
+            Console.WriteLine($"Last Index of N is : {name.LastIndexOf("Na")}");
 
             // substring from index 2 to length of 4 
             Console.WriteLine($"Substring : {name.Substring(2,4)}");
@@ -58,11 +58,11 @@ namespace StringClass
                 "another",
                 "side",
             };
-            // join with specific delimeter
+            // join with specific delimiter
             string arrayToString = String.Join(" ", stringArray);
             Console.WriteLine(arrayToString);
 
-            // comare the string -- return true or false 
+            // compare the string -- return true or false 
             if (String.Equals("Dev", "Dev"))
             {
                 Console.WriteLine("Dev and Dev both are same");

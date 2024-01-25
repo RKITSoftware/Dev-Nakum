@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DateTimeClass
 {
-
+    /// <summary>
+    /// class which can manage all the operation related on DateTime
+    /// </summary>
     class Program
     {
         static void Main(string[] args)
@@ -28,6 +26,9 @@ namespace DateTimeClass
 
             // add Days into current date
             Console.WriteLine($"after 23 days date is {DateTime.Now.AddDays(18)}");
+
+            //difference between two date
+            Console.WriteLine($"The difference between two dates are {DateTime.Now.AddDays(21).AddHours(2) - DateTime.Now}");
 
             DateTime today = DateTime.Now;
             Console.WriteLine($"ToLongDateString : {today.ToLongDateString()}");

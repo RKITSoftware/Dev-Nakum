@@ -45,7 +45,7 @@ namespace FIle_Handling
             }
             catch (FileNotFoundException ex)
             {
-                Console.WriteLine($"An error is occured {ex.Message}");
+                Console.WriteLine($"An error is occurred {ex.Message}");
             }
 
             Console.WriteLine();

@@ -6,3 +6,11 @@ F:\Dev - 372\Csharp\DateTime\DateTime\obj\Debug\DateTime.csproj.SuggestedBinding
 F:\Dev - 372\Csharp\DateTime\DateTime\obj\Debug\DateTime.csproj.CoreCompileInputs.cache
 F:\Dev - 372\Csharp\DateTime\DateTime\obj\Debug\DateTime.exe
 F:\Dev - 372\Csharp\DateTime\DateTime\obj\Debug\DateTime.pdb
+F:\Dev - 372\New folder\API training\Csharp\DateTime\DateTime\bin\Debug\DateTime.exe.config
+F:\Dev - 372\New folder\API training\Csharp\DateTime\DateTime\bin\Debug\DateTime.exe
+F:\Dev - 372\New folder\API training\Csharp\DateTime\DateTime\bin\Debug\DateTime.pdb
+F:\Dev - 372\New folder\API training\Csharp\DateTime\DateTime\obj\Debug\DateTime.csproj.AssemblyReference.cache
+F:\Dev - 372\New folder\API training\Csharp\DateTime\DateTime\obj\Debug\DateTime.csproj.SuggestedBindingRedirects.cache
+F:\Dev - 372\New folder\API training\Csharp\DateTime\DateTime\obj\Debug\DateTime.csproj.CoreCompileInputs.cache
+F:\Dev - 372\New folder\API training\Csharp\DateTime\DateTime\obj\Debug\DateTime.exe
+F:\Dev - 372\New folder\API training\Csharp\DateTime\DateTime\obj\Debug\DateTime.pdb

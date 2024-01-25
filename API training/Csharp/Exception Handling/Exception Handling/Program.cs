@@ -4,6 +4,9 @@ using System.IO;
 
 namespace Exception_Handling
 {
+    /// <summary>
+    /// class which can handle all the exception
+    /// </summary>
     class Program
     {
         static void Main(string[] args)

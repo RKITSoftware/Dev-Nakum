@@ -5,6 +5,9 @@ using System.Web;
 
 namespace JWT.Models
 {
+    /// <summary>
+    /// class which can contains schema of employees
+    /// </summary>
     public class Employee
     {
         #region Public Properties

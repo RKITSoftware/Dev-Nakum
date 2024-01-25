@@ -3,6 +3,9 @@
 
 namespace JWT.Models
 {
+    /// <summary>
+    /// class which can contains schema of users
+    /// </summary>
     public class User
     {
         public int UserId { get; set; }

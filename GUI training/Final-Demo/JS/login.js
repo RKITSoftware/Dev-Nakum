@@ -1,3 +1,5 @@
+import {getUserData} from './ajax.js'; 
+
 $(function(){
     // validate the username
     $('#username').blur(function(){
@@ -31,21 +33,6 @@ $(function(){
             $("#passError").text("");
         }
     });
-
-    // getUserData - function -- API CALL to get the userdata from the username
-    const getUserData = async (data)=>{
-        return $.ajax({
-            url : `https://retoolapi.dev/uXBmwj/data?username=${data.username}`,
-            method: "get",
-            success : function(result){
-                console.log("Successfully get the data");
-                return result;
-            },
-            error: function(error){
-                console.log("Something went wrong");
-            }
-        });
-    }
 
     const login = async (data)=>{
 

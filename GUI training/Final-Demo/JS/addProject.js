@@ -1,3 +1,5 @@
+import {addProjectDataAPI} from './ajax.js'; 
+
 $(function(){
     // validate the project title
     $('#prtitle').blur(function(){
@@ -27,44 +29,19 @@ $(function(){
         }
     })
 
-    const addProjectDataAPI = async (addData)=>{
-        let userids =  ["1"];
-        let data = JSON.stringify({
-            "pname" : addData.pname,
-            "pdescription" : addData.pdescription,
-            "userid": userids, 
-            "completed": "no",
-            "currrent_user": "1"
-        });
-
-        return $.ajax({
-            url : `https://retoolapi.dev/5Jk3mO/project/`,
-            method: "post",
-            data: data,
-            headers :{
-                "Content-Type" : "Application/json",
-            },
-            success : function(result){
-                console.log("Successfully add the data");
-                return result;
-            },
-            error: function(error){
-                console.log("Enter the valid username or password");
-            }
-        });
-    }
-
+    // call the function to add the data
     const addProjectData = async (data)=>{
 
-        // get data from the api
+        // add the data
         const userdata = await addProjectDataAPI(data);
         alert("Data Added Successfully")
-        
     }
 
     // submit the form
     $('.addProject').submit(function(e){
         e.preventDefault();
+
+        // get the value from input 
         let title = $('#prtitle').val();
         let desc = $('#prdesc').val();
                         
@@ -73,11 +50,13 @@ $(function(){
             e.preventDefault();
         }
         
+        // create the object of data
         const data = {
             "pname": title,
             "pdescription": desc,
         }
-
+        
+        // send the data to the api
         const addProject = async (data)=>{
             await addProjectData(data);
             

@@ -28,25 +28,25 @@
         <form class="register">
           <div class="mb-3">
             <label for="fullName" class="form-label">Username</label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username">
+            <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
             <span id="nameError" class="error"></span>
           </div>
       
           <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" >
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
             <span id="emailError" class="error"></span>
           </div>
       
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password"  >
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password"  required>
             <span id="passError" class="error"></span>
           </div>
       
           <div class="mb-3">
             <label for="phone" class="form-label">Phone Number</label>
-            <input type="number" class="form-control" id="phone" name="phone" placeholder="Enter your phone number"  >
+            <input type="number" class="form-control" id="phone" name="phone" placeholder="Enter your phone number"  required>
             <span id="phoneError" class="error"></span>
           </div>
           
@@ -60,5 +60,5 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js"></script>
-<script src="./JS/register.js"></script>
+<script type="module" src="./JS/register.js"></script>
 </html>

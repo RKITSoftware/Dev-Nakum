@@ -25,7 +25,7 @@
   </script>
 </head>
 
-<body>
+<body id="body">
   <!-- navbar start-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
@@ -37,26 +37,25 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" id="home" aria-current="page" href="./projects.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="./assignedProjects.html">Assigned Projects</a>
+            <a class="nav-link" id="assignedProjects" aria-current="page" href="./assignedProjects.html">Assigned Projects</a>
           </li>
           <li class="nav-item">
             <span class="nav-link" aria-current="page" id="logout" style="cursor: pointer;" >Logout</span>
           </li>
         </ul>
         
-        <form class="d-flex" action="">
-          <input class="form-control me-2" id="search" type="search" placeholder="Search" aria-label="Search" />
-          <!-- <button class="btn btn-primary" type="submit">Search</button> -->
+        <form class="d-flex" action="" id="searchForm">
+          <input class="form-control me-2" id="search" type="text" placeholder="Search" aria-label="Search" />
         </form>
       </div>
     </div>
   </nav>
   <!-- navbar end-->
 
-  <!-- project name + add project start -->
+  <!-- project name -->
   <section>
     <div class="container border-two mt-4">
       <div class="row">
@@ -71,45 +70,25 @@
       </div>
     </div>
   </section>
-  <!-- project name + add project end -->
+  <!-- project name -->
 
   <!-- project card start -->
   <section>
     <div class="container mt-5">
       <div class="row g-5" id="card-data">
         <!-- card start -->
-        <!-- <div class="col-12 col-lg-3 col-xxl-3">
-          <div class="card-box rounded-2 p-1 shadow">
-            <div class="card-body">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                  <h5 class="card-title">Project title</h5>
-                </li>
-                <li class="list-group-item">
-                  <p class="card-text">
-                    Some quick example text to build on the card title and
-                    make up the bulk of the card's content.
-                  </p>
-                </li>
-
-                <li class="list-group-item">Current User : 5</li>
-                <li class="list-group-item">Completed : No</li>
-                <li class="list-group-item"></li>
-              </ul>
-            </div>
-          </div>
-        </div> -->
-
+        
         <!-- card end -->
       </div>
     </div>
   </section>
   <!-- project card end -->
+  
 </body>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
   crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js"></script>
 
-<script src="./JS/script.js"></script>
-
+<script src="./JS/getUserName.js"></script>
+<script type="module" src="./JS/script.js"></script>
 </html>

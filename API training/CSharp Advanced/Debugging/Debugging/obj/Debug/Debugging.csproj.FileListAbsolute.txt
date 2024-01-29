@@ -1,0 +1,8 @@
+F:\Dev - 372\New folder\API training\CSharp Advanced\Debugging\Debugging\bin\Debug\Debugging.exe.config
+F:\Dev - 372\New folder\API training\CSharp Advanced\Debugging\Debugging\bin\Debug\Debugging.exe
+F:\Dev - 372\New folder\API training\CSharp Advanced\Debugging\Debugging\bin\Debug\Debugging.pdb
+F:\Dev - 372\New folder\API training\CSharp Advanced\Debugging\Debugging\obj\Debug\Debugging.csproj.AssemblyReference.cache
+F:\Dev - 372\New folder\API training\CSharp Advanced\Debugging\Debugging\obj\Debug\Debugging.csproj.SuggestedBindingRedirects.cache
+F:\Dev - 372\New folder\API training\CSharp Advanced\Debugging\Debugging\obj\Debug\Debugging.csproj.CoreCompileInputs.cache
+F:\Dev - 372\New folder\API training\CSharp Advanced\Debugging\Debugging\obj\Debug\Debugging.exe
+F:\Dev - 372\New folder\API training\CSharp Advanced\Debugging\Debugging\obj\Debug\Debugging.pdb

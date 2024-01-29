@@ -1,0 +1,8 @@
+F:\Dev - 372\New folder\API training\CSharp Advanced\Generics\Generics\bin\Debug\Generics.exe.config
+F:\Dev - 372\New folder\API training\CSharp Advanced\Generics\Generics\bin\Debug\Generics.exe
+F:\Dev - 372\New folder\API training\CSharp Advanced\Generics\Generics\bin\Debug\Generics.pdb
+F:\Dev - 372\New folder\API training\CSharp Advanced\Generics\Generics\obj\Debug\Generics.csproj.AssemblyReference.cache
+F:\Dev - 372\New folder\API training\CSharp Advanced\Generics\Generics\obj\Debug\Generics.csproj.SuggestedBindingRedirects.cache
+F:\Dev - 372\New folder\API training\CSharp Advanced\Generics\Generics\obj\Debug\Generics.csproj.CoreCompileInputs.cache
+F:\Dev - 372\New folder\API training\CSharp Advanced\Generics\Generics\obj\Debug\Generics.exe
+F:\Dev - 372\New folder\API training\CSharp Advanced\Generics\Generics\obj\Debug\Generics.pdb

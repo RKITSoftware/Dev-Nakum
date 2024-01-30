@@ -195,6 +195,25 @@ namespace FileHandling.Controllers
                 return InternalServerError(ex);
             }
         }
+
+        /// <summary>
+        /// fileinto related operation
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("api/students/file")]
+        public IHttpActionResult FileInfo()
+        {
+            try
+            {
+                return Ok(BLStudent.FileInfo());
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+        
         #endregion
     }
 }

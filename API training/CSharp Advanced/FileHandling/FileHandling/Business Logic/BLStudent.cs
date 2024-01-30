@@ -20,6 +20,7 @@ namespace FileHandling.Business_Logic
         private static List<Students> _lstStudents = new List<Students>();
         private static int _id = 1;
         private static string _filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "FileUpload", "studentData.txt");
+        private static string _filePathCopy = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "FileUploadCopy", "studentData.txt");
         private static string _filePathDestination = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "FileUploadByUser");
         #endregion
 
@@ -169,6 +170,53 @@ namespace FileHandling.Business_Logic
             File.Delete(_filePath);
             return "Successfully delete the file";
         }
+
+        /// <summary>
+        /// fileInto related operation
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="FileNotFoundException"></exception>
+        /// <exception cref="Exception"></exception>
+        public static object FileInfo()
+        {
+            try
+            {
+                FileInfo fileInfo = new FileInfo(_filePath);
+                if (fileInfo.Exists)
+                {
+                    if(File.Exists(_filePathCopy))
+                    {
+                        File.Delete(_filePathCopy);
+                    }
+                    File.Copy(_filePath, _filePathCopy);
+                }
+                else
+                {
+                    throw new FileNotFoundException();
+                }
+
+                var fileInfoObject = new
+                {
+                    FileName = fileInfo.Name,
+                    FileDirectory = fileInfo.Directory.FullName,
+                    FileSize = fileInfo.Length,
+                    CreationTime = fileInfo.CreationTime,
+                    LastAccessTime = fileInfo.LastAccessTime,
+                    LastWriteTime = fileInfo.LastWriteTime
+                };
+                return fileInfoObject;
+
+
+                // to check file is exists or not
+
+            }
+            catch (IOException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+
         #endregion
     }
 }

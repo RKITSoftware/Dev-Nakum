@@ -1,0 +1,11 @@
+F:\Dev - 372\New folder\API training\CSharp Advanced\Base Library\Base Library\bin\Debug\Base Library.exe.config
+F:\Dev - 372\New folder\API training\CSharp Advanced\Base Library\Base Library\bin\Debug\Base Library.exe
+F:\Dev - 372\New folder\API training\CSharp Advanced\Base Library\Base Library\bin\Debug\Base Library.pdb
+F:\Dev - 372\New folder\API training\CSharp Advanced\Base Library\Base Library\bin\Debug\GenericCollectionList.dll
+F:\Dev - 372\New folder\API training\CSharp Advanced\Base Library\Base Library\bin\Debug\GenericCollectionList.pdb
+F:\Dev - 372\New folder\API training\CSharp Advanced\Base Library\Base Library\obj\Debug\Base Library.csproj.AssemblyReference.cache
+F:\Dev - 372\New folder\API training\CSharp Advanced\Base Library\Base Library\obj\Debug\Base Library.csproj.SuggestedBindingRedirects.cache
+F:\Dev - 372\New folder\API training\CSharp Advanced\Base Library\Base Library\obj\Debug\Base Library.csproj.CoreCompileInputs.cache
+F:\Dev - 372\New folder\API training\CSharp Advanced\Base Library\Base Library\obj\Debug\Base Library.csproj.CopyComplete
+F:\Dev - 372\New folder\API training\CSharp Advanced\Base Library\Base Library\obj\Debug\Base Library.exe
+F:\Dev - 372\New folder\API training\CSharp Advanced\Base Library\Base Library\obj\Debug\Base Library.pdb

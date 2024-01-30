@@ -1,0 +1,6 @@
+F:\Dev - 372\New folder\API training\CSharp Advanced\Base Library\GenericCollectionList\bin\Debug\GenericCollectionList.dll
+F:\Dev - 372\New folder\API training\CSharp Advanced\Base Library\GenericCollectionList\bin\Debug\GenericCollectionList.pdb
+F:\Dev - 372\New folder\API training\CSharp Advanced\Base Library\GenericCollectionList\obj\Debug\GenericCollectionList.csproj.AssemblyReference.cache
+F:\Dev - 372\New folder\API training\CSharp Advanced\Base Library\GenericCollectionList\obj\Debug\GenericCollectionList.csproj.CoreCompileInputs.cache
+F:\Dev - 372\New folder\API training\CSharp Advanced\Base Library\GenericCollectionList\obj\Debug\GenericCollectionList.dll
+F:\Dev - 372\New folder\API training\CSharp Advanced\Base Library\GenericCollectionList\obj\Debug\GenericCollectionList.pdb

@@ -1,0 +1,8 @@
+F:\Dev - 372\New folder\API training\CSharp Advanced\LambdaExpression\LambdaExpression\bin\Debug\LambdaExpression.exe.config
+F:\Dev - 372\New folder\API training\CSharp Advanced\LambdaExpression\LambdaExpression\bin\Debug\LambdaExpression.exe
+F:\Dev - 372\New folder\API training\CSharp Advanced\LambdaExpression\LambdaExpression\bin\Debug\LambdaExpression.pdb
+F:\Dev - 372\New folder\API training\CSharp Advanced\LambdaExpression\LambdaExpression\obj\Debug\LambdaExpression.csproj.AssemblyReference.cache
+F:\Dev - 372\New folder\API training\CSharp Advanced\LambdaExpression\LambdaExpression\obj\Debug\LambdaExpression.csproj.SuggestedBindingRedirects.cache
+F:\Dev - 372\New folder\API training\CSharp Advanced\LambdaExpression\LambdaExpression\obj\Debug\LambdaExpression.csproj.CoreCompileInputs.cache
+F:\Dev - 372\New folder\API training\CSharp Advanced\LambdaExpression\LambdaExpression\obj\Debug\LambdaExpression.exe
+F:\Dev - 372\New folder\API training\CSharp Advanced\LambdaExpression\LambdaExpression\obj\Debug\LambdaExpression.pdb

@@ -57,30 +57,6 @@ $(function () {
         }
     });
 
-
-    // register - function -- API CALL to store the userdata
-    // const register = (data)=>{
-    //     return $.ajax({
-    //         url:"https://retoolapi.dev/uXBmwj/data",
-    //         method:"post",
-    //         data:{
-    //             "email": data.email,
-    //             "password": data.password,
-    //             "username": data.username,
-    //             "phone": data.phone,
-    //             "role": "FALSE",
-    //         },
-    //         success:function(result){
-    //             console.log("Data added successfully");
-    //             window.location.href = "./login.html"
-    //         },
-    //         error:function(error){
-    //             console.log("Sometthing went wrong");
-    //             console.log(error);
-    //         }
-    //     })
-    // }
-
     // submit the form
     $('.register').submit(function(e){
         e.preventDefault();

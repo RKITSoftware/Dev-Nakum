@@ -1,0 +1,8 @@
+F:\Dev - 372\New folder\API training\CSharp Advanced\LINQ\LINQ\bin\Debug\LINQ.exe.config
+F:\Dev - 372\New folder\API training\CSharp Advanced\LINQ\LINQ\bin\Debug\LINQ.exe
+F:\Dev - 372\New folder\API training\CSharp Advanced\LINQ\LINQ\bin\Debug\LINQ.pdb
+F:\Dev - 372\New folder\API training\CSharp Advanced\LINQ\LINQ\obj\Debug\LINQ.csproj.AssemblyReference.cache
+F:\Dev - 372\New folder\API training\CSharp Advanced\LINQ\LINQ\obj\Debug\LINQ.csproj.SuggestedBindingRedirects.cache
+F:\Dev - 372\New folder\API training\CSharp Advanced\LINQ\LINQ\obj\Debug\LINQ.csproj.CoreCompileInputs.cache
+F:\Dev - 372\New folder\API training\CSharp Advanced\LINQ\LINQ\obj\Debug\LINQ.exe
+F:\Dev - 372\New folder\API training\CSharp Advanced\LINQ\LINQ\obj\Debug\LINQ.pdb

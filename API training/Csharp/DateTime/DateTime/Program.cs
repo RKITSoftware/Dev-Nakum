@@ -7,6 +7,11 @@ namespace DateTimeClass
     /// </summary>
     class Program
     {
+        /// <summary>
+        /// Main method to start the program
+        /// Manage all the operation related on DataTime
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             DateTime dateTime = new DateTime(2024,01,05,17,51,56);
@@ -37,7 +42,9 @@ namespace DateTimeClass
             Console.WriteLine($"ToShortTimeString : {today.ToShortTimeString()}");
 
             // print into specific format
-            Console.WriteLine(today.ToString("dd/MM/yy"));
+            Console.WriteLine(today.ToString("dd/MM/yy"));      // 01 - 02 - 24
+            Console.WriteLine(today.ToString("dd-MMM-yy"));     // 01 - Feb - 24
+            Console.WriteLine(today.ToString("dd-MMM-yyyy"));       // 01 - Feb - 2024
         }
     }
 }

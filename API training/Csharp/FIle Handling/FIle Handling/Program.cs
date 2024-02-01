@@ -3,8 +3,15 @@ using System.IO;
 
 namespace FIle_Handling
 {
+    /// <summary>
+    /// Main class for file handling
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// entry point of program handle the file operation
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             string filePath = Path.Combine(Directory.GetCurrentDirectory(),@"..\..\data.txt");
@@ -16,10 +23,10 @@ namespace FIle_Handling
             {
                 // streamWrite for write something on file
                 // second parameter is true or false - default is false , true for append the data into file
-                using (StreamWriter streamWriter = new StreamWriter(filePath))      
+                using (StreamWriter objStreamWriter = new StreamWriter(filePath))      
                 {
-                    streamWriter.WriteLine("Hello from data file !!!");
-                    streamWriter.WriteLine("This is a testing file for file handling.");
+                    objStreamWriter.WriteLine("Hello from data file !!!");
+                    objStreamWriter.WriteLine("This is a testing file for file handling.");
                 }
                 Console.WriteLine("Successfully wrote into the file");
             }
@@ -68,9 +75,9 @@ namespace FIle_Handling
                 {
                     Console.WriteLine("File is exists");
 
-                   // File.Copy(filePath, destinationFilePath);
+                    File.Copy(filePath, destinationFilePath);       // copy the file
                     Console.WriteLine("Copied file successfully") ;
-                   // File.Delete(destinationFilePath);      // delete the file 
+                    File.Delete(destinationFilePath);      // delete the file 
                     Console.WriteLine("Delete the file successfully") ;
                 }
                 else

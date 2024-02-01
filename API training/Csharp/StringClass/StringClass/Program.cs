@@ -3,7 +3,10 @@ using System.Text;
 
 namespace StringClass
 {
-    internal class Program
+    /// <summary>
+    /// Main class for handling teh string operations
+    /// </summary>
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -44,10 +47,10 @@ namespace StringClass
             // convert int into string
             Console.WriteLine($"Convert integer into string {intNumber.ToString()}");
 
-            // concatination
+            // concatenation
             Console.WriteLine("Welcome "+name);
 
-            // comapre the string -- return 0 for same , -1 for assending, 1 from decending
+            // compare the string -- return 0 for same , -1 for ascending, 1 from descending
             Console.WriteLine($"Compare string {String.Compare("Dev" , "Kishan")}");
 
 

@@ -1,0 +1,8 @@
+F:\Dev - 372\New folder\API training\CSharp Advanced\Cryptography\Cryptography\bin\Debug\Cryptography.exe.config
+F:\Dev - 372\New folder\API training\CSharp Advanced\Cryptography\Cryptography\bin\Debug\Cryptography.exe
+F:\Dev - 372\New folder\API training\CSharp Advanced\Cryptography\Cryptography\bin\Debug\Cryptography.pdb
+F:\Dev - 372\New folder\API training\CSharp Advanced\Cryptography\Cryptography\obj\Debug\Cryptography.csproj.AssemblyReference.cache
+F:\Dev - 372\New folder\API training\CSharp Advanced\Cryptography\Cryptography\obj\Debug\Cryptography.csproj.SuggestedBindingRedirects.cache
+F:\Dev - 372\New folder\API training\CSharp Advanced\Cryptography\Cryptography\obj\Debug\Cryptography.csproj.CoreCompileInputs.cache
+F:\Dev - 372\New folder\API training\CSharp Advanced\Cryptography\Cryptography\obj\Debug\Cryptography.exe
+F:\Dev - 372\New folder\API training\CSharp Advanced\Cryptography\Cryptography\obj\Debug\Cryptography.pdb

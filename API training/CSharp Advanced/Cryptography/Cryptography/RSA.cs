@@ -26,7 +26,7 @@ namespace Cryptography
         /// Encryption of plain text
         /// </summary>
         /// <param name="plainText">user's plain text</param>
-        /// <returns>encrypted </returns>
+        /// <returns>encrypted message</returns>
         public string Encrypt(string plainText)
         {
             byte[] plainBytes = Encoding.UTF8.GetBytes(plainText);
@@ -38,8 +38,8 @@ namespace Cryptography
         /// <summary>
         /// Decryption of encrypted text
         /// </summary>
-        /// <param name="ecncryptedString"></param>
-        /// <returns></returns>
+        /// <param name="ecncryptedString">encrypted string</param>
+        /// <returns>original plain text</returns>
         public string Decrypt(string encryptedString)
         {
             byte[] encryptedTextByte = Convert.FromBase64String(encryptedString);

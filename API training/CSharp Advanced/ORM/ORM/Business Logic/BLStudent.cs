@@ -17,7 +17,6 @@ namespace ORM.Business_Logic
     {
         #region Private Member
         private readonly IDbConnectionFactory _dbFactory;
-        private static int _id = 1;
         #endregion
 
         #region Constructor
@@ -59,18 +58,13 @@ namespace ORM.Business_Logic
         /// </summary>
         /// <param name="studentData"></param>
         /// <returns>True if rows affected > 0 and false if 0</returns>
-        public bool AddStudent(Stu01 studentData)
+        public bool AddStudent(Stu01 objStu01)
         {
             using (IDbConnection db = _dbFactory.OpenDbConnection())
             {
                 try
                 {
-                    Stu01 objStudent = new Stu01();
-                    objStudent.U01F01 = _id++;
-                    objStudent.U01F02 = studentData.U01F02;
-                    objStudent.U01F03 = studentData.U01F03;
-
-                    db.Insert(objStudent);
+                    db.Insert(objStu01);
                     return true;
                 }
                 catch (MySqlException)
@@ -86,15 +80,15 @@ namespace ORM.Business_Logic
         /// <param name="id">student id</param>
         /// <param name="studentData"></param>
         /// <returns></returns>
-        public bool UpdateStudent(int id, Stu01 studentData)
+        public bool UpdateStudent(int id, Stu01 objStu01)
         {
             using (IDbConnection db = _dbFactory.OpenDbConnection())
             {
                 int updatedRows = db.Update(new Stu01
                 {
                     U01F01 = id,
-                    U01F02 = studentData.U01F02,
-                    U01F03 = studentData.U01F03,
+                    U01F02 = objStu01.U01F02,
+                    U01F03 = objStu01.U01F03,
                 }, s => s.U01F01 == id);
 
 

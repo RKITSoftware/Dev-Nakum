@@ -1,0 +1,8 @@
+F:\Dev - 372\New folder\API training\CSharp Advanced\Dynamic Type\Dynamic Type\bin\Debug\Dynamic Type.exe.config
+F:\Dev - 372\New folder\API training\CSharp Advanced\Dynamic Type\Dynamic Type\bin\Debug\Dynamic Type.exe
+F:\Dev - 372\New folder\API training\CSharp Advanced\Dynamic Type\Dynamic Type\bin\Debug\Dynamic Type.pdb
+F:\Dev - 372\New folder\API training\CSharp Advanced\Dynamic Type\Dynamic Type\obj\Debug\Dynamic Type.csproj.AssemblyReference.cache
+F:\Dev - 372\New folder\API training\CSharp Advanced\Dynamic Type\Dynamic Type\obj\Debug\Dynamic Type.csproj.SuggestedBindingRedirects.cache
+F:\Dev - 372\New folder\API training\CSharp Advanced\Dynamic Type\Dynamic Type\obj\Debug\Dynamic Type.csproj.CoreCompileInputs.cache
+F:\Dev - 372\New folder\API training\CSharp Advanced\Dynamic Type\Dynamic Type\obj\Debug\Dynamic Type.exe
+F:\Dev - 372\New folder\API training\CSharp Advanced\Dynamic Type\Dynamic Type\obj\Debug\Dynamic Type.pdb

@@ -1,0 +1,18 @@
+Id    : 1
+Name  : raj
+Email : raj@gmail.com
+Type  : Deposit
+Money : 1200
+--------------------
+Id    : 2
+Name  : raj
+Email : raj@gmail.com
+Type  : Withdraw
+Money : 120
+--------------------
+Id    : 3
+Name  : raj
+Email : raj@gmail.com
+Type  : Withdraw
+Money : 256
+--------------------

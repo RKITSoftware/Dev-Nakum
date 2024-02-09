@@ -85,6 +85,11 @@ namespace Bank_Management_System
         /// <param name="money">Amount of money to deposit.</param>
         public void DepositMoney(DataTable dataTable, int money)
         {
+            if (!ColumnExists(dataTable, "FirstName"))
+            {
+                Console.WriteLine("Account does not exists");
+                return;
+            }
             Console.WriteLine("Money Started Deposit");
 
             // Find the DataRow based on UserId
@@ -110,6 +115,11 @@ namespace Bank_Management_System
         /// <param name="money">Amount of money to withdraw.</param>
         public void WithdrawMoney(DataTable dataTable, int money)
         {
+            if (!ColumnExists(dataTable, "FirstName"))
+            {
+                Console.WriteLine("Account does not exists");
+                return;
+            }
             Console.WriteLine("Money Started Withdraw");
             // Find the DataRow based on UserId
             DataRow currentUser = dataTable.Rows.Find(UserId);
@@ -138,6 +148,11 @@ namespace Bank_Management_System
         /// <param name="dataTable">DataTable to store user data.</param>
         public void CloseAccount(DataTable dataTable)
         {
+            if (!ColumnExists(dataTable, "FirstName"))
+            {
+                Console.WriteLine("Account does not exists");
+                return;
+            }
             // Find the DataRow based on UserId
             DataRow currentUser = dataTable.Rows.Find(UserId);
             if (currentUser != null)

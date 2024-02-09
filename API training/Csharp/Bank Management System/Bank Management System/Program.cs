@@ -29,6 +29,17 @@ namespace Bank_Management_System
             Console.WriteLine("Enter your phone number");
             objBank.Phone = Console.ReadLine();
 
+            Console.WriteLine((int.TryParse(objBank.Phone, out int r)));
+            if ((int.TryParse(objBank.FirstName, out int res)) || (int.TryParse(objBank.LastName, out int res2)))
+            {
+                Console.WriteLine("Enter the valid First Name or Last Name");
+                return;
+            }
+            if (!(double.TryParse(objBank.Phone, out double result)) || (objBank.Phone).Length != 10)
+            {
+                Console.WriteLine("Phone number is not valid, Please try again !!!");
+                return;
+            }
             objBank.CreateAccount(dataTable, objBank.FirstName, objBank.LastName, objBank.Email, objBank.Phone);
         }
 
@@ -40,9 +51,17 @@ namespace Bank_Management_System
         public static void DepositMoney(DataTable dataTable, BLBank objBank)
         {
             Console.WriteLine("Enter the amount");
-            int money = Convert.ToInt32(Console.ReadLine());
-
-            objBank.DepositMoney(dataTable, money);
+            string moneyString = Console.ReadLine();
+            if (!(int.TryParse(moneyString, out int result)))
+            {
+                Console.WriteLine("Amount is not valid, Please try again !!!");
+                return;
+            }
+            else
+            {
+                int money = Convert.ToInt32(moneyString);
+                objBank.DepositMoney(dataTable, money);
+            }
         }
 
         /// <summary>
@@ -53,9 +72,17 @@ namespace Bank_Management_System
         public static void WithdrawMoney(DataTable dataTable, BLBank objBank)
         {
             Console.WriteLine("Enter the amount");
-            int money = Convert.ToInt32(Console.ReadLine());
-
-            objBank.WithdrawMoney(dataTable, money);
+            string moneyString = Console.ReadLine();
+            if (!(int.TryParse(moneyString, out int result)))
+            {
+                Console.WriteLine("Amount is not valid, Please try again !!!");
+                return;
+            }
+            else
+            {
+                int money = Convert.ToInt32(moneyString);
+                objBank.WithdrawMoney(dataTable, money);
+            }
         }
 
         /// <summary>
@@ -74,22 +101,25 @@ namespace Bank_Management_System
         /// <param name="choice">User choice for banking operation.</param>
         /// <param name="dataTable">DataTable to store user data.</param>
         /// <param name="objBank">Business logic object for banking operations.</param>
-        public static void selectChoice(int choice, DataTable dataTable, BLBank objBank)
+        public static void selectChoice(string choice, DataTable dataTable, BLBank objBank)
         {
 
             switch (choice)
             {
-                case 1:
+                case "1":
                     CreateAccount(dataTable, objBank);
                     break;
-                case 2:
+                case "2":
                     WithdrawMoney(dataTable, objBank);
                     break;
-                case 3:
+                case "3":
                     DepositMoney(dataTable, objBank);
                     break;
-                case 4:
+                case "4":
                     CloseAccount(dataTable, objBank);
+                    break;
+                default:
+                    Console.WriteLine("Enter the valid choice");
                     break;
             }
         }
@@ -116,10 +146,10 @@ namespace Bank_Management_System
                 Console.WriteLine("5. Exit Bank");
 
                 // Get user choice
-                int choice = Convert.ToInt32(Console.ReadLine());
+                string choice = Console.ReadLine();
 
                 // if user enter the 5 break the while loop and display allUserDataTable from dataTable 
-                if (choice == 5)
+                if (choice == "5")
                 {
                     BLBank.DisplayAllUserData(dataTable);
                     break;

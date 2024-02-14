@@ -116,7 +116,7 @@ namespace FileHandling.Business_Logic
 
                     // Check if filePath exists already
 
-                    if (System.IO.File.Exists(filePath))
+                    if (File.Exists(filePath))
                     {
                         return false;
                     }

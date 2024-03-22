@@ -1,0 +1,38 @@
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\bin\Debug\net6.0\appsettings.Development.json
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\bin\Debug\net6.0\appsettings.json
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\bin\Debug\net6.0\Middleware - webapi.exe
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\bin\Debug\net6.0\Middleware - webapi.deps.json
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\bin\Debug\net6.0\Middleware - webapi.runtimeconfig.json
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\bin\Debug\net6.0\Middleware - webapi.dll
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\bin\Debug\net6.0\Middleware - webapi.pdb
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\bin\Debug\net6.0\Microsoft.OpenApi.dll
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\obj\Debug\net6.0\Middleware - webapi.csproj.AssemblyReference.cache
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\obj\Debug\net6.0\Middleware - webapi.GeneratedMSBuildEditorConfig.editorconfig
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\obj\Debug\net6.0\Middleware - webapi.AssemblyInfoInputs.cache
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\obj\Debug\net6.0\Middleware - webapi.AssemblyInfo.cs
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\obj\Debug\net6.0\Middleware - webapi.csproj.CoreCompileInputs.cache
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\obj\Debug\net6.0\Middleware - webapi.MvcApplicationPartsAssemblyInfo.cs
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\obj\Debug\net6.0\Middleware - webapi.MvcApplicationPartsAssemblyInfo.cache
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\obj\Debug\net6.0\staticwebassets\msbuild.Middleware - webapi.Microsoft.AspNetCore.StaticWebAssets.props
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\obj\Debug\net6.0\staticwebassets\msbuild.build.Middleware - webapi.props
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.Middleware - webapi.props
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.Middleware - webapi.props
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\obj\Debug\net6.0\staticwebassets.pack.json
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\obj\Debug\net6.0\staticwebassets.build.json
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\obj\Debug\net6.0\staticwebassets.development.json
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\obj\Debug\net6.0\scopedcss\bundle\Middleware - webapi.styles.css
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\obj\Debug\net6.0\Middleware - webapi.csproj.CopyComplete
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\obj\Debug\net6.0\Middleware - webapi.dll
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\obj\Debug\net6.0\refint\Middleware - webapi.dll
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\obj\Debug\net6.0\Middleware - webapi.pdb
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\obj\Debug\net6.0\Middleware - webapi.genruntimeconfig.cache
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\obj\Debug\net6.0\ref\Middleware - webapi.dll
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+F:\Dev - 372\New folder\API training\DotNet Core\Middleware - webapi\Middleware - webapi\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll

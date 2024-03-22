@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Middleware - webapi.props" />
+</Project>

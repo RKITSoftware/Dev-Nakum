@@ -1,0 +1,32 @@
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\bin\Debug\net6.0\appsettings.Development.json
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\bin\Debug\net6.0\appsettings.json
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\bin\Debug\net6.0\Basic WebAPI.exe
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\bin\Debug\net6.0\Basic WebAPI.deps.json
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\bin\Debug\net6.0\Basic WebAPI.runtimeconfig.json
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\bin\Debug\net6.0\Basic WebAPI.dll
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\bin\Debug\net6.0\Basic WebAPI.pdb
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\bin\Debug\net6.0\Microsoft.OpenApi.dll
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\obj\Debug\net6.0\Basic WebAPI.csproj.AssemblyReference.cache
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\obj\Debug\net6.0\Basic WebAPI.GeneratedMSBuildEditorConfig.editorconfig
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\obj\Debug\net6.0\Basic WebAPI.AssemblyInfoInputs.cache
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\obj\Debug\net6.0\Basic WebAPI.AssemblyInfo.cs
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\obj\Debug\net6.0\Basic WebAPI.csproj.CoreCompileInputs.cache
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\obj\Debug\net6.0\Basic WebAPI.MvcApplicationPartsAssemblyInfo.cs
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\obj\Debug\net6.0\Basic WebAPI.MvcApplicationPartsAssemblyInfo.cache
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\obj\Debug\net6.0\staticwebassets\msbuild.Basic WebAPI.Microsoft.AspNetCore.StaticWebAssets.props
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\obj\Debug\net6.0\staticwebassets\msbuild.build.Basic WebAPI.props
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.Basic WebAPI.props
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.Basic WebAPI.props
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\obj\Debug\net6.0\staticwebassets.pack.json
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\obj\Debug\net6.0\staticwebassets.build.json
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\obj\Debug\net6.0\staticwebassets.development.json
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\obj\Debug\net6.0\scopedcss\bundle\Basic WebAPI.styles.css
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\obj\Debug\net6.0\Basic WebAPI.csproj.CopyComplete
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\obj\Debug\net6.0\Basic WebAPI.dll
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\obj\Debug\net6.0\refint\Basic WebAPI.dll
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\obj\Debug\net6.0\Basic WebAPI.pdb
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\obj\Debug\net6.0\Basic WebAPI.genruntimeconfig.cache
+F:\Dev - 372\New folder\API training\DotNet Core\Basic WebAPI\Basic WebAPI\obj\Debug\net6.0\ref\Basic WebAPI.dll

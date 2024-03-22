@@ -1,0 +1,32 @@
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\bin\Debug\net6.0\appsettings.Development.json
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\bin\Debug\net6.0\appsettings.json
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\bin\Debug\net6.0\Basic Fundamental.exe
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\bin\Debug\net6.0\Basic Fundamental.deps.json
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\bin\Debug\net6.0\Basic Fundamental.runtimeconfig.json
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\bin\Debug\net6.0\Basic Fundamental.dll
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\bin\Debug\net6.0\Basic Fundamental.pdb
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\bin\Debug\net6.0\Microsoft.OpenApi.dll
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\obj\Debug\net6.0\Basic Fundamental.csproj.AssemblyReference.cache
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\obj\Debug\net6.0\Basic Fundamental.GeneratedMSBuildEditorConfig.editorconfig
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\obj\Debug\net6.0\Basic Fundamental.AssemblyInfoInputs.cache
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\obj\Debug\net6.0\Basic Fundamental.AssemblyInfo.cs
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\obj\Debug\net6.0\Basic Fundamental.csproj.CoreCompileInputs.cache
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\obj\Debug\net6.0\Basic Fundamental.MvcApplicationPartsAssemblyInfo.cs
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\obj\Debug\net6.0\Basic Fundamental.MvcApplicationPartsAssemblyInfo.cache
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\obj\Debug\net6.0\staticwebassets\msbuild.Basic Fundamental.Microsoft.AspNetCore.StaticWebAssets.props
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\obj\Debug\net6.0\staticwebassets\msbuild.build.Basic Fundamental.props
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.Basic Fundamental.props
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.Basic Fundamental.props
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\obj\Debug\net6.0\staticwebassets.pack.json
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\obj\Debug\net6.0\staticwebassets.build.json
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\obj\Debug\net6.0\staticwebassets.development.json
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\obj\Debug\net6.0\scopedcss\bundle\Basic Fundamental.styles.css
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\obj\Debug\net6.0\Basic Fundamental.csproj.CopyComplete
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\obj\Debug\net6.0\Basic Fundamental.dll
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\obj\Debug\net6.0\refint\Basic Fundamental.dll
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\obj\Debug\net6.0\Basic Fundamental.pdb
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\obj\Debug\net6.0\Basic Fundamental.genruntimeconfig.cache
+F:\Dev - 372\New folder\API training\DotNet Core\Basic Fundamental\Basic Fundamental\obj\Debug\net6.0\ref\Basic Fundamental.dll

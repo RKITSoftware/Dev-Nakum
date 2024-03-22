@@ -21,13 +21,21 @@ SELECT
 FROM 
 	EMP02;
     
-
+    
+    
+-- union - display only distinct data 
 SELECT 
 	P01F02 
 FROM 
 	EMP01
-INTERSECT
+UNION
+SELECT 
+	P02F02 
+FROM 
+	EMP02
+UNION ALL
 SELECT 
 	P02F02 
 FROM 
 	EMP02;
+    

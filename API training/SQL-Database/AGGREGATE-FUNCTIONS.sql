@@ -1,4 +1,4 @@
-USE employee;
+USE employee_dev;
 
 -- count the rows
 SELECT

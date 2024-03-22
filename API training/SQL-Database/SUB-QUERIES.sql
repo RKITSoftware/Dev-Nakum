@@ -17,7 +17,7 @@ SELECT AVG(
 );
 
 
-# to find students with 'A' grade
+-- to find students with 'A' grade
 SELECT 
 	U01F01,
     U01F02,

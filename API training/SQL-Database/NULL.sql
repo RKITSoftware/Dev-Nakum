@@ -1,3 +1,14 @@
+-- inserting NULL value
+INSERT INTO EMP01 (
+	P01F02,
+    P01F03,
+    P01F04
+) VALUES(
+    "Test",
+    18,
+    "Temp"
+);
+
 -- comparision with NULL
 SELECT 
 	P01F01,

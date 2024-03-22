@@ -1,5 +1,5 @@
 -- Transaction control language
-USE employee;
+USE employee_dev;
 
 -- Creating a sample table
 CREATE TABLE 
@@ -17,8 +17,8 @@ INSERT INTO
     P03F01, 
     P03F02
 ) VALUES (
-	1, 
-    'Transaction Demo'
+	3, 
+    'Transaction Demo 2'
 );
 
 -- Commit the transaction
@@ -31,7 +31,7 @@ INSERT INTO
     P03F01, 
     P03F02
 ) VALUES (
-	3, 
+	4, 
     'after Transaction Demo'
 );
 

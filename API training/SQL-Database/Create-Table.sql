@@ -1,16 +1,16 @@
 CREATE TABLE EMP01(
-	P01F01 int comment "Id" primary key auto_increment,
-    P01F02 varchar(50) comment "Name",
-    P01F03 int comment "Age",
-    P01F04 varchar(30) comment "Designation"
-);
+	P01F01 INT COMMENT "Id" PRIMARY KEY AUTO_INCREMENT,
+    P01F02 varchar(50) COMMENT "Name",
+    P01F03 INT COMMENT "Age",
+    P01F04 varchar(30) COMMENT "Designation"
+) COMMENT "Employee 1";
 
 CREATE TABLE EMP02(
-	P01F01 int comment "Id" primary key auto_increment,
-    P01F02 varchar(50) comment "Name",
-    P01F03 int comment "Age",
-    P01F04 varchar(30) comment "Designation"
-);
+	P01F01 INT COMMENT "Id" PRIMARY KEY AUTO_INCREMENT,
+    P01F02 varchar(50) COMMENT "Name",
+    P01F03 INT COMMENT "Age",
+    P01F04 varchar(30) COMMENT "Designation"
+) COMMENT "Employee 2";
 
 -- insert the data into table
 INSERT INTO EMP01(
@@ -73,7 +73,7 @@ CREATE TABLE
     U01F01 INT COMMENT "Id" PRIMARY KEY AUTO_INCREMENT,
     U01F02 VARCHAR(20) COMMENT "Name",
     U01F03 INT COMMENT "Age"
-);
+) COMMENT "Student";
 
 CREATE TABLE 
 	GRA01(
@@ -82,4 +82,4 @@ CREATE TABLE
     A01F03 CHAR(1) COMMENT "Grade",
     A01F04 INT COMMENT "Student Id",
     FOREIGN KEY (A01F04) REFERENCES STU01(U01F01)
-);
+) COMMENT "Grades";

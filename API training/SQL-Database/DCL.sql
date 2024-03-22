@@ -13,7 +13,7 @@ GRANT
     DELETE,
     INSERT
 ON 
-	employee.* 
+	employee_dev.* 
 TO 
 	'dev@localhost';
     
@@ -23,7 +23,7 @@ REVOKE
     DELETE,
     INSERT
 ON 
-	employee.* 
+	employee_dev.* 
 FROM 
 	'dev@localhost';
     

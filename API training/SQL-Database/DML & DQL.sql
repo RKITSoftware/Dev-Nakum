@@ -42,6 +42,3 @@ FROM
 WHERE
 	P01F03 > 21;
     
-    
-SELECT 
-	

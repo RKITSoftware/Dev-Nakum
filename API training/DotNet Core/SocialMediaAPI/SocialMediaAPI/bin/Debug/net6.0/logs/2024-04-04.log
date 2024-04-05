@@ -1,0 +1,48 @@
+2024-04-04 15:07:22.2544|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-04 15:07:22.5077|SocialMediaAPI.Controllers.CLUsersController|INFO|login method called 
+2024-04-04 15:07:52.1005|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-04 15:07:56.4983|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called 
+2024-04-04 15:11:30.9901|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-04 15:11:30.9901|SocialMediaAPI.Controllers.CLUsersController|INFO|login method called 
+2024-04-04 15:11:37.4084|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-04 15:11:37.4084|SocialMediaAPI.Controllers.CLUsersController|INFO|login method called 
+2024-04-04 15:11:42.4964|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-04 15:12:17.9648|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called 
+2024-04-04 15:12:56.7294|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-04 15:13:22.6376|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called 
+2024-04-04 15:14:04.4207|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-04 15:14:08.2984|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called : role is http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin 
+2024-04-04 15:17:33.5528|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-04 15:17:35.7611|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called : role is Admin 
+2024-04-04 17:07:30.9892|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-04 17:07:31.0227|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called : role is Admin 
+2024-04-04 17:08:59.9545|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-04 17:08:59.9863|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called : role is Admin 
+2024-04-04 17:14:06.1467|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-04 17:14:06.1716|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called : role is Admin 
+2024-04-04 17:16:08.9030|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-04 17:16:08.9030|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called : role is Admin 
+2024-04-04 17:18:26.1975|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-04 17:18:26.1975|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called : role is Admin 
+2024-04-04 17:18:27.1344|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-04 17:18:27.1344|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called : role is Admin 
+2024-04-04 17:18:43.9948|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-04 17:18:44.0207|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called : role is Admin 
+2024-04-04 17:20:51.7851|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-04 17:20:51.8062|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called : role is Admin 
+2024-04-04 17:21:56.0857|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-04 17:21:56.1084|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called : role is Admin 
+2024-04-04 17:23:33.7073|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-04 17:23:33.7439|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called : role is Admin 
+2024-04-04 17:26:45.5150|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-04 17:26:45.5401|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called : role is Admin 
+2024-04-04 17:28:39.6681|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-04 17:28:39.6913|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called : role is Admin 
+2024-04-04 17:34:44.2198|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-04 17:34:44.2437|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called : role is Admin 
+2024-04-04 17:39:39.1598|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-04 17:39:39.1598|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called : role is Admin 
+2024-04-04 17:40:26.2396|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-04 17:40:26.2717|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called : role is Admin 
+2024-04-04 17:40:44.2750|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-04 17:40:44.2750|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called : role is Admin 

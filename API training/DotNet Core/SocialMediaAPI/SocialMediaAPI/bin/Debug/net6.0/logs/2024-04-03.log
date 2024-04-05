@@ -1,0 +1,89 @@
+2024-04-03 12:35:32.1843|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 12:35:32.2845|SocialMediaAPI.Controllers.CLUsersController|INFO|signup method called 
+2024-04-03 12:35:34.3212|SocialMediaAPI.BL.BLUsers|ERROR|Data too long for column 'e01f04' at row 1 
+2024-04-03 12:36:03.5475|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 12:36:03.5475|SocialMediaAPI.Controllers.CLUsersController|INFO|signup method called 
+2024-04-03 12:36:03.5759|SocialMediaAPI.BL.BLUsers|ERROR|Data too long for column 'e01f04' at row 1 
+2024-04-03 12:36:21.9146|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 12:36:21.9146|SocialMediaAPI.Controllers.CLUsersController|INFO|signup method called 
+2024-04-03 12:36:21.9344|SocialMediaAPI.BL.BLUsers|ERROR|Data too long for column 'e01f04' at row 1 
+2024-04-03 12:36:22.8941|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 12:36:22.8941|SocialMediaAPI.Controllers.CLUsersController|INFO|signup method called 
+2024-04-03 12:36:22.9385|SocialMediaAPI.BL.BLUsers|ERROR|Data too long for column 'e01f04' at row 1 
+2024-04-03 12:36:51.4974|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 12:37:04.9125|SocialMediaAPI.Controllers.CLUsersController|INFO|signup method called 
+2024-04-03 12:37:28.9192|SocialMediaAPI.BL.BLUsers|ERROR|Data too long for column 'e01f04' at row 1 
+2024-04-03 12:37:56.2754|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 12:37:58.8313|SocialMediaAPI.Controllers.CLUsersController|INFO|signup method called 
+2024-04-03 12:38:44.2405|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 12:38:45.5573|SocialMediaAPI.Controllers.CLUsersController|INFO|signup method called 
+2024-04-03 14:44:17.1983|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 14:48:27.5386|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 14:48:27.6629|SocialMediaAPI.Controllers.CLUsersController|INFO|login method called 
+2024-04-03 14:48:28.8572|SocialMediaAPI.BL.BLUsers|ERROR|something went wrong while logging 
+2024-04-03 14:50:07.0866|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 14:50:07.0866|SocialMediaAPI.Controllers.CLUsersController|INFO|login method called 
+2024-04-03 14:50:07.0958|SocialMediaAPI.BL.BLUsers|ERROR|something went wrong while logging 
+2024-04-03 14:50:50.4191|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 14:51:11.9581|SocialMediaAPI.Controllers.CLUsersController|INFO|login method called 
+2024-04-03 14:52:17.4122|SocialMediaAPI.BL.BLUsers|ERROR|something went wrong while logging 
+2024-04-03 14:55:48.4922|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 14:56:00.4812|SocialMediaAPI.Controllers.CLUsersController|INFO|login method called 
+2024-04-03 14:59:29.8659|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 14:59:33.5386|SocialMediaAPI.Controllers.CLUsersController|INFO|login method called 
+2024-04-03 14:59:44.0337|SocialMediaAPI.BL.BLUsers|ERROR|Username or password is incorrect 
+2024-04-03 15:02:11.9202|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 15:02:19.0623|SocialMediaAPI.Controllers.CLUsersController|INFO|login method called 
+2024-04-03 15:02:39.1140|SocialMediaAPI.BL.BLUsers|ERROR|Username or password is incorrect 
+2024-04-03 15:02:54.7616|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 15:02:56.5074|SocialMediaAPI.Controllers.CLUsersController|INFO|login method called 
+2024-04-03 15:03:28.6935|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 15:03:30.7575|SocialMediaAPI.Controllers.CLUsersController|INFO|login method called 
+2024-04-03 15:05:31.7434|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 15:05:44.8576|SocialMediaAPI.Controllers.CLUsersController|INFO|login method called 
+2024-04-03 15:06:01.9706|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 15:06:04.9005|SocialMediaAPI.Controllers.CLUsersController|INFO|login method called 
+2024-04-03 15:06:14.7096|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 15:06:15.8022|SocialMediaAPI.Controllers.CLUsersController|INFO|login method called 
+2024-04-03 16:01:54.7913|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 16:02:01.8879|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called 
+2024-04-03 16:04:13.3097|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 16:04:18.4392|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called 
+2024-04-03 16:04:19.9827|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 16:04:20.7330|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called 
+2024-04-03 16:13:18.6067|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 16:13:18.9090|SocialMediaAPI.Controllers.CLUsersController|INFO|login method called 
+2024-04-03 16:13:48.6627|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 16:13:48.6627|SocialMediaAPI.Controllers.CLUsersController|INFO|login method called 
+2024-04-03 16:14:54.8450|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 16:14:58.8003|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called 
+2024-04-03 16:15:03.6537|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 16:15:05.0578|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called 
+2024-04-03 16:15:17.1595|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 16:15:20.8814|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called 
+2024-04-03 16:35:31.1854|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 16:35:33.1064|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called 
+2024-04-03 16:36:11.6321|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 16:36:16.2808|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called 
+2024-04-03 16:37:09.8460|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 16:37:10.4263|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called 
+2024-04-03 16:38:11.8304|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 16:38:12.1442|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called 
+2024-04-03 16:47:24.1148|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 16:47:24.2237|SocialMediaAPI.Controllers.CLUsersController|INFO|login method called 
+2024-04-03 16:47:31.1014|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 16:47:31.1025|SocialMediaAPI.Controllers.CLUsersController|INFO|login method called 
+2024-04-03 16:47:36.1035|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 16:47:36.1035|SocialMediaAPI.Controllers.CLUsersController|INFO|login method called 
+2024-04-03 17:10:10.6575|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 17:10:10.6963|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called 
+2024-04-03 17:21:37.6022|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 17:21:40.0033|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called 
+2024-04-03 18:09:46.7328|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 18:09:46.8708|SocialMediaAPI.Controllers.CLUsersController|INFO|login method called 
+2024-04-03 18:11:18.8515|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 18:11:19.7789|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called 
+2024-04-03 18:11:27.2023|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 18:11:27.5978|SocialMediaAPI.Controllers.CLUsersController|INFO|get users method called 
+2024-04-03 18:14:06.4303|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-03 18:14:06.5206|SocialMediaAPI.Controllers.CLUsersController|INFO|login method called 

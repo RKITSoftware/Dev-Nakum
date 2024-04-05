@@ -1,0 +1,2 @@
+2024-04-05 17:30:10.8476|SocialMediaAPI.BL.BLUsers|ERROR|exception :: user profile picture upload or password hash :: Object reference not set to an instance of an object. 
+2024-04-05 17:53:31.8228|SocialMediaAPI.BL.BLPosts|ERROR|exception :: post image upload :: The filename, directory name, or volume label syntax is incorrect. : 'F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\SocialMediaAPI\Upload\Post\105-04-2024 17:50:26.jpg' 

@@ -1,0 +1,10 @@
+2024-04-03 12:35:34.3212|SocialMediaAPI.BL.BLUsers|ERROR|Data too long for column 'e01f04' at row 1 
+2024-04-03 12:36:03.5759|SocialMediaAPI.BL.BLUsers|ERROR|Data too long for column 'e01f04' at row 1 
+2024-04-03 12:36:21.9344|SocialMediaAPI.BL.BLUsers|ERROR|Data too long for column 'e01f04' at row 1 
+2024-04-03 12:36:22.9385|SocialMediaAPI.BL.BLUsers|ERROR|Data too long for column 'e01f04' at row 1 
+2024-04-03 12:37:28.9192|SocialMediaAPI.BL.BLUsers|ERROR|Data too long for column 'e01f04' at row 1 
+2024-04-03 14:48:28.8572|SocialMediaAPI.BL.BLUsers|ERROR|something went wrong while logging 
+2024-04-03 14:50:07.0958|SocialMediaAPI.BL.BLUsers|ERROR|something went wrong while logging 
+2024-04-03 14:52:17.4122|SocialMediaAPI.BL.BLUsers|ERROR|something went wrong while logging 
+2024-04-03 14:59:44.0337|SocialMediaAPI.BL.BLUsers|ERROR|Username or password is incorrect 
+2024-04-03 15:02:39.1140|SocialMediaAPI.BL.BLUsers|ERROR|Username or password is incorrect 

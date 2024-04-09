@@ -9,7 +9,10 @@ namespace SocialMediaAPI.Interface
 
         public object Login(JsonObject objUse01);
 
-        public List<Dictionary<string, object>> GetUsers();  
+        public List<Dictionary<string, object>> GetUsers();
 
+        public Task<Dictionary<string, object>> GetUserDetails(HttpContext httpContext);
+
+        public Task<Dictionary<string, HashSet<string>>> GetFollowing(HttpContext httpContext);
     }
 }

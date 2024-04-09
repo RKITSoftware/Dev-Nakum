@@ -74,8 +74,6 @@ namespace SocialMediaAPI.BL
                 return false;
             }
         }
-
-
         private async Task<string> UploadImage(IFormFile imageFile)
         {
             
@@ -146,6 +144,7 @@ namespace SocialMediaAPI.BL
             {
                 objMySqlConnection.Open();
                 string query = @"select 
+                                    E01F01,
                                     E01F02,
                                     E01F03,
                                     E01F05,
@@ -157,18 +156,19 @@ namespace SocialMediaAPI.BL
 
                 MySqlDataReader objMySqlDataReader = objMySqlCommand.ExecuteReader();
 
-                List<Dictionary<string, object>> users = new List<Dictionary<string, object>>();
+                List<Dictionary<string, object>> lstUsers = new List<Dictionary<string, object>>();
                 while (objMySqlDataReader.Read())
                 {
                     Dictionary<string, object> user = new Dictionary<string, object>();
+                    user.Add("E01101", objMySqlDataReader["E01F01"]);
                     user.Add("E01102", objMySqlDataReader["E01F02"]);
                     user.Add("E01103", objMySqlDataReader["E01F03"]);
                     user.Add("E01105", objMySqlDataReader["E01F05"]);
                     user.Add("E01106", objMySqlDataReader["E01F06"]);
-                    users.Add(user);
+                    lstUsers.Add(user);
                 }
 
-                return users;
+                return lstUsers;
             }
         }
 
@@ -182,6 +182,75 @@ namespace SocialMediaAPI.BL
             }
             return false;
         }
+
+        public async  Task<Dictionary<string, object>> GetUserDetails(HttpContext httpContext)
+        {
+            int id = Convert.ToInt32(httpContext.User.FindFirst("Id")?.Value);
+            await using (MySqlConnection objMySqlConnection = new MySqlConnection(_connectionString))
+            {
+                objMySqlConnection.Open();
+
+                string query = @"SELECT 
+                                    E01F02,
+                                    E01F03,
+                                    E01F05,
+                                    E01F06 
+                                FROM 
+                                    Use01 
+                                WHERE 
+                                    E01F01 = @E01F01";
+                MySqlCommand objMySqlCommand = new MySqlCommand(query,objMySqlConnection);
+                objMySqlCommand.Parameters.AddWithValue("@E01F01",id);
+
+                MySqlDataReader objMySqlDataReader = objMySqlCommand.ExecuteReader();
+
+                Dictionary<string, object> userDetails = new Dictionary<string, object>();
+
+                while(objMySqlDataReader.Read())
+                {
+                    userDetails.Add("E01F02", objMySqlDataReader["E01F02"]);
+                    userDetails.Add("E01F03", objMySqlDataReader["E01F03"]);
+                    userDetails.Add("E01F05", objMySqlDataReader["E01F05"]);
+                    userDetails.Add("E01F06", objMySqlDataReader["E01F06"]);
+                }
+                return userDetails;
+            }
+        }
+
+        public async Task<Dictionary<string, HashSet<string>>> GetFollowing(HttpContext httpContext)
+        {
+            int id = Convert.ToInt32(httpContext.User.FindFirst("Id")?.Value);
+            await using (MySqlConnection objMySqlConnection = new MySqlConnection(_connectionString))
+            {
+                objMySqlConnection.Open();
+                string query = @"SELECT 
+                                    E01F02
+                                FROM
+                                    Fol01 L01
+                                        JOIN
+                                    Use01 E01 ON L01.L01F03 = E01.E01F01
+                                WHERE
+                                    L01.L01F02 = @L01F02";
+
+                MySqlCommand objMySqlCommand = new MySqlCommand(query, objMySqlConnection);
+                objMySqlCommand.Parameters.AddWithValue("@L01F02", id);
+
+                MySqlDataReader objMySqlDataReader = objMySqlCommand.ExecuteReader();
+
+                Dictionary<string, HashSet<string>> dictUsers = new Dictionary<string, HashSet<string>>();
+
+                    HashSet<string> set = new HashSet<string>();
+                while (objMySqlDataReader.Read())
+                {
+                    set.Add(objMySqlDataReader.GetString("E01F02"));
+                    
+                }
+                dictUsers.Add("Following", set);
+                return dictUsers;    
+            }
+        }
+
+
         #endregion
     }
 }

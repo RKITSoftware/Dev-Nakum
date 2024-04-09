@@ -1,0 +1,6 @@
+2024-04-08 11:09:00.4421|SocialMediaAPI.BL.BLUsers|ERROR|Username or password is incorrect 
+2024-04-08 14:51:36.7747|SocialMediaAPI.BL.BLPosts|ERROR|exception :: post img delete :: Object reference not set to an instance of an object. 
+2024-04-08 14:51:44.5604|SocialMediaAPI.BL.BLPosts|ERROR|exception :: post update :: Object reference not set to an instance of an object. 
+2024-04-08 14:52:38.8295|SocialMediaAPI.BL.BLPosts|ERROR|exception :: post img delete :: Object reference not set to an instance of an object. 
+2024-04-08 14:57:33.8210|SocialMediaAPI.BL.BLPosts|ERROR|exception :: post update :: Object reference not set to an instance of an object. 
+2024-04-08 15:00:12.3565|SocialMediaAPI.BL.BLPosts|ERROR|exception :: post update :: Object reference not set to an instance of an object. 

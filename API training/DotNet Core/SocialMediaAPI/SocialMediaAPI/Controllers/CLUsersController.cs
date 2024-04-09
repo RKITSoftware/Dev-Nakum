@@ -63,15 +63,36 @@ namespace SocialMediaAPI.Controllers
         [Authorize(Roles ="Admin")]
         public IActionResult GetUsers()
         {
-            var role = HttpContext.User.FindFirst(ClaimTypes.Role);
-            _logger.Info($"get users method called : role is {role.Value}");
+           
             dynamic lstUse01 = _userService.GetUsers();
 
             if ( lstUse01 == null)
             {
-                return BadRequest("No User found");
+                return NotFound();
             }
             return Ok(lstUse01);
+        }
+
+        [HttpGet("me")]
+        [Authorize]
+        public async Task<IActionResult> GetUserDetails()
+        {
+            Dictionary<string, object> userDetails = await _userService.GetUserDetails(HttpContext);
+
+            if (userDetails == null)
+            {
+                return NotFound();
+            }
+            return Ok(userDetails);
+
+        }
+
+
+        [HttpGet("following")]
+        [Authorize]
+        public async Task<IActionResult> GetUsersFollowing()
+        {
+            return Ok(await _userService.GetFollowing(HttpContext));
         }
         #endregion
     }

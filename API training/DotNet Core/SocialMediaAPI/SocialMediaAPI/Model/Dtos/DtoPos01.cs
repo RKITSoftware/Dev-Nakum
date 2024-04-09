@@ -10,6 +10,6 @@
         /// <summary>
         /// Post content
         /// </summary>
-        public string S01102 { get; set; }
+        public string? S01102 { get; set; }
     }
 }

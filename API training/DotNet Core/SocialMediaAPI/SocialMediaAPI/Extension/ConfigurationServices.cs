@@ -12,6 +12,8 @@ namespace SocialMediaAPI.Extension
         {
             services.AddSingleton<IUserService, BLUsers>();
             services.AddTransient<IPostService, BLPosts>();
+            services.AddTransient<ICommentService, BLComments>();
+            services.AddScoped<IFollowersService, BLFollowers>();       
         }
 
         public static void AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)

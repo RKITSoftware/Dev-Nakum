@@ -13,8 +13,8 @@ namespace HTTPAction.Controllers
     /// </summary>
     public class EmployeesController : ApiController
     {
-        #region Public Member
-        public static List<Employee> lstEmployees;
+        #region Private Member
+        private static List<Employees> _lstEmployees;
         #endregion
 
         #region Constrctor
@@ -23,12 +23,12 @@ namespace HTTPAction.Controllers
         /// </summary>
         static EmployeesController()
         {
-            lstEmployees = new List<Employee>
+            _lstEmployees = new List<Employees>
             {
-                new Employee{ Id=1, Name="Dev", Age=21,Gender="Male", Designation="SDE"},
-                new Employee{ Id=2, Name="Kishan", Age=26,Gender="Male", Designation="Manager"},
-                new Employee{ Id=3, Name="Raj", Age=21,Gender="Male", Designation="SDE"},
-                new Employee{ Id=4, Name="Alice", Age=20,Gender="Female", Designation="BDA"},
+                new Employees{ Id=1, Name="Dev", Age=21,Gender="Male", Designation="SDE"},
+                new Employees{ Id=2, Name="Kishan", Age=26,Gender="Male", Designation="Manager"},
+                new Employees{ Id=3, Name="Raj", Age=21,Gender="Male", Designation="SDE"},
+                new Employees{ Id=4, Name="Alice", Age=20,Gender="Female", Designation="BDA"},
             };
         }
         #endregion
@@ -40,24 +40,24 @@ namespace HTTPAction.Controllers
         /// </summary>
         /// <returns>employee list</returns>
         [HttpGet]
-        [Route("api/employee")]
+        [Route("api/employees")]
         public IHttpActionResult Get()
         {
-            return Ok(lstEmployees);
+            return Ok(_lstEmployees);
             //return Request.CreateResponse(HttpStatusCode.OK, lstEmployees);
         }
 
         /// <summary>
         ///     Display employee's data based on specific id
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">employee id</param>
         /// <returns>if valid id return employee data </returns>
         [HttpGet]
-        [Route("api/employee/{id}")]
+        [Route("api/employees/{id}")]
         public HttpResponseMessage GetEmployeeData(int id)
         {
             //to check id is exist or not in lstEmployees
-            Employee result = lstEmployees.FirstOrDefault(e => e.Id == id);
+            Employees result = _lstEmployees.FirstOrDefault(e => e.Id == id);
             if (result == null)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound, $"Employee is {id} is not found");
@@ -73,14 +73,14 @@ namespace HTTPAction.Controllers
         /// <summary>
         ///  Create the employee based on request body
         /// </summary>
-        /// <param name="employee"></param>
+        /// <param name="objEmployee">object of employee's</param>
         /// <returns>status code with appropriate message</returns>
         [HttpPost]
-        [Route("api/employee")]
-        public HttpResponseMessage CreateEmployee(Employee employee)
+        [Route("api/employees")]
+        public HttpResponseMessage CreateEmployee(Employees objEmployee)
         {
-            lstEmployees.Add(employee);
-            return Request.CreateResponse(HttpStatusCode.Created, employee);
+            _lstEmployees.Add(objEmployee);
+            return Request.CreateResponse(HttpStatusCode.Created, objEmployee);
         }
         #endregion
 
@@ -89,28 +89,28 @@ namespace HTTPAction.Controllers
         /// <summary>
         ///     update the employee based on id 
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="employee"></param>
+        /// <param name="id">employee's id</param>
+        /// <param name="objEmployee">object of the employee</param>
         /// <returns>status code with appropriate message</returns>
         [HttpPut]
-        [Route("api/employee/{id}")]
-        public HttpResponseMessage UpdateEmployee(int id, Employee employee)
+        [Route("api/employees/{id}")]
+        public HttpResponseMessage UpdateEmployee(int id, Employees objEmployee)
         {
             //to check id is exist or not in lstEmployees
-            Employee emp = lstEmployees.FirstOrDefault(e => e.Id == id);
+            Employees emp = _lstEmployees.FirstOrDefault(e => e.Id == id);
             if (emp != null)
             {
-                emp.Name = employee.Name;
-                emp.Age = employee.Age;
-                emp.Designation = employee.Designation;
-                emp.Gender = employee.Gender;
+                emp.Name = objEmployee.Name;
+                emp.Age = objEmployee.Age;
+                emp.Designation = objEmployee.Designation;
+                emp.Gender = objEmployee.Gender;
             }
             else
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound, $"Employee is {id} is not found");
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK, employee);
+            return Request.CreateResponse(HttpStatusCode.OK, objEmployee);
         }
         #endregion
 
@@ -119,17 +119,17 @@ namespace HTTPAction.Controllers
         /// <summary>
         ///     Delete the employee based on id
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">employee's id</param>
         /// <returns>status code with appropriate message</returns>
         [HttpDelete]
-        [Route("api/employee/{id}")]
+        [Route("api/employees/{id}")]
         public HttpResponseMessage DeleteEmployee(int id)
         {
             //to check id is exist or not in lstEmployees
-            Employee emp = lstEmployees.FirstOrDefault(e=>e.Id == id);
+            Employees emp = _lstEmployees.FirstOrDefault(e=>e.Id == id);
             if (emp != null)
             {
-                lstEmployees.Remove(emp);
+                _lstEmployees.Remove(emp);
             }
             else
             {

@@ -1,4 +1,7 @@
 ﻿
+using static ServiceStack.LicenseUtils;
+using System.ComponentModel.DataAnnotations;
+
 namespace SocialMediaAPI.Model.Dtos
 {
     public class DtoUse01
@@ -11,6 +14,8 @@ namespace SocialMediaAPI.Model.Dtos
         /// <summary>
         /// User's Email
         /// </summary>
+
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string E01102 { get; set; }
 
         /// <summary>

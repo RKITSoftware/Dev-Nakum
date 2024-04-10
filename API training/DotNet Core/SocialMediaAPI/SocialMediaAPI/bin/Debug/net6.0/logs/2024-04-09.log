@@ -7,3 +7,39 @@
 2024-04-09 12:25:05.8783|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
 2024-04-09 12:25:09.1655|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
 2024-04-09 12:25:12.5831|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-09 15:55:36.0958|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/login 
+2024-04-09 15:55:38.9317|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-09 15:55:39.0180|SocialMediaAPI.Controllers.CLUsersController|INFO|login method called 
+2024-04-09 15:55:41.0221|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-04-09 15:56:15.0463|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/users 
+2024-04-09 15:56:15.2898|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-09 15:56:15.7056|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-04-09 15:56:35.2285|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/posts 
+2024-04-09 15:56:35.3312|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-04-09 15:56:58.7729|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/posts/me 
+2024-04-09 15:56:58.8030|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-04-09 16:39:01.5971|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/posts/add 
+2024-04-09 16:39:03.7559|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 400 
+2024-04-09 16:39:22.6132|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/posts/add 
+2024-04-09 16:39:22.7467|SocialMediaAPI.BL.BLPosts|INFO|Post image upload successfully 
+2024-04-09 16:39:23.6245|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-04-09 16:40:39.6710|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/posts/me 
+2024-04-09 16:40:39.7892|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-04-09 16:55:11.5370|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/signup 
+2024-04-09 16:55:11.5370|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-09 16:55:11.5667|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 400 
+2024-04-09 16:55:26.3782|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/signup 
+2024-04-09 16:55:26.3811|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-09 16:55:26.3811|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 400 
+2024-04-09 16:55:38.4904|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/signup 
+2024-04-09 16:55:38.4904|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-09 16:55:38.4904|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 400 
+2024-04-09 16:58:28.3113|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /favicon.ico 
+2024-04-09 16:58:28.3113|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 404 
+2024-04-09 17:04:13.1803|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/signup 
+2024-04-09 17:04:13.1874|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-09 17:04:13.3006|SocialMediaAPI.Controllers.CLUsersController|INFO|signup method called 
+2024-04-09 17:04:13.3913|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-04-09 17:05:22.8067|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/signup 
+2024-04-09 17:05:22.8128|SocialMediaAPI.Controllers.CLUsersController|INFO|user constructor called 
+2024-04-09 17:05:22.9065|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 400 

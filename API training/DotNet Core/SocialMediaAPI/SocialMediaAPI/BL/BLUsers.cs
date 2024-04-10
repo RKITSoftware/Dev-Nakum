@@ -12,6 +12,9 @@ using System.Data;
 
 namespace SocialMediaAPI.BL
 {
+    /// <summary>
+    ///  Implements the IUserService interface and provides methods for managing users
+    /// </summary>
     public class BLUsers : IUserService
     {
         #region Private Member
@@ -34,11 +37,21 @@ namespace SocialMediaAPI.BL
         #endregion
 
         #region Private Method
+
+        /// <summary>
+        /// Maps the provided DTO object containing user data (DtoUse01) to a Use01 model object.
+        /// </summary>
+        /// <param name="objDtoUse01">The DTO object containing user data.</param>
         private void PreSave(DtoUse01 objDtoUse01)
         {
             _objUse01 = _mapper.Map<Use01>(objDtoUse01);
         }
 
+        /// <summary>
+        /// Performs asynchronous validation for user signup.
+        /// </summary>
+        /// <param name="objDtoUse01">The DTO object containing user data.</param>
+        /// <returns>True if validation is successful, false otherwise.</returns>
         private async Task<bool> Validation(DtoUse01 objDtoUse01)
         {
             try
@@ -58,6 +71,10 @@ namespace SocialMediaAPI.BL
             }
         }
 
+        /// <summary>
+        /// Inserts the user data from the temporary _objUse01 object into the database table Use01.
+        /// </summary>
+        /// <returns>True if the user is successfully added to the database, false otherwise.</returns>
         private bool SignUp()
         {
             try
@@ -74,6 +91,12 @@ namespace SocialMediaAPI.BL
                 return false;
             }
         }
+
+        /// <summary>
+        /// Uploads an image file to the configured uploads folder and returns the URL for the uploaded image.
+        /// </summary>
+        /// <param name="imageFile">The IFormFile object representing the image to upload.</param>
+        /// <returns>The relative or absolute URL of the uploaded image.</returns>
         private async Task<string> UploadImage(IFormFile imageFile)
         {
             
@@ -99,6 +122,11 @@ namespace SocialMediaAPI.BL
 
         #region Public Method
 
+        /// <summary>
+        /// Performs user login by validating username and password.
+        /// </summary>
+        /// <param name="objUse01">A JsonObject containing username and password information.</param>
+        /// <returns>An object containing JWT token and user name on successful login, null otherwise.</returns>
         public object Login(JsonObject objUse01)
         {
             try
@@ -138,6 +166,10 @@ namespace SocialMediaAPI.BL
             }
         }
 
+        /// <summary>
+        /// Retrieves a list of all users from the database.
+        /// </summary>
+        /// <returns>A list of dictionaries containing user data.</returns>
         public List<Dictionary<string, object>> GetUsers()
         {
             using (MySqlConnection objMySqlConnection = new MySqlConnection(_connectionString))
@@ -172,6 +204,11 @@ namespace SocialMediaAPI.BL
             }
         }
 
+        /// <summary>
+        /// Adds a new user asynchronously.
+        /// </summary>
+        /// <param name="objDtoUse01">The DtoUse01 object containing user data.</param>
+        /// <returns>True if the user is successfully added, false otherwise.</returns>
         public async Task<bool> Add(DtoUse01 objDtoUse01)
         {
             PreSave(objDtoUse01);
@@ -183,6 +220,11 @@ namespace SocialMediaAPI.BL
             return false;
         }
 
+        /// <summary>
+        /// Retrieves user details based on the user ID from the HTTP context.
+        /// </summary>
+        /// <param name="httpContext">The HttpContext containing user information.</param>
+        /// <returns>A dictionary containing user details.</returns>
         public async  Task<Dictionary<string, object>> GetUserDetails(HttpContext httpContext)
         {
             int id = Convert.ToInt32(httpContext.User.FindFirst("Id")?.Value);
@@ -217,6 +259,11 @@ namespace SocialMediaAPI.BL
             }
         }
 
+        /// <summary>
+        /// Retrieves a dictionary containing a list of usernames followed by the current user.
+        /// </summary>
+        /// <param name="httpContext">The HttpContext containing user information.</param>
+        /// <returns>A dictionary with a key "Following" and a HashSet containing usernames of users followed by the current user.</returns>
         public async Task<Dictionary<string, HashSet<string>>> GetFollowing(HttpContext httpContext)
         {
             int id = Convert.ToInt32(httpContext.User.FindFirst("Id")?.Value);

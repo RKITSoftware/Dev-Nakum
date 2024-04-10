@@ -38,12 +38,26 @@ namespace SocialMediaAPI.BL
         #endregion
 
         #region Private Method
+
+        /// <summary>
+        /// Maps the provided DTO object (containing post data) to a Pos01 entity
+        /// and sets the current user ID (who is posting) in the Pos01 entity.
+        /// </summary>
+        /// <param name="objDtoPos01">The DTO object containing post data.</param>
+        /// <param name="httpContext">The HTTP context used to get the current user ID.</param>
         private void PreSave(DtoPos01 objDtoPos01, HttpContext httpContext)
         {
             _objPos01 = _mapper.Map<Pos01>(objDtoPos01);
             var userid = httpContext.User.FindFirst("Id");
             _objPos01.S01F02 = Convert.ToInt32(userid?.Value);
         }
+
+        /// <summary>
+        /// Uploads a post image and updates the image URL in the temporary post object (_objPos01) for saving.
+        /// Handles potential exceptions and logs errors.
+        /// </summary>
+        /// <param name="imageFile">The IFormFile containing the image to upload.</param>
+        /// <returns>True if the image is uploaded successfully, false otherwise.</returns>
         private async Task<bool> Validation(DtoPos01 objDtoPos01)
         {
             try
@@ -60,6 +74,13 @@ namespace SocialMediaAPI.BL
             }
         }
 
+        /// <summary>
+        /// Uploads an image to the configured folder path and returns the image URL.
+        /// Creates the folder if it doesn't exist.
+        /// </summary>
+        /// <param name="imageFile">The IFormFile containing the image to upload.</param>
+        /// <param name="_objPos01">The temporary post object (_objPos01) to update with the image URL.</param>
+        /// <returns>The image URL if uploaded successfully, null otherwise.</returns>
         private async Task<string> UploadImage(IFormFile imageFile, Pos01 _objPos01)
         {
             string uploadFolder = Path.Combine(_configuration.GetValue<string>("Uploads:PostFolderPath"), "");
@@ -84,6 +105,11 @@ namespace SocialMediaAPI.BL
             return Path.Combine("/Upload/Post", fileName);
         }
 
+        /// <summary>
+        /// Deletes an image file associated with a post.
+        /// </summary>
+        /// <param name="imgUrl">The URL of the image to delete.</param>
+        /// <returns>True if the image is deleted successfully, false otherwise.</returns>
         private bool DeleteImage(string imgUrl)
         {
             try
@@ -105,6 +131,10 @@ namespace SocialMediaAPI.BL
             }
         }
 
+        /// <summary>
+        /// Adds a new post to the database.
+        /// </summary>
+        /// <returns>True if the post is added successfully, false otherwise.</returns>
         private async Task<bool> AddPost()
         {
             try
@@ -121,6 +151,13 @@ namespace SocialMediaAPI.BL
             }
         }
 
+        /// <summary>
+        /// Performs pre-update validation for a post.
+        /// </summary>
+        /// <param name="id">The ID of the post to update.</param>
+        /// <param name="objDtoPos01">The DTO object containing updated post data.</param>
+        /// <param name="httpContext">The HTTP context used to get the current user ID.</param>
+        /// <returns>True if the post can be updated, false otherwise.</returns>
         private bool PreSaveUpdate(int id, DtoPos01 objDtoPos01, HttpContext httpContext)
         {
             Pos01 post = GetPostById(id);
@@ -138,7 +175,12 @@ namespace SocialMediaAPI.BL
             _objUpdatePos01.S01F06 = DateTime.Now;
             return true;
         }
-        
+
+        /// <summary>
+        /// Handles image deletion and upload during post update.
+        /// </summary>
+        /// <param name="objDtoPos01">The DTO object containing potentially updated post data (including image).</param>
+        /// <returns>True if the image update is successful, false otherwise.</returns>
         private async Task<bool> ValidationUpdate(DtoPos01 objDtoPos01)
         {
             try
@@ -165,6 +207,11 @@ namespace SocialMediaAPI.BL
             }
         }
 
+        /// <summary>
+        /// Updates a post in the database.
+        /// </summary>
+        /// <param name="id">The ID of the post to update.</param>
+        /// <returns>True if the post is updated successfully, false otherwise.</returns>
         private bool UpdatePost(int id)
         {
             try
@@ -182,6 +229,11 @@ namespace SocialMediaAPI.BL
             }
         }
 
+        /// <summary>
+        /// Gets a post by its ID from the database.
+        /// </summary>
+        /// <param name="id">The ID of the post to retrieve.</param>
+        /// <returns>The post object if found, null otherwise.</returns>
         private Pos01 GetPostById(int id)
         {
             using (IDbConnection db = _dbFactory.OpenDbConnection())
@@ -192,6 +244,13 @@ namespace SocialMediaAPI.BL
         #endregion
 
         #region Public Method
+
+        /// <summary>
+        /// Adds a new post to the database.
+        /// </summary>
+        /// <param name="objDtoPos01">The DTO object containing post data.</param>
+        /// <param name="httpContext">The HTTP context used to get the current user ID.</param>
+        /// <returns>True if the post is added successfully, false otherwise.</returns>
         public async Task<bool> Add(DtoPos01 objDtoPos01, HttpContext httpContext)
         {
             PreSave(objDtoPos01, httpContext);
@@ -204,6 +263,10 @@ namespace SocialMediaAPI.BL
             return false;
         }
 
+        /// <summary>
+        /// Retrieves a list of all posts from the database.
+        /// </summary>
+        /// <returns>A list of dictionaries containing post data.</returns>
         public async Task<List<Dictionary<string, object>>> GetPosts()
         {
             await using (MySqlConnection objMySqlConnection = new MySqlConnection(_connectionString))
@@ -244,6 +307,11 @@ namespace SocialMediaAPI.BL
             }
         }
 
+        /// <summary>
+        /// Retrieves a list of posts created by the current user.
+        /// </summary>
+        /// <param name="httpContext">The HTTP context used to get the current user ID.</param>
+        /// <returns>A list of dictionaries containing post data.</returns>
         public async Task<List<Dictionary<string, object>>> GetPostByMe(HttpContext httpContext)
         {
             int id = Convert.ToInt32(httpContext.User.FindFirst("Id")?.Value);
@@ -276,6 +344,13 @@ namespace SocialMediaAPI.BL
             }
         }
 
+        /// <summary>
+        /// Updates a post in the database.
+        /// </summary>
+        /// <param name="id">The ID of the post to update.</param>
+        /// <param name="objDtoPos01">The DTO object containing potentially updated post data (including image).</param>
+        /// <param name="httpContext">The HTTP context used to get the current user ID and perform authorization checks.</param>
+        /// <returns>True if the post is updated successfully, false otherwise.</returns>
         public async Task<bool> Update(int id, DtoPos01 objDtoPos01, HttpContext httpContext)
         {
             bool userCheck = PreSaveUpdate(id,objDtoPos01, httpContext);
@@ -302,6 +377,12 @@ namespace SocialMediaAPI.BL
             return false;
         }
 
+        /// <summary>
+        /// delete a post from the database.
+        /// </summary>
+        /// <param name="id">The ID of the post to delete.</param>
+        /// <param name="httpContext">The HTTP context used to get the current user ID and perform authorization checks.</param>
+        /// <returns>True if the post is deleted successfully, false otherwise.</returns>
         public bool DeletePost(int id, HttpContext httpContext)
         {
             Pos01 post = GetPostById(id);

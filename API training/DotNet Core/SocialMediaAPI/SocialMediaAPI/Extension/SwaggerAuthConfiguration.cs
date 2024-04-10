@@ -3,24 +3,31 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace SocialMediaAPI.Extension
 {
+    /// <summary>
+    /// This static class provides extension methods for configuring JWT authentication within Swagger documentation.
+    /// </summary>
     public static class SwaggerAuthConfiguration
     {
+        /// <summary>
+        /// Configures SwaggerGenOptions to include JWT token-based authentication information.
+        /// </summary>
+        /// <param name="options">The SwaggerGenOptions instance to configure.</param>
         public static void JwtConfiguration(this SwaggerGenOptions options)
         {
-            // Add security definition for JWT token-based authentication
+            // Add a security definition named "Bearer" for JWT token authentication in the header
             options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
             {
-                Description = "jwt token",
+                Description = "JWT token required for authorization",  
                 In = ParameterLocation.Header,
                 Name = "Authorization",
                 Type = SecuritySchemeType.ApiKey
             });
 
-            // Add security requirement for JWT authentication
+            // Add a security requirement for all endpoints using the "Bearer" security definition
             options.AddSecurityRequirement(new OpenApiSecurityRequirement
             {
                 {
-                    new OpenApiSecurityScheme
+                    new OpenApiSecurityScheme  // Reference the "Bearer" security definition
                     {
                         Reference = new OpenApiReference
                         {
@@ -28,9 +35,10 @@ namespace SocialMediaAPI.Extension
                             Type = ReferenceType.SecurityScheme
                         }
                     },
-                    Array.Empty<string>()
+                    Array.Empty<string>()  // No additional scopes required for this application (optional)
                 }
             });
         }
     }
 }
+

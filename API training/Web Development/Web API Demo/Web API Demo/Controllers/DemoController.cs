@@ -1,54 +1,102 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
+using Web_API_Demo.Models;
 
 namespace Web_API_Demo.Controllers
 {
+    /// <summary>
+    /// Manage the user's api
+    /// </summary>
     public class DemoController : ApiController
     {
-        public static List<string> lstUser = new List<string>();
+        #region Private Member
+        private static int _id = 1;
+        private static List<Users> _lstUser = new List<Users>();
+        #endregion
 
+        #region Public Method
+
+        /// <summary>
+        /// Get all the users
+        /// </summary>
+        /// <returns>list of the users</returns>
         [HttpGet]
-        [Route("api/demo/getdata")]
-        public IHttpActionResult DataGet()
+        [Route("api/users/all")]
+        public IHttpActionResult AllUsers()
         {
-            return Ok(lstUser);
+            return Ok(_lstUser);
         }
+
+        /// <summary>
+        /// Get user details by user's id
+        /// </summary>
+        /// <param name="id">User's Id</param>
+        /// <returns>User's Details</returns>
+        [HttpGet]
+        [Route("api/users/{id}")]
         public IHttpActionResult Getdata(int id)
         {
-            return Ok(lstUser[id]);
+            return Ok(_lstUser.FirstOrDefault(u => u.Id == id));
         }
 
-        public IHttpActionResult Post(string name)
+        /// <summary>
+        /// Add user into list
+        /// </summary>
+        /// <param name="objUsers">object of the user</param>
+        /// <returns>response message</returns>
+        public IHttpActionResult Post([FromBody] Users objUsers)
         {
-            lstUser.Add(name);
+            objUsers.Id = _id++;
+            _lstUser.Add(objUsers);
             return Ok("user added");
         }
-        public IHttpActionResult Put(JObject data)
+
+        /// <summary>
+        ///  Update the user based on user's Id
+        /// </summary>
+        /// <param name="id">User's Id</param>
+        /// <param name="objUsers">object of the user</param>
+        /// <returns>response message</returns>
+        [HttpPut]
+        [Route("api/users/{id}")]
+        public IHttpActionResult Put(int id, [FromBody] Users objUsers)
         {
-            string name = data["username"].ToString();
-            int id = Convert.ToInt32(data["id"]);
-
-            if (lstUser[id]!=null)
+            //get the user object based on user's id
+            Users user = _lstUser.FirstOrDefault(u => u.Id == id);
+            
+            // check the user
+            if (user == null)
             {
-                lstUser[id] = name;
-                return Ok("successfully update name");
-
+                return NotFound();
             }
-          
-            return BadRequest("Id is not exist");
-           
+            user.Name = objUsers.Name;
+
+            return Ok("User updated successfully");
         }
+
+        /// <summary>
+        /// Delete the user based on user's id
+        /// </summary>
+        /// <param name="id">user's id</param>
+        /// <returns>response message</returns>
+        [HttpDelete]
+        [Route("api/users/{id}")]
         public IHttpActionResult Delete(int id)
         {
-            if (lstUser[id] != null)
-            {
-                lstUser.RemoveAt(id);
-                return Ok("successfully delete the id");
+            //get the user object based on user's id
+            Users user = _lstUser.FirstOrDefault(u => u.Id == id);
 
+            // check the user
+            if (user == null)
+            {
+                return NotFound();
             }
-            return BadRequest("Id is not exist");
+            _lstUser.Remove(user);
+            
+            return Ok("successfully delete the id");
+
         }
+        #endregion
     }
 }

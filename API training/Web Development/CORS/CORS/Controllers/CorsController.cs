@@ -15,7 +15,7 @@ namespace CORS.Controllers
         /// <summary>
         ///     display the message when cors is enabled
         /// </summary>
-        /// <returns></returns>
+        /// <returns>response message</returns>
         
         public IHttpActionResult Get()
         {
@@ -25,7 +25,7 @@ namespace CORS.Controllers
         /// <summary>
         ///     display the message when cors is enabled
         /// </summary>
-        /// <returns></returns>
+        /// <returns>response message</returns>
         [HttpGet]
         [Route("api/cors/{id}")]
         public IHttpActionResult GetById(int id)
@@ -36,7 +36,7 @@ namespace CORS.Controllers
         /// <summary>
         ///     display the message when cors is enabled
         /// </summary>
-        /// <returns></returns>
+        /// <returns>response message</returns>
         [DisableCors]
         [HttpGet]
         [Route("api/cors2/{name}")]

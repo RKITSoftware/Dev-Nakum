@@ -97,8 +97,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Basic Auth\AuthenticationAttribute.cs" />
     <Compile Include="Basic Auth\AuthorizationAttribute.cs" />
-    <Compile Include="BLProductServices.cs" />
-    <Compile Include="BLValidateUser.cs" />
+    <Compile Include="BL\BLProducts.cs" />
+    <Compile Include="BL\BLUsers.cs" />
     <Compile Include="Controllers\CLProductsController.cs" />
     <Compile Include="Controllers\CLUsersController.cs" />
     <Compile Include="Global.asax.cs">

@@ -1,7 +1,6 @@
 ﻿using Authentication_Authorization.Basic_Auth;
-using Authentication_Authorization.Models;
+using Authentication_Authorization.BL;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace Authentication_Authorization.Controllers
@@ -13,6 +12,26 @@ namespace Authentication_Authorization.Controllers
     [Authentication]
     public class CLUsersController : ApiController
     {
+        #region Private Member
+        /// <summary>
+        /// Create the object of user' services
+        /// </summary>
+        private readonly BLUsers _objBLUsers;
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// to create instance of user's services 
+        /// </summary>
+        public CLUsersController()
+        {
+            _objBLUsers = new BLUsers();
+        }
+        #endregion
+
+
+        #region Public Method
         /// <summary>
         /// get all the user list
         /// </summary>
@@ -20,10 +39,10 @@ namespace Authentication_Authorization.Controllers
         [HttpGet]
         [Route("api/users")]
         [Authorization(Roles = "admin")]
-        public HttpResponseMessage GetAllUser()
+        public IHttpActionResult GetAllUser()
         {
-            return Request.CreateResponse(HttpStatusCode.OK, Users.GetAllUser());
+            return Ok(_objBLUsers.GetAllUsers());
         }
-
+        #endregion
     }
 }

@@ -1,4 +1,5 @@
-﻿using Authentication_Authorization.Models;
+﻿using Authentication_Authorization.BL;
+using Authentication_Authorization.Models;
 using System;
 using System.Net;
 using System.Net.Http;
@@ -47,11 +48,12 @@ namespace Authentication_Authorization.Basic_Auth
                     string username = user[0];   
                     string password = user[1];
 
+                    BLUsers objBLUsers = new BLUsers();
                     // validate the user's username and password
-                    if (BLValidateUser.Login(username, password))
+                    if (objBLUsers.Login(username, password))
                     {
                         //add identity
-                        Users userDetails = BLValidateUser.GetUserDetails(username, password);
+                        Users userDetails = objBLUsers.GetUserDetails(username, password);
                         var identity = new GenericIdentity(username);
                         identity.AddClaim(new Claim(ClaimTypes.Name,userDetails.Username));
                         identity.AddClaim(new Claim("Id",(userDetails.Id).ToString()));

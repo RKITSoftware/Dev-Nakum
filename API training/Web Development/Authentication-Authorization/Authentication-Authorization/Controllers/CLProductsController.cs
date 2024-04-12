@@ -1,9 +1,7 @@
 ﻿using Authentication_Authorization.Basic_Auth;
+using Authentication_Authorization.BL;
 using Authentication_Authorization.Models;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace Authentication_Authorization.Controllers
@@ -16,16 +14,19 @@ namespace Authentication_Authorization.Controllers
     public class CLProductsController : ApiController
     {
         #region Private Member
-        private BLProductServices objBLProductServices;
+        /// <summary>
+        /// Create the object of product services
+        /// </summary>
+        private readonly BLProducts _objBLProducts;
         #endregion
 
         #region Constructor 
         /// <summary>
-        ///  to create instance od product services 
+        ///  to create instance of product services 
         /// </summary>
         public CLProductsController()
         {
-            objBLProductServices = BLProductServices.Instance;
+            _objBLProducts = new BLProducts();
         }
         #endregion
 
@@ -37,25 +38,25 @@ namespace Authentication_Authorization.Controllers
         [HttpGet]
         [Route("api/products")]
         [Authorization(Roles = "user,admin")]
-        public HttpResponseMessage GetAllProducts()
+        public IHttpActionResult GetAllProducts()
         {
-            return Request.CreateResponse(HttpStatusCode.OK, objBLProductServices.LstProducts);
+           return Ok(_objBLProducts.GetAllProducts());
         }
         #endregion
 
-        #region Post - Craete the products 
+        #region Post - Create the products 
         /// <summary>
         /// create the products 
         /// </summary>
-        /// <param name="product"></param>
-        /// <returns>created products</returns>
+        /// <param name="objProduct">object of the products</param>
+        /// <returns>Response messages</returns>
         [HttpPost]
         [Route("api/products")]
         [Authorization(Roles = "admin")]
-        public HttpResponseMessage CreateProduct(Products product)
+        public IHttpActionResult CreateProduct(Products objProduct)
         {
-            objBLProductServices.LstProducts.Add(product);
-            return Request.CreateResponse(HttpStatusCode.Created, product);
+            _objBLProducts.AddProduct(objProduct);
+            return Ok("Product added successfully");
         }
         #endregion
 
@@ -64,26 +65,19 @@ namespace Authentication_Authorization.Controllers
         /// update the products based on product id
         /// </summary>
         /// <param name="id">product id</param>
-        /// <param name="product">updated product</param>
-        /// <returns>successful updated product message</returns>
+        /// <param name="objProduct">updated product</param>
+        /// <returns>response message</returns>
         [HttpPut]
         [Route("api/products/{id}")]
         [Authorization(Roles = "admin")]
-        public HttpResponseMessage UpdateProduct(int id, Products product)
+        public IHttpActionResult UpdateProduct(int id, Products objProduct)
         {
-            // get the product from product id 
-            Products pr = objBLProductServices.LstProducts.FirstOrDefault(p=>p.Id==id);
-            if (pr == null)
+            bool isUpdate = _objBLProducts.UpdateProduct(id, objProduct);
+            if (isUpdate)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, $"Product {id} not found");
+                return Ok("Product updated successfully");
             }
-
-            // update the product
-            pr.Price = product.Price;
-            pr.Name = product.Name;
-            pr.Description = product.Description;
-            
-            return Request.CreateResponse(HttpStatusCode.OK, "Update successfully");
+            return Ok("Product id is not found");
         }
         #endregion
 
@@ -97,18 +91,14 @@ namespace Authentication_Authorization.Controllers
         [Route("api/products/{id}")]
         [Authorization(Roles = "admin")]
 
-        public HttpResponseMessage DeleteProduct(int id)
+        public IHttpActionResult RemoveProduct(int id)
         {
-            // get the product from product id 
-            Products pr = objBLProductServices.LstProducts.FirstOrDefault(p => p.Id == id);
-            if (pr == null)
+            bool isDelete = _objBLProducts.RemoveProduct(id);
+            if (isDelete)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, $"Product {id} not found");
+                return Ok("Product deleted successfully");
             }
-            //delete the product
-            objBLProductServices.LstProducts.Remove(pr);
-
-            return Request.CreateResponse(HttpStatusCode.OK, "Deleted Successfully");
+            return Ok("Product id is not found");
         }
         #endregion
     }

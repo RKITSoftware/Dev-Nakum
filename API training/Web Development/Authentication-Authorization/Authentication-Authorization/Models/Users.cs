@@ -1,32 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Authentication_Authorization.Models
+﻿namespace Authentication_Authorization.Models
 {
+    /// <summary>
+    /// schema of users
+    /// </summary>
     public class Users
     {
         #region Public Properties
+
+        /// <summary>
+        /// User's Id
+        /// </summary>
         public int Id { get; set; }
+
+        /// <summary>
+        /// User's username
+        /// </summary>
         public string Username { get; set; }
+
+        /// <summary>
+        /// User's password
+        /// </summary>
         public string Password { get; set; }
+
+        /// <summary>
+        /// User's role
+        /// </summary>
         public string Role { get; set; }
         #endregion
-        
-        public static List<Users> GetAllUser()
-        {
-            List<Users> lstUser = new List<Users>()
-            {
-                new Users() { Id = 1,Username="deven",Password="Abcd@123",Role="admin"},
-                new Users() { Id = 2,Username="dev",Password="Abcd@123",Role="user"},
-                new Users() { Id = 3,Username="raj",Password="Abcd@123",Role="user"},
-                new Users() { Id = 4,Username="tushar",Password="Abcd@123",Role="user"},
-                new Users() { Id = 5,Username="pratham",Password="Abcd@123",Role="user"},
-            };
-
-            return lstUser;
-        }
-
     }
 }

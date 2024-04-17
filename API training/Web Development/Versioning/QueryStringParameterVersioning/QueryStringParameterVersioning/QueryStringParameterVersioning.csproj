@@ -85,7 +85,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="BLCustomeControllers.cs" />
+    <Compile Include="BL\BLCustomControllers.cs" />
+    <Compile Include="BL\BLStudentV1.cs" />
+    <Compile Include="BL\BLStudentV2.cs" />
     <Compile Include="Controllers\StudentV1Controller.cs" />
     <Compile Include="Controllers\StudentV2Controller.cs" />
     <Compile Include="Global.asax.cs">

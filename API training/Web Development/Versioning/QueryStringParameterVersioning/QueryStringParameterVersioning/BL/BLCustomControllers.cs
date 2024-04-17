@@ -7,7 +7,7 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Dispatcher;
 using System.Web.Http.Routing;
 
-namespace QueryStringParameterVersioning
+namespace QueryStringParameterVersioning.BL
 {
     /// <summary>
     /// to select custom controller based on query string parameter
@@ -38,7 +38,7 @@ namespace QueryStringParameterVersioning
         public override HttpControllerDescriptor SelectController(HttpRequestMessage request)
         {
             // get the web api controller from project
-            IDictionary<string,HttpControllerDescriptor> controllers = GetControllerMapping();
+            IDictionary<string, HttpControllerDescriptor> controllers = GetControllerMapping();
 
             //get all the route data
             IHttpRouteData routeData = request.GetRouteData();
@@ -53,25 +53,25 @@ namespace QueryStringParameterVersioning
             NameValueCollection versionQueryString = HttpUtility.ParseQueryString(request.RequestUri.Query);
 
             //if query string is exist assign the version number 
-            if (versionQueryString["v"]!=null)
+            if (versionQueryString["v"] != null)
             {
                 versionNumber = versionQueryString["v"];
             }
 
             // append the version name in controller name 
-            if(versionNumber == "1")
+            if (versionNumber == "1")
             {
-                controllerName = controllerName + "V1";
+                controllerName += "V1";
             }
             else
             {
-                controllerName = controllerName + "V2";
+                controllerName += "V2";
             }
 
             // find the specific controller name and return the appropriate controller as an output
-            if(controllers.TryGetValue(controllerName, out HttpControllerDescriptor controllerDescriptor)) 
-            { 
-                return controllerDescriptor; 
+            if (controllers.TryGetValue(controllerName, out HttpControllerDescriptor controllerDescriptor))
+            {
+                return controllerDescriptor;
             }
             return null;
         }

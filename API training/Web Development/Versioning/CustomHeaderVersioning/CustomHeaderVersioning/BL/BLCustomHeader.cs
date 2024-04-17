@@ -8,7 +8,7 @@ using System.Web.Http;
 using System.Web.Http.Dispatcher;
 using System.Linq;
 
-namespace CustomHeaderVersioning
+namespace CustomHeaderVersioning.BL
 {
     /// <summary>
     /// to validate and call the appropriate controller based on custom header
@@ -16,7 +16,7 @@ namespace CustomHeaderVersioning
     public class BLCustomHeader : DefaultHttpControllerSelector
     {
         #region Private Member
-        private HttpConfiguration _config;
+        private readonly HttpConfiguration _config;
         #endregion
 
         #region Controlller
@@ -50,14 +50,11 @@ namespace CustomHeaderVersioning
             //default version number is 1
             string versionNumber = "1";
 
-            //get the query string from request
-            NameValueCollection versionQueryString = HttpUtility.ParseQueryString(request.RequestUri.Query);
-
             // get the custom header
             string customHeader = "X-StudentService-Version";
 
             //check custom header is exist or not 
-            if(request.Headers.Contains(customHeader))
+            if (request.Headers.Contains(customHeader))
             {
                 // get hte value of version number using first or default
                 versionNumber = request.Headers.GetValues(customHeader).FirstOrDefault();
@@ -65,7 +62,7 @@ namespace CustomHeaderVersioning
                 // if there is multiple headers separates using ',' and use only first header
                 if (versionNumber.Contains(","))
                 {
-                    versionNumber = versionNumber.Substring(0,versionNumber.IndexOf(","));  
+                    versionNumber = versionNumber.Substring(0, versionNumber.IndexOf(","));
                 }
             }
 

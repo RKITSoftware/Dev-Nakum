@@ -3,7 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http.Filters;
 
-namespace Exception
+namespace Exception.BL
 {
     /// <summary>
     /// Handle all the type of custom exception
@@ -21,7 +21,7 @@ namespace Exception
 
             // get the exception type
             Type exceptionType = actionExecutedContext.Exception.GetType();
-            if(exceptionType==typeof(UnauthorizedAccessException))
+            if (exceptionType == typeof(UnauthorizedAccessException))
             {
                 errorMsg = "unauthorized Access !!";
                 httpStatusCode = HttpStatusCode.Unauthorized;
@@ -31,19 +31,19 @@ namespace Exception
                 errorMsg = "Data is not found !!";
                 httpStatusCode = HttpStatusCode.NotFound;
             }
-            else    
+            else
             {
                 errorMsg = "Something went wrong";
                 httpStatusCode = HttpStatusCode.InternalServerError;
             }
 
             // generate a response message
-            HttpResponseMessage response = new HttpResponseMessage(httpStatusCode) 
-            { 
+            HttpResponseMessage response = new HttpResponseMessage(httpStatusCode)
+            {
                 Content = new StringContent(errorMsg)
             };
 
-            actionExecutedContext.Response = response;  
+            actionExecutedContext.Response = response;
 
             base.OnException(actionExecutedContext);
         }

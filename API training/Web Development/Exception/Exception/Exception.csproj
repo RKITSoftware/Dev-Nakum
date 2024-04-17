@@ -85,7 +85,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="BLCustomExceptionFilter.cs" />
+    <Compile Include="BL\BLCustomExceptionFilter.cs" />
+    <Compile Include="BL\BLUsers.cs" />
     <Compile Include="Controllers\CLInfoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

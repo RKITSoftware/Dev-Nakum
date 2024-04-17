@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Caching;
 
-namespace HttpCaching.Controllers
+namespace HttpCaching.BL
 {
     /// <summary>
     /// class provides a simple caching mechanism for storing and retrieving data using ASP.NET Cache.
@@ -10,6 +10,9 @@ namespace HttpCaching.Controllers
     public class BLCache
     {
         #region Private Member
+        /// <summary>
+        /// Create the object of cache
+        /// </summary>
         private static Cache _cache = null;
         #endregion
 
@@ -23,7 +26,7 @@ namespace HttpCaching.Controllers
         {
             get
             {
-                if(_cache == null)
+                if (_cache == null)
                 {
                     _cache = HttpContext.Current == null ? HttpRuntime.Cache : HttpContext.Current.Cache;
                 }
@@ -53,7 +56,6 @@ namespace HttpCaching.Controllers
         /// <param name="value">The object to be cached.</param>
         public static void Add(string key, object value)
         {
-
             CacheInfo.Insert(key, value);
         }
 

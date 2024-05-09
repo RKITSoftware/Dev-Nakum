@@ -2,7 +2,6 @@
 using BMS.BL;
 using BMS.Models;
 using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Security.Claims;
 using System.Web.Http;
@@ -68,10 +67,9 @@ namespace BMS.Controllers
         /// <returns>response model</returns>
         [HttpPost]
         [Route("signup")]
-        public Response SignUp(UsersV1 objUsersV1)
+        public IHttpActionResult SignUp(UsersV1 objUsersV1)
         {
-            //_objResponse = new Response();
-            _objBLUsersV1.OperationTypes = EnmOperationTypes.A;
+            _objBLUsersV1.OperationTypes = enmOperationTypes.A;
             _objBLUsersV1.PreSave(objUsersV1);
 
             objResponse = _objBLUsersV1.ValidationOnSave();
@@ -81,7 +79,7 @@ namespace BMS.Controllers
                 objResponse = _objBLUsersV1.Save();
             }
 
-            return objResponse;
+            return Ok(objResponse);
         }
 
         /// <summary>
@@ -91,12 +89,11 @@ namespace BMS.Controllers
         /// <returns>response model</returns>
         [HttpPost]
         [Route("login")]
-        public Response Login(UsersV1 objUsersV1)
+        public IHttpActionResult Login(UsersV1 objUsersV1)
         {
-            //_objResponse = new Response();
             objResponse = _objBLUsersV1.Login(objUsersV1);
 
-            return objResponse;
+            return Ok(objResponse);
         }
 
         /// <summary>
@@ -105,14 +102,12 @@ namespace BMS.Controllers
         /// <returns>response model</returns>
         [Authentication]
         [HttpGet]
-        [Route("me")]
-        public Response UserDetails()
+        [Route("details")]
+        public IHttpActionResult UserDetails()
         {
-            //_objResponse = new Response();
             int id = GetCurrentUser();
             objResponse = _objBLUsersV1.GetUser(id);
-
-            return objResponse;
+            return Ok(objResponse);
         }
 
         /// <summary>
@@ -122,14 +117,11 @@ namespace BMS.Controllers
         [Authentication]
         [Authorization(Roles = "A")]
         [HttpGet]
-        [Route("all")]
-        public Response GetAllUser()
+        [Route("allUsers")]
+        public IHttpActionResult GetAllUser()
         {
-            //_objResponse = new Response();
-
             objResponse = _objBLUsersV1.GetAllUser();
-            
-            return objResponse;
+            return Ok(objResponse);
         }
 
         /// <summary>
@@ -141,11 +133,10 @@ namespace BMS.Controllers
         [Authorization(Roles = "U")]
         [HttpPut]
         [Route("")]
-        public Response UpdateUser(UsersV1 objUsersV1)
+        public IHttpActionResult UpdateUser(UsersV1 objUsersV1)
         {
             int id = GetCurrentUser();
-            //_objResponse = new Response();
-            _objBLUsersV1.OperationTypes = EnmOperationTypes.E;
+            _objBLUsersV1.OperationTypes = enmOperationTypes.E;
             _objBLUsersV1.PreSave(objUsersV1,id);
 
             objResponse = _objBLUsersV1.ValidationOnSave();
@@ -155,7 +146,7 @@ namespace BMS.Controllers
                 objResponse = _objBLUsersV1.Save();
             }
 
-            return objResponse;
+            return Ok(objResponse);
         }
 
         /// <summary>
@@ -166,11 +157,10 @@ namespace BMS.Controllers
         [Authorization(Roles = "U")]
         [HttpDelete]
         [Route("")]
-        public Response DeleteUser()
+        public IHttpActionResult DeleteUser()
         {
             int id = GetCurrentUser();
-            //_objResponse = new Response();
-            _objBLUsersV1.OperationTypes = EnmOperationTypes.D;
+            _objBLUsersV1.OperationTypes = enmOperationTypes.D;
 
             objResponse = _objBLUsersV1.ValidationOnDelete(id);
             if (!objResponse.IsError)
@@ -178,7 +168,7 @@ namespace BMS.Controllers
                 objResponse = _objBLUsersV1.DeleteUser();
             }
 
-            return objResponse;
+            return Ok(objResponse);
         }
         #endregion
     }

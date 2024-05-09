@@ -144,13 +144,15 @@
     <Compile Include="Attribute\AuthenticationAttribute.cs" />
     <Compile Include="Attribute\AuthorizationAttribute.cs" />
     <Compile Include="BL\BLAuth.cs" />
-    <Compile Include="BL\BLEnums.cs" />
+    <Compile Include="BL\BLCache.cs" />
     <Compile Include="BL\BLTransactions.cs" />
     <Compile Include="BL\BLUsersV1.cs" />
     <Compile Include="BL\BLUsersV2.cs" />
+    <Compile Include="BL\Enums.cs" />
     <Compile Include="Controllers\CLTransactionsController.cs" />
     <Compile Include="Controllers\CLUsersV1Controller.cs" />
     <Compile Include="Controllers\CLUsersV2Controller.cs" />
+    <Compile Include="Enums\Enums.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -162,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\BMS-Publish.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

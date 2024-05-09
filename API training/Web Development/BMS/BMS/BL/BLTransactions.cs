@@ -1,6 +1,8 @@
 ﻿using BMS.Models;
 using MoreLinq;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BMS.BL
 {
@@ -25,7 +27,7 @@ namespace BMS.BL
         /// </summary>
         private Transactions _objTransactions;
 
-       
+
         /// <summary>
         /// Object of the user model
         /// </summary>
@@ -48,6 +50,7 @@ namespace BMS.BL
         public BLTransactions()
         {
             _objUsersV1 = new UsersV1();
+            objResponse = new Response();
         }
         #endregion
 
@@ -56,8 +59,9 @@ namespace BMS.BL
         /// <summary>
         /// Transaction type - (D - Deposit, W - Withdraw)
         /// </summary>
-        public EnmTransactionTypes TransactionType { get; set; }
+        public enmTransactionTypes TransactionType { get; set; }
         #endregion
+
 
         #region Public Method
 
@@ -68,13 +72,13 @@ namespace BMS.BL
         /// <param name="objTransactions">object of the transaction - amount</param>
         public void PreSave(int userId, Transactions objTransactions)
         {
-            objResponse = new Response();
-
-            _objTransactions = new Transactions();
-            _objTransactions.Id = _id++;
-            _objTransactions.UserId = userId;
-            _objTransactions.Money = objTransactions.Money;
-            _objTransactions.Type = TransactionType == EnmTransactionTypes.D ? "D" : "W";
+            _objTransactions = new Transactions
+            {
+                Id = _id++,
+                UserId = userId,
+                Money = objTransactions.Money,
+                Type = TransactionType == enmTransactionTypes.D ? "Deposit" : "Withdraw"
+            };
 
         }
 
@@ -84,8 +88,6 @@ namespace BMS.BL
         /// <returns>response model</returns>
         public Response ValidationOnSave()
         {
-            objResponse = new Response();
-
             BLUsersV1 objBLUsersV1 = new BLUsersV1();
             UsersV1 objUsersV1 = objBLUsersV1.GetUserObject(_objTransactions.UserId);
             if (objUsersV1 == null)
@@ -93,7 +95,18 @@ namespace BMS.BL
                 objResponse.IsError = true;
                 objResponse.Message = "User is not found";
             }
-            _objUsersV1 = objUsersV1;
+            else
+            {
+                // required for update the money based on transaction types
+                _objUsersV1 = objUsersV1;
+
+                // to validate the condition of the insufficient balance
+                if(TransactionType == enmTransactionTypes.W && _objUsersV1.Money < _objTransactions.Money)
+                {
+                    objResponse.IsError = true;
+                    objResponse.Message = "insufficient balance";
+                }
+            }
 
             return objResponse;
         }
@@ -104,29 +117,28 @@ namespace BMS.BL
         /// <returns>response model</returns>
         public Response Save()
         {
-            objResponse = new Response();
-
-            if (TransactionType == EnmTransactionTypes.D)
+            if (TransactionType == enmTransactionTypes.D)
             {
                 _objUsersV1.Money += _objTransactions.Money;
             }
-            else if (TransactionType == EnmTransactionTypes.W)
+            else if (TransactionType == enmTransactionTypes.W)
             {
-                if (_objUsersV1.Money > _objTransactions.Money)
-                {
-                    _objUsersV1.Money -= _objTransactions.Money;
-                }
-                else
-                {
-                    objResponse.IsError = true;
-                    objResponse.Message = "insufficient balance";
-                    return  objResponse;
-                }
+                _objUsersV1.Money -= _objTransactions.Money;
             }
 
-            objResponse.Message = "Transaction is done";
-            _lstTransaction.Add(_objTransactions);
+            try
+            {
+                _lstTransaction.Add(_objTransactions);
 
+                BLCache.Add("user", _objUsersV1);
+            }
+            catch (Exception ex)
+            {
+                objResponse.IsError = true;
+                objResponse.Message = ex.Message;
+                throw ex;
+            }
+            objResponse.Message = "Transaction is done";
             return objResponse;
         }
 
@@ -136,7 +148,6 @@ namespace BMS.BL
         /// <returns>response model</returns>
         public Response GetAllTransactions()
         {
-            objResponse = new Response();
             objResponse.Data = _lstTransaction.ToDataTable();
             return objResponse;
         }
@@ -148,15 +159,17 @@ namespace BMS.BL
         /// <returns>Response model</returns>
         public Response GetTransactions(int id)
         {
-            objResponse = new Response();
-            List<Transactions> userTransaction = _lstTransaction.FindAll(t => t.UserId == id);
+            List<Transactions> userTransaction = _lstTransaction.Select(t => t)
+                                                   .Where(t => t.UserId == id)
+                                                   .ToList();
+            //List<Transactions> userTransaction = _lstTransaction.FindAll(t => t.UserId == id);
             if (userTransaction.Count == 0)
             {
-                objResponse.Message = "Transaction is not found by your self";    
+                objResponse.Message = "Transaction is not found by your self";
             }
             else
             {
-                objResponse.Data = userTransaction.ToDataTable();    
+                objResponse.Data = userTransaction.ToDataTable();
             }
             return objResponse;
         }

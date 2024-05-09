@@ -21,7 +21,7 @@
         public int Money { get; set; }
 
         /// <summary>
-        /// Transaction's type - saving or deposit
+        /// Transaction's type - withdraw or deposit
         /// </summary>
         public string Type { get; set; }
 

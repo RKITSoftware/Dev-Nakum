@@ -69,11 +69,11 @@ namespace BMS.Controllers
         /// <returns>response model</returns>
         [HttpPost]
         [Route("deposit")]
-        public Response DepositMoney(Transactions objTransactions)
+        public IHttpActionResult DepositMoney(Transactions objTransactions)
         {
             int userId = GetCurrentUser();
 
-            _objBLTransactions.TransactionType = EnmTransactionTypes.D;
+            _objBLTransactions.TransactionType = enmTransactionTypes.D;
             _objBLTransactions.PreSave(userId, objTransactions);
 
             objResponse = _objBLTransactions.ValidationOnSave();
@@ -83,7 +83,7 @@ namespace BMS.Controllers
                 objResponse = _objBLTransactions.Save();
             }
             
-            return objResponse;
+            return Ok(objResponse);
         }
 
         /// <summary>
@@ -93,11 +93,11 @@ namespace BMS.Controllers
         /// <returns>response model</returns>
         [HttpPost]
         [Route("withdraw")]
-        public Response WithdrawMoney(Transactions objTransactions)
+        public IHttpActionResult WithdrawMoney(Transactions objTransactions)
         {
             int userId = GetCurrentUser();
 
-            _objBLTransactions.TransactionType = EnmTransactionTypes.W;
+            _objBLTransactions.TransactionType = enmTransactionTypes.W;
             _objBLTransactions.PreSave(userId, objTransactions);
 
             objResponse = _objBLTransactions.ValidationOnSave();
@@ -107,7 +107,7 @@ namespace BMS.Controllers
                 objResponse = _objBLTransactions.Save();
             }
 
-            return objResponse;
+            return Ok(objResponse);
         }
 
         /// <summary>
@@ -115,12 +115,12 @@ namespace BMS.Controllers
         /// </summary>
         /// <returns>response model</returns>
         [HttpGet]
-        [Route("me")]
-        public Response GetTransactionByMe()
+        [Route("user")]
+        public IHttpActionResult GetTransactionByMe()
         {
             int userId = GetCurrentUser();
             objResponse =  _objBLTransactions.GetTransactions(userId);
-            return objResponse;
+            return Ok(objResponse);
         }
 
         /// <summary>
@@ -129,14 +129,12 @@ namespace BMS.Controllers
         /// <returns>response modal</returns>
         [Authorization(Roles ="A")]
         [HttpGet]
-        [Route("all")]
-        public Response GetAllTransactionBy()
+        [Route("allTransactions")]
+        public IHttpActionResult GetAllTransactionBy()
         {
             objResponse = _objBLTransactions.GetAllTransactions();
-            return objResponse;
+            return Ok(objResponse);
         }
-
-
         #endregion
     }
 }

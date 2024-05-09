@@ -15,12 +15,12 @@ namespace BMS.Models
         /// <summary>
         /// Message 
         /// </summary>
-        public string Message { get; set; } = "";
+        public string Message { get; set; } = string.Empty;
 
 
         /// <summary>
         /// Data which you want to display
         /// </summary>
-        public DataTable Data{ get; set; }
+        public dynamic Data { get; set; }
     }
 }

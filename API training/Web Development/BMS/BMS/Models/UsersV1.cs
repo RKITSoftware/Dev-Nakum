@@ -1,4 +1,6 @@
-﻿namespace BMS.Models
+﻿using BMS.BL;
+
+namespace BMS.Models
 {
     /// <summary>
     /// Schema of user version - 1
@@ -50,7 +52,7 @@
         /// <summary>
         /// User's Role
         /// </summary>
-        public string Role { get; set; } = "U";
+        public string Role { get; set; } = enmRoles.U.ToString();
         #endregion
     }
 }

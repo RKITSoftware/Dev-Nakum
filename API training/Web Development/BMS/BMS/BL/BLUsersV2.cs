@@ -44,7 +44,7 @@ namespace BMS.BL
         /// <summary>
         /// operation types - (I - Insert),(U - Update),(D - Delete)
         /// </summary>
-        public EnmOperationTypes OperationTypes { get; set; }
+        public enmOperationTypes OperationTypes { get; set; }
         #endregion
 
         #region Public Method
@@ -57,14 +57,14 @@ namespace BMS.BL
         public void PreSave(UsersV2 objUsersV2, int id = 0)
         {
             _objUsersV2 = new UsersV2();
-            if (OperationTypes == EnmOperationTypes.A)
+            if (OperationTypes == enmOperationTypes.A)
             {
                 _objUsersV2.Id = _id++;
                 _objUsersV2.UserName = objUsersV2.UserName;
                 _objUsersV2.Password = objUsersV2.Password;
             }
 
-            if (OperationTypes == EnmOperationTypes.E)
+            if (OperationTypes == enmOperationTypes.E)
             {
                 _objUsersV2.Id = id;
             }
@@ -80,7 +80,7 @@ namespace BMS.BL
         public Response ValidationOnSave()
         {
             objResponse = new Response();
-            if (OperationTypes == EnmOperationTypes.A)
+            if (OperationTypes == enmOperationTypes.A)
             {
                 bool isUsers = _lstUsersV2.Any(u => u.UserName == _objUsersV2.UserName);
                 if (isUsers)
@@ -90,7 +90,7 @@ namespace BMS.BL
                 }
             }
 
-            if (OperationTypes == EnmOperationTypes.E)
+            if (OperationTypes == enmOperationTypes.E)
             {
                 bool isUsers = _lstUsersV2.Any(u => u.Id == _objUsersV2.Id);
                 if (!isUsers)
@@ -110,7 +110,7 @@ namespace BMS.BL
         public Response ValidationOnDelete(int id)
         {
             objResponse = new Response();
-            if (OperationTypes == EnmOperationTypes.D)
+            if (OperationTypes == enmOperationTypes.D)
             {
                 UsersV2 user = _lstUsersV2.FirstOrDefault(u => u.Id == id);
                 if (user == null)
@@ -134,14 +134,14 @@ namespace BMS.BL
         public Response Save()
         {
             objResponse = new Response();
-            if (OperationTypes == EnmOperationTypes.A)
+            if (OperationTypes == enmOperationTypes.A)
             {
                 _lstUsersV2.Add(_objUsersV2);
 
                 objResponse.Message = "User added successfully";
             }
 
-            if (OperationTypes == EnmOperationTypes.E)
+            if (OperationTypes == enmOperationTypes.E)
             {
                 UsersV2 user = _lstUsersV2.FirstOrDefault(u => u.Id == _objUsersV2.Id);
 

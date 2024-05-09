@@ -36,7 +36,12 @@ namespace BMS.Basic_Auth
             if (user != null)
             {
                 // Create the claims and add identity to principal
+
+                //The name of the user on whose behalf the code is being run.
                 GenericIdentity objGenericIdentity = new GenericIdentity(user["Id"]);
+
+
+                //Adds a single claim to this claims identity.
                 objGenericIdentity.AddClaim(new Claim("Id", user["Id"].ToString()));
                 objGenericIdentity.AddClaim(new Claim(ClaimTypes.Name, user["Name"]));
                 objGenericIdentity.AddClaim(new Claim(ClaimTypes.Email, user["Email"]));

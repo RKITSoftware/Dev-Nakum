@@ -88,11 +88,11 @@ namespace BMS.BL
         {
             return new TokenValidationParameters()
             {
-                ValidateIssuer = true,
-                ValidIssuer = "https://localhost:44324/",
-                ValidateAudience = false,
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_key)),
+                ValidateIssuer = true,  // default true 
+                ValidIssuer = "https://localhost:44324/",   //The expected issuer of the JWT. This property is only used if ValidateIssuer is set to true.
+                ValidateAudience = false,   // default false,  Whether to validate the audience of the JWT.
+                ValidateIssuerSigningKey = true,    // default false, Whether to validate the signing key used to create the JWT. Setting it to true would require the IssuerSigningKey property to be set as well.
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_key)),      // The expected signing key used to verify the JWT's signature
             };
         }
 

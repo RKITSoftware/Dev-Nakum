@@ -13,7 +13,7 @@ namespace SocialMediaAPI.Filter
         /// This method is not used in the current implementation 
         /// </summary>
         /// <param name="context">The action execution context.</param>
-        public void OnActionExecuted(ActionExecutedContext context) { }
+        public void OnActionExecuted(ActionExecutedContext context) { return; }
 
         /// <summary>
         /// This method is called before the action method is executed.
@@ -34,25 +34,25 @@ namespace SocialMediaAPI.Filter
             }
 
             // Perform basic validation on required user properties
-            if (string.IsNullOrEmpty(model.E01101))
+            if (string.IsNullOrEmpty(model.E01F02))
             {
                 context.Result = new BadRequestObjectResult("Username is required.");
                 return;
             }
 
-            if (string.IsNullOrEmpty(model.E01102))
+            if (string.IsNullOrEmpty(model.E01F03))
             {
                 context.Result = new BadRequestObjectResult("User's Email is required.");
                 return;
             }
 
-            if (string.IsNullOrEmpty(model.E01103))
+            if (string.IsNullOrEmpty(model.E01F04))
             {
                 context.Result = new BadRequestObjectResult("User's Password is required.");
                 return;
             }
 
-            if (string.IsNullOrEmpty(model.E01105))
+            if (string.IsNullOrEmpty(model.E01F06))
             {
                 context.Result = new BadRequestObjectResult("User's Bio is required.");
                 return;

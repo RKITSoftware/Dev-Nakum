@@ -1,14 +1,6 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
-using SocialMediaAPI.BL;
-using SocialMediaAPI.Extension;
-using SocialMediaAPI.Interface;
+﻿using SocialMediaAPI.Extension;
 using SocialMediaAPI.Middleware;
-using System.Configuration;
-using System.Text;
+using SocialMediaAPI.Other;
 
 namespace SocialMediaAPI
 {
@@ -35,7 +27,12 @@ namespace SocialMediaAPI
         public void ConfigureServices(IServiceCollection services)
         {
             // Register core ASP.NET Core services
-            services.AddControllers();
+            services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+                options.JsonSerializerOptions.Converters.Add(new DataTableJsonConverter());
+            }); 
+
             services.AddEndpointsApiExplorer();
 
             // Swagger configuration (details likely in omitted code)
@@ -43,9 +40,6 @@ namespace SocialMediaAPI
             {
                 options.JwtConfiguration();
             });
-
-            // Add AutoMapper for data mapping between models and DTOs
-            services.AddAutoMapper(typeof(Startup).Assembly);
 
             // Configure JWT authentication using application configuration (details likely in a separate method)
             services.AddJwtAuthentication(configRoot);

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "73HBedqdfqo06/+G/QLd6M0jCQEKCQlQUMURJ+w70IkzwSvM0SNEBEtV0ngDGE0dNgGSzfzzQjBuG+iU9brYqQ==",
+  "dgSpecHash": "KtlZQCQA/89m2E8Shl7RhOhPZsgHIf/iqAGGXj7I+mIKtYIJDyQ0lSFn1lXl06UO36SLdC+e4CuSS3lwSR5ySg==",
   "success": true,
   "projectFilePath": "F:\\Dev - 372\\New folder\\API training\\DotNet Core\\SocialMediaAPI\\SocialMediaAPI\\SocialMediaAPI.csproj",
   "expectedPackageFiles": [
@@ -31,6 +31,7 @@
     "C:\\Users\\dev.n\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\dev.n\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\dev.n\\.nuget\\packages\\mysql.data\\8.3.0\\mysql.data.8.3.0.nupkg.sha512",
+    "C:\\Users\\dev.n\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
     "C:\\Users\\dev.n\\.nuget\\packages\\nlog\\5.2.8\\nlog.5.2.8.nupkg.sha512",
     "C:\\Users\\dev.n\\.nuget\\packages\\nlog.extensions.logging\\5.3.8\\nlog.extensions.logging.5.3.8.nupkg.sha512",
     "C:\\Users\\dev.n\\.nuget\\packages\\nlog.web.aspnetcore\\5.3.8\\nlog.web.aspnetcore.5.3.8.nupkg.sha512",

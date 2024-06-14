@@ -13,6 +13,7 @@
           "Microsoft.IdentityModel.Tokens": "7.5.0",
           "MySql.Data": "8.3.0",
           "NLog.Web.AspNetCore": "5.3.8",
+          "Newtonsoft.Json": "13.0.2",
           "ServiceStack.OrmLite": "8.2.2",
           "ServiceStack.OrmLite.MySql": "8.2.2",
           "Swashbuckle.AspNetCore": "6.2.3",
@@ -265,6 +266,14 @@
             "rid": "win-x64",
             "assetType": "native",
             "fileVersion": "4.1.0.0"
+          }
+        }
+      },
+      "Newtonsoft.Json/13.0.2": {
+        "runtime": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.2.27524"
           }
         }
       },
@@ -849,6 +858,16 @@
             "fileVersion": "0.7.1.0"
           }
         }
+      },
+      "Check Id Exist/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "6.0.0",
+          "ServiceStack.OrmLite": "8.2.2",
+          "ServiceStack.OrmLite.MySql": "8.2.2"
+        },
+        "runtime": {
+          "Check Id Exist.dll": {}
+        }
       }
     }
   },
@@ -1046,6 +1065,13 @@
       "sha512": "sha512-bAQlkLYvTYt5MtXAgHGURSBSUWynIvyN2FVQFUg51I2grxsOfnJSyGvO7YsDRnU7IvUNfMdxq8rNXiP5P4hMlw==",
       "path": "mysql.data/8.3.0",
       "hashPath": "mysql.data.8.3.0.nupkg.sha512"
+    },
+    "Newtonsoft.Json/13.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-R2pZ3B0UjeyHShm9vG+Tu0EBb2lC8b0dFzV9gVn50ofHXh9Smjk6kTn7A/FdAsC8B5cKib1OnGYOXxRBz5XQDg==",
+      "path": "newtonsoft.json/13.0.2",
+      "hashPath": "newtonsoft.json.13.0.2.nupkg.sha512"
     },
     "NLog/5.2.8": {
       "type": "package",
@@ -1494,6 +1520,11 @@
       "sha512": "sha512-Idgg+mJEyAujqDPzA3APy9dNoyw0YQcNA65GgYjktDRtJ+nvx/hv+J+m6Eax3JJMGEYGy04oc5YNP6ZvQ3Y1vQ==",
       "path": "zstdsharp.port/0.7.1",
       "hashPath": "zstdsharp.port.0.7.1.nupkg.sha512"
+    },
+    "Check Id Exist/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

@@ -1,4 +1,8 @@
-﻿using SocialMediaAPI.Model.Dtos;
+﻿using Check_Id_Exist;
+using Microsoft.AspNetCore.Mvc;
+using SocialMediaAPI.Enums;
+using SocialMediaAPI.Model;
+using SocialMediaAPI.Model.Dtos;
 
 namespace SocialMediaAPI.Interface
 {
@@ -7,42 +11,66 @@ namespace SocialMediaAPI.Interface
     /// </summary>
     public interface IPostService
     {
+        #region Properties
         /// <summary>
-        /// Adds a new post to the system asynchronously.
+        /// Operation Types - A - Add, E - Edit, D - Delete
         /// </summary>
-        /// <param name="objDtoPos01">The DTO object representing the post data.</param>
-        /// <param name="httpContext">The HttpContext object representing the current request.</param>
-        /// <returns>A Task that returns true if the post is added successfully, false otherwise.</returns>
-        public Task<bool> Add(DtoPos01 objDtoPos01, HttpContext httpContext);
+        public enmOperationType OperationType { get; set; }
+        #endregion
+
+
+        #region Public Method
+
 
         /// <summary>
-        /// Gets a list of all posts asynchronously.
+        /// PreSave the DTOs object to the POCOs and pre validations
         /// </summary>
-        /// <returns>A Task that returns a list of dictionaries containing post details.</returns>
-        public Task<List<Dictionary<string, object>>> GetPosts();
+        /// <param name="objDtoPos01">object of the post</param>
+        /// <param name="httpContext">The HTTP context used to get the current user ID.</param>
+        /// <param name="postId">post id</param>
+        public Task PreSave(DtoPos01 objDtoPos01, HttpContext httpContext, int postId = 0);
 
         /// <summary>
-        /// Gets a list of posts created by the currently logged-in user asynchronously.
+        /// Post object Validation before inserting or updating into database
         /// </summary>
-        /// <param name="httpContext">The HttpContext object representing the current request (likely for user identification).</param>
-        /// <returns>A Task that returns a list of dictionaries containing post details for the logged-in user.</returns>
-        public Task<List<Dictionary<string, object>>> GetPostByMe(HttpContext httpContext);
+        /// <returns>response model</returns>
+        public Response ValidationOnSave();
 
         /// <summary>
-        /// Updates an existing post asynchronously.
+        /// Validation before deleting post into database
         /// </summary>
-        /// <param name="id">The identifier of the post to be updated.</param>
-        /// <param name="objDtoPos01">The DTO object representing the updated post data.</param>
-        /// <param name="httpContext">The HttpContext object representing the current request.</param>
-        /// <returns>A Task that returns true if the post is updated successfully, false otherwise.</returns>
-        public Task<bool> Update(int id, DtoPos01 objDtoPos01, HttpContext httpContext);
+        /// <param name="postId">post id</param>
+        /// <param name="httpContext">The HTTP context used to get the current user ID.</param>
+        /// <returns>response model</returns>
+        public Response ValidationOnDelete(int postId, HttpContext httpContext);
 
         /// <summary>
-        /// Deletes a post from the system.
+        /// Add or Update the post into database
         /// </summary>
-        /// <param name="id">The identifier of the post to be deleted.</param>
-        /// <param name="httpContext">The HttpContext object representing the current request.</param>
-        /// <returns>True if the post is deleted successfully, false otherwise.</returns>
-        public bool DeletePost(int id, HttpContext httpContext);
+        /// <returns>response model</returns>
+        public Response Save();
+
+        /// <summary>
+        /// Retrieves a list of all posts from the database.
+        /// </summary>
+        /// <returns>response model</returns>
+        public Task<Response> GetPosts();
+
+        /// <summary>
+        /// Retrieves a list of posts created by the current user.
+        /// </summary>
+        /// <param name="httpContext">The HTTP context used to get the current user ID.</param>
+        /// <returns>Response model</returns>
+        public Task<Response> GetPostByMe(HttpContext httpContext);
+
+        /// <summary>
+        /// delete a post from the database.
+        /// </summary>
+        /// <param name="id">The ID of the post to delete.</param>
+        /// <param name="httpContext">The HTTP context used to get the current user ID.</param>
+        /// <returns>response model</returns>
+        public Response Delete();
+
+        #endregion
     }
 }

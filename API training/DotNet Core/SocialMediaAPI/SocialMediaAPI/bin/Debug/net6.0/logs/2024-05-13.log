@@ -1,0 +1,117 @@
+2024-05-13 10:55:02.3717|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/login 
+2024-05-13 10:55:04.3121|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-13 10:55:04.3597|SocialMediaAPI.Controllers.CLUsersController|INFO|Login method called 
+2024-05-13 10:55:05.6334|SocialMediaAPI.BL.BLUsers|ERROR|Username or password is incorrect 
+2024-05-13 10:55:05.6334|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 400 
+2024-05-13 10:55:13.9840|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/login 
+2024-05-13 10:55:13.9840|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-13 10:55:13.9840|SocialMediaAPI.Controllers.CLUsersController|INFO|Login method called 
+2024-05-13 10:55:13.9943|SocialMediaAPI.BL.BLUsers|ERROR|Username or password is incorrect 
+2024-05-13 10:55:13.9943|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 400 
+2024-05-13 10:55:16.0315|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/login 
+2024-05-13 10:55:16.0315|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-13 10:55:16.0315|SocialMediaAPI.Controllers.CLUsersController|INFO|Login method called 
+2024-05-13 10:55:16.0315|SocialMediaAPI.BL.BLUsers|ERROR|Username or password is incorrect 
+2024-05-13 10:55:16.0315|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 400 
+2024-05-13 10:56:15.2879|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/login 
+2024-05-13 10:56:15.2879|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-13 10:56:15.2879|SocialMediaAPI.Controllers.CLUsersController|INFO|Login method called 
+2024-05-13 10:56:15.2879|SocialMediaAPI.BL.BLUsers|ERROR|Username or password is incorrect 
+2024-05-13 10:56:15.2879|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 400 
+2024-05-13 10:56:17.5341|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/login 
+2024-05-13 10:56:17.5341|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-13 10:56:17.5341|SocialMediaAPI.Controllers.CLUsersController|INFO|Login method called 
+2024-05-13 10:56:17.5341|SocialMediaAPI.BL.BLUsers|ERROR|Username or password is incorrect 
+2024-05-13 10:56:17.5341|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 400 
+2024-05-13 10:56:24.5280|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/login 
+2024-05-13 10:56:24.5280|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-13 10:56:24.5280|SocialMediaAPI.Controllers.CLUsersController|INFO|Login method called 
+2024-05-13 10:56:24.5280|SocialMediaAPI.BL.BLUsers|ERROR|Username or password is incorrect 
+2024-05-13 10:56:24.5280|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 400 
+2024-05-13 10:57:47.8715|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/login 
+2024-05-13 10:57:47.8715|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-13 10:57:47.8974|SocialMediaAPI.Controllers.CLUsersController|INFO|Login method called 
+2024-05-13 10:57:47.8974|SocialMediaAPI.BL.BLUsers|ERROR|Username or password is incorrect 
+2024-05-13 10:57:47.8974|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 400 
+2024-05-13 10:57:50.7336|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/login 
+2024-05-13 10:57:50.7336|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-13 10:57:50.7336|SocialMediaAPI.Controllers.CLUsersController|INFO|Login method called 
+2024-05-13 10:57:50.7336|SocialMediaAPI.BL.BLUsers|ERROR|Username or password is incorrect 
+2024-05-13 10:57:50.7336|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 400 
+2024-05-13 10:58:34.4258|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/login 
+2024-05-13 10:58:34.4258|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-13 10:58:34.4258|SocialMediaAPI.Controllers.CLUsersController|INFO|Login method called 
+2024-05-13 10:58:34.6140|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-13 10:59:02.0234|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/users 
+2024-05-13 10:59:02.0999|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-13 10:59:02.1888|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-13 10:59:12.8020|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/users/me 
+2024-05-13 10:59:12.8161|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-13 10:59:12.8289|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-13 10:59:23.8140|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/users/following 
+2024-05-13 10:59:23.8140|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-13 10:59:23.8140|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-13 11:03:40.2530|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/posts 
+2024-05-13 11:03:40.2874|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-13 11:03:55.9264|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/posts/me 
+2024-05-13 11:03:55.9355|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-13 11:05:00.9891|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: PATCH /api/posts/1 
+2024-05-13 11:05:01.0831|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-13 11:05:04.5345|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/posts/me 
+2024-05-13 11:05:04.5345|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-13 11:05:34.5131|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/comments/post/1 
+2024-05-13 11:05:34.5291|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-13 11:05:42.7108|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/comments/post/2 
+2024-05-13 11:05:42.7157|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-13 11:05:56.5872|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/comments/post/2 
+2024-05-13 11:05:56.5872|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-13 11:06:00.7410|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/comments/post/3 
+2024-05-13 11:06:00.7433|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-13 11:06:04.4092|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/comments/post/4 
+2024-05-13 11:06:04.4092|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-13 11:06:08.5225|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/comments/post/5 
+2024-05-13 11:06:08.5246|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-13 11:52:27.8804|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/signup 
+2024-05-13 11:52:28.6634|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-13 11:52:44.1842|SocialMediaAPI.Controllers.CLUsersController|INFO|Signup method called 
+2024-05-13 11:56:44.7549|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/signup 
+2024-05-13 11:56:44.7690|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-13 11:57:09.2687|SocialMediaAPI.Controllers.CLUsersController|INFO|Signup method called 
+2024-05-13 11:58:10.8872|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/signup 
+2024-05-13 11:58:10.8996|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-13 11:58:18.1233|SocialMediaAPI.Controllers.CLUsersController|INFO|Signup method called 
+2024-05-13 11:59:06.2299|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/signup 
+2024-05-13 11:59:06.2375|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-13 11:59:15.1007|SocialMediaAPI.Controllers.CLUsersController|INFO|Signup method called 
+2024-05-13 12:01:12.5300|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/signup 
+2024-05-13 12:01:12.5632|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-13 12:01:29.6849|SocialMediaAPI.Controllers.CLUsersController|INFO|Signup method called 
+2024-05-13 12:01:55.8249|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/signup 
+2024-05-13 12:01:55.8249|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-13 12:02:12.7574|SocialMediaAPI.Controllers.CLUsersController|INFO|Signup method called 
+2024-05-13 12:17:52.5834|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/signup 
+2024-05-13 12:17:52.5834|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-13 12:18:12.3409|SocialMediaAPI.Controllers.CLUsersController|INFO|Signup method called 
+2024-05-13 12:26:45.5900|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/signup 
+2024-05-13 12:26:46.5823|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-13 12:26:52.9290|SocialMediaAPI.Controllers.CLUsersController|INFO|Signup method called 
+2024-05-13 12:28:07.6089|SocialMediaAPI.BL.BLUsers|ERROR|exception :: user profile picture upload or password hash :: Object reference not set to an instance of an object. 
+2024-05-13 12:28:14.0826|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 400 
+2024-05-13 12:28:19.3627|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/signup 
+2024-05-13 12:28:19.3627|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-13 12:28:24.9007|SocialMediaAPI.Controllers.CLUsersController|INFO|Signup method called 
+2024-05-13 12:29:17.1537|SocialMediaAPI.BL.BLUsers|ERROR|exception :: user profile picture upload or password hash :: Object reference not set to an instance of an object. 
+2024-05-13 12:29:20.0146|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 400 
+2024-05-13 12:30:26.2002|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/signup 
+2024-05-13 12:30:26.2075|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-13 12:30:32.7028|SocialMediaAPI.Controllers.CLUsersController|INFO|Signup method called 
+2024-05-13 12:39:22.0305|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/signup 
+2024-05-13 12:39:22.9891|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-13 12:39:28.5642|SocialMediaAPI.Controllers.CLUsersController|INFO|Signup method called 
+2024-05-13 12:44:26.5587|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/signup 
+2024-05-13 12:44:27.0375|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-13 12:44:33.0760|SocialMediaAPI.Controllers.CLUsersController|INFO|Signup method called 
+2024-05-13 12:49:27.0503|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/signup 
+2024-05-13 12:49:27.6137|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-13 12:49:36.4646|SocialMediaAPI.Controllers.CLUsersController|INFO|Signup method called 
+2024-05-13 12:50:19.1059|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 

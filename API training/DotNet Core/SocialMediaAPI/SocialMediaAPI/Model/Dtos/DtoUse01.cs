@@ -1,6 +1,5 @@
-﻿
-using static ServiceStack.LicenseUtils;
-using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using ServiceStack.DataAnnotations;
 
 namespace SocialMediaAPI.Model.Dtos
 {
@@ -9,28 +8,35 @@ namespace SocialMediaAPI.Model.Dtos
         /// <summary>
         /// User's username
         /// </summary>
-        public string E01101 { get; set; }
+
+        [JsonProperty("E01102")]
+        [Unique]
+        public string E01F02 { get; set; }
 
         /// <summary>
         /// User's Email
         /// </summary>
 
-        [EmailAddress(ErrorMessage = "Invalid Email Address")]
-        public string E01102 { get; set; }
+        //[EmailAddress(ErrorMessage = "Invalid Email Address")]
+        [JsonProperty("E01103")]
+        public string E01F03 { get; set; }
 
         /// <summary>
         /// User's Password
         /// </summary>
-        public string E01103 { get; set; }
+        [JsonProperty("E01104")]
+        public string E01F04 { get; set; }
 
         /// <summary>
         ///  Property to receive the uploaded image file
         /// </summary>
-        public IFormFile? E01104 { get; set; }
+        [JsonProperty("E01105")]
+        public IFormFile? E01F05 { get; set; }
 
         /// <summary>
         /// User's Bio
         /// </summary>
-        public string E01105 { get; set; }
+        [JsonProperty("E01106")]
+        public string E01F06 { get; set; }
     }
 }

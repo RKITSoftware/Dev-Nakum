@@ -76,3 +76,6 @@ F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\SocialMediaAPI\b
 F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\SocialMediaAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
 F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\SocialMediaAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\SocialMediaAPI\bin\Debug\net6.0\AutoMapper.dll
+F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\SocialMediaAPI\bin\Debug\net6.0\Newtonsoft.Json.dll
+F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\SocialMediaAPI\bin\Debug\net6.0\Check Id Exist.dll
+F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\SocialMediaAPI\bin\Debug\net6.0\Check Id Exist.pdb

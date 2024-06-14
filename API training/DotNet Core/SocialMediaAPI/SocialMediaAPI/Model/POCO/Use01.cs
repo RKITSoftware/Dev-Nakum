@@ -1,4 +1,5 @@
 ﻿using ServiceStack.DataAnnotations;
+using SocialMediaAPI.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace SocialMediaAPI.Model.POCO
@@ -8,11 +9,11 @@ namespace SocialMediaAPI.Model.POCO
     /// </summary>
     public class Use01
     {
+        [PrimaryKey]
+        [AutoIncrement]
         /// <summary>
         /// User's id
         /// </summary
-        [PrimaryKey]
-        [AutoIncrement]
         public int E01F01 { get; set; }
 
         /// <summary>
@@ -43,7 +44,7 @@ namespace SocialMediaAPI.Model.POCO
         /// <summary>
         /// User's Role
         /// </summary>
-        public string E01F07 { get; set; } = "User";
+        public string E01F07 { get; set; } = enmRoles.U.ToString();
     }
 
     

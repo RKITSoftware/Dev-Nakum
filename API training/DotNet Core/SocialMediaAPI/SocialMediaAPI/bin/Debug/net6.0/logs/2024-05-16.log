@@ -1,0 +1,28 @@
+2024-05-16 11:41:44.1689|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/login 
+2024-05-16 11:41:45.9759|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-16 11:41:46.0233|SocialMediaAPI.Controllers.CLUsersController|INFO|Login method called 
+2024-05-16 11:41:47.2314|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-16 11:42:52.0997|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/followers 
+2024-05-16 11:42:52.3237|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-16 11:43:06.4810|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/followers 
+2024-05-16 11:43:06.4934|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-16 11:43:12.6813|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/followers 
+2024-05-16 11:43:12.6900|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-16 11:43:22.2194|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/followers 
+2024-05-16 11:43:22.2194|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-16 11:43:34.0159|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/users/following 
+2024-05-16 11:43:34.0302|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-16 11:43:34.0769|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-16 11:44:31.5796|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: DELETE /api/followers 
+2024-05-16 11:44:31.6655|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-16 11:44:36.9620|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/users/following 
+2024-05-16 11:44:36.9620|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-16 11:44:36.9620|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-16 11:44:48.1599|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/followers 
+2024-05-16 11:44:48.1599|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-16 11:44:58.1141|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/followers 
+2024-05-16 11:44:58.1141|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-16 11:45:11.4317|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: DELETE /api/followers 
+2024-05-16 11:45:11.4317|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-16 11:46:04.8759|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /favicon.ico 
+2024-05-16 11:46:04.8759|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 404 

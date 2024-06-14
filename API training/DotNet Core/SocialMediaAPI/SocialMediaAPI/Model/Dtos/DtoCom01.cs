@@ -1,4 +1,6 @@
-﻿namespace SocialMediaAPI.Model.Dtos
+﻿using Newtonsoft.Json;
+
+namespace SocialMediaAPI.Model.Dtos
 {
     /// <summary>
     /// manage the DTO schema of comments
@@ -8,11 +10,13 @@
         /// <summary>
         /// post id
         /// </summary>
-        public int M01101 { get; set; }
+        [JsonProperty("M01102")]
+        public int M01F02 { get; set; }
 
         /// <summary>
         /// Comment's content
         /// </summary>
-        public string M01102 { get; set; }
+        [JsonProperty("M01104")]
+        public string M01F04 { get; set; }
     }
 }

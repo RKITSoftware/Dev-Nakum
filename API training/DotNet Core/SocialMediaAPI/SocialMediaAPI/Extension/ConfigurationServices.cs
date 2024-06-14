@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Check_Id_Exist;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using SocialMediaAPI.BL;
+using SocialMediaAPI.DB;
 using SocialMediaAPI.Interface;
 using System.Text;
 
@@ -17,17 +19,24 @@ namespace SocialMediaAPI.Extension
         /// <param name="services"></param>
         public static void AddInterfaceServices(this IServiceCollection services)
         {
+            // adds transient services for validation
+            services.AddTransient<Validation>();
+
+
             // Adds singleton service for user management.
-            services.AddSingleton<IUserService, BLUsers>();
+            services.AddSingleton<IUserService, BLUse01>();
 
             // Adds transient services for post-related functionalities.
-            services.AddTransient<IPostService, BLPosts>();
+            services.AddTransient<IPostService, BLPos01>();
 
             // Adds transient services for comment-related functionalities.
-            services.AddTransient<ICommentService, BLComments>();
+            services.AddTransient<ICommentService, BLCom01>();
 
             // Adds scoped services for managing followers.
-            services.AddScoped<IFollowersService, BLFollowers>();
+            services.AddScoped<IFollowersService, BLFol01>();
+
+            services.AddTransient<IDBUse01,DBUse01>();
+
         }
 
         /// <summary>

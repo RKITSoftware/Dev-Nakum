@@ -8,8 +8,20 @@ namespace SocialMediaAPI.BL
     public class BLHashing
     {
         #region Private Member
+
+        /// <summary>
+        /// Salt size
+        /// </summary>
         private readonly int _saltSize = 32;
+
+        /// <summary>
+        /// no of iteration
+        /// </summary>
         private readonly int _iteration = 10000;
+
+        /// <summary>
+        /// key size
+        /// </summary>
         private readonly int _keySize = 32;
         #endregion
 

@@ -34,7 +34,7 @@ namespace SocialMediaAPI.Filter
             }
 
             // Perform basic validation on the content property (S01102) of the model
-            if (string.IsNullOrEmpty(model.S01102))
+            if (string.IsNullOrEmpty(model.S01F04))
             {
                 // If the content is missing or empty, return a bad request response with a specific message
                 context.Result = new BadRequestObjectResult("Post content is required.");

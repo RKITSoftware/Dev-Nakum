@@ -4,6 +4,75 @@
     "F:\\Dev - 372\\New folder\\API training\\DotNet Core\\SocialMediaAPI\\SocialMediaAPI\\SocialMediaAPI.csproj": {}
   },
   "projects": {
+    "F:\\Dev - 372\\New folder\\API training\\DotNet Core\\SocialMediaAPI\\Check Id Exist\\Check Id Exist.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\Dev - 372\\New folder\\API training\\DotNet Core\\SocialMediaAPI\\Check Id Exist\\Check Id Exist.csproj",
+        "projectName": "Check Id Exist",
+        "projectPath": "F:\\Dev - 372\\New folder\\API training\\DotNet Core\\SocialMediaAPI\\Check Id Exist\\Check Id Exist.csproj",
+        "packagesPath": "C:\\Users\\dev.n\\.nuget\\packages\\",
+        "outputPath": "F:\\Dev - 372\\New folder\\API training\\DotNet Core\\SocialMediaAPI\\Check Id Exist\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\dev.n\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "ServiceStack.OrmLite": {
+              "target": "Package",
+              "version": "[8.2.2, )"
+            },
+            "ServiceStack.OrmLite.MySql": {
+              "target": "Package",
+              "version": "[8.2.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "F:\\Dev - 372\\New folder\\API training\\DotNet Core\\SocialMediaAPI\\SocialMediaAPI\\SocialMediaAPI.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -27,7 +96,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "F:\\Dev - 372\\New folder\\API training\\DotNet Core\\SocialMediaAPI\\Check Id Exist\\Check Id Exist.csproj": {
+                "projectPath": "F:\\Dev - 372\\New folder\\API training\\DotNet Core\\SocialMediaAPI\\Check Id Exist\\Check Id Exist.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -59,6 +132,10 @@
             "NLog.Web.AspNetCore": {
               "target": "Package",
               "version": "[5.3.8, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.2, )"
             },
             "ServiceStack.OrmLite": {
               "target": "Package",

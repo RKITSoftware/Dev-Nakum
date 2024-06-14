@@ -1,4 +1,5 @@
-﻿using ServiceStack.Text;
+﻿using SocialMediaAPI.Enums;
+using SocialMediaAPI.Model;
 using SocialMediaAPI.Model.Dtos;
 
 namespace SocialMediaAPI.Interface
@@ -9,37 +10,55 @@ namespace SocialMediaAPI.Interface
     public interface IUserService
     {
         /// <summary>
-        /// Adds a new user to the system asynchronously.
+        /// Operation Types - A - Add, E - Edit, D - Delete
         /// </summary>
-        /// <param name="objDtoUse01">The DTO object representing the user data.</param>
-        /// <returns>A Task that returns true if the user is added successfully, false otherwise.</returns>
-        public Task<bool> Add(DtoUse01 objDtoUse01);
+        public enmOperationType OperationType { get; set; }
 
         /// <summary>
-        /// Attempts to log a user in to the system. 
+        /// Maps the provided DTO object containing user data (DtoUse01) to a Use01 model object.
         /// </summary>
-        /// <param name="objUse01">A JsonObject containing login credentials (username/password likely).</param>
-        /// <returns>An object representing the login result (its containing a token and role).</returns>
-        public object Login(JsonObject objUse01);
+        /// <param name="objDtoUse01">The DTO object containing user data.</param>
+        Task PreSave(DtoUse01 objDtoUse01);
 
         /// <summary>
-        /// Gets a list of all users.
+        ///  validation for user signup.
         /// </summary>
-        /// <returns>A list of dictionaries containing user details.</returns>
-        public List<Dictionary<string, object>> GetUsers();
+        /// <param name="objDtoUse01">The DTO object containing user data.</param>
+        /// <returns>response model</returns>
+        Response ValidationOnSave();
+
 
         /// <summary>
-        /// Gets details for the currently logged-in user asynchronously.
+        /// Inserts the user data from the temporary _objUse01 object into the database table Use01.
         /// </summary>
-        /// <param name="httpContext">The HttpContext object representing the current request.</param>
-        /// <returns>A Task that returns a dictionary containing details of the logged-in user.</returns>
-        public Task<Dictionary<string, object>> GetUserDetails(HttpContext httpContext);
+        /// <returns>response model</returns>
+        Response Save();
 
         /// <summary>
-        /// Gets a dictionary mapping usernames to a HashSet of usernames that the current user follows asynchronously.
+        /// Performs user login by validating username and password.
         /// </summary>
-        /// <param name="httpContext">The HttpContext object representing the current request.</param>
-        /// <returns>A Task that returns a dictionary where keys are usernames the current user follows and values are HashSets containing usernames of those users' followers.</returns>
-        public Task<Dictionary<string, HashSet<string>>> GetFollowing(HttpContext httpContext);
+        /// <param name="objDtoUse01">user object - contains the username and password</param>
+        /// <returns>Response model</returns>
+        Response Login(DtoUse01 objDtoUse01);
+
+        /// <summary>
+        /// Retrieves a list of all users from the database.
+        /// </summary>
+        /// <returns>response model</returns>
+        Task<Response> GetUsers();
+
+        /// <summary>
+        /// Retrieves user details based on the user ID from the HTTP context.
+        /// </summary>
+        /// <param name="httpContext">The HttpContext containing user information.</param>
+        /// <returns>response model containing user details.</returns>
+        Task<Response> GetUserDetails(HttpContext httpContext);
+
+        /// <summary>
+        /// Retrieves a list of usernames followed by the current user.
+        /// </summary>
+        /// <param name="httpContext">The HttpContext containing user information.</param>
+        /// <returns>response model</returns>
+        Task<Response> GetFollowing(HttpContext httpContext);
     }
 }

@@ -1,0 +1,96 @@
+2024-05-15 14:53:25.4757|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/login 
+2024-05-15 14:53:27.5647|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-15 14:53:30.9093|SocialMediaAPI.Controllers.CLUsersController|INFO|Login method called 
+2024-05-15 14:53:36.3889|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 14:54:13.6623|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/posts/add 
+2024-05-15 14:54:21.8725|SocialMediaAPI.BL.BLPosts|INFO|Post image upload successfully 
+2024-05-15 14:54:22.0536|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 14:54:52.6660|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/posts 
+2024-05-15 14:54:52.7426|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 14:55:13.4008|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/posts/me 
+2024-05-15 14:55:13.4262|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 14:56:05.2560|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/comments/add 
+2024-05-15 14:56:05.2897|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 14:56:52.6086|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/login 
+2024-05-15 14:56:52.6238|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-15 14:56:54.5571|SocialMediaAPI.Controllers.CLUsersController|INFO|Login method called 
+2024-05-15 14:56:54.8952|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 14:57:24.8315|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/comments/add 
+2024-05-15 14:57:24.8733|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 14:58:00.4647|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/comments/add 
+2024-05-15 14:58:00.4776|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 14:58:30.3548|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/comments/post/7 
+2024-05-15 14:58:30.3788|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 14:58:44.5802|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/comments/post/6 
+2024-05-15 14:58:44.5802|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 14:58:55.3926|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/comments/post/7 
+2024-05-15 14:58:55.4033|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 14:59:05.3848|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/comments/post/6 
+2024-05-15 14:59:05.3848|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 14:59:49.5215|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: PATCH /api/comments/10 
+2024-05-15 14:59:49.5522|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 15:00:03.7331|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: PATCH /api/comments/11 
+2024-05-15 15:00:03.7331|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 15:00:12.5361|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: PATCH /api/comments/11 
+2024-05-15 15:00:12.5399|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 15:01:24.1944|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: PATCH /api/comments/11 
+2024-05-15 15:03:12.0369|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 15:03:18.4040|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: PATCH /api/comments/11 
+2024-05-15 15:05:40.8839|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 15:05:52.9376|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: DELETE /api/comments/11 
+2024-05-15 15:05:52.9877|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 15:07:11.1206|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: DELETE /api/comments/10 
+2024-05-15 15:07:11.1627|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 15:07:46.9111|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: DELETE /api/comments/10 
+2024-05-15 15:11:07.8808|SocialMediaAPI.BL.BLComments|ERROR|exception :: add comments :: Object reference not set to an instance of an object. 
+2024-05-15 15:11:07.8808|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 15:11:12.1534|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: DELETE /api/comments/10 
+2024-05-15 15:13:25.3073|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 15:13:55.2420|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: DELETE /api/comments/9 
+2024-05-15 15:16:53.9828|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 15:19:02.2012|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: PATCH /api/posts/8 
+2024-05-15 15:20:42.3156|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: PATCH /api/posts/8 
+2024-05-15 15:24:23.4717|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 15:39:15.9041|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/login 
+2024-05-15 15:39:17.9354|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-15 15:39:19.8525|SocialMediaAPI.Controllers.CLUsersController|INFO|Login method called 
+2024-05-15 15:39:22.4565|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 15:40:03.6270|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: PATCH /api/posts/8 
+2024-05-15 15:41:35.6102|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 15:42:27.9636|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/posts/add 
+2024-05-15 15:43:20.9456|SocialMediaAPI.BL.BLPosts|INFO|Post image upload successfully 
+2024-05-15 15:44:15.7188|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 15:45:19.3068|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: PATCH /api/posts/2 
+2024-05-15 15:46:39.6144|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 15:46:53.2796|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: PATCH /api/posts/7 
+2024-05-15 15:48:48.1526|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 16:05:51.2041|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/login 
+2024-05-15 16:05:51.8943|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-15 16:05:54.5672|SocialMediaAPI.Controllers.CLUsersController|INFO|Login method called 
+2024-05-15 16:05:57.5799|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 16:08:10.4787|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: PATCH /api/posts/2 
+2024-05-15 16:09:12.3419|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 16:10:44.6060|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: DELETE /api/posts/2 
+2024-05-15 16:11:43.7272|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 16:12:03.8447|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: DELETE /api/posts/7 
+2024-05-15 16:12:47.3511|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 16:19:28.7617|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/comments/add 
+2024-05-15 16:19:34.8995|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 16:20:02.8491|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/comments/post/5 
+2024-05-15 16:20:02.8636|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 401 
+2024-05-15 16:20:25.4665|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/login 
+2024-05-15 16:20:25.4785|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-15 16:20:29.5923|SocialMediaAPI.Controllers.CLUsersController|INFO|Login method called 
+2024-05-15 16:20:30.5071|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 16:21:09.1148|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/comments/post/8 
+2024-05-15 16:21:09.1666|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 16:21:51.2040|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: PATCH /api/comments/11 
+2024-05-15 16:23:13.5466|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 16:30:41.6763|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/login 
+2024-05-15 16:30:41.6763|SocialMediaAPI.Controllers.CLUsersController|INFO|User controller constructor called 
+2024-05-15 16:30:43.6315|SocialMediaAPI.Controllers.CLUsersController|INFO|Login method called 
+2024-05-15 16:30:43.9330|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 16:31:49.7637|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: PATCH /api/comments/11 
+2024-05-15 16:33:00.0007|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-05-15 16:33:18.0893|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: DELETE /api/comments/11 
+2024-05-15 16:33:43.9894|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 

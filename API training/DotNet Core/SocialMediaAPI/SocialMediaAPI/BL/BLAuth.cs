@@ -11,7 +11,6 @@ namespace SocialMediaAPI.BL
     public class BLAuth
     {
         #region Private Member
-        //private readonly string _key = "thisisasecretkeythatuserscannotchangebythemselves";
         private readonly IConfiguration _configuration;
         #endregion
 
@@ -34,8 +33,6 @@ namespace SocialMediaAPI.BL
         /// <returns>Generated JWT token.</returns>
         public string GenerateJWT(int id, string name, string email, string role)
         {
-            //string issuer = "https://localhost:7009/";
-            
             // Key converted into UTF8 format
             SymmetricSecurityKey objSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
 

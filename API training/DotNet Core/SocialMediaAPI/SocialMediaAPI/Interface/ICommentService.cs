@@ -1,4 +1,8 @@
-﻿using SocialMediaAPI.Model.Dtos;
+﻿using Check_Id_Exist;
+using Microsoft.AspNetCore.Mvc;
+using SocialMediaAPI.Enums;
+using SocialMediaAPI.Model;
+using SocialMediaAPI.Model.Dtos;
 
 namespace SocialMediaAPI.Interface
 {
@@ -7,36 +11,50 @@ namespace SocialMediaAPI.Interface
     /// </summary>
     public interface ICommentService
     {
-        /// <summary>
-        /// Adds a new comment to the system.
-        /// </summary>
-        /// <param name="objDtoCom01">The DTO object representing the comment data.</param>
-        /// <param name="httpContext">The HttpContext object representing the current request.</param>
-        /// <returns>True if the comment is added successfully, false otherwise.</returns>
-        public bool Add(DtoCom01 objDtoCom01, HttpContext httpContext);
+
+        public enmOperationType OperationType { get; set; }
 
         /// <summary>
-        /// Deletes a comment from the system.
+        /// map the dto object to the poco object 
         /// </summary>
-        /// <param name="id">The identifier of the comment to be deleted.</param>
-        /// <param name="httpContext">The HttpContext object representing the current request.</param>
-        /// <returns>True if the comment is deleted successfully, false otherwise.</returns>
-        public bool Delete(int id, HttpContext httpContext);
+        /// <param name="objDtoCom01">object of the comment</param>
+        /// <param name="httpContext">current context for getting the user id</param>
+        /// <param name="commentId">comment id</param>
+        public void PreSave(DtoCom01 objDtoCom01, HttpContext httpContext, int commentId = 0);
 
         /// <summary>
-        /// Updates an existing comment in the system.
+        /// validation before add or update comment into database
         /// </summary>
-        /// <param name="id">The identifier of the comment to be updated.</param>
-        /// <param name="objDtoCom01">The DTO object representing the updated comment data.</param>
-        /// <param name="httpContext">The HttpContext object representing the current request.</param>
-        /// <returns>True if the comment is updated successfully, false otherwise.</returns>
-        public bool Update(int id,DtoCom01 objDtoCom01,HttpContext httpContext);
+        /// <param name="objValidation">service of validation</param>
+        /// <returns>response model</returns>
+        public Response ValidationOnSave();
 
         /// <summary>
-        /// Gets all comments associated with a specific post asynchronously.
+        /// Add or Update the comment into data base
         /// </summary>
-        /// <param name="id">The identifier of the post.</param>
-        /// <returns>A Task that returns a list of dictionaries containing comment details.</returns>
-        public Task<List<Dictionary<string, object>>> GetAllCommentsOnPost(int id);
+        /// <returns>response model</returns>
+        public Response Save();
+
+        /// <summary>
+        /// validation before delete the comment
+        /// </summary>
+        /// <param name="commentId">comment id</param>
+        /// <param name="httpContext">current context for getting the user id</param>
+        /// <param name="objValidation">object of the validation</param>
+        /// <returns>response model</returns>
+        public Response ValidationOnDelete(int commentId, HttpContext httpContext);
+
+        /// <summary>
+        /// Deletes a comment from the database.
+        /// </summary>
+        /// <returns>response model</returns>
+        public Response Delete();
+
+        /// <summary>
+        /// Gets all comments for a specific post.
+        /// </summary>
+        /// <param name="id">The ID of the post to get comments for.</param>
+        /// <returns>response model</returns>
+        public Task<Response> GetAllCommentsOnPost(int id);
     }
 }

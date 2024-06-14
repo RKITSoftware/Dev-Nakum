@@ -1,0 +1,11 @@
+2024-05-14 16:09:10.6019|SocialMediaAPI.BL.BLUsers|ERROR|Username or password is incorrect 
+2024-05-14 16:15:08.5502|SocialMediaAPI.BL.BLUsers|ERROR|Username or password is incorrect 
+2024-05-14 16:17:34.0896|SocialMediaAPI.BL.BLUsers|ERROR|Username or password is incorrect 
+2024-05-14 16:24:16.8063|SocialMediaAPI.BL.BLUsers|ERROR|Username or password is incorrect 
+2024-05-14 17:37:01.3953|SocialMediaAPI.BL.BLPosts|ERROR|exception :: Save :: Post :: Object reference not set to an instance of an object. 
+2024-05-14 17:38:33.0176|SocialMediaAPI.BL.BLPosts|ERROR|exception :: Delete :: Object reference not set to an instance of an object. 
+2024-05-14 17:39:42.1994|SocialMediaAPI.BL.BLPosts|ERROR|exception :: IsExist :: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM 
+                                    Pos01 
+                             ' at line 4 
+2024-05-14 17:40:15.2673|SocialMediaAPI.BL.BLPosts|ERROR|exception :: IsExist :: Object reference not set to an instance of an object. 
+2024-05-14 17:41:51.6023|SocialMediaAPI.BL.BLPosts|ERROR|exception :: IsExist :: Object reference not set to an instance of an object. 

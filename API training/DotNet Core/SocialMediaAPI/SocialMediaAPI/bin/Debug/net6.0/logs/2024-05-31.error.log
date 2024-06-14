@@ -1,0 +1,5 @@
+2024-05-31 15:00:25.8036|SocialMediaAPI.BL.BLPosts|ERROR|exception :: IsExist :: Object reference not set to an instance of an object. 
+2024-05-31 15:07:54.2797|SocialMediaAPI.BL.BLPosts|ERROR|exception :: IsExist :: variable 'x' of type 'SocialMediaAPI.Model.POCO.Pos01' referenced from scope '', but it is not defined 
+2024-05-31 15:56:43.5608|SocialMediaAPI.BL.BLFollowers|ERROR|exception :: following :: Object reference not set to an instance of an object. 
+2024-05-31 15:56:48.2615|SocialMediaAPI.BL.BLFollowers|ERROR|exception :: following :: Object reference not set to an instance of an object. 
+2024-05-31 15:57:12.6815|SocialMediaAPI.BL.BLFollowers|ERROR|exception :: following :: Object reference not set to an instance of an object. 

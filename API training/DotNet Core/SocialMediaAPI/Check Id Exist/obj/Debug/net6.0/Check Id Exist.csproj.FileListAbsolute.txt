@@ -1,0 +1,12 @@
+F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\Check Id Exist\obj\Debug\net6.0\Check Id Exist.csproj.AssemblyReference.cache
+F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\Check Id Exist\obj\Debug\net6.0\Check Id Exist.GeneratedMSBuildEditorConfig.editorconfig
+F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\Check Id Exist\obj\Debug\net6.0\Check Id Exist.AssemblyInfoInputs.cache
+F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\Check Id Exist\obj\Debug\net6.0\Check Id Exist.AssemblyInfo.cs
+F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\Check Id Exist\obj\Debug\net6.0\Check Id Exist.csproj.CoreCompileInputs.cache
+F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\Check Id Exist\bin\Debug\net6.0\Check Id Exist.deps.json
+F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\Check Id Exist\bin\Debug\net6.0\Check Id Exist.dll
+F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\Check Id Exist\bin\Debug\net6.0\Check Id Exist.pdb
+F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\Check Id Exist\obj\Debug\net6.0\Check Id Exist.dll
+F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\Check Id Exist\obj\Debug\net6.0\refint\Check Id Exist.dll
+F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\Check Id Exist\obj\Debug\net6.0\Check Id Exist.pdb
+F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\Check Id Exist\obj\Debug\net6.0\ref\Check Id Exist.dll

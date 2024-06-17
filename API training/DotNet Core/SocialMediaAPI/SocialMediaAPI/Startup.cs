@@ -46,6 +46,8 @@ namespace SocialMediaAPI
 
             // Register services defined by interfaces (details likely in a separate method)
             services.AddInterfaceServices();
+
+            services.AddHttpContextAccessor();
         }
 
         /// <summary>

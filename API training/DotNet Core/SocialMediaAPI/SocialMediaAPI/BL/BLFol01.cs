@@ -1,5 +1,4 @@
 ﻿using Check_Id_Exist;
-using Microsoft.AspNetCore.Mvc;
 using NLog;
 using ServiceStack.Data;
 using ServiceStack.OrmLite;
@@ -16,7 +15,7 @@ namespace SocialMediaAPI.BL
     /// <summary>
     ///  Implements the IFollowersService interface and provides methods for managing followers
     /// </summary>
-    public class BLFol01 : IFollowersService
+    public class BLFol01 : IFol01Service
     {
         #region Private Member
 
@@ -49,6 +48,13 @@ namespace SocialMediaAPI.BL
         private readonly Validation _objValidation;
         #endregion
 
+        #region Private Property
+        /// <summary>
+        /// set the current Http Context to get the user id
+        /// </summary>
+        private HttpContext HttpContext { get; set; }
+        #endregion
+
         #region Public Properites
         /// <summary>
         /// operation types A - Add, E - Edit, D - Delete
@@ -64,12 +70,13 @@ namespace SocialMediaAPI.BL
         #endregion
 
         #region Constructor
-        public BLFol01(IConfiguration configuration, Validation objValidation)
+        public BLFol01(IConfiguration configuration, Validation objValidation, IHttpContextAccessor httpContextAccessor)
         {
             _configuration = configuration;
             _connectionString = _configuration.GetConnectionString("Default");
             _dbFactory = new OrmLiteConnectionFactory(_connectionString, MySqlDialect.Provider);
             _objValidation = objValidation;
+            HttpContext = httpContextAccessor.HttpContext;
         }
         #endregion
 
@@ -96,14 +103,13 @@ namespace SocialMediaAPI.BL
         /// and sets the current user ID (following user) in the Fol01 entity.
         /// </summary>
         /// <param name="objDtoFol01">The DTO object containing follower data.</param>
-        /// <param name="httpContext">The HTTP context used to get the current user ID.</param>
 
-        public void PreSave(DtoFol01 objDtoFol01, HttpContext httpContext)
+        public void PreSave(DtoFol01 objDtoFol01)
         {
             if (OperationType == enmOperationType.A)
             {
                 _objFol01 = objDtoFol01.MapDtoToPoco<DtoFol01, Fol01>(null);
-                int userId = Convert.ToInt32(httpContext.User.FindFirst("Id")?.Value);
+                int userId = Convert.ToInt32(HttpContext.User.FindFirst("Id")?.Value);
                 _objFol01.L01F02 = userId; 
             }
         }
@@ -180,16 +186,14 @@ namespace SocialMediaAPI.BL
         /// validation before removing the user from following list
         /// </summary>
         /// <param name="objDtoFol01">dto object of the following</param>
-        /// <param name="httpContext">The HTTP context used to get the current user ID.</param>
-        /// <param name="objValidation">object of the validation</param>
         /// <returns>response model</returns>
-        public Response ValidationOnDelete(DtoFol01 objDtoFol01, HttpContext httpContext)
+        public Response ValidationOnDelete(DtoFol01 objDtoFol01)
         {
             objResponse = new Response();
 
             if (OperationType == enmOperationType.D)
             {
-                int userId = Convert.ToInt32(httpContext.User.FindFirst("Id")?.Value);
+                int userId = Convert.ToInt32(HttpContext.User.FindFirst("Id")?.Value);
 
                 if(objDtoFol01.L01F03 == userId)
                 {
@@ -212,9 +216,16 @@ namespace SocialMediaAPI.BL
                 }
                 else if( IsFollowingUserExist(userId,objDtoFol01.L01F03) )
                 {
-                    _objFol01 = new Fol01();
-                    _objFol01.L01F02 = userId;
-                    _objFol01.L01F03 = objDtoFol01.L01F03;
+                    _objFol01 = new Fol01
+                    {
+                        L01F02 = userId,
+                        L01F03 = objDtoFol01.L01F03
+                    };
+                }
+                else
+                {
+                    objResponse.IsError = true;
+                    objResponse.Message = "User is not exist in your following list";
                 }
             }
             return objResponse;

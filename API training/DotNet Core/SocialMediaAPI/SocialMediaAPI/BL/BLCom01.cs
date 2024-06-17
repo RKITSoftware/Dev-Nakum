@@ -1,6 +1,4 @@
 ﻿using Check_Id_Exist;
-using Microsoft.AspNetCore.Mvc;
-using MySql.Data.MySqlClient;
 using NLog;
 using ServiceStack.Data;
 using ServiceStack.OrmLite;
@@ -17,7 +15,7 @@ namespace SocialMediaAPI.BL
     /// <summary>
     ///  Implements the ICommentService interface and provides methods for managing comments on posts.
     /// </summary>
-    public class BLCom01 : ICommentService
+    public class BLCom01 : ICom01Service
     {
         #region Private Member
         /// <summary>
@@ -46,14 +44,24 @@ namespace SocialMediaAPI.BL
         private Com01 _objCom01;
 
         private readonly Validation _objValidation;
+        private readonly IDBCom01 _objIDBCom01;
 
         #endregion
+
+        #region Private Property
+        /// <summary>
+        /// set the current Http Context to get the user id
+        /// </summary>
+        private HttpContext HttpContext { get; set; } 
+        #endregion
+
 
         #region Public Properites
         /// <summary>
         /// operation types A - Add, E - Edit, D - Delete
         /// </summary>
         public enmOperationType OperationType { get; set; }
+
         #endregion
 
         #region Public Member
@@ -64,12 +72,14 @@ namespace SocialMediaAPI.BL
         #endregion
 
         #region Constructor
-        public BLCom01(IConfiguration configuration, Validation objValidation)
+        public BLCom01(IConfiguration configuration, Validation objValidation, IDBCom01 objIDBCom01, IHttpContextAccessor httpContextAccessor)
         {
             _configuration = configuration;
             _connectionString = _configuration.GetConnectionString("Default");
             _dbFactory = new OrmLiteConnectionFactory(_connectionString, MySqlDialect.Provider);
             _objValidation = objValidation;
+            _objIDBCom01 = objIDBCom01;
+            HttpContext = httpContextAccessor.HttpContext;
         }
         #endregion
 
@@ -107,12 +117,12 @@ namespace SocialMediaAPI.BL
         /// <param name="objDtoCom01">object of the comment</param>
         /// <param name="httpContext">current context for getting the user id</param>
         /// <param name="commentId">comment id</param>
-        public void PreSave(DtoCom01 objDtoCom01, HttpContext httpContext, int commentId = 0)
+        public void PreSave(DtoCom01 objDtoCom01,  int commentId = 0)
         {
             _objCom01 = objDtoCom01.MapDtoToPoco<DtoCom01, Com01>(null);
-            int userId = Convert.ToInt32(httpContext.User.FindFirst("Id")?.Value);
-                _objCom01.M01F03 = userId;
-            
+            int userId = Convert.ToInt32(HttpContext.User.FindFirst("Id")?.Value);
+            _objCom01.M01F03 = userId;
+
             //if (OperationType == enmOperationType.A)
             //{
             //    _objCom01.M01F03 = userId;
@@ -120,7 +130,7 @@ namespace SocialMediaAPI.BL
             if (OperationType == enmOperationType.E)
             {
                 _objCom01.M01F01 = commentId;
-                
+
                 //_objCom01 = objDtoCom01.MapDtoToPoco<DtoCom01, Com01>(_objCom01);
             }
         }
@@ -138,7 +148,7 @@ namespace SocialMediaAPI.BL
             {
                 // to check whether post is available or not.
                 // use FromServices - resolve the service dependency directly in action method
-                bool isPostExist = _objValidation.IsExist<Pos01>(_objCom01.M01F02,x=>x.S01F01);
+                bool isPostExist = _objValidation.IsExist<Pos01>(_objCom01.M01F02, x => x.S01F01);
                 if (!isPostExist)
                 {
                     objResponse.IsError = true;
@@ -148,7 +158,7 @@ namespace SocialMediaAPI.BL
             if (OperationType == enmOperationType.E)
             {
                 // to check whether comment is available or not.
-                bool isCommentExist = _objValidation.IsExist<Com01>(_objCom01.M01F01,x=>x.M01F01);
+                bool isCommentExist = _objValidation.IsExist<Com01>(_objCom01.M01F01, x => x.M01F01);
                 if (!isCommentExist)
                 {
                     objResponse.IsError = true;
@@ -157,7 +167,7 @@ namespace SocialMediaAPI.BL
                 else
                 {
                     int userIdFromComment = GetUserId(_objCom01.M01F01);
-                    if(userIdFromComment != _objCom01.M01F03)
+                    if (userIdFromComment != _objCom01.M01F03)
                     {
                         objResponse.IsError = true;
                         objResponse.Message = "you can not update this comment";
@@ -181,7 +191,6 @@ namespace SocialMediaAPI.BL
                     using (IDbConnection db = _dbFactory.OpenDbConnection())
                     {
                         bool isCommentAdded = db.Insert(_objCom01) > 0;
-
                         if (!isCommentAdded)
                         {
                             objResponse.IsError = true;
@@ -196,32 +205,15 @@ namespace SocialMediaAPI.BL
                 if (OperationType == enmOperationType.E)
                 {
                     // for update the only comment's content
-                    using (MySqlConnection objMySqlConnection = new MySqlConnection(_connectionString))
+                    bool isCommentUpdated = _objIDBCom01.UpdateComment(_objCom01.M01F01, _objCom01.M01F04);
+                    if (!isCommentUpdated)
                     {
-                        objMySqlConnection.Open();
-
-                        string query = @"UPDATE 
-                                            Com01 
-                                        SET 
-                                            M01F04 = @M01F04 
-                                        WHERE 
-                                            M01F01 = @M01F01";
-
-                        MySqlCommand objMySqlCommand = new MySqlCommand(query, objMySqlConnection);
-                        objMySqlCommand.Parameters.AddWithValue("@M01F04", _objCom01.M01F04);
-                        objMySqlCommand.Parameters.AddWithValue("@M01F01", _objCom01.M01F01);
-
-                        bool isCommentUpdated = objMySqlCommand.ExecuteNonQuery() > 0;
-
-                        if (!isCommentUpdated)
-                        {
-                            objResponse.IsError = true;
-                            objResponse.Message = "something went wrong while updating the comment";
-                        }
-                        else
-                        {
-                            objResponse.Message = "comment is updated successfully";
-                        }
+                        objResponse.IsError = true;
+                        objResponse.Message = "something went wrong while updating the comment";
+                    }
+                    else
+                    {
+                        objResponse.Message = "comment is updated successfully";
                     }
                 }
                 return objResponse;
@@ -243,12 +235,12 @@ namespace SocialMediaAPI.BL
         /// <param name="httpContext">current context for getting the user id</param>
         /// <param name="objValidation">object of the validation</param>
         /// <returns>response model</returns>
-        public Response ValidationOnDelete(int commentId, HttpContext httpContext)
+        public Response ValidationOnDelete(int commentId)
         {
             objResponse = new Response();
             if (OperationType == enmOperationType.D)
             {
-                bool isCommentExist = _objValidation.IsExist<Com01>(commentId,x=>x.M01F01);
+                bool isCommentExist = _objValidation.IsExist<Com01>(commentId, x => x.M01F01);
                 if (!isCommentExist)
                 {
                     objResponse.IsError = true;
@@ -256,7 +248,7 @@ namespace SocialMediaAPI.BL
                 }
                 else
                 {
-                    int userId = Convert.ToInt32(httpContext.User.FindFirst("id")?.Value);
+                    int userId = Convert.ToInt32(HttpContext.User.FindFirst("id")?.Value);
                     int userIdFromComment = GetUserId(commentId);
 
                     if (userIdFromComment != userId)
@@ -297,7 +289,7 @@ namespace SocialMediaAPI.BL
                         {
                             objResponse.Message = "comment is successfully deleted";
                         }
-                    } 
+                    }
                 }
                 return objResponse;
             }
@@ -319,35 +311,11 @@ namespace SocialMediaAPI.BL
         public async Task<Response> GetAllCommentsOnPost(int id)
         {
             objResponse = new Response();
-            await using (MySqlConnection objMySqlConnection = new MySqlConnection(_connectionString))
-            {
-                objMySqlConnection.Open();
-                string query = @"SELECT 
-                                    E01F02,
-                                    M01F04,
-                                    M01F05 
-                                FROM 
-                                    Com01 
-                                JOIN 
-                                    Use01 
-                                ON 
-                                    Com01.M01F03 = Use01.E01F01 
-                                WHERE 
-                                    M01F02 = @M01F02";
-
-                MySqlCommand objMySqlCommand = new MySqlCommand(query, objMySqlConnection);
-                objMySqlCommand.Parameters.AddWithValue("@M01F02", id);
-
-                MySqlDataReader objMySqlDataReader = objMySqlCommand.ExecuteReader();
-
-                DataTable dtAllCommentsOnPost = new DataTable();
-                dtAllCommentsOnPost.Load(objMySqlDataReader);
-
-                objResponse.Data = dtAllCommentsOnPost;
-                return objResponse;
-            }
+            DataTable dtAllCommentsOnPost = await _objIDBCom01.GetAllCommentsOnPost(id);
+            objResponse.Data = dtAllCommentsOnPost;
+            return objResponse;
         }
-        
+
         #endregion
     }
 }

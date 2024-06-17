@@ -14,7 +14,7 @@ namespace SocialMediaAPI.BL
     /// <summary>
     ///  Implements the IUserService interface and provides methods for managing users
     /// </summary>
-    public class BLUse01 : IUserService
+    public class BLUse01 : IUse01Service
     {
         #region Private Member
         /// <summary>
@@ -37,12 +37,19 @@ namespace SocialMediaAPI.BL
         /// </summary>
         private readonly IConfiguration _configuration;
 
-        private readonly IDBUse01 _dbUse01;
+        private readonly IDBUse01 _objIDBUse01;
 
         /// <summary>
         /// create the object of the user model
         /// </summary>
         private Use01 _objUse01;
+        #endregion
+
+        #region Private Property
+        /// <summary>
+        /// set the current Http Context to get the user id
+        /// </summary>
+        private HttpContext HttpContext { get; set; }
         #endregion
 
         #region Public Properties
@@ -62,7 +69,7 @@ namespace SocialMediaAPI.BL
         #endregion
 
         #region Constructor
-        public BLUse01(IConfiguration configuration, IDBUse01 dbUse01)
+        public BLUse01(IConfiguration configuration, IDBUse01 dbUse01, IHttpContextAccessor httpContextAccessor)
         {
             // Injects IConfiguration for accessing application settings
             _configuration = configuration;
@@ -71,7 +78,8 @@ namespace SocialMediaAPI.BL
             _connectionString = _configuration.GetConnectionString("Default");
 
             _dbFactory = new OrmLiteConnectionFactory(_connectionString, MySqlDialect.Provider);
-            _dbUse01 = dbUse01;
+            _objIDBUse01 = dbUse01;
+            HttpContext = httpContextAccessor.HttpContext;
         }
 
         ///// <summary>
@@ -259,7 +267,7 @@ namespace SocialMediaAPI.BL
             objResponse = new Response();
             try
             {
-                DataTable dtGetUsers = await _dbUse01.GetUsers();
+                DataTable dtGetUsers = await _objIDBUse01.GetUsers();
                 objResponse.Data = dtGetUsers;
                 return objResponse;
             }
@@ -274,14 +282,13 @@ namespace SocialMediaAPI.BL
         /// <summary>
         /// Retrieves user details based on the user ID from the HTTP context.
         /// </summary>
-        /// <param name="httpContext">The HttpContext containing user information.</param>
         /// <returns>response model containing user details.</returns>
-        public async Task<Response> GetUserDetails(HttpContext httpContext)
+        public Response GetUserDetails()
         {
             objResponse = new Response();
 
-            int id = Convert.ToInt32(httpContext.User.FindFirst("Id")?.Value);
-            DataTable dtGetUserDetail = await _dbUse01.GetUserDetails(id);
+            int id = Convert.ToInt32(HttpContext.User.FindFirst("Id")?.Value);
+            DataTable dtGetUserDetail =  _objIDBUse01.GetUserDetails(id);
             objResponse.Data = dtGetUserDetail;
             return objResponse;
         }
@@ -289,13 +296,12 @@ namespace SocialMediaAPI.BL
         /// <summary>
         /// Retrieves a list of usernames followed by the current user.
         /// </summary>
-        /// <param name="httpContext">The HttpContext containing user information.</param>
         /// <returns>response model</returns>
-        public async Task<Response> GetFollowing(HttpContext httpContext)
+        public  Response GetFollowing()
         {
             objResponse = new Response();
-            int id = Convert.ToInt32(httpContext.User.FindFirst("Id")?.Value);
-            DataTable dtFollowingDetails = await _dbUse01.GetFollowing(id);
+            int id = Convert.ToInt32(HttpContext.User.FindFirst("Id")?.Value);
+            DataTable dtFollowingDetails =  _objIDBUse01.GetFollowing(id);
             objResponse.Data = dtFollowingDetails;
             return objResponse;
         }

@@ -1,8 +1,5 @@
 ﻿using Check_Id_Exist;
-using Microsoft.AspNetCore.Mvc;
-using MySql.Data.MySqlClient;
 using NLog;
-using ServiceStack;
 using ServiceStack.Data;
 using ServiceStack.OrmLite;
 using SocialMediaAPI.Enums;
@@ -15,7 +12,7 @@ using System.Data;
 
 namespace SocialMediaAPI.BL
 {
-    public class BLPos01 : IPostService
+    public class BLPos01 : IPos01Service
     {
         #region Private Member
 
@@ -39,12 +36,20 @@ namespace SocialMediaAPI.BL
         private readonly IConfiguration _configuration;
 
         private readonly Validation _objValidation;
+        private readonly IDBPos01 _objIDBPos01;
 
         /// <summary>
         /// create the object of the post model
         /// </summary>
         private Pos01 _objPos01;
 
+        #endregion
+
+        #region Private Property
+        /// <summary>
+        /// set the current Http Context to get the user id
+        /// </summary>
+        private HttpContext HttpContext { get; set; }
         #endregion
 
         #region Public Properites
@@ -62,45 +67,18 @@ namespace SocialMediaAPI.BL
         #endregion
 
         #region Constructor
-        public BLPos01(IConfiguration configuration, Validation objValidation)
+        public BLPos01(IConfiguration configuration, Validation objValidation, IDBPos01 objIDBPos01, IHttpContextAccessor httpContextAccessor)
         {
             _configuration = configuration;
             _connectionString = configuration.GetConnectionString("Default");
             _dbFactory = new OrmLiteConnectionFactory(_connectionString, MySqlDialect.Provider);
             _objValidation = objValidation;
+            _objIDBPos01 = objIDBPos01;
+            HttpContext = httpContextAccessor.HttpContext;
         }
         #endregion
 
         #region Private Method
-        private (int,string) GetUserIdAndImgOfPost(int postId)
-        {
-            using (MySqlConnection objMySqlConnection = new MySqlConnection(_connectionString))
-            {
-                objMySqlConnection.Open();
-
-                string query = @"SELECT 
-                                    S01F02,
-                                    S01F03
-                                FROM 
-                                    Pos01 
-                                WHERE 
-                                    S01F01 = @S01F01";
-                MySqlCommand objMySqlCommand = new MySqlCommand(query, objMySqlConnection);
-                objMySqlCommand.Parameters.AddWithValue("@S01F01", postId);
-
-                MySqlDataReader objMySqlDataReader = objMySqlCommand.ExecuteReader();
-
-                if (objMySqlDataReader.HasRows)
-                {
-                    objMySqlDataReader.Read();
-                    int userId = objMySqlDataReader.GetInt32("S01F02");
-                    string imgUrl = objMySqlDataReader.GetString("S01F03");
-                    
-                    return (userId, imgUrl);
-                }
-                return (0,"");
-            }
-        }
         /// <summary>
         /// Uploads an image to the configured folder path and returns the image URL.
         /// Creates the folder if it doesn't exist.
@@ -157,44 +135,43 @@ namespace SocialMediaAPI.BL
                 return false;
             }
         }
-        
+
         /// <summary>
         /// Gets a post by its ID from the database.
         /// </summary>
         /// <param name="postId">The ID of the post to retrieve.</param>
         /// <returns>The post object if found, null otherwise.</returns>
-        private Pos01 GetPostById(int postId,int userId)
+        private Pos01 GetPostById(int postId, int userId)
         {
             using (IDbConnection db = _dbFactory.OpenDbConnection())
             {
-                return db.Single<Pos01>(x=>x.S01F01 == postId && x.S01F02 == userId);
+                return db.Single<Pos01>(x => x.S01F01 == postId && x.S01F02 == userId);
             }
         }
 
         #endregion
 
         #region Public Method
-       
+
         /// <summary>
         /// PreSave the DTOs object to the POCOs and pre validations
         /// </summary>
         /// <param name="objDtoPos01">object of the post</param>
-        /// <param name="httpContext">The HTTP context used to get the current user ID.</param>
         /// <param name="postId">post id</param>
-        public async Task PreSave(DtoPos01 objDtoPos01, HttpContext httpContext, int postId = 0)
+        public async Task PreSave(DtoPos01 objDtoPos01,  int postId = 0)
         {
             _objPos01 = new Pos01();
-            int userId = Convert.ToInt32(httpContext.User.FindFirst("Id")?.Value);
-            
+            int userId = Convert.ToInt32(HttpContext.User.FindFirst("Id")?.Value);
+
             if (OperationType == enmOperationType.E)
             {
                 //_objPos01.S01F01 = postId;
 
                 //need to update the entire the object of the post
-                Pos01 post = GetPostById(postId,userId);
+                Pos01 post = GetPostById(postId, userId);
 
                 // if post is available 
-                if(post != null)
+                if (post != null)
                 {
                     _objPos01 = post;
                     _objPos01.S01F06 = DateTime.Now;
@@ -228,7 +205,7 @@ namespace SocialMediaAPI.BL
         public Response ValidationOnSave()
         {
             objResponse = new Response();
-            
+
             try
             {
                 if (OperationType == enmOperationType.E)
@@ -245,7 +222,7 @@ namespace SocialMediaAPI.BL
                 }
 
                 //validation for user id
-                bool isUserExist = _objValidation.IsExist<Use01>(_objPos01.S01F02,x => x.E01F01);
+                bool isUserExist = _objValidation.IsExist<Use01>(_objPos01.S01F02, x => x.E01F01);
                 if (!isUserExist)
                 {
                     objResponse.IsError = true;
@@ -267,9 +244,8 @@ namespace SocialMediaAPI.BL
         /// Validation before deleting post into database
         /// </summary>
         /// <param name="postId">post id</param>
-        /// <param name="httpContext">The HTTP context used to get the current user ID.</param>
         /// <returns>response model</returns>
-        public Response ValidationOnDelete(int postId, HttpContext httpContext)
+        public Response ValidationOnDelete(int postId)
         {
             objResponse = new Response();
 
@@ -277,7 +253,7 @@ namespace SocialMediaAPI.BL
             {
                 if (OperationType == enmOperationType.D)
                 {
-                    int userId = Convert.ToInt32(httpContext.User.FindFirst("Id")?.Value);
+                    int userId = Convert.ToInt32(HttpContext.User.FindFirst("Id")?.Value);
 
                     bool isUserExist = _objValidation.IsExist<Use01>(userId, x => x.E01F01);
                     if (!isUserExist)
@@ -287,7 +263,7 @@ namespace SocialMediaAPI.BL
 
                         return objResponse;
                     }
-                    bool isPostExist = _objValidation.IsExist<Pos01>(postId,x=>x.S01F01);
+                    bool isPostExist = _objValidation.IsExist<Pos01>(postId, x => x.S01F01);
                     if (!isPostExist)
                     {
                         objResponse.IsError = true;
@@ -296,7 +272,7 @@ namespace SocialMediaAPI.BL
                     else
                     {
                         // validate the userId form post -- need to same 
-                        (int userIdFromPost, string imgUrl) = GetUserIdAndImgOfPost(postId);
+                        (int userIdFromPost, string imgUrl) = _objIDBPos01.GetUserIdAndImgOfPost(postId);
 
 
                         if (userIdFromPost != userId)
@@ -322,7 +298,7 @@ namespace SocialMediaAPI.BL
                 return objResponse;
             }
         }
-        
+
         /// <summary>
         /// Add or Update the post into database
         /// </summary>
@@ -335,35 +311,37 @@ namespace SocialMediaAPI.BL
             {
                 if (OperationType == enmOperationType.A)
                 {
+                    bool isPostAdded = false;
                     using (IDbConnection db = _dbFactory.OpenDbConnection())
                     {
-                        bool isPostAdded = db.Insert(_objPos01) > 0;
-                        if (!isPostAdded)
-                        {
-                            objResponse.IsError = true;
-                            objResponse.Message = "something went wrong for adding post";
-                        }
-                        else
-                        {
-                            objResponse.Message = "Post is added successfully";
-                        }
+                        isPostAdded = db.Insert(_objPos01) > 0;
+                    }
+                    if (!isPostAdded)
+                    {
+                        objResponse.IsError = true;
+                        objResponse.Message = "something went wrong for adding post";
+                    }
+                    else
+                    {
+                        objResponse.Message = "Post is added successfully";
                     }
                 }
 
                 if (OperationType == enmOperationType.E)
                 {
+                    bool isPostUpdated = false;
                     using (IDbConnection db = _dbFactory.OpenDbConnection())
                     {
-                        bool isPostUpdated = db.Update(_objPos01) > 0;
-                        if (!isPostUpdated)
-                        {
-                            objResponse.IsError = true;
-                            objResponse.Message = "something went wrong for updating post";
-                        }
-                        else
-                        {
-                            objResponse.Message = "Post is updated successfully";
-                        }
+                        isPostUpdated = db.Update(_objPos01) > 0;
+                    }
+                    if (!isPostUpdated)
+                    {
+                        objResponse.IsError = true;
+                        objResponse.Message = "something went wrong for updating post";
+                    }
+                    else
+                    {
+                        objResponse.Message = "Post is updated successfully";
                     }
                 }
                 return objResponse;
@@ -387,31 +365,9 @@ namespace SocialMediaAPI.BL
 
             try
             {
-                await using (MySqlConnection objMySqlConnection = new MySqlConnection(_connectionString))
-                {
-                    objMySqlConnection.Open();
-                    string query = @"SELECT 
-                                    S01F01 AS S01101, 
-                                    E01F02 AS E01102, 
-                                    S01F03 AS S01103, 
-                                    S01F04 AS S01104, 
-                                    S01F06 AS S01106 
-                                FROM
-                                    Pos01 
-                                JOIN 
-                                    Use01 
-                                ON 
-                                    Pos01.S01F02 = Use01.E01F01";
-                    MySqlCommand objMySqlCommand = new MySqlCommand(query, objMySqlConnection);
-
-                    MySqlDataReader objMySqlDataReader = objMySqlCommand.ExecuteReader();
-
-                    DataTable dtAllPost = new DataTable();
-                    dtAllPost.Load(objMySqlDataReader);
-
-                    objResponse.Data = dtAllPost;
-                    return objResponse;
-                }
+                DataTable dtAllPost = await _objIDBPos01.GetPosts();
+                objResponse.Data = dtAllPost;
+                return objResponse;
             }
             catch (Exception ex)
             {
@@ -425,38 +381,17 @@ namespace SocialMediaAPI.BL
         /// <summary>
         /// Retrieves a list of posts created by the current user.
         /// </summary>
-        /// <param name="httpContext">The HTTP context used to get the current user ID.</param>
         /// <returns>Response model</returns>
-        public async Task<Response> GetPostByMe(HttpContext httpContext)
+        public async Task<Response> GetPostByMe()
         {
             objResponse = new Response();
 
             try
             {
-                int id = Convert.ToInt32(httpContext.User.FindFirst("Id")?.Value);
-                await using (MySqlConnection objMySqlConnection = new MySqlConnection(_connectionString))
-                {
-                    objMySqlConnection.Open();
-
-                    string query = @"SELECT 
-                                    S01F03, 
-                                    S01F04, 
-                                    S01F05 
-                                FROM 
-                                    Pos01 
-                                WHERE 
-                                    S01F02 = @S01F02";
-                    MySqlCommand objMySqlCommand = new MySqlCommand(query, objMySqlConnection);
-                    objMySqlCommand.Parameters.AddWithValue("@S01F02", id);
-
-                    MySqlDataReader objMySqlDataReader = objMySqlCommand.ExecuteReader();
-                    DataTable dtGetPostByUser = new DataTable();
-
-                    dtGetPostByUser.Load(objMySqlDataReader);
-                    objResponse.Data = dtGetPostByUser;
-
-                    return objResponse;
-                }
+                int id = Convert.ToInt32(HttpContext.User.FindFirst("Id")?.Value);
+                DataTable dtGetPostByUser = await _objIDBPos01.GetPostByMe(id);
+                objResponse.Data = dtGetPostByUser;
+                return objResponse;
             }
             catch (Exception ex)
             {
@@ -471,7 +406,6 @@ namespace SocialMediaAPI.BL
         /// delete a post from the database.
         /// </summary>
         /// <param name="id">The ID of the post to delete.</param>
-        /// <param name="httpContext">The HTTP context used to get the current user ID.</param>
         /// <returns>response model</returns>
         public Response Delete()
         {
@@ -505,7 +439,7 @@ namespace SocialMediaAPI.BL
                 objResponse.Message = ex.Message;
                 return objResponse;
             }
-            
+
         }
 
         #endregion

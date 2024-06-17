@@ -20,9 +20,9 @@ namespace SocialMediaAPI.Controllers
         /// <summary>
         /// The injected IPostService dependency for interacting with post logic.
         /// </summary>
-        private readonly IPostService _postService;
+        private readonly IPos01Service _postService;
 
-        
+
         #endregion
 
 
@@ -41,7 +41,7 @@ namespace SocialMediaAPI.Controllers
         /// Constructor for CLPostsController that injects the IPostService dependency.
         /// </summary>
         /// <param name="postService">The IPostService instance to use.</param>
-        public CLPos01Controller(IPostService postService)
+        public CLPos01Controller(IPos01Service postService)
         {
             _postService = postService;
             objResponse = new Response();
@@ -62,7 +62,7 @@ namespace SocialMediaAPI.Controllers
         public async Task<IActionResult> AddPost([FromForm] DtoPos01 objDtoPos01)
         {
             _postService.OperationType = enmOperationType.A;
-            await _postService.PreSave(objDtoPos01, HttpContext);
+            await _postService.PreSave(objDtoPos01);
             objResponse = _postService.ValidationOnSave();
 
             if (!objResponse.IsError)
@@ -92,7 +92,7 @@ namespace SocialMediaAPI.Controllers
         [Authorize]
         public async Task<IActionResult> GetPostByMe()
         {
-            objResponse = await _postService.GetPostByMe(HttpContext);
+            objResponse = await _postService.GetPostByMe();
             return Ok(objResponse);
         }
 
@@ -107,7 +107,7 @@ namespace SocialMediaAPI.Controllers
         public async Task<IActionResult> UpdatePost(int id, [FromForm] DtoPos01 objDtoPos01)
         {
             _postService.OperationType = enmOperationType.E;
-            await _postService.PreSave(objDtoPos01, HttpContext,id);
+            await _postService.PreSave(objDtoPos01, id);
             objResponse = _postService.ValidationOnSave();
 
             if (!objResponse.IsError)
@@ -127,7 +127,7 @@ namespace SocialMediaAPI.Controllers
         public IActionResult DeletePost(int id)
         {
             _postService.OperationType = enmOperationType.D;
-            objResponse = _postService.ValidationOnDelete(id,HttpContext);
+            objResponse = _postService.ValidationOnDelete(id);
 
             if (!objResponse.IsError)
             {

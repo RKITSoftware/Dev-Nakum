@@ -6,6 +6,9 @@ using System.Data;
 
 namespace SocialMediaAPI.DB
 {
+   /// <summary>
+   /// Database related user's query
+   /// </summary>
     public class DBUse01: DBHelper, IDBUse01
     {
         #region Publlic Member
@@ -51,9 +54,9 @@ namespace SocialMediaAPI.DB
         /// <summary>
         /// Retrieves user details based on the user ID from the HTTP context.
         /// </summary>
-        /// <param name="httpContext">The HttpContext containing user information.</param>
-        /// <returns>response model containing user details.</returns>
-        public async Task<DataTable> GetUserDetails(int id)
+        /// <param name="id">user id</param>
+        /// <returns>response DataTable containing user details.</returns>
+        public DataTable GetUserDetails(int id)
         {
             using (MySqlConnection objMySqlConnection = new MySqlConnection(_connectionString))
             {
@@ -66,19 +69,26 @@ namespace SocialMediaAPI.DB
                                 FROM 
                                     Use01 
                                 WHERE 
-                                    E01F01 = {0}",id);
-                return ExecuteQuery(objMySqlConnection, query);
+                                    E01F01 = @E01F01");
+
+                MySqlCommand objMySqlCommand = new MySqlCommand(query, objMySqlConnection);
+                objMySqlCommand.Parameters.AddWithValue("@E01F01", id);
+
+                MySqlDataAdapter objMySqlDataAdapter = new MySqlDataAdapter(objMySqlCommand);
+
+                DataTable dtResponse = new DataTable();
+                objMySqlDataAdapter.Fill(dtResponse);
+
+                return dtResponse;
             }
         }
-
-
 
         /// <summary>
         /// Retrieves a list of usernames followed by the current user.
         /// </summary>
-        /// <param name="httpContext">The HttpContext containing user information.</param>
-        /// <returns>response model</returns>
-        public async Task<DataTable> GetFollowing(int id)
+        /// <param name="id">user id</param>
+        /// <returns>response DataTable containing user details.</returns>
+        public DataTable GetFollowing(int id)
         {
             using (MySqlConnection objMySqlConnection = new MySqlConnection(_connectionString))
             {
@@ -92,9 +102,17 @@ namespace SocialMediaAPI.DB
                                 ON 
                                     L01.L01F03 = E01.E01F01
                                 WHERE
-                                    L01.L01F02 = {0}",id);
+                                    L01.L01F02 = @L01F02");
 
-               return ExecuteQuery(objMySqlConnection,query);
+                MySqlCommand objMySqlCommand = new MySqlCommand(query, objMySqlConnection);
+                objMySqlCommand.Parameters.AddWithValue("@L01F02", id);
+
+                MySqlDataAdapter objMySqlDataAdapter = new MySqlDataAdapter(objMySqlCommand);
+
+                DataTable dtResponse = new DataTable();
+                objMySqlDataAdapter.Fill(dtResponse);
+
+                return dtResponse;
             }
         }
         #endregion

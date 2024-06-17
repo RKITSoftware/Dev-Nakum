@@ -20,7 +20,7 @@ namespace SocialMediaAPI.Controllers
         /// <summary>
         /// The injected ICommentService dependency for interacting with comment logic.
         /// </summary>
-        private readonly ICommentService _commentService;
+        private readonly ICom01Service _commentService;
 
         #endregion
 
@@ -37,7 +37,7 @@ namespace SocialMediaAPI.Controllers
         /// Constructor for CLCommentsController that injects the ICommentService dependency.
         /// </summary>
         /// <param name="commentService">The ICommentService instance to use.</param>
-        public CLCom01Controller(ICommentService commentService)
+        public CLCom01Controller(ICom01Service commentService)
         {
             _commentService = commentService;
         }
@@ -56,7 +56,7 @@ namespace SocialMediaAPI.Controllers
         {
             objResponse = new Response();
             _commentService.OperationType = Enums.enmOperationType.A;
-            _commentService.PreSave(objDtoCom01, HttpContext);
+            _commentService.PreSave(objDtoCom01);
             objResponse = _commentService.ValidationOnSave();
 
             if (!objResponse.IsError)
@@ -78,7 +78,7 @@ namespace SocialMediaAPI.Controllers
         {
             objResponse = new Response();
             _commentService.OperationType = Enums.enmOperationType.E;
-            _commentService.PreSave(objDtoCom01, HttpContext,id);
+            _commentService.PreSave(objDtoCom01,id);
             objResponse = _commentService.ValidationOnSave();
 
             if (!objResponse.IsError)
@@ -99,7 +99,7 @@ namespace SocialMediaAPI.Controllers
         {
             objResponse = new Response();
             _commentService.OperationType = Enums.enmOperationType.D;
-            objResponse = _commentService.ValidationOnDelete(id,HttpContext);
+            objResponse = _commentService.ValidationOnDelete(id);
 
             if (!objResponse.IsError)
             {

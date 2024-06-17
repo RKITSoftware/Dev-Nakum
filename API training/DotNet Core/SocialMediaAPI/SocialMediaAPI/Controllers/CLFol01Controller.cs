@@ -20,7 +20,7 @@ namespace SocialMediaAPI.Controllers
         /// <summary>
         /// The injected IFollowersService dependency for interacting with follower logic.
         /// </summary>
-        private readonly IFollowersService _followersService;
+        private readonly IFol01Service _followersService;
         #endregion
 
         #region Public Member
@@ -36,7 +36,7 @@ namespace SocialMediaAPI.Controllers
         /// Constructor for CLFollowersController that injects the IFollowersService dependency.
         /// </summary>
         /// <param name="followersService">The IFollowersService instance to use.</param>
-        public CLFol01Controller(IFollowersService followersService)
+        public CLFol01Controller(IFol01Service followersService)
         {
             _followersService = followersService;
         }
@@ -54,7 +54,7 @@ namespace SocialMediaAPI.Controllers
         {
             objResponse = new Response();
             _followersService.OperationType = enmOperationType.A;
-            _followersService.PreSave(objDtoFol01,HttpContext);
+            _followersService.PreSave(objDtoFol01);
             objResponse = _followersService.ValidationOnSave();
             if (!objResponse.IsError)
             {
@@ -75,7 +75,7 @@ namespace SocialMediaAPI.Controllers
         {
             objResponse = new Response();
             _followersService.OperationType = enmOperationType.D;
-            objResponse = _followersService.ValidationOnDelete(objDtoFol01, HttpContext);
+            objResponse = _followersService.ValidationOnDelete(objDtoFol01);
             if (!objResponse.IsError)
             {
                 objResponse = _followersService.Remove();

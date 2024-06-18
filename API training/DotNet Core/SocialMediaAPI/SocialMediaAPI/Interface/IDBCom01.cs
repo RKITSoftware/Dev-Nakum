@@ -2,7 +2,7 @@
 
 namespace SocialMediaAPI.Interface
 {
-    public interface IDBCom01
+    public interface IDBCOM01
     {
         /// <summary>
         /// update comment content
@@ -17,6 +17,6 @@ namespace SocialMediaAPI.Interface
         /// </summary>
         /// <param name="id">The ID of the post to get comments for.</param>
         /// <returns>response DataTable</returns>
-        public Task<DataTable> GetAllCommentsOnPost(int id);
+        public DataTable GetAllCommentsOnPost(int id);
     }
 }

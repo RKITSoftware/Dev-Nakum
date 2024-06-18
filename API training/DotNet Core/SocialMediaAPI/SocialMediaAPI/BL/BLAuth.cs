@@ -26,12 +26,12 @@ namespace SocialMediaAPI.BL
         /// <summary>
         /// Generates a JWT token based on user information.
         /// </summary>
-        /// <param name="id">User ID.</param>
-        /// <param name="name">User name.</param>
-        /// <param name="email">User email.</param>
-        /// <param name="role">User role.</param>
+        /// <param name="E01F01">User ID.</param>
+        /// <param name="E01F02">User name.</param>
+        /// <param name="E01F03">User email.</param>
+        /// <param name="E01F07">User role.</param>
         /// <returns>Generated JWT token.</returns>
-        public string GenerateJWT(int id, string name, string email, string role)
+        public string GenerateJWT(int E01F01, string E01F02, string E01F03, string E01F07)
         {
             // Key converted into UTF8 format
             SymmetricSecurityKey objSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
@@ -42,10 +42,10 @@ namespace SocialMediaAPI.BL
             // Create claims
             List<Claim> lstClaims = new List<Claim>
             {
-                new Claim("Id",id.ToString()),
-                new Claim(ClaimTypes.Name, name),
-                new Claim(ClaimTypes.Email, email),
-                new Claim(ClaimTypes.Role, role),
+                new Claim("Id",E01F01.ToString()),
+                new Claim(ClaimTypes.Name, E01F02),
+                new Claim(ClaimTypes.Email, E01F03),
+                new Claim(ClaimTypes.Role, E01F07),
             };  
 
             // Create token

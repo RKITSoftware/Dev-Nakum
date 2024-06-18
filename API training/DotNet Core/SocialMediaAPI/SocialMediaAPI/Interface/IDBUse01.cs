@@ -3,16 +3,15 @@
 namespace SocialMediaAPI.Interface
 {
     /// <summary>
-    /// define method of DBUse01
+    /// define method of DBUSE01
     /// </summary>
-    public interface IDBUse01
-    {
+    public interface IDBUSE01    {
         #region Public Method
         /// <summary>
         /// Retrieves a list of all users from the database.
         /// </summary>
         /// <returns>response model</returns>
-        public Task<DataTable> GetUsers();
+        public DataTable GetUsers();
        
         /// <summary>
         /// Retrieves user details based on the user ID from the HTTP context.

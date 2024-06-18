@@ -23,21 +23,14 @@ namespace SocialMediaAPI.Extension
             services.AddTransient<Validation>();
 
 
-            // Adds singleton service for user management.
-            services.AddTransient<IUse01Service, BLUse01>();
+            services.AddTransient<IUSE01Service, BLUSE01>();
+            services.AddTransient<IPOS01Service, BLPOS01>();
+            services.AddTransient<ICOM01Service, BLCOM01>();
+            services.AddTransient<IFOL01Service, BLFOL01>();
 
-            // Adds transient services for post-related functionalities.
-            services.AddTransient<IPos01Service, BLPos01>();
-
-            // Adds transient services for comment-related functionalities.
-            services.AddTransient<ICom01Service, BLCom01>();
-
-            // Adds scoped services for managing followers.
-            services.AddScoped<IFol01Service, BLFol01>();
-
-            services.AddTransient<IDBUse01,DBUse01>();
-            services.AddTransient<IDBPos01,DBPos01>();
-            services.AddTransient<IDBCom01,DBCom01>();
+            services.AddTransient<IDBUSE01,DBUSE01>();
+            services.AddTransient<IDBPOS01,DBPOS01>();
+            services.AddTransient<IDBCOM01,DBCOM01>();
 
         }
 

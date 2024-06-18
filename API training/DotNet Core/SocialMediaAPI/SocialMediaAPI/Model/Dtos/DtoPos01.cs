@@ -2,7 +2,7 @@
 
 namespace SocialMediaAPI.Model.Dtos
 {
-    public class DtoPos01
+    public class DTOPOS01
     {
         /// <summary>
         /// Post img

@@ -3,9 +3,9 @@
 namespace SocialMediaAPI.Interface
 {
     /// <summary>
-    /// define method of DBPos01
+    /// define method of DBPOS01
     /// </summary>
-    public interface IDBPos01
+    public interface IDBPOS01
     {
         /// <summary>
         /// get the user id and image of post
@@ -18,7 +18,7 @@ namespace SocialMediaAPI.Interface
         /// Retrieves a list of all posts from the database.
         /// </summary>
         /// <returns>response DataTable</returns>
-        public Task<DataTable> GetPosts();
+        public DataTable GetPosts();
 
 
         /// <summary>
@@ -26,6 +26,6 @@ namespace SocialMediaAPI.Interface
         /// </summary>
         /// <param name="id">user id</param>
         /// <returns>response datatable</returns>
-        public Task<DataTable> GetPostByMe(int id);
+        public DataTable GetPostByMe(int id);
     }
 }

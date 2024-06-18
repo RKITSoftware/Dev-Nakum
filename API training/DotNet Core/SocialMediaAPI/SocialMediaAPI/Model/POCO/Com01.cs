@@ -5,7 +5,7 @@ namespace SocialMediaAPI.Model.POCO
     /// <summary>
     /// manage the schema of comments
     /// </summary>
-    public class Com01
+    public class COM01
     {
         /// <summary>
         /// Comment's id
@@ -27,7 +27,7 @@ namespace SocialMediaAPI.Model.POCO
         /// <summary>
         /// Comment's content
         /// </summary>
-        public string M01F04 { get; set; }
+        public string M01F04 { get; set; } = string.Empty;
 
         /// <summary>
         /// created at

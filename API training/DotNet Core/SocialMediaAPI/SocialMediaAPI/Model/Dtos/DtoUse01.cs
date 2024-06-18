@@ -1,30 +1,32 @@
 ﻿using Newtonsoft.Json;
-using ServiceStack.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace SocialMediaAPI.Model.Dtos
 {
-    public class DtoUse01
+    public class DTOUSE01
     {
         /// <summary>
         /// User's username
         /// </summary>
 
         [JsonProperty("E01102")]
-        [Unique]
+        [Required(ErrorMessage = "Username is required")]
         public string E01F02 { get; set; }
 
         /// <summary>
         /// User's Email
         /// </summary>
 
-        //[EmailAddress(ErrorMessage = "Invalid Email Address")]
         [JsonProperty("E01103")]
+        [EmailAddress ( ErrorMessage = "Invalid Email address")]
+        [Required ( ErrorMessage = "Email is required")]
         public string E01F03 { get; set; }
 
         /// <summary>
         /// User's Password
         /// </summary>
         [JsonProperty("E01104")]
+        [Required ( ErrorMessage = "Password is required")]
         public string E01F04 { get; set; }
 
         /// <summary>

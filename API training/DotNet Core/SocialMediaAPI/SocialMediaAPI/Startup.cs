@@ -1,6 +1,6 @@
 ﻿using SocialMediaAPI.Extension;
+using SocialMediaAPI.Filters;
 using SocialMediaAPI.Middleware;
-using SocialMediaAPI.Other;
 
 namespace SocialMediaAPI
 {
@@ -26,13 +26,10 @@ namespace SocialMediaAPI
         /// <param name="services">The collection of services to be registered.</param>
         public void ConfigureServices(IServiceCollection services)
         {
-            // Register core ASP.NET Core services
-            services.AddControllers().AddJsonOptions(options =>
+            services.AddControllers(options =>
             {
-                options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
-                options.JsonSerializerOptions.Converters.Add(new DataTableJsonConverter());
-            }); 
-
+                options.Filters.Add<CustomExceptionFilter>();
+            }).AddNewtonsoftJson();
             services.AddEndpointsApiExplorer();
 
             // Swagger configuration (details likely in omitted code)
@@ -48,6 +45,7 @@ namespace SocialMediaAPI
             services.AddInterfaceServices();
 
             services.AddHttpContextAccessor();
+            services.AddSwaggerGenNewtonsoftSupport();
         }
 
         /// <summary>

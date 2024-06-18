@@ -22,8 +22,8 @@ namespace SocialMediaAPI.Filter
         /// <param name="context">The action execution context.</param>
         public void OnActionExecuting(ActionExecutingContext context)
         {
-            // Retrieve the post model from action arguments with expected name "objDtoPos01" 
-            var model = context.ActionArguments["objDtoPos01"] as DtoPos01;
+            // Retrieve the post model from action arguments with expected name "objDTOPOS01" 
+            var model = context.ActionArguments["objDTOPOS01"] as DTOPOS01;
 
             // Check if the model is null
             if (model == null)

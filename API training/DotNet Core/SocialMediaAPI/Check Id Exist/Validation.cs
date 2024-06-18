@@ -6,6 +6,9 @@ using System.Linq.Expressions;
 
 namespace Check_Id_Exist
 {
+    /// <summary>
+    /// manage the validation based on Id to check whether id is exist or not in given model
+    /// </summary>
     public class Validation
     {
         #region Private Member
@@ -36,23 +39,7 @@ namespace Check_Id_Exist
 
         #region Public Method
 
-        /// <summary>
-        /// To check whether id is exist or not in given model
-        /// </summary>
-        /// <typeparam name="T">model type</typeparam>
-        /// <param name="id">id</param>
-        /// <returns></returns>
-        //public bool IsExist2<T>(int id)
-        //{
-        //    using (IDbConnection db = _dbFactory.OpenDbConnection())
-        //    {
-        //        var check = db.SingleById<T>(id);
-        //        return check != null;
-        //    }
-        //}
-
-
-        /// <summary>
+        
         /// To check whether id is exist or not in given model
         /// </summary>
         /// <typeparam name="T">model type</typeparam>

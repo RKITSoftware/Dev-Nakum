@@ -14,7 +14,7 @@ namespace SocialMediaAPI.BL
     /// <summary>
     ///  Implements the IUserService interface and provides methods for managing users
     /// </summary>
-    public class BLUse01 : IUse01Service
+    public class BLUSE01 : IUSE01Service
     {
         #region Private Member
         /// <summary>
@@ -37,12 +37,15 @@ namespace SocialMediaAPI.BL
         /// </summary>
         private readonly IConfiguration _configuration;
 
-        private readonly IDBUse01 _objIDBUse01;
+        /// <summary>
+        /// Interface for database operations related to users.
+        /// </summary>
+        private readonly IDBUSE01 _objIDBUse01;
 
         /// <summary>
         /// create the object of the user model
         /// </summary>
-        private Use01 _objUse01;
+        private USE01 _objUSE01;
         #endregion
 
         #region Private Property
@@ -69,7 +72,11 @@ namespace SocialMediaAPI.BL
         #endregion
 
         #region Constructor
-        public BLUse01(IConfiguration configuration, IDBUse01 dbUse01, IHttpContextAccessor httpContextAccessor)
+
+        /// <summary>
+        /// Initializes a new instance of the BLUSE01 class with required dependencies.
+        /// </summary>
+        public BLUSE01(IConfiguration configuration, IDBUSE01 dbUse01, IHttpContextAccessor httpContextAccessor)
         {
             // Injects IConfiguration for accessing application settings
             _configuration = configuration;
@@ -82,20 +89,17 @@ namespace SocialMediaAPI.BL
             HttpContext = httpContextAccessor.HttpContext;
         }
 
-        ///// <summary>
-        ///// for initialize the operation from CL 
-        ///// </summary>
-        //public BLUsers() { }
         #endregion
 
 
         #region Private Method
+
         /// <summary>
         /// Uploads an image file to the configured uploads folder and returns the URL for the uploaded image.
         /// </summary>
         /// <param name="imageFile">The IFormFile object representing the image to upload.</param>
         /// <returns>The relative or absolute URL of the uploaded image.</returns>
-        private async Task<string> UploadImage(IFormFile imageFile, string username = "")
+        private string UploadImage(IFormFile imageFile, string username = "")
         {
             string uploadsFolder = Path.Combine(_configuration.GetValue<string>("Uploads:FolderPath"), "");
             if (!Directory.Exists(uploadsFolder))
@@ -106,7 +110,7 @@ namespace SocialMediaAPI.BL
             string name = "";
             if (username == null)
             {
-                name = _objUse01.E01F02;
+                name = _objUSE01.E01F02;
             }
             else
             {
@@ -115,9 +119,9 @@ namespace SocialMediaAPI.BL
             string uniqueFileName = name + Path.GetExtension(imageFile.FileName);
             string filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
-            await using (FileStream fileStream = new FileStream(filePath, FileMode.Create))
+            using (FileStream fileStream = new FileStream(filePath, FileMode.Create))
             {
-                await imageFile.CopyToAsync(fileStream);
+                imageFile.CopyToAsync(fileStream);
             }
 
             // Return the relative or absolute URL of the uploaded image
@@ -127,19 +131,20 @@ namespace SocialMediaAPI.BL
 
 
         #region Public Method
+
         /// <summary>
         /// Maps the provided DTO object containing user data (DtoUse01) to a Use01 model object.
         /// </summary>
-        /// <param name="objDtoUse01">The DTO object containing user data.</param>
-        public async Task PreSave(DtoUse01 objDtoUse01)
+        /// <param name="objDTOUSE01">The DTO object containing user data.</param>
+        public void PreSave(DTOUSE01 objDTOUSE01)
         {
             if (OperationType == enmOperationType.A)
             {
                 try
                 {
-                    _objUse01 = objDtoUse01.MapDtoToPoco<DtoUse01, Use01>(null);
-                    string imageUrl = await UploadImage(objDtoUse01.E01F05, objDtoUse01.E01F02);
-                    _objUse01.E01F05 = imageUrl;
+                    _objUSE01 = objDTOUSE01.MapDtoToPoco<DTOUSE01, USE01>(null);
+                    string imageUrl = UploadImage(objDTOUSE01.E01F05, objDTOUSE01.E01F02);
+                    _objUSE01.E01F05 = imageUrl;
                 }
                 catch (Exception ex)
                 {
@@ -151,50 +156,26 @@ namespace SocialMediaAPI.BL
         /// <summary>
         ///  validation for user signup.
         /// </summary>
-        /// <param name="objDtoUse01">The DTO object containing user data.</param>
         /// <returns>response model</returns>
         public Response ValidationOnSave()
         {
             objResponse = new Response();
-
-            try
-            {
-                //string imageUrl = await UploadImage(objDtoUse01.E01F05);
-                //_objUse01.E01F05 = imageUrl;
-
-                BLHashing objBLHashing = new BLHashing();
-                _objUse01.E01F04 = objBLHashing.HashPassword(_objUse01.E01F04);
-
-            }
-            catch (Exception ex)
-            {
-                _logger.Error($"exception :: password hash :: {ex.Message}");
-                objResponse.IsError = true;
-                objResponse.Message = ex.Message;
-            }
+            BLHashing objBLHashing = new BLHashing();
+            _objUSE01.E01F04 = objBLHashing.HashPassword(_objUSE01.E01F04);
             return objResponse;
         }
         /// <summary>
-        /// Inserts the user data from the temporary _objUse01 object into the database table Use01.
+        /// Inserts the user data from the temporary _objUSE01 object into the database table Use01.
         /// </summary>
         /// <returns>response model</returns>
         public Response Save()
         {
             objResponse = new Response();
 
-            try
+            using (IDbConnection db = _dbFactory.OpenDbConnection())
             {
-                using (IDbConnection db = _dbFactory.OpenDbConnection())
-                {
-                    db.Insert(_objUse01);
-                    objResponse.Message = "User is added successfully";
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.Error(ex.Message);
-                objResponse.IsError = true;
-                objResponse.Message = ex.Message;
+                db.Insert(_objUSE01);
+                objResponse.Message = "User is added successfully";
             }
             return objResponse;
         }
@@ -202,41 +183,31 @@ namespace SocialMediaAPI.BL
         /// <summary>
         /// Performs user login by validating username and password.
         /// </summary>
-        /// <param name="objDtoUse01">user object - contains the username and password</param>
+        /// <param name="objDTOUSE01">user object - contains the username and password</param>
         /// <returns>Response model</returns>
-        public Response Login(DtoUse01 objDtoUse01)
+        public Response Login(DTOUSE02 objDTOUSE02)
         {
             objResponse = new Response();
-            try
+            using (IDbConnection db = _dbFactory.OpenDbConnection())
             {
-                using (IDbConnection db = _dbFactory.OpenDbConnection())
+                BLHashing objBLHashing = new BLHashing();
+                USE01 user = db.Single<USE01>(u => u.E01F02 == objDTOUSE02.E02F02);
+
+                if (user != null)
                 {
-                    BLHashing objBLHashing = new BLHashing();
-                    Use01 user = db.Single<Use01>(u => u.E01F02 == objDtoUse01.E01F02);
+                    bool isValidated = objBLHashing.Verify(objDTOUSE02.E02F04, user.E01F04);
 
-                    if (user != null)
+                    if (isValidated)
                     {
-                        bool isValidated = objBLHashing.Verify(objDtoUse01.E01F04, user.E01F04);
+                        // add jwt and claims
+                        BLAuth objBLAuth = new BLAuth(_configuration);
+                        string jwt = objBLAuth.GenerateJWT(user.E01F01, user.E01F02, user.E01F03, user.E01F07);
 
-                        if (isValidated)
+                        objResponse.Data = new
                         {
-                            // add jwt and claims
-                            BLAuth objBLAuth = new BLAuth(_configuration);
-                            string jwt = objBLAuth.GenerateJWT(user.E01F01, user.E01F02, user.E01F03, user.E01F07);
-
-                            objResponse.Data = new
-                            {
-                                jwt,
-                                user.E01F07
-                            };
-                        }
-                        else
-                        {
-                            _logger.Error("Username or password is incorrect");
-
-                            objResponse.IsError = true;
-                            objResponse.Message = "Username or password is incorrect";
-                        }
+                            jwt,
+                            user.E01F07
+                        };
                     }
                     else
                     {
@@ -245,14 +216,14 @@ namespace SocialMediaAPI.BL
                         objResponse.IsError = true;
                         objResponse.Message = "Username or password is incorrect";
                     }
-                    return objResponse;
                 }
-            }
-            catch (Exception ex)
-            {
-                _logger.Error("something went wrong while logging", ex.Message);
-                objResponse.IsError = true;
-                objResponse.Message = ex.Message;
+                else
+                {
+                    _logger.Error("Username or password is incorrect");
+
+                    objResponse.IsError = true;
+                    objResponse.Message = "Username or password is incorrect";
+                }
                 return objResponse;
             }
 
@@ -262,21 +233,12 @@ namespace SocialMediaAPI.BL
         /// Retrieves a list of all users from the database.
         /// </summary>
         /// <returns>response model</returns>
-        public async Task<Response> GetUsers()
+        public Response GetUsers()
         {
             objResponse = new Response();
-            try
-            {
-                DataTable dtGetUsers = await _objIDBUse01.GetUsers();
-                objResponse.Data = dtGetUsers;
-                return objResponse;
-            }
-            catch (Exception ex)
-            {
-                objResponse.IsError = true;
-                objResponse.Message = ex.Message;
-                return objResponse;
-            }
+            DataTable dtGetUsers = _objIDBUse01.GetUsers();
+            objResponse.Data = dtGetUsers;
+            return objResponse;
         }
 
         /// <summary>
@@ -288,7 +250,7 @@ namespace SocialMediaAPI.BL
             objResponse = new Response();
 
             int id = Convert.ToInt32(HttpContext.User.FindFirst("Id")?.Value);
-            DataTable dtGetUserDetail =  _objIDBUse01.GetUserDetails(id);
+            DataTable dtGetUserDetail = _objIDBUse01.GetUserDetails(id);
             objResponse.Data = dtGetUserDetail;
             return objResponse;
         }
@@ -297,11 +259,11 @@ namespace SocialMediaAPI.BL
         /// Retrieves a list of usernames followed by the current user.
         /// </summary>
         /// <returns>response model</returns>
-        public  Response GetFollowing()
+        public Response GetFollowing()
         {
             objResponse = new Response();
             int id = Convert.ToInt32(HttpContext.User.FindFirst("Id")?.Value);
-            DataTable dtFollowingDetails =  _objIDBUse01.GetFollowing(id);
+            DataTable dtFollowingDetails = _objIDBUse01.GetFollowing(id);
             objResponse.Data = dtFollowingDetails;
             return objResponse;
         }

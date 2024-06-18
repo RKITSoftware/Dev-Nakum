@@ -5,7 +5,7 @@ using System.Data;
 
 namespace SocialMediaAPI.DB
 {
-    public class DBCom01 : IDBCom01
+    public class DBCOM01 : IDBCOM01
     {
         #region Publlic Member
 
@@ -16,7 +16,7 @@ namespace SocialMediaAPI.DB
         #endregion
 
         #region Constructor
-        public DBCom01(IConfiguration configuration)
+        public DBCOM01(IConfiguration configuration)
         {
             // Retrieves the connection string named "Default" from configuration
             _connectionString = configuration.GetConnectionString("Default");
@@ -57,9 +57,9 @@ namespace SocialMediaAPI.DB
         /// </summary>
         /// <param name="id">The ID of the post to get comments for.</param>
         /// <returns>response DataTable</returns>
-        public async Task<DataTable> GetAllCommentsOnPost(int id)
+        public DataTable GetAllCommentsOnPost(int id)
         {
-           await using (MySqlConnection objMySqlConnection = new MySqlConnection(_connectionString))
+           using (MySqlConnection objMySqlConnection = new MySqlConnection(_connectionString))
             {
                 objMySqlConnection.Open();
                 string query = @"SELECT 

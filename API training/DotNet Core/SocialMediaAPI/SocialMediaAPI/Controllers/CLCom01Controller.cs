@@ -1,6 +1,4 @@
-﻿using Check_Id_Exist;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SocialMediaAPI.Interface;
 using SocialMediaAPI.Model;
@@ -12,15 +10,16 @@ namespace SocialMediaAPI.Controllers
     /// for handling comment-related operations in the SocialMediaAPI.
     /// </summary>
     [Route("api/comments")]  
-    [ApiController]           
-    public class CLCom01Controller : ControllerBase
+    [ApiController]
+    [Authorize]
+    public class CLCOM01Controller : ControllerBase
     {
         #region Private Member
 
         /// <summary>
         /// The injected ICommentService dependency for interacting with comment logic.
         /// </summary>
-        private readonly ICom01Service _commentService;
+        private readonly ICOM01Service _commentService;
 
         #endregion
 
@@ -37,7 +36,7 @@ namespace SocialMediaAPI.Controllers
         /// Constructor for CLCommentsController that injects the ICommentService dependency.
         /// </summary>
         /// <param name="commentService">The ICommentService instance to use.</param>
-        public CLCom01Controller(ICom01Service commentService)
+        public CLCOM01Controller(ICOM01Service commentService)
         {
             _commentService = commentService;
         }
@@ -48,15 +47,14 @@ namespace SocialMediaAPI.Controllers
         /// <summary>
         /// Adds a new comment to the system. Requires authorization.
         /// </summary>
-        /// <param name="objDtoCom01">The DTO object representing the comment data.</param>
+        /// <param name="objDTOCOM01">The DTO object representing the comment data.</param>
         /// <returns>IActionResult indicating success or failure with a message.</returns>
         [HttpPost("add")]
-        [Authorize]
-        public IActionResult AddComments(DtoCom01 objDtoCom01)
+        public IActionResult AddComments(DTOCOM01 objDTOCOM01)
         {
             objResponse = new Response();
             _commentService.OperationType = Enums.enmOperationType.A;
-            _commentService.PreSave(objDtoCom01);
+            _commentService.PreSave(objDTOCOM01);
             objResponse = _commentService.ValidationOnSave();
 
             if (!objResponse.IsError)
@@ -70,15 +68,14 @@ namespace SocialMediaAPI.Controllers
         /// Updates an existing comment. Requires authorization.
         /// </summary>
         /// <param name="id">The ID of the comment to update.</param>
-        /// <param name="objDtoCom01">The DTO object representing the updated comment data.</param>
+        /// <param name="objDTOCOM01">The DTO object representing the updated comment data.</param>
         /// <returns>IActionResult indicating success or failure with a message.</returns>
         [HttpPatch("{id}")]
-        [Authorize]
-        public IActionResult UpdateComments(int id, DtoCom01 objDtoCom01)
+        public IActionResult UpdateComments(int id, DTOCOM01 objDTOCOM01)
         {
             objResponse = new Response();
             _commentService.OperationType = Enums.enmOperationType.E;
-            _commentService.PreSave(objDtoCom01,id);
+            _commentService.PreSave(objDTOCOM01,id);
             objResponse = _commentService.ValidationOnSave();
 
             if (!objResponse.IsError)
@@ -94,7 +91,6 @@ namespace SocialMediaAPI.Controllers
         /// <param name="id">The ID of the comment to delete.</param>
         /// <returns>IActionResult indicating success or failure with a message.</returns>
         [HttpDelete("{id}")]
-        [Authorize]
         public IActionResult DeleteComments(int id)
         {
             objResponse = new Response();
@@ -114,11 +110,10 @@ namespace SocialMediaAPI.Controllers
         /// <param name="id">The ID of the post to get comments for.</param>
         /// <returns>IActionResult containing a list of comment data or a bad request message.</returns>
         [HttpGet("post/{id}")]
-        [Authorize]
-        public async Task<IActionResult> GetAllCommentsOnPost(int id)
+        public IActionResult GetAllCommentsOnPost(int id)
         {
             objResponse = new Response();
-            objResponse = await _commentService.GetAllCommentsOnPost(id);
+            objResponse = _commentService.GetAllCommentsOnPost(id);
             return Ok(objResponse);
         }
 

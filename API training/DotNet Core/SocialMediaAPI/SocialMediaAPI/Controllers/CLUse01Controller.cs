@@ -14,14 +14,14 @@ namespace SocialMediaAPI.Controllers
     /// </summary>
     [Route("api/users")]
     [ApiController]
-    public class CLUse01Controller : ControllerBase
+    public class CLUSE01Controller : ControllerBase
     {
         #region Private Member
 
         /// <summary>
         /// The injected IUserService dependency for interacting with user logic.
         /// </summary>
-        private readonly IUse01Service _userService;
+        private readonly IUSE01Service _userService;
 
         /// <summary>
         /// The logger instance for logging messages.
@@ -46,7 +46,7 @@ namespace SocialMediaAPI.Controllers
         /// Logs a message upon construction.
         /// </summary>
         /// <param name="userService">The IUserService instance to use.</param>
-        public CLUse01Controller(IUse01Service userService)
+        public CLUSE01Controller(IUSE01Service userService)
         {
             _userService = userService;
             objResponse = new Response();
@@ -60,16 +60,16 @@ namespace SocialMediaAPI.Controllers
         /// <summary>
         /// Creates a new user account.
         /// </summary>
-        /// <param name="objDtoUse01">The DTO object representing the user data.</param>
+        /// <param name="objDTOUSE01">The DTO object representing the user data.</param>
         /// <returns>IActionResult indicating success or failure with a message.</returns>
         [HttpPost("signup")]
         [UserValidationFilter]
-        public async Task<IActionResult> SignUp([FromForm] DtoUse01 objDtoUse01)
+        public IActionResult SignUp([FromForm] DTOUSE01 objDTOUSE01)
         {
             _logger.Info("Signup method called");
             _userService.OperationType = enmOperationType.A;
 
-            await _userService.PreSave(objDtoUse01);
+            _userService.PreSave(objDTOUSE01);
             objResponse = _userService.ValidationOnSave();
             if (!objResponse.IsError)
             {
@@ -82,13 +82,13 @@ namespace SocialMediaAPI.Controllers
         /// <summary>
         /// Login user.
         /// </summary>
-        /// <param name="objUse01">The JsonObject representing the login credentials.</param>
+        /// <param name="objUSE01">The JsonObject representing the login credentials.</param>
         /// <returns>IActionResult containing a token object or a bad request message.</returns>
         [HttpPost("login")]
-        public IActionResult Login([FromBody] DtoUse01 objDtoUse01)
+        public IActionResult Login([FromBody] DTOUSE02 objDTOUSE02)
         {
             _logger.Info("Login method called");
-            objResponse = _userService.Login(objDtoUse01);
+            objResponse = _userService.Login(objDTOUSE02);
 
             return Ok(objResponse);
         }
@@ -99,9 +99,9 @@ namespace SocialMediaAPI.Controllers
         /// <returns>IActionResult containing a list of user data or a Not Found message.</returns>
         [HttpGet]
         [Authorize(Roles = "A")]
-        public async Task<IActionResult> GetUsers()
+        public IActionResult GetUsers()
         {
-            objResponse = await _userService.GetUsers();
+            objResponse = _userService.GetUsers();
             return Ok(objResponse);
         }
 

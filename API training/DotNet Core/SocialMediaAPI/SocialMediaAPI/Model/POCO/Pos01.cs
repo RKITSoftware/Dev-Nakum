@@ -5,7 +5,7 @@ namespace SocialMediaAPI.Model.POCO
     /// <summary>
     /// manage the schema of posts
     /// </summary>
-    public class Pos01
+    public class POS01
     {
         /// <summary>
         /// Post's id
@@ -22,12 +22,12 @@ namespace SocialMediaAPI.Model.POCO
         /// <summary>
         /// Post img
         /// </summary>
-        public string S01F03 { get; set; }
+        public string S01F03 { get; set; } = string.Empty;
 
         /// <summary>
         /// Post content
         /// </summary>
-        public string S01F04 { get; set; }
+        public string S01F04 { get; set; } = string.Empty;
 
         /// <summary>
         /// Post created at

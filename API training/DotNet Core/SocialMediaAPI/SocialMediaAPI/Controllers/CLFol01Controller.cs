@@ -1,11 +1,9 @@
-﻿using Check_Id_Exist;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SocialMediaAPI.Enums;
 using SocialMediaAPI.Interface;
 using SocialMediaAPI.Model;
-using SocialMediaAPI.Model.Dtos;
+using SocialMediaAPI.Model.DTOS;
 
 namespace SocialMediaAPI.Controllers
 {
@@ -13,14 +11,15 @@ namespace SocialMediaAPI.Controllers
     /// for handling follower-related operations in the SocialMediaAPI.
     /// </summary>
     [Route("api/followers")]  
-    [ApiController]           
-    public class CLFol01Controller : ControllerBase
+    [ApiController]
+    [Authorize]
+    public class CLFOL01Controller : ControllerBase
     {
         #region Private Member
         /// <summary>
         /// The injected IFollowersService dependency for interacting with follower logic.
         /// </summary>
-        private readonly IFol01Service _followersService;
+        private readonly IFOL01Service _followersService;
         #endregion
 
         #region Public Member
@@ -36,7 +35,7 @@ namespace SocialMediaAPI.Controllers
         /// Constructor for CLFollowersController that injects the IFollowersService dependency.
         /// </summary>
         /// <param name="followersService">The IFollowersService instance to use.</param>
-        public CLFol01Controller(IFol01Service followersService)
+        public CLFOL01Controller(IFOL01Service followersService)
         {
             _followersService = followersService;
         }
@@ -46,15 +45,14 @@ namespace SocialMediaAPI.Controllers
         /// <summary>
         /// Allows a user to follow another user. Requires authorization.
         /// </summary>
-        /// <param name="objDtoFol01">The DTO object representing the following user ID.</param>
+        /// <param name="objDTOFOL01">The DTO object representing the following user ID.</param>
         /// <returns>IActionResult indicating success or failure with a message.</returns>
         [HttpPost]
-        [Authorize]
-        public IActionResult Add(DtoFol01 objDtoFol01)
+        public IActionResult Add(DTOFOL01 objDTOFOL01)
         {
             objResponse = new Response();
             _followersService.OperationType = enmOperationType.A;
-            _followersService.PreSave(objDtoFol01);
+            _followersService.PreSave(objDTOFOL01);
             objResponse = _followersService.ValidationOnSave();
             if (!objResponse.IsError)
             {
@@ -67,15 +65,14 @@ namespace SocialMediaAPI.Controllers
         /// <summary>
         /// Allows a user to unfollow another user. Requires authorization.
         /// </summary>
-        /// <param name="objDtoFol01">The DTO object representing the following user ID.</param>
+        /// <param name="objDTOFOL01">The DTO object representing the following user ID.</param>
         /// <returns>IActionResult indicating success or failure with a message.</returns>
         [HttpDelete]
-        [Authorize]
-        public IActionResult Remove(DtoFol01 objDtoFol01)
+        public IActionResult Remove(DTOFOL01 objDTOFOL01)
         {
             objResponse = new Response();
             _followersService.OperationType = enmOperationType.D;
-            objResponse = _followersService.ValidationOnDelete(objDtoFol01);
+            objResponse = _followersService.ValidationOnDelete(objDTOFOL01);
             if (!objResponse.IsError)
             {
                 objResponse = _followersService.Remove();

@@ -9,7 +9,7 @@ namespace SocialMediaAPI.Interface
     /// <summary>
     /// ICommentService interface defines methods for CRUD (Create, Read, Update, Delete) operations on comments.
     /// </summary>
-    public interface ICom01Service
+    public interface ICOM01Service
     {
 
         public enmOperationType OperationType { get; set; }
@@ -17,10 +17,10 @@ namespace SocialMediaAPI.Interface
         /// <summary>
         /// map the dto object to the poco object 
         /// </summary>
-        /// <param name="objDtoCom01">object of the comment</param>
+        /// <param name="objDTOCOM01">object of the comment</param>
         /// <param name="httpContext">current context for getting the user id</param>
         /// <param name="commentId">comment id</param>
-        public void PreSave(DtoCom01 objDtoCom01, int commentId = 0);
+        public void PreSave(DTOCOM01 objDTOCOM01, int commentId = 0);
 
         /// <summary>
         /// validation before add or update comment into database
@@ -55,6 +55,6 @@ namespace SocialMediaAPI.Interface
         /// </summary>
         /// <param name="id">The ID of the post to get comments for.</param>
         /// <returns>response model</returns>
-        public Task<Response> GetAllCommentsOnPost(int id);
+        public Response GetAllCommentsOnPost(int id);
     }
 }

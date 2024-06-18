@@ -79,3 +79,7 @@ F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\SocialMediaAPI\b
 F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\SocialMediaAPI\bin\Debug\net6.0\Newtonsoft.Json.dll
 F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\SocialMediaAPI\bin\Debug\net6.0\Check Id Exist.dll
 F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\SocialMediaAPI\bin\Debug\net6.0\Check Id Exist.pdb
+F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\SocialMediaAPI\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\SocialMediaAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\SocialMediaAPI\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+F:\Dev - 372\New folder\API training\DotNet Core\SocialMediaAPI\SocialMediaAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Newtonsoft.dll

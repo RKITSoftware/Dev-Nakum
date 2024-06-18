@@ -3,6 +3,9 @@ using System.Data;
 
 namespace SocialMediaAPI.DB
 {
+    /// <summary>
+    /// Execute the query 
+    /// </summary>
     public class DBHelper
     {
         #region Public Method

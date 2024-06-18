@@ -22,8 +22,8 @@ namespace SocialMediaAPI.Filter
         /// <param name="context">The action execution context.</param>
         public void OnActionExecuting(ActionExecutingContext context)
         {
-            // Retrieve the user model from action arguments with expected name "objDtoUse01" 
-            var model = context.ActionArguments["objDtoUse01"] as DtoUse01;
+            // Retrieve the user model from action arguments with expected name "objDTOUSE01" 
+            var model = context.ActionArguments["objDTOUSE01"] as DTOUSE01;
 
             // Check if the user model is null
             if (model == null)

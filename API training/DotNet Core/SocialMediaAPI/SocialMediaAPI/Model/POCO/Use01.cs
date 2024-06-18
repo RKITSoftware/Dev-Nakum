@@ -7,39 +7,39 @@ namespace SocialMediaAPI.Model.POCO
     /// <summary>
     /// manage the schema of users
     /// </summary>
-    public class Use01
+    public class USE01
     {
+        /// <summary>
+        /// User's Id
+        /// </summary>
         [PrimaryKey]
         [AutoIncrement]
-        /// <summary>
-        /// User's id
-        /// </summary
         public int E01F01 { get; set; }
 
         /// <summary>
         /// User's username
         /// </summary>
-        public string E01F02 { get; set; }
+        public string E01F02 { get; set; } = string.Empty;
 
         /// <summary>
         /// User's Email
         /// </summary>
-        public string E01F03 { get; set; }
+        public string E01F03 { get; set; } = string.Empty;
 
         /// <summary>
         /// User's Password
         /// </summary>
-        public string E01F04 { get; set; }
+        public string E01F04 { get; set; } = string.Empty;
 
         /// <summary>
         /// User's Profile Picture
         /// </summary>
-        public string? E01F05 { get; set; }
+        public string? E01F05 { get; set; } = string.Empty;
 
         /// <summary>
         /// User's Bio
         /// </summary>
-        public string E01F06 { get; set; }
+        public string E01F06 { get; set; } = string.Empty;
 
         /// <summary>
         /// User's Role

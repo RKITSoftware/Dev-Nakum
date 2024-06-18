@@ -7,7 +7,7 @@ namespace SocialMediaAPI.Interface
     /// <summary>
     /// IPostService interface defines methods for CRUD (Create, Read, Update, Delete) operations on posts.
     /// </summary>
-    public interface IPos01Service
+    public interface IPOS01Service
     {
         #region Properties
         /// <summary>
@@ -23,9 +23,9 @@ namespace SocialMediaAPI.Interface
         /// <summary>
         /// PreSave the DTOs object to the POCOs and pre validations
         /// </summary>
-        /// <param name="objDtoPos01">object of the post</param>
+        /// <param name="objDTOPOS01">object of the post</param>
         /// <param name="postId">post id</param>
-        public Task PreSave(DtoPos01 objDtoPos01,  int postId = 0);
+        public void PreSave(DTOPOS01 objDTOPOS01,  int postId = 0);
 
         /// <summary>
         /// Post object Validation before inserting or updating into database
@@ -50,13 +50,13 @@ namespace SocialMediaAPI.Interface
         /// Retrieves a list of all posts from the database.
         /// </summary>
         /// <returns>response model</returns>
-        public Task<Response> GetPosts();
+        public Response GetPosts();
 
         /// <summary>
         /// Retrieves a list of posts created by the current user.
         /// </summary>
         /// <returns>Response model</returns>
-        public Task<Response> GetPostByMe();
+        public Response GetPostByMe();
 
         /// <summary>
         /// delete a post from the database.

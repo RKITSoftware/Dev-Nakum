@@ -9,7 +9,7 @@ namespace SocialMediaAPI.DB
    /// <summary>
    /// Database related user's query
    /// </summary>
-    public class DBUse01: DBHelper, IDBUse01
+    public class DBUSE01: DBHelper, IDBUSE01
     {
         #region Publlic Member
 
@@ -20,7 +20,7 @@ namespace SocialMediaAPI.DB
         #endregion
         
         #region Constructor
-        public DBUse01(IConfiguration configuration)
+        public DBUSE01(IConfiguration configuration)
         {
             // Retrieves the connection string named "Default" from configuration
             _connectionString = configuration.GetConnectionString("Default");
@@ -32,7 +32,7 @@ namespace SocialMediaAPI.DB
         /// Retrieves a list of all users from the database.
         /// </summary>
         /// <returns>response model</returns>
-        public async Task<DataTable> GetUsers()
+        public DataTable GetUsers()
         {
             using (MySqlConnection objMySqlConnection = new MySqlConnection(_connectionString))
             {

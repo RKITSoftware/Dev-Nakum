@@ -2,14 +2,14 @@
 using Microsoft.AspNetCore.Mvc;
 using SocialMediaAPI.Enums;
 using SocialMediaAPI.Model;
-using SocialMediaAPI.Model.Dtos;
+using SocialMediaAPI.Model.DTOS;
 
 namespace SocialMediaAPI.Interface
 {
     /// <summary>
     /// IFollowersService interface defines methods for managing follower relationships.
     /// </summary>
-    public interface IFol01Service
+    public interface IFOL01Service
     {
         #region Public Properites
         /// <summary>
@@ -24,8 +24,8 @@ namespace SocialMediaAPI.Interface
         /// Maps the provided DTO object (containing follower data) to a Fol01 entity 
         /// and sets the current user ID (following user) in the Fol01 entity.
         /// </summary>
-        /// <param name="objDtoFol01">The DTO object containing follower data.</param>
-        public void PreSave(DtoFol01 objDtoFol01);
+        /// <param name="objDTOFOL01">The DTO object containing follower data.</param>
+        public void PreSave(DTOFOL01 objDTOFOL01);
 
         /// <summary>
         /// validation before adding the record into database
@@ -43,10 +43,10 @@ namespace SocialMediaAPI.Interface
         /// <summary>
         /// validation before removing the user from following list
         /// </summary>
-        /// <param name="objDtoFol01">dto object of the following</param>
+        /// <param name="objDTOFOL01">dto object of the following</param>
         /// <param name="objValidation">object of the validation</param>
         /// <returns>response model</returns>
-        public Response ValidationOnDelete(DtoFol01 objDtoFol01);
+        public Response ValidationOnDelete(DTOFOL01 objDTOFOL01);
 
         /// <summary>
         /// Removes a follower record where the current user is the following user (unfollows).

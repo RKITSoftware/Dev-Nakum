@@ -8,7 +8,7 @@ namespace SocialMediaAPI.DB
     /// <summary>
     /// Database related post's query
     /// </summary>
-    public class DBPos01 : DBHelper, IDBPos01
+    public class DBPOS01 : DBHelper, IDBPOS01
     {
         #region Publlic Member
 
@@ -19,7 +19,7 @@ namespace SocialMediaAPI.DB
         #endregion
 
         #region Constructor
-        public DBPos01(IConfiguration configuration)
+        public DBPOS01(IConfiguration configuration)
         {
             // Retrieves the connection string named "Default" from configuration
             _connectionString = configuration.GetConnectionString("Default");
@@ -67,7 +67,7 @@ namespace SocialMediaAPI.DB
         /// Retrieves a list of all posts from the database.
         /// </summary>
         /// <returns>response DataTable</returns>
-        public async Task<DataTable> GetPosts()
+        public DataTable GetPosts()
         {
             using (MySqlConnection objMySqlConnection = new MySqlConnection(_connectionString))
             {
@@ -94,13 +94,14 @@ namespace SocialMediaAPI.DB
         /// </summary>
         /// <param name="id">user id</param>
         /// <returns>response datatable</returns>
-        public async Task<DataTable> GetPostByMe(int id)
+        public DataTable GetPostByMe(int id)
         {
             using (MySqlConnection objMySqlConnection = new MySqlConnection(_connectionString))
             {
                 objMySqlConnection.Open();
 
                 string query = @"SELECT 
+                                    S01F01, 
                                     S01F03, 
                                     S01F04, 
                                     S01F05 

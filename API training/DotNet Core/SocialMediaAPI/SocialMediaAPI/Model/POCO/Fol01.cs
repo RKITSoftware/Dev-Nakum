@@ -5,7 +5,7 @@ namespace SocialMediaAPI.Model.POCO
     /// <summary>
     /// manage the schema of comments
     /// </summary>
-    public class Fol01
+    public class FOL01
     {
         /// <summary>
         /// id
@@ -15,12 +15,12 @@ namespace SocialMediaAPI.Model.POCO
         public int L01F01 { get; set; }
 
         /// <summary>
-        /// follower's id
+        /// user's id
         /// </summary>
         public int L01F02 { get; set; }
 
         /// <summary>
-        /// following's id
+        /// following user's id
         /// </summary>
         public int L01F03 { get; set; }
     }

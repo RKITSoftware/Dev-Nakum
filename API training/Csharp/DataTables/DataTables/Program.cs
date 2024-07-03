@@ -28,6 +28,10 @@ namespace DataTables
                 Console.WriteLine();
             }
         }
+        /// <summary>
+        /// Main method  for create the table, add columns, rows and update, delete 
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             // create the instance of dataTable

@@ -60,18 +60,18 @@ namespace FIle_Handling
             // fileInfo
             try
             {
-                FileInfo fileInfo = new FileInfo(filePath);
+                FileInfo objFileInfo = new FileInfo(filePath);
 
                 // Display file operation
-                Console.WriteLine($"File name : {fileInfo.Name}");
-                Console.WriteLine($"File Directory Name : {fileInfo.Directory}");
-                Console.WriteLine($"File Size: {fileInfo.Length} bytes");
-                Console.WriteLine($"Creation Time: {fileInfo.CreationTime} bytes");
-                Console.WriteLine($"Last Access Time: {fileInfo.LastAccessTime} bytes");
-                Console.WriteLine($"Last Write Time: {fileInfo.LastWriteTime} bytes");
+                Console.WriteLine($"File name : {objFileInfo.Name}");
+                Console.WriteLine($"File Directory Name : {objFileInfo.Directory}");
+                Console.WriteLine($"File Size: {objFileInfo.Length} bytes");
+                Console.WriteLine($"Creation Time: {objFileInfo.CreationTime} bytes");
+                Console.WriteLine($"Last Access Time: {objFileInfo.LastAccessTime} bytes");
+                Console.WriteLine($"Last Write Time: {objFileInfo.LastWriteTime} bytes");
 
                 // to check file is exists or not
-                if(fileInfo.Exists)
+                if(objFileInfo.Exists)
                 {
                     Console.WriteLine("File is exists");
 

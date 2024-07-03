@@ -1,16 +1,8 @@
 
 UserId : 1
-FirstName : dsfsd
-LastName : ffds
-Email : ffsdf
-Phone : 9568565894
-Money : 0
-
-
-UserId : 2
-FirstName : tyutu
-LastName : tyu
-Email : rtyr
-Phone : 9102365041
-Money : 0
+FirstName : dev
+LastName : nakum
+Email : da@gmail.com
+Phone : 9898989865
+Money : 1400
 

@@ -14,11 +14,13 @@ namespace DateTimeClass
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            DateTime dateTime = new DateTime(2024,01,05,17,51,56);
-            Console.WriteLine(dateTime);
+            DateTime objDateTime = new DateTime(2024,01,05,17,51,56);
+            Console.WriteLine(objDateTime);
 
             // current date and time
-            Console.WriteLine(DateTime.Now);
+            Console.WriteLine(DateTime.Now);            
+
+
 
             // UTC date time
             Console.WriteLine(DateTime.UtcNow);
@@ -30,7 +32,7 @@ namespace DateTimeClass
             Console.WriteLine(DateTime.DaysInMonth(1582, 10));
 
             // add Days into current date
-            Console.WriteLine($"after 23 days date is {DateTime.Now.AddDays(18)}");
+            Console.WriteLine($"after 23 days date is {DateTime.Now.AddDays(23)}");
 
             //difference between two date
             Console.WriteLine($"The difference between two dates are {DateTime.Now.AddDays(21).AddHours(2) - DateTime.Now}");

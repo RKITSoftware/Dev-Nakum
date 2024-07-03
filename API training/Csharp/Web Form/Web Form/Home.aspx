@@ -7,18 +7,33 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div>
-            <asp:Label runat="server" >Name : </asp:Label>
-            <asp:TextBox runat="server" ID="name"></asp:TextBox>
-            <asp:Button runat="server" ID="submitBtn" Text="Submit" OnClick="submitBtn_Click"/>
+    <form id="userForm" runat="server">
+        <h2>User Information</h2>
+        <div style="margin-top : 20px;">
+            <label for="name">Name:</label>
+            <asp:TextBox ID="name" runat="server"></asp:TextBox>
         </div>
-       
-        <div>
-            <asp:Label runat="server" ID="namePrint"> </asp:Label>
-
+         <div style="margin-top : 10px;">
+            <label for="email">Email:</label>
+            <asp:TextBox ID="email" runat="server" TextMode="Email"></asp:TextBox>
+        </div>
+       <div style="margin-top : 10px;">
+            <label for="password">Password:</label>
+            <asp:TextBox ID="password" runat="server" TextMode="Password"></asp:TextBox>
+        </div>
+        <div style="margin-top : 10px;">
+            <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="submitBtn_Click" />
         </div>
     </form>
+        <div style="margin-top : 20px;">
+            <asp:Label runat="server" ID="namePrint"> </asp:Label>
+        </div>
+        
+        <div style="margin-top : 20px;">
+            <asp:Label runat="server" ID="emailPrint"> </asp:Label>
+        </div>
+        
+        
 </body>
  
 </html>

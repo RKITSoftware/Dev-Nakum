@@ -4,16 +4,20 @@ using System.Text;
 namespace StringClass
 {
     /// <summary>
-    /// Main class for handling teh string operations
+    /// Main class for handling the string operations
     /// </summary>
     public class Program
     {
+        /// <summary>
+        /// main method to perform the various string operation 
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             string name = "Dev Nakum";
 
             // lenght of string 
-            Console.WriteLine($"The lenght of name is {name.Length}");
+            Console.WriteLine($"The length of name is {name.Length}");
 
             // convert string into uppercase
             Console.WriteLine($"Uppercase : {name.ToUpper()}");
@@ -28,7 +32,7 @@ namespace StringClass
             Console.WriteLine($"Index of N is: {name.IndexOf('N')}");
 
             // find the index of first character
-            Console.WriteLine($"Last Index of N is : {name.LastIndexOf("Na")}");
+            Console.WriteLine($"Last Index of N is : {name.LastIndexOf("N")}");
 
             // substring from index 2 to length of 4 
             Console.WriteLine($"Substring : {name.Substring(2,4)}");
@@ -75,16 +79,6 @@ namespace StringClass
                 Console.WriteLine("Both are not same");
             }
 
-            // create the object of string builder
-            StringBuilder stringBuilder = new StringBuilder();
-
-            // append the data to string builder
-            stringBuilder.Append("Hello ");
-            stringBuilder.Append("from ");
-            stringBuilder.Append("another ");
-            stringBuilder.Append("side");
-
-            Console.WriteLine(stringBuilder);
             Console.ReadLine();
 
         }

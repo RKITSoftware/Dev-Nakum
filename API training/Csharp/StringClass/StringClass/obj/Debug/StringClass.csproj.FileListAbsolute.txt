@@ -6,3 +6,11 @@ F:\Dev - 372\Csharp\StringClass\StringClass\obj\Debug\StringClass.csproj.Suggest
 F:\Dev - 372\Csharp\StringClass\StringClass\obj\Debug\StringClass.csproj.CoreCompileInputs.cache
 F:\Dev - 372\Csharp\StringClass\StringClass\obj\Debug\StringClass.exe
 F:\Dev - 372\Csharp\StringClass\StringClass\obj\Debug\StringClass.pdb
+F:\Dev - 372\New folder\API training\Csharp\StringClass\StringClass\bin\Debug\StringClass.exe.config
+F:\Dev - 372\New folder\API training\Csharp\StringClass\StringClass\bin\Debug\StringClass.exe
+F:\Dev - 372\New folder\API training\Csharp\StringClass\StringClass\bin\Debug\StringClass.pdb
+F:\Dev - 372\New folder\API training\Csharp\StringClass\StringClass\obj\Debug\StringClass.csproj.AssemblyReference.cache
+F:\Dev - 372\New folder\API training\Csharp\StringClass\StringClass\obj\Debug\StringClass.csproj.SuggestedBindingRedirects.cache
+F:\Dev - 372\New folder\API training\Csharp\StringClass\StringClass\obj\Debug\StringClass.csproj.CoreCompileInputs.cache
+F:\Dev - 372\New folder\API training\Csharp\StringClass\StringClass\obj\Debug\StringClass.exe
+F:\Dev - 372\New folder\API training\Csharp\StringClass\StringClass\obj\Debug\StringClass.pdb

@@ -9,6 +9,11 @@ namespace Exception_Handling
     /// </summary>
     class Program
     {
+        /// <summary>
+        /// main method to handle the various exception
+        /// </summary>
+        /// <param name="args"></param>
+        /// <exception cref="FileNotFoundException"></exception>
         static void Main(string[] args)
         {
             StreamReader streamReader = null;       // for read the data 

@@ -11,7 +11,8 @@ namespace Web_Form
 
         protected void submitBtn_Click(object sender, EventArgs e)
         {
-            namePrint.Text = name.Text;
+            namePrint.Text = $"Name : {name.Text}";
+            emailPrint.Text = $"Email : {email.Text}";
         }
     }
 }

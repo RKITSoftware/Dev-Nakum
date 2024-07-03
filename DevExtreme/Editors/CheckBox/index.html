@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CheckBox</title>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- DevExtreme theme -->
+    <link rel="stylesheet" href="https://cdn3.devexpress.com/jslib/21.1.11/css/dx.light.css" />
+
+    <!-- DevExtreme library -->
+    <script type="text/javascript" src="https://cdn3.devexpress.com/jslib/21.1.11/js/dx.all.js"></script>
+    <script src="./JS/index.js"></script>
+    <style>
+        .demo-container {
+            padding: 20px;
+        }
+
+        .dx-fieldset {
+            margin-bottom: 20px;
+        }
+
+        .dx-field {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo-container">
+        <div class="dx-fieldset">
+            <legend>CheckBox Initialization and Options</legend>
+            <div class="dx-field">
+                <div class="dx-field-label">Basic CheckBox</div>
+                <div class="dx-field-value">
+                    <div id="basicCheckBox"></div>
+                </div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">CheckBox with AccessKey</div>
+                <div class="dx-field-value">
+                    <div id="accessKeyCheckBox"></div>
+                </div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">Read-Only CheckBox</div>
+                <div class="dx-field-value">
+                    <div id="readOnlyCheckBox"></div>
+                </div>
+            </div>
+            <div class="dx-field">
+                <button class="dx-field-label" id="visible">disabled and visible CheckBox</button>
+                <div class="dx-field-value">
+                    <div id="dynamicCheckBox"></div>
+                </div>
+            </div>
+
+            <div class="dx-field">
+                <div class="dx-field-label">RTL Enabled CheckBox</div>
+                <div class="dx-field-value">
+                    <div id="rtlEnabledCheckBox"></div>
+                </div>
+            </div>
+
+            
+        </div>
+
+        <div class="dx-fieldset">
+            <legend>Events</legend>
+            <div class="dx-field">
+                <div class="dx-field-label">Event Handling CheckBox</div>
+                <div class="dx-field-value">
+                    <div id="eventCheckBox"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dx-fieldset">
+            <legend>Tab Index</legend>
+            <div class="dx-field">
+                <div class="dx-field-value tabIndex">
+                    <div id="tab4"></div>
+                    <div id="tab2"></div>
+                    <div id="tab1"></div>
+                    <div id="tab3"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dx-fieldset"><div id="btnEvent"></div></div>
+    </div>
+</body>
+
+</html>

@@ -8,6 +8,9 @@ namespace Generics
     /// </summary>
     public class GenericQueue
     {
+        /// <summary>
+        /// Queue related operation
+        /// </summary>
         public void CreateQueue()
         {
             //create the object with data type int type
@@ -25,11 +28,12 @@ namespace Generics
             {
                 Console.WriteLine($"{it}");
             }
-            Console.WriteLine("");
-            Console.WriteLine($"{objQueue.Dequeue()}");        // Dequeue gives top most element and also remove it.
-            Console.WriteLine($"{objQueue.Peek()}");           // Peek only gives top most element.
 
-            //create the object with data type int type
+           
+            Console.WriteLine($"\n{objQueue.Dequeue()}");        // Dequeue gives top most element and also remove it.
+            Console.WriteLine($"\n{objQueue.Peek()}\n");           // Peek only gives top most element.
+
+            //create the object with data type string type
             Queue<string> objQueueString = new Queue<string>();
             objQueueString.Enqueue("This");
             objQueueString.Enqueue("is");
@@ -38,7 +42,7 @@ namespace Generics
 
             foreach (string it in objQueueString)
             {
-                Console.WriteLine($"{it}");
+                Console.Write($"{it} ");
             }
         }
     }

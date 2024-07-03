@@ -1,10 +1,6 @@
 ﻿using ORM.Business_Logic;
 using ORM.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+using ORM.Models.DTO;
 using System.Web.Http;
 
 namespace ORM.Controllers
@@ -15,13 +11,27 @@ namespace ORM.Controllers
     public class CLStudentsController : ApiController
     {
         #region Private Member
-        private BLStudent objBLStudent;
+        /// <summary>
+        /// Create the object of the student service
+        /// </summary>
+        private readonly BLStudent _objBLStudent;
+        #endregion
+
+        #region Public Member
+        /// <summary>
+        /// Create the object of the response model
+        /// </summary>
+        public Response objResponse;
         #endregion
 
         #region Constructor
+        /// <summary>
+        /// initialize the student service and response model
+        /// </summary>
         public CLStudentsController()
         {
-            objBLStudent = new BLStudent();
+            _objBLStudent = new BLStudent();
+            objResponse = new Response();
         }
         #endregion
 
@@ -30,87 +40,86 @@ namespace ORM.Controllers
         /// <summary>
         /// Get all the students
         /// </summary>
-        /// <returns></returns>
+        /// <returns>response model</returns>
         [HttpGet]
         [Route("api/students")]
-        public IHttpActionResult GetAllStudents()
+        public Response GetAllStudents()
         {
-            return Ok(objBLStudent.GetAllStudents());
+            objResponse = _objBLStudent.GetAllStudents();
+            return objResponse;
         }
 
         /// <summary>
         /// Get student based on student id
         /// </summary>
         /// <param name="id">student id</param>
-        /// <returns></returns>
+        /// <returns>response model</returns>
         [HttpGet]
         [Route("api/students/{id}")]
-        public IHttpActionResult GetStudentById(int id)
+        public Response GetStudentById(int id)
         {
-            Stu01 objStudents = objBLStudent.GetStudentById(id);
-            if(objStudents == null)
-            {
-                return BadRequest($"student id {id} is not found");
-            }
-            return Ok(objStudents);
+            objResponse = _objBLStudent.GetStudentById(id);
+            return objResponse;
         }
 
         /// <summary>
         /// Add student details into data base
         /// </summary>
-        /// <param name="objStudent"></param>
-        /// <returns></returns>
+        /// <param name="objDtoStu01">object of the student</param>
+        /// <returns>response model</returns>
         [HttpPost]
         [Route("api/students")]
-        public IHttpActionResult AddStudent(Stu01 objStudent)
+        public Response AddStudent(DtoStu01 objDtoStu01)
         {
-            if(objBLStudent.AddStudent(objStudent))
+            _objBLStudent.OperationTypes = enmOperationTypes.A;
+            _objBLStudent.PreSave(objDtoStu01);
+            objResponse = _objBLStudent.ValidationOnSave();
+
+            if(!objResponse.IsError)
             {
-                return Ok("User added successfully");
+                objResponse = _objBLStudent.Save();
             }
-            else
-            {
-                return BadRequest("Something went wrong");
-            }
+            return objResponse;
         }
 
         /// <summary>
         /// Update the student based on student id
         /// </summary>
         /// <param name="id">student id</param>
-        /// <param name="objStudent"></param>
-        /// <returns></returns>
+        /// <param name="objDtoStu01">object of the student</param>
+        /// <returns>response model</returns>
         [HttpPut]
         [Route("api/students/{id}")]
-        public IHttpActionResult UpdateStudent(int id,Stu01 objStudent)
+        public Response UpdateStudent(int id, DtoStu01 objDtoStu01)
         {
-            if (objBLStudent.UpdateStudent(id, objStudent))
+            _objBLStudent.OperationTypes = enmOperationTypes.U;
+            _objBLStudent.PreSave(objDtoStu01,id);
+            objResponse = _objBLStudent.ValidationOnSave();
+
+            if (!objResponse.IsError)
             {
-                return Ok("User Updated successfully");
+                objResponse = _objBLStudent.Save();
             }
-            else
-            {
-                return BadRequest("Something went wrong");
-            }
+            return objResponse;
         }
 
         /// <summary>
         /// Delete the student based on student id
         /// </summary>
         /// <param name="id">student id </param>
-        /// <returns></returns>
+        /// <returns>response model</returns>
         [HttpDelete]
         [Route("api/students/{id}")]
-        public IHttpActionResult DeleteStudent(int id)
+        public Response DeleteStudent(int id)
         {
-            if (objBLStudent.DeleteStudent(id))
+            _objBLStudent.OperationTypes = enmOperationTypes.D;
+            objResponse = _objBLStudent.ValidationOnDelete(id);
+
+            if (!objResponse.IsError)
             {
-                return Ok("User Deleted successfully");
+                objResponse = _objBLStudent.Delete();
             }
-            else
-            {
-                return BadRequest("Something went wrong");
-            }
+            return objResponse;
         }
 
         #endregion

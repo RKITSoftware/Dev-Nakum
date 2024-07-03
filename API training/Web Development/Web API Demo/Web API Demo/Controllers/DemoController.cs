@@ -35,9 +35,18 @@ namespace Web_API_Demo.Controllers
         /// <returns>User's Details</returns>
         [HttpGet]
         [Route("api/users/{id}")]
-        public IHttpActionResult Getdata(int id)
+        public IHttpActionResult GetData(int id)
         {
             return Ok(_lstUser.FirstOrDefault(u => u.Id == id));
+        }
+
+
+        // changes
+        [HttpGet]
+        [Route("api/users")]
+        public IHttpActionResult GetDataFromBody([FromBody] Users users)
+        {
+            return Ok(_lstUser);
         }
 
         /// <summary>

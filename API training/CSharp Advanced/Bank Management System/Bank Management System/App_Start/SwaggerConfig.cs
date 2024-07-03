@@ -2,6 +2,11 @@ using System.Web.Http;
 using WebActivatorEx;
 using Bank_Management_System;
 using Swashbuckle.Application;
+using Swashbuckle.Swagger;
+using System.Collections.Generic;
+using System.Web.Http.Description;
+using System.Linq;
+using System.Web.Hosting;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
@@ -33,6 +38,12 @@ namespace Bank_Management_System
                         // additional fields by chaining methods off SingleApiVersion.
                         //
                         c.SingleApiVersion("v1", "Bank_Management_System");
+                        c.ApiKey("BearerToken")
+                                          .Description("Bearer Token Authentication")
+                                          .Name("Authorization")
+                                          .In("header");
+
+                        c.OperationFilter<AddAuthorizationHeaderParameterOperationFilter>();
 
                         // If you want the output Swagger docs to be indented properly, enable the "PrettyPrint" option.
                         //
@@ -61,7 +72,8 @@ namespace Bank_Management_System
                         //c.BasicAuth("basic")
                         //    .Description("Basic HTTP Authentication");
                         //
-						// NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
+                        // NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
+
                         //c.ApiKey("apiKey")
                         //    .Description("API Key Authentication")
                         //    .Name("apiKey")
@@ -101,7 +113,8 @@ namespace Bank_Management_System
                         // those comments into the generated docs and UI. You can enable this by providing the path to one or
                         // more Xml comment files.
                         //
-                        //c.IncludeXmlComments(GetXmlCommentsPath());
+                        c.IncludeXmlComments(GetXmlCommentsPath());
+
 
                         // Swashbuckle makes a best attempt at generating Swagger compliant JSON schemas for the various types
                         // exposed in your API. However, there may be occasions when more control of the output is needed.
@@ -248,8 +261,14 @@ namespace Bank_Management_System
                         // If your API supports ApiKey, you can override the default values.
                         // "apiKeyIn" can either be "query" or "header"
                         //
-                        //c.EnableApiKeySupport("apiKey", "header");
+                        c.EnableApiKeySupport("apiKey", "header");
                     });
         }
+        protected static string GetXmlCommentsPath()
+        {
+            var path = HostingEnvironment.MapPath("~/bin//Bank Management System.xml");
+            return path;
+        }
     }
+    
 }

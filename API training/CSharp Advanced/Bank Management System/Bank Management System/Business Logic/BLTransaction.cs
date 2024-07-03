@@ -1,14 +1,17 @@
-﻿using Bank_Management_System.Models;
-using MySql.Data.MySqlClient;
+﻿using Bank_Management_System.DB;
+using Bank_Management_System.Enums;
+using Bank_Management_System.Extensions;
+using Bank_Management_System.Models;
+using Bank_Management_System.Models.DTO;
+using Bank_Management_System.Models.POCO;
 using ServiceStack.Data;
 using ServiceStack.OrmLite;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Net;
 
 namespace Bank_Management_System.Business_Logic
 {
@@ -18,9 +21,44 @@ namespace Bank_Management_System.Business_Logic
     public class BLTransaction
     {
         #region Private Member
+        /// <summary>
+        /// create the object of the db connection for ORM
+        /// </summary>
         private readonly IDbConnectionFactory _dbFactory;
-        private BLDbConnection _objBLDbConnection;
+
+        /// <summary>
+        /// create the object of the db transaction
+        /// </summary>
+        private readonly DBTransaction _objDBTransactions;
+
+        /// <summary>
+        /// folder path for storing the statements
+        /// </summary>
         private string _folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Statements");
+
+        /// <summary>
+        /// object of the transaction
+        /// </summary>
+        private Tra01 _objTra01;
+
+        /// <summary>
+        /// object of the user
+        /// </summary>
+        private Use01 _objUse01;
+        #endregion
+
+        #region Public Member
+        /// <summary>
+        ///  object of the response model
+        /// </summary>
+        public Response objResponse;
+        #endregion
+
+        #region Public properties
+        /// <summary>
+        /// transaction Types
+        /// </summary>
+        public enmTransactionTypes TransactionType { get; set; }
         #endregion
 
         #region Constructor
@@ -30,7 +68,8 @@ namespace Bank_Management_System.Business_Logic
         public BLTransaction()
         {
             _dbFactory = BLDbConnection.Instance;
-            _objBLDbConnection = new BLDbConnection();
+            _objDBTransactions = new DBTransaction();
+            objResponse = new Response();
         }
         #endregion
 
@@ -40,19 +79,19 @@ namespace Bank_Management_System.Business_Logic
         /// </summary>
         /// <param name="keyName">Original key name.</param>
         /// <returns>Modified key name.</returns>
-        private string changeKeyName(string keyName)
+        private string ChangeKeyName(string keyName)
         {
             switch (keyName)
             {
-                case "A01F01":
+                case "A01101":
                     return "Id    ";
-                case "E01F02":
+                case "E01102":
                     return "Name  ";
-                case "E01F04":
+                case "E01104":
                     return "Email ";
-                case "A01F04":
+                case "A01104":
                     return "Type  ";
-                case "A01F03":
+                case "A01103":
                     return "Money ";
                 default:
                     break;
@@ -63,143 +102,123 @@ namespace Bank_Management_System.Business_Logic
 
         #region Public Method
         /// <summary>
-        /// Adds a new transaction, updates user's money, and records the transaction details in the database.
+        /// pre save the object before inserting or updating into database
         /// </summary>
-        /// <param name="userId">User ID.</param>
-        /// <param name="money">Transaction amount.</param>
-        /// <param name="type">Transaction type (Deposit or Withdraw).</param>
-        /// <returns>True if the transaction is successful, false otherwise.</returns>
-        public bool AddTransaction(int userId, int money, string type)
+        /// <param name="id">transaction Id</param>
+        /// <param name="objDtoUse01">object of the user</param>
+        public void PreSave(int id, DtoTra01 objDtoUse01)
         {
-            using (IDbConnection db = _dbFactory.OpenDbConnection())
+            _objTra01 = new Tra01();
+            _objTra01 = objDtoUse01.Convert(_objTra01);
+            _objTra01.A01F02 = id;
+            _objTra01.A01F04 = TransactionType == enmTransactionTypes.D ? 'D' : 'W';
+        }
+
+        /// <summary>
+        /// to check the validation before inserting or updating into database
+        /// </summary>
+        /// <returns>response model</returns>
+        public Response ValidationOnSave()
+        {
+            BLUsers objBLUsers = new BLUsers();
+            Use01 objUse01 = objBLUsers.GetUserObject(_objTra01.A01F02);
+
+            if (objUse01 == null)
             {
-                try
+                objResponse.IsError = true;
+                objResponse.Message = "User is not valid";
+            }
+            else
+            {
+                _objUse01 = objUse01;
+
+                // update the balance using extension method
+                objResponse = _objUse01.UpdateBalance(_objTra01.A01F03, TransactionType);
+            }
+            return objResponse;
+        }
+
+        /// <summary>
+        /// insert or update the object into database
+        /// </summary>
+        /// <returns>response model</returns>
+        public Response Save()
+        {
+            try
+            {
+                using (IDbConnection db = _dbFactory.OpenDbConnection())
                 {
-                    BLUsers objBLUsers = new BLUsers();
-                    Use01 objUse01 = objBLUsers.GetUser(userId);
+                    using (IDbTransaction tx = db.BeginTransaction())
+                    {
+                        try
+                        {
+                            // update the user object 
+                            db.Update(_objUse01);
 
-                    if (type == "Deposit")
-                    {
-                        objUse01.E01F05 += money;
-                    }
-                    else if (type == "Withdraw")
-                    {
-                        objUse01.E01F05 -= money;
-                    }
-                    int updateRow = db.Update(objUse01);
+                            // insert the record into database
+                            db.Insert(_objTra01);
 
-                    if (updateRow > 0)
-                    {
-                        Tra01 objTRA01 = new Tra01();
-                        objTRA01.A01F02 = userId;
-                        objTRA01.A01F03 = money;
-                        objTRA01.A01F04 = type;
 
-                        db.Insert(objTRA01);
-                    }
-                    else
-                    {
-                        return false;
+                            tx.Commit();
+                            objResponse.Message = TransactionType == enmTransactionTypes.D ? "Successfully deposit the money into your account" : "successfully withdraw the money from your account";
+                        }
+                        catch (Exception ex)
+                        {
+                            BLErrorHandling.WriteFile($"CLTransactions ::  BLTransaction :: Save :: {ex.Message}");
+                            tx.Rollback();
+                            throw;
+                        }
                     }
 
-                    return true;
+                    return objResponse;
                 }
-                catch (MySqlException)
-                {
-                    return false;
-                }
+            }
+            catch (Exception ex)
+            {
+                BLErrorHandling.WriteFile($"CLTransactions ::  BLTransaction :: Save :: {ex.Message}");
+                return objResponse;
             }
         }
 
         /// <summary>
         /// Retrieves details of all transactions from the database.
         /// </summary>
-        /// <returns>A list of dictionaries containing transaction details.</returns>
-        public List<Dictionary<string, string>> GetAllTransactions()
+        /// <returns>all transaction details.</returns>
+        public Response GetAllTransactions()
         {
-            using (MySqlConnection objMySqlConnection = new MySqlConnection(_objBLDbConnection.GetConnectionString()))
+            DataTable dtAllTransactions = _objDBTransactions.GetAllTransactions();
+            if (dtAllTransactions.Rows.Count == 0)
             {
-                objMySqlConnection.Open();
-
-                string query = @"SELECT 
-	                                A01F01,
-	                                E01F02,
-                                    E01F04,
-	                                A01F04,
-	                                A01F03
-                                FROM 
-                                    tra01 t 
-                                JOIN 
-                                    use01 u 
-                                ON 
-                                    t.A01F02 = u.E01F01";
-
-                MySqlCommand objMySqlCommand = new MySqlCommand(query, objMySqlConnection);
-
-                MySqlDataReader objMySqlDataReader = objMySqlCommand.ExecuteReader();
-
-                List<Dictionary<string, string>> lstTra01 = new List<Dictionary<string, string>>();
-                while (objMySqlDataReader.Read())
-                {
-                    lstTra01.Add(new Dictionary<string, string>
-                    {
-                        {"A01F01" , objMySqlDataReader["A01F01"].ToString() },
-                        {"E01F02" , objMySqlDataReader["E01F02"].ToString() },
-                        {"E01F04" , objMySqlDataReader["E01F04"].ToString() },
-                        {"A01F04" , objMySqlDataReader["A01F04"].ToString() },
-                        {"A01F03" , objMySqlDataReader["A01F03"].ToString() }
-                    });
-                }
-
-                return lstTra01;
+                objResponse.IsError = true;
+                objResponse.Message = "Not found any transaction";
             }
+            else
+            {
+                objResponse.Data = dtAllTransactions;
+            }
+            return objResponse;
         }
 
         /// <summary>
         /// Retrieves details of transactions for a specific user from the database.
         /// </summary>
         /// <param name="userId">User ID.</param>
-        /// <returns>A list of dictionaries containing transaction details for the specified user.</returns>
-        public List<Dictionary<string, string>> GetTransactionByMe(int userId)
+        /// <returns>transaction details</returns>
+        public Response GetTransactionByMe(int userId)
         {
-            using (MySqlConnection objMySqlConnection = new MySqlConnection(_objBLDbConnection.GetConnectionString()))
+
+            DataTable dtTransaction = _objDBTransactions.GetTransactionByMe(userId);
+            if (dtTransaction.Rows.Count == 0)
             {
-                objMySqlConnection.Open();
-
-                string query = @"SELECT 
-	                                A01F01,
-	                                E01F02,
-                                    E01F04,
-	                                A01F04,
-	                                A01F03
-                                FROM 
-                                    tra01 t 
-                                JOIN 
-                                    use01 u 
-                                ON 
-                                    t.A01F02 = u.E01F01
-                                WHERE
-                                    u.E01F01 = @E01F01";
-
-                MySqlCommand objMySqlCommand = new MySqlCommand(query, objMySqlConnection);
-                objMySqlCommand.Parameters.AddWithValue("@E01F01", userId);
-                MySqlDataReader objMySqlDataReader = objMySqlCommand.ExecuteReader();
-
-                List<Dictionary<string, string>> lstTra01 = new List<Dictionary<string, string>>();
-                while (objMySqlDataReader.Read())
-                {
-                    lstTra01.Add(new Dictionary<string, string>
-                    {
-                        {"A01F01" , objMySqlDataReader["A01F01"].ToString() },
-                        {"E01F02" , objMySqlDataReader["E01F02"].ToString() },
-                        {"E01F04" , objMySqlDataReader["E01F04"].ToString() },
-                        {"A01F04" , objMySqlDataReader["A01F04"].ToString() },
-                        {"A01F03" , objMySqlDataReader["A01F03"].ToString() }
-                    });
-                }
-
-                return lstTra01;
+                objResponse.IsError = true;
+                objResponse.Message = "Not found any transaction by your self";
             }
+            else
+            {
+                objResponse.Data = dtTransaction;
+            }
+
+            return objResponse;
         }
 
         /// <summary>
@@ -208,7 +227,7 @@ namespace Bank_Management_System.Business_Logic
         /// <param name="username">Username associated with the transactions.</param>
         /// <param name="lstDictTransactioins">List of dictionaries containing transaction details.</param>
         /// <returns>True if file writing is successful, false otherwise.</returns>
-        public bool FileWrite(string username, List<Dictionary<string, string>> lstDictTransactioins)
+        public bool FileWrite(string username, DataTable lstDictTransactioins)
         {
             string fileName = username + ".txt";
             string filePath = Path.Combine(_folderPath, fileName);
@@ -217,27 +236,31 @@ namespace Bank_Management_System.Business_Logic
                 using (StreamWriter ojStreamWriter = new StreamWriter(filePath))
                 {
                     int id = 1;
-                    foreach (var dictionary in lstDictTransactioins)
+                    // Loop through each row in the DataTable
+                    foreach (DataRow row in lstDictTransactioins.Rows)
                     {
-                        // Write each dictionary as a line in the file
-                        ojStreamWriter.WriteLine($"Id    : {id++}");
-                        foreach (var kvp in dictionary)
+                        ojStreamWriter.WriteLine($"Id: {id++}");
+
+                        // Loop through each column in the current row
+                        foreach (DataColumn column in lstDictTransactioins.Columns)
                         {
-                            if (kvp.Key == "A01F01")
+                            if (column.ColumnName == "A01101")
                             {
                                 continue;
                             }
-                            ojStreamWriter.WriteLine($"{changeKeyName(kvp.Key)}: {kvp.Value}");
+
+                            ojStreamWriter.WriteLine($"{ChangeKeyName(column.ColumnName)}: {row[column]}");
                         }
 
-                        // Add a separator line between dictionaries for better readability
+                        // Add a separator line between transactions for better readability
                         ojStreamWriter.WriteLine(new string('-', 20));
                     }
                     return true;
                 }
             }
-            catch (IOException ex)
+            catch (Exception ex)
             {
+                BLErrorHandling.WriteFile($"CLTransactions ::  BLTransaction :: FileWrite :: {ex.Message}");
                 return false;
             }
         }
@@ -276,6 +299,7 @@ namespace Bank_Management_System.Business_Logic
             }
             catch (Exception ex)
             {
+                BLErrorHandling.WriteFile($"CLTransactions ::  BLTransaction :: DownloadFile :: {ex.Message}");
                 throw new Exception(ex.Message);
             }
         }
@@ -288,16 +312,16 @@ namespace Bank_Management_System.Business_Logic
         /// <returns>HttpResponseMessage containing the file to be downloaded or an error response.</returns>
         public HttpResponseMessage Statements(int id, HttpRequestMessage Request)
         {
-            List<Dictionary<string, string>> lstDictTransactions = GetTransactionByMe(id);
+            DataTable dtTransaction = GetTransactionByMe(id).Data;
 
             // Check if the user has any transactions
-            if (lstDictTransactions.Count == 0)
+            if (dtTransaction.Rows.Count == 0)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, "You have not made any transactions.");
             }
 
             BLUsers objBLUsers = new BLUsers();
-            Use01 objUse01 = objBLUsers.GetUser(id);
+            Use01 objUse01 = objBLUsers.GetUserObject(id);
 
             try
             {
@@ -305,7 +329,7 @@ namespace Bank_Management_System.Business_Logic
                 {
                     string username = objUse01.E01F02;
 
-                    if (FileWrite(username, lstDictTransactions))
+                    if (FileWrite(username, dtTransaction))
                     {
                         return DownloadFile(username);
                     }
@@ -319,8 +343,9 @@ namespace Bank_Management_System.Business_Logic
                     return Request.CreateErrorResponse(HttpStatusCode.NotFound, "User not found.");
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                BLErrorHandling.WriteFile($"CLTransactions ::  BLTransaction :: Statements :: {ex.Message}");
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Something went wrong.");
             }
         }

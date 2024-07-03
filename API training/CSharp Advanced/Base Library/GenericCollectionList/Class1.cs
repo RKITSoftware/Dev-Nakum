@@ -5,10 +5,13 @@ namespace GenericCollectionList
     /// <summary>
     /// custom list for generic types 
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">generic data type</typeparam>
     public class CustomList<T> : List<T>
     {
         #region Constructor
+        /// <summary>
+        /// call the base constructor
+        /// </summary>
         public CustomList() : base() { }
         #endregion
 
@@ -19,7 +22,6 @@ namespace GenericCollectionList
         /// <param name="item">item</param>
         public new void Add(T item)
         {
-            //Console.WriteLine("Custom message Before call the base function");      
             base.Add(item);
             Console.WriteLine($"{item} is added");
         }
@@ -30,7 +32,6 @@ namespace GenericCollectionList
         /// <param name="item">Item</param>
         public new void Remove(T item)
         {
-           // Console.WriteLine("Custom message Before call the base function");
             base.Remove(item);
             Console.WriteLine($"{item} is removed");
         }

@@ -1,0 +1,24 @@
+Id: 1
+Name  : test
+Email : test@gmail.com
+Type  : D
+Money : 10100
+--------------------
+Id: 2
+Name  : test
+Email : test@gmail.com
+Type  : W
+Money : 10099
+--------------------
+Id: 3
+Name  : test
+Email : test@gmail.com
+Type  : D
+Money : 100000
+--------------------
+Id: 4
+Name  : test
+Email : test@gmail.com
+Type  : W
+Money : 10
+--------------------

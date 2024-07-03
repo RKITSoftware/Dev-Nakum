@@ -1,12 +1,10 @@
 ﻿using Bank_Management_System.Attributes;
 using Bank_Management_System.Business_Logic;
+using Bank_Management_System.Enums;
 using Bank_Management_System.Models;
+using Bank_Management_System.Models.DTO;
 using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Net.Http;
 using System.Security.Claims;
-using System.Web;
 using System.Web.Http;
 
 namespace Bank_Management_System.Controllers
@@ -14,11 +12,24 @@ namespace Bank_Management_System.Controllers
     /// <summary>
     /// Controller for managing user-related operations.
     /// </summary>
+    [JwtAuthorization]
     public class CLUsersController : ApiController
     {
         #region Private Member
+        /// <summary>
+        /// Create the object of user service
+        /// </summary>
         private readonly BLUsers _objBLUsers;
         #endregion
+
+        #region Public Member
+
+        /// <summary>
+        /// Create the object of response model
+        /// </summary>
+        public Response objResponse;
+        #endregion
+
 
         #region Constructor
         /// <summary>
@@ -27,6 +38,7 @@ namespace Bank_Management_System.Controllers
         public CLUsersController()
         {
             _objBLUsers = new BLUsers();
+            objResponse = new Response();
         }
         #endregion
 
@@ -53,137 +65,107 @@ namespace Bank_Management_System.Controllers
         /// <summary>
         /// Handles user sign-up.
         /// </summary>
-        /// <param name="objUse01">User details for sign-up.</param>
-        /// <returns>HTTP response indicating success or failure.</returns>
+        /// <param name="objDtoUse01">User details for sign-up.</param>
+        /// <returns>Response model</returns>
+        [AllowAnonymous]
         [HttpPost]
-        [Route("api/students/signup")]
-        public IHttpActionResult SignUp(Use01 objUse01)
+        [Route("api/users/signup")]
+        public IHttpActionResult SignUp([FromBody] DtoUse01 objDtoUse01)
         {
-            Use01 user = _objBLUsers.SignUp(objUse01);
-
-            if (user == null)
+            _objBLUsers.OperationType = enmOperationTypes.A;
+            _objBLUsers.PreSave(objDtoUse01);
+            objResponse = _objBLUsers.ValidationOnSave();
+            if(!objResponse.IsError)
             {
-                return BadRequest("Something went wrong");
+                objResponse = _objBLUsers.Save();
             }
 
-            return Ok("User added successfully");
+            return Ok(objResponse);
         }
 
         /// <summary>
         /// Handles user login.
         /// </summary>
-        /// <param name="objUse01">User credentials for login.</param>
-        /// <returns>HTTP response indicating success or failure.</returns>
+        /// <param name="objDtoUse01">User credentials for login.</param>
+        /// <returns>Response model</returns>
+        [AllowAnonymous]
         [HttpPost]
-        [Route("api/students/login")]
-        public HttpResponseMessage LogIn(Use01 objUse01)
+        [Route("api/users/login")]
+        public IHttpActionResult LogIn([FromBody] DtoUse01 objDtoUse01)
         {
-            string user = _objBLUsers.LogIn(objUse01);                   
-            if (user == null)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Email or Password is incorrect");
-            }
-            return Request.CreateResponse(HttpStatusCode.OK,user);
+            _objBLUsers.OperationType = enmOperationTypes.Login;
+            _objBLUsers.PreSave(objDtoUse01);
+            objResponse = _objBLUsers.LogIn();
+            return Ok(objResponse);
         }
 
         /// <summary>
         /// Retrieves details of the currently logged-in user.
         /// </summary>
-        /// <returns>HTTP response containing user details.</returns>
-        [JwtAuthorization]
-        [Authorize(Roles = "Admin,User")]
+        /// <returns>Response model</returns>
+        [Authorize(Roles = "A,U")]
         [HttpGet]
-        [Route("api/students/me")]
+        [Route("api/users/details")]
         public IHttpActionResult GetUser()
         {
             int id = GetCurrentUser();
+            objResponse = _objBLUsers.GetUser(id);
+            return Ok(objResponse);
 
-            Use01 objUse01 = _objBLUsers.GetUser(id);
-            try
-            {
-                return Ok(objUse01);
-            }
-            catch (Exception)
-            {
-                return BadRequest("Something went wrong");
-            }
         }
 
         /// <summary>
         /// Retrieves details of all users.
         /// </summary>
-        /// <returns>HTTP response containing a list of user details.</returns>
-        [JwtAuthorization]
-        //[Authorization(Roles = "Admin")]
-        [Authorize(Roles = "Admin")]
+        /// <returns>Response model</returns>
+        [Authorize(Roles = "A")]
         [HttpGet]
-        [Route("api/students")]
+        [Route("api/users/")]
         public IHttpActionResult GetAllUser()
-        {      
-            List<Use01> lstUse01 = _objBLUsers.GetAllUser();
-            try
-            {
-                return Ok(lstUse01);
-            }
-            catch (Exception)
-            {
-                return BadRequest("Something went wrong");
-            }
+        {
+            objResponse = _objBLUsers.GetAllUser();
+            return Ok(objResponse);
         }
 
         /// <summary>
         /// Updates details of the currently logged-in user.
         /// </summary>
-        /// <param name="objUse01">Updated user details.</param>
-        /// <returns>HTTP response indicating success or failure.</returns>
-        [JwtAuthorization]
+        /// <param name="objDtoUse01">Updated user details.</param>
+        /// <returns>Response model</returns>
         [HttpPut]
-        [Route("api/students")]
-        public IHttpActionResult UpdateUser(Use01 objUse01)
+        [Route("api/users/")]
+        public IHttpActionResult UpdateUser(DtoUse01 objDtoUse01)
         {
             int id = GetCurrentUser();
-            try
+            _objBLUsers.OperationType = enmOperationTypes.E;
+            _objBLUsers.PreSave(objDtoUse01,id);
+            objResponse = _objBLUsers.ValidationOnSave();
+
+            if (!objResponse.IsError)
             {
-                if (_objBLUsers.UpdateUser(id, objUse01))
-                {
-                    return Ok("Successfully Update the user's details");
-                }
-                else
-                {
-                    return BadRequest("Something went wrong");
-                }
+                objResponse = _objBLUsers.Save();
             }
-            catch (Exception)
-            {
-                return InternalServerError();
-            }
+            return Ok(objResponse);
         }
 
         /// <summary>
         /// Deletes the currently logged-in user.
         /// </summary>
-        /// <returns>HTTP response indicating success or failure.</returns>
-        [JwtAuthorization]
+        /// <returns>Response model</returns>
         [HttpDelete]
-        [Route("api/students")]
+        [Route("api/users/")]
         public IHttpActionResult DeleteUser()
         {
             int id = GetCurrentUser();
-            try
+
+            _objBLUsers.OperationType = enmOperationTypes.D;
+            objResponse = _objBLUsers.ValidationOnDelete(id);
+
+            if(!objResponse.IsError)
             {
-                if (_objBLUsers.DeleteUser(id))
-                {
-                    return Ok("Successfully Deleted the user");
-                }
-                else
-                {
-                    return BadRequest("Something went wrong");
-                }
+                objResponse = _objBLUsers.Delete();
             }
-            catch (Exception)
-            {
-                return InternalServerError();
-            }
+            return Ok(objResponse);
         }
 
         #endregion

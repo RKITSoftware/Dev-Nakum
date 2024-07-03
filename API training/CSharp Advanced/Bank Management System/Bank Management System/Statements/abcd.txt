@@ -1,0 +1,12 @@
+Id: 1
+Name  : abcd
+Email : abcd@gmail.com
+Type  : D
+Money : 1000000
+--------------------
+Id: 2
+Name  : abcd
+Email : abcd@gmail.com
+Type  : W
+Money : 1000
+--------------------

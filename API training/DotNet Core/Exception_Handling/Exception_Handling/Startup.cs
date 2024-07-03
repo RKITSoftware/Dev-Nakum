@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Diagnostics;
+using System.Net;
 
 namespace Exception_Handling
 {
@@ -44,7 +45,28 @@ namespace Exception_Handling
         {
             if (!app.Environment.IsDevelopment())
             {
-                app.UseExceptionHandler("/Error");
+                app.UseExceptionHandler(options =>
+                {
+                    options.Run(async context =>
+                    {
+                        context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                        context.Response.ContentType = "application/json";
+
+                        var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
+                        if (contextFeature != null)
+                        {
+                            var response = new
+                            {
+                                StatusCode = context.Response.StatusCode,
+                                Message = "Internal Server Error.",
+                                Detail = contextFeature.Error.Message // For production, consider logging the detail internally.
+                            };
+
+                            await context.Response.WriteAsJsonAsync(response);
+                        }
+                    });
+                });
+
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
@@ -53,13 +75,17 @@ namespace Exception_Handling
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
-                //app.UseDeveloperExceptionPage(new DeveloperExceptionPageOptions()
-                //{
-                //    SourceCodeLineCount = 3,
-                //});
-                app.UseExceptionHandler("/api/error");
+
+                app.UseDeveloperExceptionPage(new DeveloperExceptionPageOptions()
+                {
+                    SourceCodeLineCount = 5,
+                });
+
+                //app.UseExceptionHandler("/api/error");
+                
+
             }
-           
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();

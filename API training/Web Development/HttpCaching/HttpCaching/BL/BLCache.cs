@@ -1,4 +1,4 @@
-﻿using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Caching;
 
 namespace HttpCaching.BL
@@ -13,29 +13,8 @@ namespace HttpCaching.BL
         /// <summary>
         /// Create the object of cache
         /// </summary>
-        private static Cache _cache = null;
+        private static Cache _cache = new Cache();
         #endregion
-
-        #region Public Properties
-
-        /// <summary>
-        /// Gets or sets the cache instance.
-        /// If the cache is not set, it initializes it based on the current HTTP context or HttpRuntime.
-        /// </summary
-        public static Cache CacheInfo
-        {
-            get
-            {
-                if (_cache == null)
-                {
-                    _cache = HttpContext.Current == null ? HttpRuntime.Cache : HttpContext.Current.Cache;
-                }
-                return _cache;
-            }
-            set { _cache = value; }
-        }
-        #endregion
-
 
         #region Public Method
         /// <summary>
@@ -56,7 +35,7 @@ namespace HttpCaching.BL
         /// <param name="value">The object to be cached.</param>
         public static void Add(string key, object value)
         {
-            CacheInfo.Insert(key, value);
+            _cache.Insert(key, value);
         }
 
         /// <summary>
@@ -66,6 +45,20 @@ namespace HttpCaching.BL
         public static void Remove(string key)
         {
             _cache.Remove(key);
+        }
+
+        /// <summary>
+        /// Get all cache data which is available in cache 
+        /// </summary>
+        /// <returns>list of cache data</returns>
+        public static List<object> GetAllCache()
+        {
+            List<object>lstCacheData = new List<object>();
+            foreach (var item in _cache)
+            {
+                lstCacheData.Add(item); 
+            }
+            return lstCacheData;
         }
         #endregion
     }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Logging.BL;
+using Microsoft.AspNetCore.Mvc;
 using NLog;
 
 namespace Logging.Controllers
@@ -47,6 +48,20 @@ namespace Logging.Controllers
         public IActionResult Error()
         {
             return BadRequest("There is an error due to unhandled exception");
+        }
+
+        /// <summary>
+        /// dynamic file added 
+        /// </summary>
+        /// <param name="fileName">filename</param>
+        /// <returns>response message</returns>
+        [HttpPost("api/dynamic-file-add")]
+        public IActionResult AddDynamicLog([FromBody] string fileName)
+        {
+            BLDynamicNlogConfig.AddDynamicFileTarget("dynamicFileTarget", fileName);
+            var logger = LogManager.GetLogger("dynamic");
+            logger.Info("Dynamic file target added: {FileName}", fileName);
+            return Ok("Dynamic file target added");
         }
         #endregion
     }

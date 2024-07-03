@@ -9,7 +9,7 @@ namespace Base_Library
     public class Program
     {
         /// <summary>
-        /// create the object of the customList and call the methods which is custom
+        /// create the object of the customList and call the custom method
         /// </summary>
         /// <param name="args"></param>
         static void Main(string[] args)
@@ -27,8 +27,7 @@ namespace Base_Library
             lstInt.Remove(2);
 
             // traverse the list
-            lstInt.ForEach(x=>Console.WriteLine(x));
-
+            lstInt.ForEach(x=>Console.Write($"{x} "));
         }
     }
 }

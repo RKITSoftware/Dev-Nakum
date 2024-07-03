@@ -7,18 +7,28 @@ using System.Security.Claims;
 
 namespace Filter.Controllers
 {
+    /// <summary>
+    /// Manage the users api
+    /// </summary>
+
     [Route("api/users")]
     [ApiController]
-    [ResultFilter("Controller")]
-    [ActionFilter("Controller")]
-
+    [ResultFilter("Controller users")]
+    [ActionAsyncFilter("Controller users")]
     public class CLUsersController : ControllerBase
     {
         #region Private Member
-        private BLUsers _objBLUsers;
+        /// <summary>
+        /// create the object of thr user services
+        /// </summary>
+        private readonly BLUsers _objBLUsers;
         #endregion
 
         #region Contructor
+
+        /// <summary>
+        /// initialize the object of the user services
+        /// </summary>
         public CLUsersController()
         {
             _objBLUsers = new BLUsers();
@@ -45,14 +55,23 @@ namespace Filter.Controllers
 
         #region Public Method
 
+        /// <summary>
+        /// register the user
+        /// </summary>
+        /// <param name="objUse01">object of the user</param>
+        /// <returns>response message</returns>
         [HttpPost("signup")]
-
         public IActionResult SignUp(Use01 objUse01)
         {
             _objBLUsers.SignUp(objUse01);
             return Ok("User added successfully");
         }
 
+        /// <summary>
+        /// login the user
+        /// </summary>
+        /// <param name="objUse01">object of the user</param>
+        /// <returns>response message</returns>
         [HttpPost("login")]
         public IActionResult Login(Use01 objUse01)
         {
@@ -65,16 +84,25 @@ namespace Filter.Controllers
             return Ok(user);
         }
 
-
-        [AuthorizationFilter]
-        [HttpGet("me")]
+        /// <summary>
+        /// get user details based on user login
+        /// </summary>
+        /// <returns>user details</returns>
+        [Authorize]
+        //[AuthorizationFilter]
+        [HttpGet("details")]
         public IActionResult UserDetails()
         {
             int id = GetCurrentUser();
             return Ok(_objBLUsers.UserDetails(id));
         }
 
-        [AuthorizationFilter]
+        /// <summary>
+        /// get all users details
+        /// </summary>
+        /// <returns>list of all the users</returns>
+        [Authorize]
+        //[AuthorizationFilter]
         [HttpGet]
         public IActionResult AllUser()
         {

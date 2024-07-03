@@ -31,7 +31,7 @@ namespace Middleware___webapi.Middleware
         public async Task Invoke(HttpContext context)
         {
             // to check particular request 
-            if (context.Request.Path.StartsWithSegments("/api/users/login") )
+            if (context.Request.Path.StartsWithSegments("/api/users/validate") )
             {
                 // to check authorization header is exist or not
                 if (!context.Request.Headers.ContainsKey(_authorizationHeaderName))
@@ -69,7 +69,7 @@ namespace Middleware___webapi.Middleware
                 }
 
                 // Authentication successful, proceed with request
-                await _next(context);
+                _next(context);
 
             }
             else

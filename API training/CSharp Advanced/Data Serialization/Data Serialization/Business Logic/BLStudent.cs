@@ -1,81 +1,52 @@
 ﻿using Data_Serialization.Models;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlTypes;
-using System.IO;
-using System.Linq;
-using System.Web;
-using System.Web.Script.Serialization;
-using System.Xml;
+using Newtonsoft.Json;
 using System.Xml.Linq;
-using System.Xml.Serialization;
 
 namespace Data_Serialization.Business_Logic
 {
     /// <summary>
-    /// Manage the business logic of serialization and deserialization
+    /// Manage the student services for serialization and deserialization
     /// </summary>
     public class BLStudent
     {
         /// <summary>
-        /// serialize the object to json string
+        /// serialize the json object to json string
         /// </summary>
-        /// <returns></returns>
-        public static string ObjectToJson()
+        /// <param name="objStudents">json object of the student </param>
+        /// <returns>json string</returns>
+        public string ObjectToJson(Students objStudents)
         {
-            Students objStudents = new Students
-            {
-                Id = 1,
-                Name = "Dev",
-                Age = 21
-            };
-
-            // serialization of object to json string
-            JavaScriptSerializer objSerializer = new JavaScriptSerializer();
-            return objSerializer.Serialize(objStudents);
+            return JsonConvert.SerializeObject(objStudents);
         }
 
         /// <summary>
-        /// serialize the json string to object
+        /// de-serialize the json string to json object
         /// </summary>
-        /// <param name="jsonString"></param>
-        /// <returns></returns>
-        public static Students JsonToObject(string jsonString)
+        /// <param name="jsonString">json string</param>
+        /// <returns>json object</returns>
+        public Students JsonToObject(string jsonString)
         {
-            JavaScriptSerializer objSerializer = new JavaScriptSerializer();
-            Students stu =  objSerializer.Deserialize<Students>(jsonString);
-            return stu;
+            return JsonConvert.DeserializeObject<Students>(jsonString);
         }
 
-
-        public static string ObjectToXml(XElement objXml)
+        /// <summary>
+        /// serialize the xml object to xml string
+        /// </summary>
+        /// <param name="objXml">xml object</param>
+        /// <returns>xml string</returns>
+        public string ObjectToXml(XElement objXml)
         {
-            // Serialize the Students object to XML
-            string xmlString = SerializeToXml(objXml);
-            return xmlString;
+            return JsonConvert.SerializeXNode(objXml);
         }
 
-        public static string SerializeToXml<T>(T obj)
+        /// <summary>
+        /// de-serialize the xml string to xml object
+        /// </summary>
+        /// <param name="xmlString">xml string</param>
+        /// <returns>xml object</returns>
+        public XElement XmlToObject(string xmlString)
         {
-            // Create an XmlSerializer for the type of the object
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
-
-            // Use a StringWriter to write the XML string
-            using (StringWriter stringWriter = new StringWriter())
-            {
-                // Serialize the object to XML and write it to the string writer
-                xmlSerializer.Serialize(stringWriter, obj);
-
-                // Return the XML string
-                return stringWriter.ToString();
-            }
-        }
-
-        public static XmlDocument XmlToObject(string xmlStrnig)
-        {
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.LoadXml(xmlStrnig);
-            return xmlDoc;
+            return JsonConvert.DeserializeXNode(xmlString).Root;
         }
 
     }

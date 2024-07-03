@@ -12,10 +12,18 @@ namespace Routing_webapi.Controllers
     public class CLUsersController : ControllerBase
     {
         #region Private Member
-        BLUsers _objBLUsers;
+
+        /// <summary>
+        /// create the object of the user services
+        /// </summary>
+        private BLUsers _objBLUsers;
         #endregion
 
         #region Constructor
+
+        /// <summary>
+        /// initialize the object of the users
+        /// </summary>
         public CLUsersController()
         {
             _objBLUsers = new BLUsers();
@@ -31,21 +39,18 @@ namespace Routing_webapi.Controllers
         [HttpPost]
         public IActionResult AddUser(Use01 objUse01)
         {
-            if (!_objBLUsers.AddUser(objUse01))
-            {
-                return BadRequest("something went wrong");
-            }
-            else
-            {
-                return Ok("user added successfully");
-            }
+            _objBLUsers.AddUser(objUse01);
+            return Ok("user added successfully");
         }
         /// <summary>
         /// Get all users
         /// </summary>
         /// <returns>list of all users</returns>
         [HttpGet]
-        public IActionResult GetUsers() { return Ok(_objBLUsers.GetUsers()); }
+        public IActionResult GetUsers()
+        {
+            return Ok(_objBLUsers.GetUsers());
+        }
 
         /// <summary>
         /// get the user based on user-id
@@ -55,12 +60,12 @@ namespace Routing_webapi.Controllers
         [HttpGet("{id}")]
         public IActionResult GetUser(int id)
         {
-            Use01 user = _objBLUsers.GetUser(id);
-            if(user == null)
+            JsonResult user = _objBLUsers.GetUser(id);
+            if (user.Value == null)
             {
                 return NotFound("User is not found");
             }
-            return Ok(user);
+            return Ok(user.Value);
         }
         #endregion
     }

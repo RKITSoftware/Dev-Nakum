@@ -4,7 +4,7 @@ using System.Web.Http.Cors;
 namespace CORS.Controllers
 {
     // enabled cors 
-    [EnableCors(origins:"*", headers:"*", methods:"*")]
+    [EnableCors(origins: "*", headers: "*", methods: "GET")]
 
     /// <summary>
     ///    to check cors is enabled or not 
@@ -12,11 +12,12 @@ namespace CORS.Controllers
     /// </summary>
     public class CorsController : ApiController
     {
-        /// <summary>
+        /// <summary>   
         ///     display the message when cors is enabled
         /// </summary>
         /// <returns>response message</returns>
-        
+        [HttpGet]
+        [Route("api/cors")]
         public IHttpActionResult Get()
         {
             return Ok("Hello from cors demo");

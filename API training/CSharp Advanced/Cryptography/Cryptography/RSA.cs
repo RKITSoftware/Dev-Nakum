@@ -5,15 +5,23 @@ using System.Text;
 namespace Cryptography
 {
     /// <summary>
-    ///     encrypt and decrypt the plain text
+    /// encrypt and decrypt the plain text
     /// </summary>
     public class RSA
     {
         #region Private Member
+
+        /// <summary>
+        /// create the object of the RSACryptoServiceProvider
+        /// </summary>
         private static RSACryptoServiceProvider _objRSA;
         #endregion
 
         #region Constructor
+
+        /// <summary>
+        /// initialize the object of the RSACryptoServiceProvider
+        /// </summary>
         public RSA()
         {
             _objRSA = new RSACryptoServiceProvider();

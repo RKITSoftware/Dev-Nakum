@@ -1,0 +1,26 @@
+2024-05-13 10:31:25.8790|Logging.Controllers.CLExceptionsController|INFO|ans is 6 
+2024-05-13 10:31:31.3182|Logging.Controllers.CLExceptionsController|ERROR|Attempted to divide by zero. 
+2024-05-13 10:32:11.7550|Logging.Controllers.CLExceptionsController|INFO|ans is 122 
+2024-05-13 10:32:17.5159|Logging.Controllers.CLExceptionsController|ERROR|Attempted to divide by zero. 
+2024-05-13 10:32:55.5775|Logging.Controllers.CLExceptionsController|INFO|ans is 12 
+2024-05-13 10:32:59.8047|Logging.Controllers.CLExceptionsController|ERROR|Attempted to divide by zero. 
+2024-05-13 10:35:03.8269|Logging.Controllers.CLExceptionsController|ERROR|Attempted to divide by zero. 
+2024-05-13 10:35:32.6937|Logging.Controllers.CLExceptionsController|ERROR|Attempted to divide by zero. 
+2024-05-13 10:35:40.5332|Logging.Controllers.CLExceptionsController|INFO|ans is 12 
+2024-05-13 10:35:45.2257|Logging.Controllers.CLExceptionsController|INFO|ans is 12 
+2024-05-13 10:35:48.8367|Logging.Controllers.CLExceptionsController|INFO|ans is 6 
+2024-05-13 10:35:52.4364|Logging.Controllers.CLExceptionsController|INFO|ans is 4 
+2024-05-13 10:35:55.6360|Logging.Controllers.CLExceptionsController|ERROR|Attempted to divide by zero. 
+2024-05-13 10:36:03.7026|Logging.Controllers.CLExceptionsController|ERROR|Attempted to divide by zero. 
+2024-05-13 10:36:13.4308|Logging.Controllers.CLExceptionsController|INFO|ans is 12 
+2024-05-13 10:36:16.6584|Logging.Controllers.CLExceptionsController|ERROR|Attempted to divide by zero. 
+2024-05-13 10:36:34.4757|Logging.Controllers.CLExceptionsController|INFO|ans is 12 
+2024-05-13 10:36:37.0070|Logging.Controllers.CLExceptionsController|ERROR|Attempted to divide by zero. 
+2024-05-13 10:36:47.8504|Logging.Controllers.CLExceptionsController|ERROR|Attempted to divide by zero. 
+2024-05-13 10:36:50.0898|Logging.Controllers.CLExceptionsController|INFO|ans is 0 
+2024-05-13 10:36:55.9967|Logging.Controllers.CLExceptionsController|INFO|ans is 0 
+2024-05-13 10:37:01.4849|Logging.Controllers.CLExceptionsController|INFO|ans is 101676 
+2024-05-13 10:37:04.4444|Logging.Controllers.CLExceptionsController|INFO|ans is 10269344 
+2024-05-13 10:37:23.0206|Logging.Controllers.CLExceptionsController|INFO|ans is 14535 
+2024-05-13 10:37:28.2069|Logging.Controllers.CLExceptionsController|INFO|ans is 1615 
+2024-05-13 10:37:30.6369|Logging.Controllers.CLExceptionsController|ERROR|Attempted to divide by zero. 

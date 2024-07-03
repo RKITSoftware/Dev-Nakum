@@ -1,4 +1,6 @@
-﻿namespace Middleware___webapi.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Middleware___webapi.Model
 {
     /// <summary>
     /// schema of users

@@ -1,5 +1,6 @@
 ﻿using Dependency_Injection.Interface;
 using Dependency_Injection.Model;
+using Dependency_Injection.Other;
 
 namespace Dependency_Injection.BL
 {
@@ -9,7 +10,14 @@ namespace Dependency_Injection.BL
     public class BLUsers : IUsers
     {
         #region Private Member
+        /// <summary>
+        /// manage the list of all the users
+        /// </summary>
         private List<Use01> _lstUsers = new List<Use01>();
+
+        /// <summary>
+        /// user id
+        /// </summary>
         private int id = 1;
         #endregion
 
@@ -21,19 +29,12 @@ namespace Dependency_Injection.BL
         /// <returns>true or false for successfully adding into list</returns>
         public bool AddUsers(Use01 objUse01)
         {
-            try
-            {
-                objUse01.E01F01 = id++;
-                Guid guid = Guid.NewGuid();
-                objUse01.E01F03 = guid;
+            objUse01.E01F01 = id++;
+            Guid guid = Guid.NewGuid();
+            objUse01.E01F03 = guid;
 
-                _lstUsers.Add(objUse01);   
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            _lstUsers.Add(objUse01);   
+            return true;
         }
 
         /// <summary>
@@ -69,12 +70,16 @@ namespace Dependency_Injection.BL
             Use01 user = GetUserById(accountNo);
             if (user != null)
             {
-                if (type == "Deposit")
+                if (type == enmTransactionType.D.ToString())
                 {
                     user.E01F04 += amount;
                 }
                 else
                 {
+                    if(user.E01F04 < amount)
+                    {
+                        return false;
+                    }
                     user.E01F04 -= amount;
                 }
 

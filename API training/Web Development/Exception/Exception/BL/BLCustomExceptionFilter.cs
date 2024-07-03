@@ -17,7 +17,7 @@ namespace Exception.BL
         public override void OnException(HttpActionExecutedContext actionExecutedContext)
         {
             HttpStatusCode httpStatusCode = HttpStatusCode.InternalServerError;
-            string errorMsg = "";
+            string errorMsg = string.Empty;
 
             // get the exception type
             Type exceptionType = actionExecutedContext.Exception.GetType();

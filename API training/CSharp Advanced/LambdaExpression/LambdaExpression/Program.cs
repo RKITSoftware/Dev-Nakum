@@ -21,11 +21,15 @@ namespace LambdaExpression
             Action<string> printName = name => Console.WriteLine($"Hello {name}");
             printName("Dev");
 
-            // function 
+            // function - one parameter
+            Func<int,int, int> multiplication = (x,y) => x * y;
+            Console.WriteLine(multiplication(4,2));
+
+            // function - two parameter
             Func<int, int> square = x => x * x;
             Console.WriteLine(square(4));
 
-            // travsers the list
+            // traverse the list
             List<int> lstInt = new List<int>() { 1, 2, 3, 4, 5 };
             lstInt.ForEach(x => Console.Write(x));  
 

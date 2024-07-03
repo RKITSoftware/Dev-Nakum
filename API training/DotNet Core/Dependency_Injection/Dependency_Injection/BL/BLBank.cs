@@ -9,6 +9,10 @@ namespace Dependency_Injection.BL
     public class BLBank : IBank
     {
         #region Private member
+
+        /// <summary>
+        /// create the list for the manage the bank schema
+        /// </summary>
         private List<Ban01> _lstBank = new List<Ban01>();
         #endregion
 
@@ -21,15 +25,8 @@ namespace Dependency_Injection.BL
         /// <returns>true or false for successfully add into list</returns>
         public bool AddTransaction(Ban01 objBan01)
         {
-            try
-            {
-                _lstBank.Add(objBan01);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            _lstBank.Add(objBan01);
+            return true;
         }
         #endregion
     }

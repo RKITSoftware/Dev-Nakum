@@ -1,11 +1,10 @@
-﻿using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Web;
+﻿using DataBase_With_C_.DB;
 using DataBase_With_C_.Models;
+using DataBase_With_C_.Models.DTO;
+using DataBase_With_C_.Models.POCO;
 using MySql.Data.MySqlClient;
+using System;
+using System.Data;
 
 namespace DataBase_With_C_.Business_Logic
 {
@@ -14,24 +13,78 @@ namespace DataBase_With_C_.Business_Logic
     /// </summary>
     public class BLStudents
     {
-        #region Private Methods
+        #region Private Member
+        /// <summary>
+        /// Create the object of the student model
+        /// </summary>
+        private Stu01 _objStu01 = new Stu01();
 
         /// <summary>
-        /// Get the database connection string from a JSON file.
+        /// create the object of the DB class
         /// </summary>
-        private string GetConnectionString()
+        private readonly DBStudents _objDBStudents;
+        #endregion
+
+        #region Public Member
+
+        /// <summary>
+        /// Create the object of the response model
+        /// </summary>
+        public Response objResponse;
+        #endregion
+
+        #region Public Property
+
+        /// <summary>
+        /// Operation types A - Add, U - Update, D - Delete
+        /// </summary>
+        public EnmOperationTypes OperationTypes { get; set; }
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// initialize the db class
+        /// </summary>
+        public BLStudents()
         {
-            // Get path to the App_Data folder
-            string appDataPath = Path.Combine(HttpRuntime.AppDomainAppPath, "App_Data");
-            string jsonFilePath = Path.Combine(appDataPath, "db.json");
+            _objDBStudents = new DBStudents();
+        }
+        #endregion
 
-            // Get JSON Object from the JSON file
-            string jsonString = File.ReadAllText(jsonFilePath);
-            JObject jsonObject = JsonConvert.DeserializeObject<JObject>(jsonString);
+        #region Private Method
+        /// <summary>
+        /// to check into database whether email is unique or not
+        /// </summary>
+        /// <param name="email">Response model</param>
+        /// <returns>true if email is unique or else false</returns>
+        private bool IsUniqueEmail(string email)
+        {
+            try
+            {
+                return _objDBStudents.IsUniqueEmail(email);
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
 
-            // Get Connection String from JsonObject
-            string connectionString = jsonObject["ConnectionString"].ToString();
-            return connectionString;
+        /// <summary>
+        /// to check student is exist or not based on student id
+        /// </summary>
+        /// <param name="id">student id</param>
+        /// <returns>true if student is exist or else false</returns>
+        private bool IsStudentExist(int id)
+        {
+            try
+            {
+                return _objDBStudents.IsStudentExist(id);
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         #endregion
@@ -41,137 +94,180 @@ namespace DataBase_With_C_.Business_Logic
         /// <summary>
         /// Get all students from the database.
         /// </summary>
-        public List<Stu01> GetAllStudents()
+        public Response GetAllStudents()
         {
-            MySqlConnection objMySqlConnection = new MySqlConnection(GetConnectionString());
-            objMySqlConnection.Open();
-
-            string query = @"select
-                                U01F01,
-                                U01F02,
-                                U01F03
-                            from
-                                Stu01";
-
-            MySqlCommand objMySqlCommand = new MySqlCommand(query, objMySqlConnection);
-            MySqlDataReader objMySqlDataReader = objMySqlCommand.ExecuteReader();
-
-            List<Stu01> lstStu01 = new List<Stu01>();
-            while (objMySqlDataReader.Read())
+            objResponse = new Response();
+            try
             {
-                lstStu01.Add(new Stu01()
+                DataTable dtGetAllStudents = _objDBStudents.GetAllStudents();
+                if (dtGetAllStudents.Rows.Count == 0)
                 {
-                    U01F01 = Convert.ToInt32(objMySqlDataReader["U01F01"]),
-                    U01F02 = objMySqlDataReader["U01F02"].ToString(),
-                    U01F03 = Convert.ToInt32(objMySqlDataReader["U01F03"]),
-                });
-            }
+                    objResponse.IsError = true;
+                    objResponse.Message = "Students is not found";
+                }
+                else
+                {
+                    objResponse.Data = dtGetAllStudents;
+                }
 
-            objMySqlConnection.Close();
-            return lstStu01;
+                return objResponse;
+            }
+            catch (Exception ex)
+            {
+                objResponse.IsError = true;
+                objResponse.Message = ex.Message;
+                return objResponse;
+            }
         }
 
         /// <summary>
         /// Get a specific student by ID from the database.
         /// </summary>
-        public Stu01 GetStudent(int id)
+        public Response GetStudent(int id)
         {
-            MySqlConnection objMySqlConnection = new MySqlConnection(GetConnectionString());
-            objMySqlConnection.Open();
-
-            string query = @"select
-                                U01F01,
-                                U01F02,
-                                U01F03
-                            from
-                                Stu01
-                            where 
-                                U01F01 = @U01F01";
-
-            MySqlCommand objMySqlCommand = new MySqlCommand(query, objMySqlConnection);
-            objMySqlCommand.Parameters.AddWithValue("@U01F01", id);
-
-            MySqlDataReader objMySqlDataReader = objMySqlCommand.ExecuteReader();
-
-            while (objMySqlDataReader.Read())
+            objResponse = new Response();
+            try
             {
-                Stu01 objStu01 = new Stu01()
+                DataTable dtGetStudents = _objDBStudents.GetStudents(id);
+                if (dtGetStudents.Rows.Count == 0)
                 {
-                    U01F01 = Convert.ToInt32(objMySqlDataReader["U01F01"]),
-                    U01F02 = objMySqlDataReader["U01F02"].ToString(),
-                    U01F03 = Convert.ToInt32(objMySqlDataReader["U01F03"]),
-                };
+                    objResponse.IsError = true;
+                    objResponse.Message = "Student is not found";
+                }
+                else
+                {
+                    objResponse.Data = dtGetStudents;
+                }
 
-                objMySqlConnection.Close();
-                return objStu01;
+                return objResponse;
             }
-
-            objMySqlConnection.Close();
-            return null;
+            catch (Exception ex)
+            {
+                objResponse.IsError = true;
+                objResponse.Message = ex.Message;
+                return objResponse;
+            }
         }
 
         /// <summary>
-        /// Add a new student to the database.
+        /// PreSave the record for insert or update the record
         /// </summary>
-        public bool AddStudent(Stu01 objStu01)
+        /// <param name="objDtoStu01">Object of the student</param>
+        /// <param name="id">student id</param>
+        public void PreSave(DtoStu01 objDtoStu01, int id = 0)
         {
-            MySqlConnection objMySqlConnection = new MySqlConnection(GetConnectionString());
-            objMySqlConnection.Open();
-
-            string query = @"insert into 
-                                Stu01 (U01F02,
-                                        U01F03) 
-                                values (@U01F02,
-                                        @U01F03)";
-
-            MySqlCommand objMySqlCommand = new MySqlCommand(query, objMySqlConnection);
-            objMySqlCommand.Parameters.AddWithValue("@U01F02", objStu01.U01F02);
-            objMySqlCommand.Parameters.AddWithValue("@U01F03", objStu01.U01F03);
-
-            return objMySqlCommand.ExecuteNonQuery() > 0;
+            _objStu01 = BLConvertModel.MapDtoToPoco<DtoStu01, Stu01>(objDtoStu01);
+            if (OperationTypes == EnmOperationTypes.E)
+            {
+                _objStu01.U01F01 = id;
+            }
         }
 
         /// <summary>
-        /// Update an existing student in the database by ID.
+        ///  validate the record before insert or update the record
         /// </summary>
-        public bool UpdateStudent(int id, Stu01 objStu01)
+        /// <returns>response model</returns>
+        public Response ValidationOnSave()
         {
-            MySqlConnection objMySqlConnection = new MySqlConnection(GetConnectionString());
-            objMySqlConnection.Open();
-
-            string query = @"update
-                                Stu01
-                            set
-                                U01F02 = @U01F02,
-                                U01F03 = @U01F03
-                            where
-                                U01F01 = @U01F01";
-
-            MySqlCommand objMySqlCommand = new MySqlCommand(query, objMySqlConnection);
-            objMySqlCommand.Parameters.AddWithValue("@U01F01", id);
-            objMySqlCommand.Parameters.AddWithValue("@U01F02", objStu01.U01F02);
-            objMySqlCommand.Parameters.AddWithValue("@U01F03", objStu01.U01F03);
-
-            return objMySqlCommand.ExecuteNonQuery() > 0;
+            objResponse = new Response();
+            if (!IsUniqueEmail(_objStu01.U01F04))
+            {
+                objResponse.IsError = true;
+                objResponse.Message = "Email is already exists";
+            }
+            if (OperationTypes == EnmOperationTypes.E)
+            {
+                if (!IsStudentExist(_objStu01.U01F01))
+                {
+                    objResponse.IsError = true;
+                    objResponse.Message = "Student is not exist";
+                }
+            }
+            return objResponse;
         }
 
         /// <summary>
-        /// Delete a student from the database by ID.
+        /// save the record into database
         /// </summary>
-        public bool DeleteStudent(int id)
+        /// <returns>response model</returns>
+        public Response Save()
         {
-            MySqlConnection objMySqlConnection = new MySqlConnection(GetConnectionString());
-            objMySqlConnection.Open();
+            objResponse = new Response();
+            try
+            {
+                if (OperationTypes == EnmOperationTypes.A)
+                {
+                    bool isAdded = _objDBStudents.AddStudents(_objStu01);
+                    if (isAdded)
+                    {
+                        objResponse.Message = "Student added successfully";
+                    }
+                }
+                else if (OperationTypes == EnmOperationTypes.E)
+                {
+                    bool isUpdated = _objDBStudents.UpdateStudent(_objStu01);
+                    if (isUpdated)
+                    {
+                        objResponse.Message = "Student updated successfully";
+                    }
+                }
+                return objResponse;
+            }
+            catch (Exception ex)
+            {
+                objResponse.IsError = true;
+                objResponse.Message = ex.Message;
+                return objResponse;
+            }
+        }
 
-            string query = @"delete from
-                                Stu01
-                            where
-                                U01F01 = @U01F01";
+        /// <summary>
+        /// Validation before delete the student
+        /// </summary>
+        /// <param name="id">student id</param>
+        /// <returns>response model</returns>
+        public Response ValidationOnDelete(int id)
+        {
+            objResponse = new Response();
+            if (OperationTypes == EnmOperationTypes.D)
+            {
+                if (!IsStudentExist(id))
+                {
+                    objResponse.IsError = true;
+                    objResponse.Message = "Student is not exist";
+                }
+                else
+                {
+                    _objStu01.U01F01 = id;
+                }
+            }
+            return objResponse;
+        }
 
-            MySqlCommand objMySqlCommand = new MySqlCommand(query, objMySqlConnection);
-            objMySqlCommand.Parameters.AddWithValue("@U01F01", id);
-
-            return objMySqlCommand.ExecuteNonQuery() > 0;
+        /// <summary>
+        /// Delete the student from database based on student id
+        /// </summary>
+        /// <returns>response model</returns>
+        public Response Delete()
+        {
+            try
+            {
+                if (OperationTypes == EnmOperationTypes.D)
+                {
+                    bool isDeleted = _objDBStudents.DeleteStudent(_objStu01.U01F01);
+                    if (isDeleted)
+                    {
+                        objResponse.Message = "Student deleted successfully";
+                    }
+                }
+                return objResponse;
+            }
+            catch (Exception ex)
+            {
+                objResponse.IsError = true;
+                objResponse.Message = ex.Message;
+                return objResponse;
+            }
         }
 
         #endregion

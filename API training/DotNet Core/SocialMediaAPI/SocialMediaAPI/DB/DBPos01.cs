@@ -59,7 +59,7 @@ namespace SocialMediaAPI.DB
 
                     return (userId, imgUrl);
                 }
-                return (0, "");
+                return (0, "");////
             }
         }
 

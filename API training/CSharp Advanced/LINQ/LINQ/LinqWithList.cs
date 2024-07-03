@@ -10,7 +10,9 @@ namespace LINQ
     public class LinqWithList
     {
         #region Public Member
-        // List to store integers
+        /// <summary>
+        ///  List to store integers
+        /// </summary>
         public List<int> lstNums;
         #endregion
 
@@ -65,10 +67,9 @@ namespace LINQ
                 Console.Write($"{item} ");
             }
             Console.WriteLine();
-            Console.WriteLine();
 
             // Check if 1 exists in the list
-            Console.WriteLine($"to check 1 is exist or not : {lstNums.Contains(1)}\n");
+            Console.WriteLine($"\nto check 1 is exist or not : {lstNums.Contains(1)}\n");
 
             // Aggregate: Sum of all elements in the list
             Console.WriteLine($"Addition of list is : {lstNums.Sum()}");
@@ -78,10 +79,9 @@ namespace LINQ
             {
                 Console.Write(number + " ");
             }
-            Console.WriteLine();
 
             // First, Last, ElementAt: Access specific elements in the list
-            Console.WriteLine($"First element of the list is : {lstNums.First()}");
+            Console.WriteLine($"\nFirst element of the list is : {lstNums.First()}");
             Console.WriteLine($"Last element of the list is : {lstNums.Last()}");
             Console.WriteLine($"Element at index 4 in the list is : {lstNums.ElementAt(4)}");
         }

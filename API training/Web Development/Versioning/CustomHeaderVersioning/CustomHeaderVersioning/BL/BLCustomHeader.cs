@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Net.Http;
-using System.Web;
-using System.Web.Http.Controllers;
-using System.Web.Http.Routing;
-using System.Web.Http;
-using System.Web.Http.Dispatcher;
 using System.Linq;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Controllers;
+using System.Web.Http.Dispatcher;
+using System.Web.Http.Routing;
 
 namespace CustomHeaderVersioning.BL
 {
@@ -69,11 +67,11 @@ namespace CustomHeaderVersioning.BL
             // append the version name in controller name 
             if (versionNumber == "1")
             {
-                controllerName = controllerName + "V1";
+                controllerName += "V1";
             }
             else
             {
-                controllerName = controllerName + "V2";
+                controllerName += "V2";
             }
 
             // find the specific controller name and return the appropriate controller as an output

@@ -53,21 +53,21 @@ namespace SocialMediaAPI.BL
         #endregion
 
         #region Private Property
-       
+
         /// <summary>
         /// set the current Http Context to get the user id
         /// </summary>
         private HttpContext HttpContext { get; set; }
-       
+
         #endregion
 
         #region Public Properites
-        
+
         /// <summary>
         /// operation types A - Add, E - Edit, D - Delete
         /// </summary>
         public enmOperationType OperationType { get; set; }
-       
+
         #endregion
 
         #region Public Member
@@ -103,23 +103,21 @@ namespace SocialMediaAPI.BL
         /// <returns>The image URL if uploaded successfully, null otherwise.</returns>
         private string UploadImage(IFormFile imageFile, POS01 _objPOS01)
         {
-            string uploadFolder = Path.Combine(_configuration.GetValue<string>("Uploads:PostFolderPath"), "");
+            string uploadFolder, fileName, filePath;
 
+            uploadFolder = Path.Combine(_configuration.GetValue<string>("Uploads:PostFolderPath"), "");
             if (!Directory.Exists(uploadFolder))
             {
                 Directory.CreateDirectory(uploadFolder);
             }
 
             Guid guid = Guid.NewGuid();
+            fileName = _objPOS01.S01F02.ToString() + "_" + guid.ToString("N") + Path.GetExtension(imageFile.FileName);
+            filePath = Path.Combine(uploadFolder, fileName);
 
-            string fileName = _objPOS01.S01F02.ToString() + "_" + guid.ToString("N") + Path.GetExtension(imageFile.FileName);
-
-            string filePath = Path.Combine(uploadFolder, fileName);
-
-
-             using (FileStream fileStream = new FileStream(filePath, FileMode.Create))
+            using (FileStream fileStream = new FileStream(filePath, FileMode.Create))
             {
-                 imageFile.CopyToAsync(fileStream);
+                imageFile.CopyToAsync(fileStream);
             }
 
             return Path.Combine("/Upload/Post", fileName);
@@ -132,9 +130,10 @@ namespace SocialMediaAPI.BL
         /// <returns>True if the image is deleted successfully, false otherwise.</returns>
         private bool DeleteImage(string imgUrl)
         {
-            string filePath = imgUrl.Replace("/Upload/Post\\", "", StringComparison.OrdinalIgnoreCase);
+            string filePath, fullPath;
+            filePath = imgUrl.Replace("/Upload/Post\\", "", StringComparison.OrdinalIgnoreCase);
+            fullPath = Path.Combine(_configuration.GetValue<string>("Uploads:PostFolderPath"), filePath);
 
-            string fullPath = Path.Combine(_configuration.GetValue<string>("Uploads:PostFolderPath"), filePath);
             if (File.Exists(fullPath))
             {
                 File.Delete(fullPath);
@@ -169,7 +168,7 @@ namespace SocialMediaAPI.BL
         {
             _objPOS01 = new POS01();
             int userId = Convert.ToInt32(HttpContext.User.FindFirst("Id")?.Value);
-
+            string imageUrl;
             if (OperationType == enmOperationType.E)
             {
                 //need to update the entire the object of the post
@@ -196,7 +195,7 @@ namespace SocialMediaAPI.BL
 
             if (objDTOPOS01.S01F03 != null)
             {
-                string imageUrl = UploadImage(objDTOPOS01.S01F03, _objPOS01);
+                imageUrl = UploadImage(objDTOPOS01.S01F03, _objPOS01);
                 _objPOS01.S01F03 = imageUrl;
                 _logger.Info("Post image upload successfully");
             }
@@ -209,12 +208,12 @@ namespace SocialMediaAPI.BL
         public Response ValidationOnSave()
         {
             objResponse = new Response();
+            bool isPostExist, isUserExist;
 
             if (OperationType == enmOperationType.E)
             {
                 //validation for post id
-                //bool isPostExist = _objValidation.IsExist2<Pos01>(_objPOS01.S01F01);
-                bool isPostExist = _objValidation.IsExist<POS01>(_objPOS01.S01F01, x => x.S01F01);
+                isPostExist = _objValidation.IsExist<POS01>(_objPOS01.S01F01, x => x.S01F01);
                 if (!isPostExist)
                 {
                     objResponse.IsError = true;
@@ -224,7 +223,7 @@ namespace SocialMediaAPI.BL
             }
 
             //validation for user id
-            bool isUserExist = _objValidation.IsExist<USE01>(_objPOS01.S01F02, x => x.E01F01);
+            isUserExist = _objValidation.IsExist<USE01>(_objPOS01.S01F02, x => x.E01F01);
             if (!isUserExist)
             {
                 objResponse.IsError = true;
@@ -243,12 +242,14 @@ namespace SocialMediaAPI.BL
         public Response ValidationOnDelete(int postId)
         {
             objResponse = new Response();
+            int userId;
+            bool isUserExist, isPostExist;
 
             if (OperationType == enmOperationType.D)
             {
-                int userId = Convert.ToInt32(HttpContext.User.FindFirst("Id")?.Value);
+                userId = Convert.ToInt32(HttpContext.User.FindFirst("Id")?.Value);
 
-                bool isUserExist = _objValidation.IsExist<USE01>(userId, x => x.E01F01);
+                isUserExist = _objValidation.IsExist<USE01>(userId, x => x.E01F01);
                 if (!isUserExist)
                 {
                     objResponse.IsError = true;
@@ -256,7 +257,7 @@ namespace SocialMediaAPI.BL
 
                     return objResponse;
                 }
-                bool isPostExist = _objValidation.IsExist<POS01>(postId, x => x.S01F01);
+                isPostExist = _objValidation.IsExist<POS01>(postId, x => x.S01F01);
                 if (!isPostExist)
                 {
                     objResponse.IsError = true;
@@ -267,7 +268,6 @@ namespace SocialMediaAPI.BL
                     // validate the userId form post -- need to same 
                     (int userIdFromPost, string imgUrl) = _objIDBPos01.GetUserIdAndImgOfPost(postId);
 
-
                     if (userIdFromPost != userId)
                     {
                         objResponse.IsError = true;
@@ -275,9 +275,11 @@ namespace SocialMediaAPI.BL
                     }
                     else
                     {
-                        _objPOS01 = new POS01();
-                        _objPOS01.S01F01 = postId;
-                        _objPOS01.S01F03 = imgUrl;
+                        _objPOS01 = new POS01
+                        {
+                            S01F01 = postId,
+                            S01F03 = imgUrl
+                        };
                     }
                 }
             }
@@ -291,10 +293,10 @@ namespace SocialMediaAPI.BL
         public Response Save()
         {
             objResponse = new Response();
+            bool isPostAdded, isPostUpdated;
 
             if (OperationType == enmOperationType.A)
             {
-                bool isPostAdded = false;
                 using (IDbConnection db = _dbFactory.OpenDbConnection())
                 {
                     isPostAdded = db.Insert(_objPOS01) > 0;
@@ -312,7 +314,6 @@ namespace SocialMediaAPI.BL
 
             if (OperationType == enmOperationType.E)
             {
-                bool isPostUpdated = false;
                 using (IDbConnection db = _dbFactory.OpenDbConnection())
                 {
                     isPostUpdated = db.Update(_objPOS01) > 0;
@@ -367,13 +368,14 @@ namespace SocialMediaAPI.BL
         public Response Delete()
         {
             objResponse = new Response();
-            
+            bool isPostDeleted, isImgDeleted;
+
             using (IDbConnection db = _dbFactory.OpenDbConnection())
             {
-                bool isPostDeleted = db.DeleteById<POS01>(_objPOS01.S01F01) > 0;
+                isPostDeleted = db.DeleteById<POS01>(_objPOS01.S01F01) > 0;
                 if (isPostDeleted)
                 {
-                    bool isImgDeleted = DeleteImage(_objPOS01.S01F03);
+                    isImgDeleted = DeleteImage(_objPOS01.S01F03);
                     if (!isImgDeleted)
                     {
                         objResponse.IsError = true;

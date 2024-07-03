@@ -101,13 +101,14 @@ namespace SocialMediaAPI.BL
         /// <returns>The relative or absolute URL of the uploaded image.</returns>
         private string UploadImage(IFormFile imageFile, string username = "")
         {
-            string uploadsFolder = Path.Combine(_configuration.GetValue<string>("Uploads:FolderPath"), "");
+            string uploadsFolder = "", name = "", uniqueFileName = "", filePath = "";
+
+            uploadsFolder = Path.Combine(_configuration.GetValue<string>("Uploads:FolderPath"), "");
             if (!Directory.Exists(uploadsFolder))
             {
                 Directory.CreateDirectory(uploadsFolder);
             }
 
-            string name = "";
             if (username == null)
             {
                 name = _objUSE01.E01F02;
@@ -116,8 +117,9 @@ namespace SocialMediaAPI.BL
             {
                 name = username;
             }
-            string uniqueFileName = name + Path.GetExtension(imageFile.FileName);
-            string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+            uniqueFileName = name + Path.GetExtension(imageFile.FileName);
+            filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
             using (FileStream fileStream = new FileStream(filePath, FileMode.Create))
             {
@@ -138,18 +140,12 @@ namespace SocialMediaAPI.BL
         /// <param name="objDTOUSE01">The DTO object containing user data.</param>
         public void PreSave(DTOUSE01 objDTOUSE01)
         {
+            string imageUrl = "";
             if (OperationType == enmOperationType.A)
             {
-                try
-                {
-                    _objUSE01 = objDTOUSE01.MapDtoToPoco<DTOUSE01, USE01>(null);
-                    string imageUrl = UploadImage(objDTOUSE01.E01F05, objDTOUSE01.E01F02);
-                    _objUSE01.E01F05 = imageUrl;
-                }
-                catch (Exception ex)
-                {
-                    _logger.Error($"exception :: user profile picture :: {ex.Message}");
-                }
+                _objUSE01 = objDTOUSE01.MapDtoToPoco<DTOUSE01, USE01>(null);
+                imageUrl = UploadImage(objDTOUSE01.E01F05, objDTOUSE01.E01F02);
+                _objUSE01.E01F05 = imageUrl;
             }
         }
 
@@ -175,8 +171,8 @@ namespace SocialMediaAPI.BL
             using (IDbConnection db = _dbFactory.OpenDbConnection())
             {
                 db.Insert(_objUSE01);
-                objResponse.Message = "User is added successfully";
             }
+            objResponse.Message = "User is added successfully";
             return objResponse;
         }
 

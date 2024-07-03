@@ -12,6 +12,10 @@ namespace Bank_Management_System.Business_Logic
     public class BLDbConnection
     {
         #region Public Member
+
+        /// <summary>
+        /// create the static instance of connnection factory
+        /// </summary>
         public static IDbConnectionFactory Instance { get; set; }
         #endregion
 
@@ -29,7 +33,7 @@ namespace Bank_Management_System.Business_Logic
             // get the json object 
             string jsonString = File.ReadAllText(jsonFilePath);
             JObject jsonObject = JsonConvert.DeserializeObject<JObject>(jsonString);
-
+                
             // get the connection string
             string connectionString = jsonObject["ConnectionString"].ToString();
             return connectionString;

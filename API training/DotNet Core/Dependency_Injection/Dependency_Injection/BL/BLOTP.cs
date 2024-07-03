@@ -7,6 +7,7 @@ namespace Dependency_Injection.BL
     /// </summary>
     public class BLOTP : IOtpGenerate
     {
+        #region Public Method
         /// <summary>
         /// generate the otp
         /// </summary>
@@ -14,7 +15,8 @@ namespace Dependency_Injection.BL
         public int GetOTP()
         {
             Random random = new Random();
-            return random.Next(100000,999999);
-        }
+            return random.Next(100000, 999999);
+        } 
+        #endregion
     }
 }

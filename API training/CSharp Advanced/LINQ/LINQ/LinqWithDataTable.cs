@@ -9,13 +9,23 @@ namespace LINQ
     /// </summary>
     public class LinqWithDataTable
     {
-        // DataTable to store employee data
-        public Employees objEmployees;
+        /// <summary>
+        /// DataTable to store employee data
+        /// </summary>
+        public DataTable dtEmployee;
 
-        // Constructor initializes the DataTable
+        /// <summary>
+        /// Constructor initializes the DataTable
+        /// </summary
         public LinqWithDataTable()
         {
-            objEmployees = new Employees();
+            dtEmployee = new DataTable();
+
+            dtEmployee.Columns.Add("Id", typeof(int));
+            dtEmployee.Columns.Add("Name", typeof(string));
+            dtEmployee.Columns.Add("Age", typeof(int));
+            dtEmployee.Columns.Add("Department", typeof(string));
+            dtEmployee.Columns.Add("Salary", typeof(int));
         }
 
         /// <summary>
@@ -23,19 +33,20 @@ namespace LINQ
         /// </summary>
         public void DataAdd()
         {
-            objEmployees.Rows.Add(1, "Dev", 21, "SDE", 50000);
-            objEmployees.Rows.Add(2, "Kishan", 28, "Manager", 80000);
-            objEmployees.Rows.Add(3, "Raj", 21, "SDE", 51000);
-            objEmployees.Rows.Add(4, "Tushar", 22, "ML-Engineer", 58000);
+            dtEmployee.Rows.Add(1, "Dev", 21, "SDE", 50000);
+            dtEmployee.Rows.Add(2, "Kishan", 28, "Manager", 80000);
+            dtEmployee.Rows.Add(3, "Raj", 21, "SDE", 51000);
+            dtEmployee.Rows.Add(4, "Tushar", 22, "ML-Engineer", 58000);
         }
 
+
         /// <summary>
-        /// Executes various LINQ queries on the DataTable and prints the results.
+        /// Find rows where the department is SDE and order by salary in descending order
         /// </summary>
-        public void ExecuteQuery()
+        public void Filter()
         {
             // Query 1: Find rows where the department is SDE and order by salary in descending order
-            var query1 = from employee in objEmployees.AsEnumerable()
+            var query1 = from employee in dtEmployee.AsEnumerable()
                          where employee.Field<string>("Department") == "SDE"
                          orderby employee.Field<int>("Salary") descending
                          select new
@@ -53,10 +64,15 @@ namespace LINQ
             {
                 Console.WriteLine($"Id: {item.Id}, Name: {item.Name}, Age: {item.Age}, Department: {item.Department}, Salary: {item.Salary}");
             }
-            Console.WriteLine();
+        }
 
+        /// <summary>
+        /// Find rows where the department is SDE and order by salary in descending order (using method syntax)
+        /// </summary>
+        public void FilterMethodSyntax()
+        {
             // Query 2: Find rows where the department is SDE and order by salary in descending order (using method syntax)
-            var query2 = objEmployees.AsEnumerable()
+            var query2 = dtEmployee.AsEnumerable()
                         .Where(row => row.Field<string>("Department").Equals("SDE"))
                         .OrderByDescending(row => row.Field<int>("Salary"))
                         .Select(row => new
@@ -74,17 +90,28 @@ namespace LINQ
             {
                 Console.WriteLine($"Id: {item.Id}, Name: {item.Name}, Age: {item.Age}, Department: {item.Department}, Salary: {item.Salary}");
             }
-            Console.WriteLine();
+        }
 
+        /// <summary>
+        /// Find the maximum salary
+        /// </summary>
+        /// <returns>Maximum salary</returns>
+        public int MaximumSalary()
+        {
             // Query 3: Find the maximum salary
-            var query3 = objEmployees.AsEnumerable()
+            var query3 = dtEmployee.AsEnumerable()
                 .Max(row => row.Field<int>("Salary"));
-            Console.WriteLine($"Query 3: Maximum salary of employees is {query3}");
-            Console.WriteLine();
+            return query3;
+        }
 
-            // Query 4: Find details of employees with the maximum salary
-            var query4 = objEmployees.AsEnumerable()
-                   .Where(row => row.Field<int>("Salary") == query3)
+        /// <summary>
+        /// Query 4: Find details of employees with the maximum salary
+        /// </summary>
+        public void MaximumSalaryWithEmpDetails(int mxSalary)
+        {
+            //Query 4: Find details of employees with the maximum salary
+            var query4 = dtEmployee.AsEnumerable()
+                   .Where(row => row.Field<int>("Salary") == mxSalary)
                    .Select(row => new
                    {
                        Id = row.Field<int>("Id"),
@@ -100,12 +127,46 @@ namespace LINQ
             {
                 Console.WriteLine($"Id: {item.Id}, Name: {item.Name}, Age: {item.Age}, Department: {item.Department}, Salary: {item.Salary}");
             }
-            Console.WriteLine();
+        }
 
+        /// <summary>
+        /// Find the average salary of employees
+        /// </summary>
+        public void AverageSalary()
+        {
             // Query 5: Find the average salary of employees
-            var query5 = objEmployees.AsEnumerable()
+            var query5 = dtEmployee.AsEnumerable()
                         .Average(row => row.Field<int>("Salary"));
             Console.WriteLine($"Query 5: Average salary of employees is {query5}");
+        }
+        
+        /// <summary>
+        /// Executes various LINQ queries on the DataTable and prints the results.
+        /// </summary>
+        public void ExecuteQuery()
+        {
+            // Query 1: Find rows where the department is SDE and order by salary in descending order
+            Filter();
+            Console.WriteLine();
+
+
+            // Query 2: Find rows where the department is SDE and order by salary in descending order (using method syntax)
+            FilterMethodSyntax();
+            Console.WriteLine();
+
+
+            // Query 3: Find the maximum salary
+            int mxSalary = MaximumSalary();
+            Console.WriteLine($"Query 3: Maximum salary of employees is {mxSalary}\n");
+
+
+            // Query 4: Find details of employees with the maximum salary
+            MaximumSalaryWithEmpDetails(mxSalary);
+            Console.WriteLine();
+
+
+            // Query 5: Find the average salary of employees
+            AverageSalary();
             Console.WriteLine();
         }
     }

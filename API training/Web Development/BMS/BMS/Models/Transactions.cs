@@ -1,4 +1,6 @@
-﻿namespace BMS.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BMS.Models
 {
     /// <summary>
     /// class which contains the schema of the transactions
@@ -13,11 +15,13 @@
         /// <summary>
         /// User's Id
         /// </summary>
+        [Required]
         public int UserId { get; set; }
 
         /// <summary>
         /// amount
         /// </summary>
+        [Range(0, int.MaxValue)] // Assuming money cannot be negative
         public int Money { get; set; }
 
         /// <summary>

@@ -65,3 +65,6 @@ F:\Dev - 372\New folder\API training\CSharp Advanced\FileHandling\FileHandling\o
 F:\Dev - 372\New folder\API training\CSharp Advanced\FileHandling\FileHandling\obj\Debug\FileHandling.csproj.CopyComplete
 F:\Dev - 372\New folder\API training\CSharp Advanced\FileHandling\FileHandling\obj\Debug\FileHandling.dll
 F:\Dev - 372\New folder\API training\CSharp Advanced\FileHandling\FileHandling\obj\Debug\FileHandling.pdb
+F:\Dev - 372\New folder\API training\CSharp Advanced\FileHandling\FileHandling\bin\Microsoft.Web.Infrastructure.dll
+F:\Dev - 372\New folder\API training\CSharp Advanced\FileHandling\FileHandling\bin\Swashbuckle.Core.dll
+F:\Dev - 372\New folder\API training\CSharp Advanced\FileHandling\FileHandling\bin\WebActivatorEx.dll

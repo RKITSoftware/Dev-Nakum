@@ -11,10 +11,19 @@ namespace Dependency_Injection.Controllers
     public class CLOtpController : ControllerBase
     {
         #region Private Member
+
+        /// <summary>
+        /// create the object of the otp generator interface
+        /// </summary>
         private readonly IOtpGenerate _otpGenerate;
         #endregion
 
         #region Construtor
+
+        /// <summary>
+        /// initialize the object of the otp generator interface
+        /// </summary>
+        /// <param name="otpGenerate"></param>
         public CLOtpController(IOtpGenerate otpGenerate)
         {
             _otpGenerate = otpGenerate;
@@ -24,7 +33,7 @@ namespace Dependency_Injection.Controllers
         #region Public Method
         
         /// <summary>
-        /// Generated the otp
+        /// Generate the otp
         /// </summary>
         /// <returns>generated otp</returns>
         [HttpGet]

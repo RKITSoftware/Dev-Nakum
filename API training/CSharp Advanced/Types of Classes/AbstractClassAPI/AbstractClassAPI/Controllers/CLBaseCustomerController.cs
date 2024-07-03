@@ -13,6 +13,9 @@ namespace AbstractClassAPI.Controllers
     public abstract class CLBaseCustomerController : ApiController
     {
         #region Protected Member
+        /// <summary>
+        /// static list of customer
+        /// </summary>
         protected static List<Customer> lstCustomer = new List<Customer>();
         #endregion
 
@@ -56,7 +59,7 @@ namespace AbstractClassAPI.Controllers
             }
 
             lstCustomer.Remove(objCustomer);
-            return Request.CreateResponse(HttpStatusCode.OK, $"Successfully deleted the customer with customer id  {id}");
+            return Request.CreateResponse(HttpStatusCode.OK, $"Successfully deleted the customer with customer id {id}");
         }
 
     }

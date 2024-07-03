@@ -1,0 +1,27 @@
+2024-06-14 10:46:09.6076|Logging.Controllers.CLExceptionsController|INFO|ans is 12 
+2024-06-14 10:46:26.0550|Logging.Controllers.CLExceptionsController|ERROR|Attempted to divide by zero. 
+2024-06-14 10:50:04.3882|Logging.Controllers.CLExceptionsController|INFO|Dynamic file target added: "test" 
+2024-06-14 10:53:08.6913|Logging.Controllers.CLExceptionsController|ERROR|Attempted to divide by zero. 
+2024-06-14 10:53:38.5673|Logging.Controllers.CLExceptionsController|INFO|ans is 5 
+2024-06-14 10:54:12.5164|Logging.Controllers.CLExceptionsController|INFO|Dynamic file target added: "test" 
+2024-06-14 10:57:05.9578|Logging.Controllers.CLExceptionsController|INFO|ans is 2324 
+2024-06-14 10:57:21.3655|Logging.Controllers.CLExceptionsController|ERROR|Attempted to divide by zero. 
+2024-06-14 10:59:13.2387|Logging.Controllers.CLExceptionsController|INFO|Dynamic file target added: "test" 
+2024-06-14 11:00:52.0670|Logging.Controllers.CLExceptionsController|INFO|ans is 10 
+2024-06-14 11:01:13.7157|Logging.Controllers.CLExceptionsController|ERROR|Attempted to divide by zero. 
+2024-06-14 11:01:36.3240|Logging.Controllers.CLExceptionsController|INFO|Dynamic file target added: "test" 
+2024-06-14 11:02:15.2273|Logging.Controllers.CLExceptionsController|INFO|Dynamic file target added: "dev" 
+2024-06-14 11:03:27.2499|Logging.Controllers.CLExceptionsController|INFO|Dynamic file target added: "dev" 
+2024-06-14 11:03:45.4065|Logging.Controllers.CLExceptionsController|INFO|Dynamic file target added: "dev" 
+2024-06-14 11:05:15.2165|Logging.Controllers.CLExceptionsController|INFO|ans is 13 
+2024-06-14 11:05:32.4590|Logging.Controllers.CLExceptionsController|ERROR|Attempted to divide by zero. 
+2024-06-14 11:06:17.0916|Logging.Controllers.CLExceptionsController|INFO|Dynamic file target added: "dev" 
+2024-06-14 11:07:07.9370|Logging.Controllers.CLExceptionsController|INFO|Dynamic file target added: "test" 
+2024-06-14 11:07:27.7717|Logging.Controllers.CLExceptionsController|INFO|ans is 1 
+2024-06-14 11:26:34.2420|Logging.Controllers.CLExceptionsController|INFO|ans is 13 
+2024-06-14 11:27:01.6398|Logging.Controllers.CLExceptionsController|ERROR|Attempted to divide by zero. 
+2024-06-14 11:28:19.1290|Logging.Controllers.CLExceptionsController|INFO|Dynamic file target added: "test" 
+2024-06-14 11:29:31.5512|Logging.Controllers.CLExceptionsController|INFO|Dynamic file target added: "kishan" 
+2024-06-14 11:29:59.8502|Logging.Controllers.CLExceptionsController|INFO|ans is 15 
+2024-06-14 16:25:55.3732|Logging.Controllers.CLExceptionsController|INFO|ans is 115 
+2024-06-14 16:26:18.2389|Logging.Controllers.CLExceptionsController|INFO|Dynamic file target added: "dev" 

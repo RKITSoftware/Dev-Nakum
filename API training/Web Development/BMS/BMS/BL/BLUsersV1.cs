@@ -69,11 +69,11 @@ namespace BMS.BL
         /// <returns>true if password is valid or else false</returns>
         private bool IsValidPassword(string password)
         {
-            //Minimum length(8 characters)
-            //At least one uppercase letter
-            //At least one lowercase letter
-            //At least one number
-            //At least one special character
+            // Minimum length(8 characters)
+            // At least one uppercase letter
+            // At least one lowercase letter
+            // At least one number
+            // At least one special character
             string passwordRegex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,}$";
             return Regex.IsMatch(password, passwordRegex);
         }
@@ -129,10 +129,7 @@ namespace BMS.BL
             {
                 // to validate username is exists or not
                 bool isUsers = IsUserExist(_objUsersV1.UserName, u => u.UserName);
-
-                // to validate the phone number 
-                bool isValidNumber = _objUsersV1.Number.Length == 10;
-
+                
                 // to validate the password
                 bool iSValidPassword = IsValidPassword(_objUsersV1.Password);
 
@@ -141,12 +138,6 @@ namespace BMS.BL
                 {
                     objResponse.IsError = true;
                     objResponse.Message = "Username already exists.";
-                }
-
-                if (!isValidNumber)
-                {
-                    objResponse.IsError = true;
-                    objResponse.Message = "Enter the valid phone number.";
                 }
 
                 if (!iSValidPassword)
@@ -244,17 +235,25 @@ namespace BMS.BL
                 // get the token
                 string token = objBLAuth.GenerateJWT(userV1.Id, userV1.UserName, userV1.Email, userV1.Role);
 
-                object loginData = new
+                if (token == null)
                 {
-                    token,
-                    userV1.Role
-                };
+                    objResponse.IsError = true;
+                    objResponse.Message = "something went wrong while generating token";
+                }
+                else
+                {
+                    object loginData = new
+                    {
+                        token,
+                        userV1.Role
+                    };
 
-                // Add the user details in cache
-                BLCache.Add("user", userV1);
+                    // Add the user details in cache
+                    BLCache.Add("user", userV1);
 
-                objResponse.Message = "User logged in successfully";
-                objResponse.Data = loginData;
+                    objResponse.Message = "User logged in successfully";
+                    objResponse.Data = loginData; 
+                }
             }
             else
             {
@@ -323,6 +322,7 @@ namespace BMS.BL
         /// <returns>Response model</returns>
         public Response DeleteUser()
         {
+            // remove the user object based on user id
             _lstUsersV1.RemoveAll(u => u.Id == _objUsersV1.Id);
             objResponse.Message = "User is deleted successfully";
             return objResponse;

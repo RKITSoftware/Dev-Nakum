@@ -1,6 +1,8 @@
 ﻿using Bank_Management_System.Attributes;
 using Bank_Management_System.Business_Logic;
+using Bank_Management_System.Enums;
 using Bank_Management_System.Models;
+using Bank_Management_System.Models.DTO;
 using System;
 using System.Net;
 using System.Net.Http;
@@ -10,10 +12,21 @@ using System.Web.Http;
 /// <summary>
 /// Controller for managing financial transactions.
 /// </summary>
+[JwtAuthorization]
 public class CLTransactionsController : ApiController
 {
     #region Private Member
+    /// <summary>
+    /// create the object of the transaction services
+    /// </summary>
     private readonly BLTransaction _objBLTransaction;
+    #endregion
+
+    #region Public Member
+    /// <summary>
+    /// create the object of the response model
+    /// </summary>
+    public Response objResponse;
     #endregion
 
     #region Constructor
@@ -23,6 +36,7 @@ public class CLTransactionsController : ApiController
     public CLTransactionsController()
     {
         _objBLTransaction = new BLTransaction();
+        objResponse = new Response();
     }
     #endregion
 
@@ -44,7 +58,6 @@ public class CLTransactionsController : ApiController
     }
     #endregion
 
-
     #region Public Method
 
     /// <summary>
@@ -52,21 +65,20 @@ public class CLTransactionsController : ApiController
     /// </summary>
     /// <param name="objTra">Transaction details for deposit.</param>
     /// <returns>HTTP response indicating success or failure.</returns>
-    [JwtAuthorization]
+    
     [HttpPost]
     [Route("api/transactions/deposit")]
-    public IHttpActionResult DepositMoney(Tra01 objTra)
+    public IHttpActionResult DepositMoney([FromBody] DtoTra01 objDtoTra01)
     {
         int userId = GetCurrentUser();
-
-        if (_objBLTransaction.AddTransaction(userId, objTra.A01F03, "Deposit"))
+        _objBLTransaction.TransactionType = enmTransactionTypes.D;
+        _objBLTransaction.PreSave(userId, objDtoTra01);
+        objResponse = _objBLTransaction.ValidationOnSave();
+        if (!objResponse.IsError)
         {
-            return Ok("Your money is deposited successfully");
+            objResponse = _objBLTransaction.Save();
         }
-        else
-        {
-            return BadRequest("Something went wrong");
-        }
+        return Ok(objResponse);
     }
 
     /// <summary>
@@ -74,58 +86,56 @@ public class CLTransactionsController : ApiController
     /// </summary>
     /// <param name="objTra">Transaction details for withdrawal.</param>
     /// <returns>HTTP response indicating success or failure.</returns>
-    [JwtAuthorization]
     [HttpPost]
     [Route("api/transactions/withdraw")]
-    public IHttpActionResult WithdrawMoney(Tra01 objTra)
+    public IHttpActionResult WithdrawMoney([FromBody] DtoTra01 objDtoTra01)
     {
         int userId = GetCurrentUser();
-
-        if (_objBLTransaction.AddTransaction(userId, objTra.A01F03, "Withdraw"))
+        _objBLTransaction.TransactionType = enmTransactionTypes.W;
+        _objBLTransaction.PreSave(userId, objDtoTra01);
+        objResponse = _objBLTransaction.ValidationOnSave();
+        if (!objResponse.IsError)
         {
-            return Ok("Your money is withdrawn successfully");
+            objResponse = _objBLTransaction.Save();
         }
-        else
-        {
-            return BadRequest("Something went wrong");
-        }
+        return Ok(objResponse);
     }
 
     /// <summary>
     /// Retrieves details of all transactions (Admin-only access).
     /// </summary>
     /// <returns>HTTP response containing a list of transaction details.</returns>
-    [JwtAuthorization]
-    [Authorization(Roles = "Admin")]
+    [Authorization(Roles = "A")]
     [HttpGet]
     [Route("api/transactions")]
     public IHttpActionResult GetAllTransactions()
     {
-        return Ok(_objBLTransaction.GetAllTransactions());
+        objResponse = _objBLTransaction.GetAllTransactions();
+        return Ok(objResponse);
     }
 
     /// <summary>
     /// Retrieves details of transactions for the currently logged-in user.
     /// </summary>
     /// <returns>HTTP response containing a list of transaction details.</returns>
-    [JwtAuthorization]
-    [Authorization(Roles = "User")]
+    [Authorization(Roles = "U,A")]
     [HttpGet]
-    [Route("api/transactions/me")]
+    [Route("api/transactions/details")]
     public IHttpActionResult GetTransactionByMe()
     {
         int userId = GetCurrentUser();
-        return Ok(_objBLTransaction.GetTransactionByMe(userId));
+        objResponse = _objBLTransaction.GetTransactionByMe(userId);
+
+        return Ok(objResponse);
     }
 
     /// <summary>
     /// Generates a statement of transactions for the currently logged-in user.
     /// </summary>
     /// <returns>HTTP response containing the transaction statement file.</returns>
-    [JwtAuthorization]
-    [Authorization(Roles = "User")]
+    [Authorization(Roles = "U,A")]
     [HttpGet]
-    [Route("api/statements/me")]
+    [Route("api/statements")]
     public HttpResponseMessage Statements()
     {
         int userId = GetCurrentUser();

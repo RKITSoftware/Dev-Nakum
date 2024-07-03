@@ -1,5 +1,5 @@
-﻿using AbstractClassAPI.Models;
-using System.Linq;
+﻿using AbstractClassAPI.BL;
+using AbstractClassAPI.Models;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -9,8 +9,25 @@ namespace AbstractClassAPI.Controllers
     public class CLCustomerController : CLBaseCustomerController
     {
         #region Private Member
-        private static int _id = 1;
+
+        /// <summary>
+        /// Create the object of the customer services
+        /// </summary>
+        private readonly BLCustomer _objBLCustomer;
         #endregion
+
+
+        #region Constructor
+
+        /// <summary>
+        /// Initialize the object of the customer service
+        /// </summary>
+        public CLCustomerController()
+        {
+            _objBLCustomer = new BLCustomer();
+        }
+        #endregion
+
         /// <summary>
         /// Get the customer from customer id 
         /// </summary>
@@ -20,7 +37,7 @@ namespace AbstractClassAPI.Controllers
         [Route("api/customers/{id}")]
         public override HttpResponseMessage GetCustomer(int id)
         {
-            Customer objCustomer = lstCustomer.FirstOrDefault(x => x.Id == id);
+            Customer objCustomer = _objBLCustomer.GetCustomer(id, lstCustomer);
             if(objCustomer == null)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, $"Customer id {id} is not found");
@@ -37,7 +54,7 @@ namespace AbstractClassAPI.Controllers
         [Route("api/customers")]
         public override HttpResponseMessage GetAllCustomer()
         {
-            return Request.CreateResponse(HttpStatusCode.OK, lstCustomer);
+            return Request.CreateResponse(HttpStatusCode.OK, _objBLCustomer.GetAll(lstCustomer));
         }
 
         /// <summary>
@@ -48,16 +65,10 @@ namespace AbstractClassAPI.Controllers
         /// <returns>response message</returns>
         [HttpPost]
         [Route("api/customers")]
-        public override HttpResponseMessage CreateCustomer(Customer customer)
+        public override HttpResponseMessage CreateCustomer(Customer objCustomer)
         {
-            Customer objCustomer = new Customer();
-            objCustomer.Id = _id++;
-            objCustomer.Name = customer.Name;
-            objCustomer.Age = customer.Age;
-            objCustomer.City = customer.City;
-
-            lstCustomer.Add(objCustomer);
-            return Request.CreateResponse(HttpStatusCode.OK, objCustomer);
+            _objBLCustomer.AddCustomer(objCustomer, lstCustomer);
+            return Request.CreateResponse(HttpStatusCode.OK,"Customer is added into list");
         }
 
         

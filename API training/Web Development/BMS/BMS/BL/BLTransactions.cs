@@ -148,7 +148,7 @@ namespace BMS.BL
         /// <returns>response model</returns>
         public Response GetAllTransactions()
         {
-            objResponse.Data = _lstTransaction.ToDataTable();
+            objResponse.Data = _lstTransaction;
             return objResponse;
         }
 

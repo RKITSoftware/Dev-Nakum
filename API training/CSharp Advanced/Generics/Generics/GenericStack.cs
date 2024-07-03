@@ -21,7 +21,7 @@ namespace Generics
             objStackInt.Push(4);
             objStackInt.Push(5);
 
-
+            // traverse the stack 
             while(objStackInt.Count != 0)
             {
                 Console.Write($"{objStackInt.Peek()} ");

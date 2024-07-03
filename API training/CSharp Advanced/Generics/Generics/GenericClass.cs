@@ -8,10 +8,21 @@ namespace Generics
     /// <typeparam name="T"></typeparam>
     public class GenericClass<T>
     {
-
+        #region Public Member
+        /// <summary>
+        /// Generic field 1 with generic data type
+        /// </summary>
         public T GenericField1 { get; set; }
+
+        /// <summary>
+        /// Generic field 2 with generic data type
+        /// </summary>
         public T GenericField2 { get; set; }
 
+        #endregion
+
+
+        #region Public Method
 
         /// <summary>
         /// Display the message for generic type
@@ -47,5 +58,7 @@ namespace Generics
             dynamic result = (dynamic)GenericField1 * (dynamic)GenericField2;
             return result;
         }
+
+        #endregion
     }
 }

@@ -108,3 +108,24 @@
 2024-06-18 11:23:13.3776|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/users/following 
 2024-06-18 11:23:13.3776|SocialMediaAPI.Controllers.CLUSE01Controller|INFO|User controller constructor called 
 2024-06-18 11:23:13.3776|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-06-18 16:27:21.1010|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/signup 
+2024-06-18 16:27:23.0116|SocialMediaAPI.Controllers.CLUSE01Controller|INFO|User controller constructor called 
+2024-06-18 16:27:23.1653|SocialMediaAPI.Controllers.CLUSE01Controller|INFO|Signup method called 
+2024-06-18 16:27:24.6734|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-06-18 16:28:21.9717|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/users/login 
+2024-06-18 16:28:21.9782|SocialMediaAPI.Controllers.CLUSE01Controller|INFO|User controller constructor called 
+2024-06-18 16:28:22.0689|SocialMediaAPI.Controllers.CLUSE01Controller|INFO|Login method called 
+2024-06-18 16:28:22.2388|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-06-18 16:28:39.8236|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/users/details 
+2024-06-18 16:28:39.9085|SocialMediaAPI.Controllers.CLUSE01Controller|INFO|User controller constructor called 
+2024-06-18 16:28:39.9417|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-06-18 16:28:46.5909|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/users/following 
+2024-06-18 16:28:46.5909|SocialMediaAPI.Controllers.CLUSE01Controller|INFO|User controller constructor called 
+2024-06-18 16:28:46.6071|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-06-18 16:29:08.1067|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: POST /api/posts/add 
+2024-06-18 16:29:08.2630|SocialMediaAPI.BL.BLPOS01|INFO|Post image upload successfully 
+2024-06-18 16:29:08.3199|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-06-18 16:29:14.3285|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/posts 
+2024-06-18 16:29:14.3409|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 
+2024-06-18 16:29:28.4301|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Incoming request: GET /api/posts/details 
+2024-06-18 16:29:28.4301|SocialMediaAPI.Middleware.RequestLoggingMiddleware|INFO|Outgoing response: 200 

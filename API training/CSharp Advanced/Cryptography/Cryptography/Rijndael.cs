@@ -11,12 +11,27 @@ namespace Cryptography
     public class Rijndael
     {
         #region Private Member
+        /// <summary>
+        /// private key
+        /// </summary>
         private string _privateKey = "edjsdedj";
         #endregion
 
         #region Public Member
+
+        /// <summary>
+        /// public key
+        /// </summary>
         public string publicKey = "mdjxedjw";
+
+        /// <summary>
+        /// private key bytes array
+        /// </summary>
         public byte[] privateKeyByte = { };
+
+        /// <summary>
+        /// public key bytes array
+        /// </summary>
         public byte[] publicKeyByte = { };
         #endregion
 

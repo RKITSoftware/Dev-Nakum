@@ -43,9 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Employees.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="LinqWithDataTable.cs" />
     <Compile Include="LinqWithList.cs" />
     <Compile Include="Program.cs" />

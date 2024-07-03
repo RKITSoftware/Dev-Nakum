@@ -1,4 +1,5 @@
-﻿using Middleware___webapi.Middleware;
+﻿using Middleware___webapi.Extension;
+using Middleware___webapi.Middleware;
 
 namespace Middleware___webapi
 {
@@ -20,7 +21,10 @@ namespace Middleware___webapi
             services.AddRazorPages();
             services.AddControllers();
             services.AddEndpointsApiExplorer();
-            services.AddSwaggerGen();
+            services.AddSwaggerGen(o =>
+            {
+                o.BasicAuthConfiguration();
+            });
             services.AddHttpLogging(o => { });
         }
 
@@ -45,7 +49,7 @@ namespace Middleware___webapi
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            if(app.Environment.IsDevelopment())
+            if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
@@ -64,12 +68,12 @@ namespace Middleware___webapi
 
             app.Use(async (context, next) =>
             {
-                Console.WriteLine("from non terminal middleware");
+                Console.WriteLine("from non terminal middleware 1");
                 await next();
             });
-            app.Use(async (context,next) =>
+            app.Use(async (context, next) =>
             {
-                Console.WriteLine("from terminal middleware");
+                Console.WriteLine("from non terminal middleware 2");
                 await next();
 
             });

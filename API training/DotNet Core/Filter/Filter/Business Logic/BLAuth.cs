@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Filter.Business_Logic
 {
+    /// <summary>
+    /// manage the authorization
+    /// </summary>
     public class BLAuth
     {
         #region Private Member
@@ -35,8 +38,8 @@ namespace Filter.Business_Logic
             List<Claim> lstClaims = new List<Claim>
             {
                 new Claim("Id",id.ToString()),
-                new Claim("Name", name),
-                new Claim("Role", role),
+                new Claim(ClaimTypes.Name, name),
+                new Claim(ClaimTypes.Role, role),
             };
 
             // Create token
@@ -51,43 +54,6 @@ namespace Filter.Business_Logic
             return jwtToken;
         }
 
-        /// <summary>
-        /// Verifies a JWT token and extracts user information.
-        /// </summary>
-        /// <param name="jwtToken">JWT token to be verified.</param>
-        /// <returns>Dictionary containing user information extracted from the token.</returns>
-        public Dictionary<string, string> VerifyToken(string jwtToken)
-        {
-            JwtSecurityTokenHandler objTokenHandler = new JwtSecurityTokenHandler();
-            TokenValidationParameters objTokenValidationParameters = GetTokenValidationParameters();
-
-            ClaimsPrincipal principal = objTokenHandler.ValidateToken(jwtToken, objTokenValidationParameters, out SecurityToken validatedToken);
-
-            Dictionary<string, string> objDictionary = new Dictionary<string, string>()
-            {
-                { "Id" , principal.FindFirst("Id")?.Value.ToString()},
-                { "Name" , principal.FindFirst("Name")?.Value},
-                { "Role" , principal.FindFirst("Role")?.Value},
-            };
-
-            return objDictionary;
-        }
-
-        /// <summary>
-        /// Gets TokenValidationParameters for JWT token validation.
-        /// </summary>
-        /// <returns>TokenValidationParameters for JWT token validation.</returns>
-        public TokenValidationParameters GetTokenValidationParameters()
-        {
-            return new TokenValidationParameters()
-            {
-                ValidateIssuer = true,
-                ValidIssuer = "https://localhost:7290",
-                ValidateAudience = false,
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_key)),
-            };
-        }
 
         #endregion
     }

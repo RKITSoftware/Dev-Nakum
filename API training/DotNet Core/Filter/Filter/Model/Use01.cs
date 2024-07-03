@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace Filter.Model
+﻿namespace Filter.Model
 {
     /// <summary>
     /// schema of user
@@ -25,6 +23,6 @@ namespace Filter.Model
         /// <summary>
         /// user's role
         /// </summary>
-        public string? E01F04 { get; set; }
+        public string? E01F04 { get; set; } = "U";
     }
 }

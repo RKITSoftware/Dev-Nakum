@@ -4,6 +4,10 @@ namespace Filter
 {
     public class Program
     {
+        /// <summary>
+        /// main method to start the execution
+        /// </summary>
+        /// <param name="args"></param>
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);

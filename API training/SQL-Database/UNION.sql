@@ -22,8 +22,7 @@ FROM
 	EMP02;
     
     
-    
--- union - display only distinct data 
+ 
 SELECT 
 	P01F02 
 FROM 
@@ -39,3 +38,30 @@ SELECT
 FROM 
 	EMP02;
     
+    
+SELECT 
+	P01F02 
+FROM 
+	EMP01
+UNION ALL
+SELECT 
+	P02F02 
+FROM 
+	EMP02
+UNION
+SELECT 
+	P02F02 
+FROM 
+	EMP02;
+   
+    
+-- order by and limit with union
+(SELECT 
+    P01F01, P01F02
+FROM
+    EMP01
+ORDER BY P01F03) UNION SELECT 
+    P02F01, P02F02
+FROM
+    EMP02
+LIMIT 12;

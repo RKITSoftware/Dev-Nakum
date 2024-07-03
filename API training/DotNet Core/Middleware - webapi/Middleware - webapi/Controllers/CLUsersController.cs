@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Middleware___webapi.Business_Logic;
 using Middleware___webapi.Model;
 
@@ -13,7 +12,7 @@ namespace Middleware___webapi.Controllers
     public class CLUsersController : ControllerBase
     {
         #region Private Member
-        BLUsers _objBLUsers;
+        private readonly BLUsers _objBLUsers;
         #endregion
 
         #region Controller
@@ -34,7 +33,6 @@ namespace Middleware___webapi.Controllers
         public IActionResult AddUser([FromBody] Use01 objUse01)
         {
             bool user = _objBLUsers.AddUsers(objUse01);
-            
             return Ok("user added successfully");
         }
 

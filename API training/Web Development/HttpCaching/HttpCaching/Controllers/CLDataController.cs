@@ -8,29 +8,33 @@ namespace HttpCaching.Controllers
     /// </summary>
     public class CLDataController : ApiController
     {
+        #region Private Member
+        /// <summary>
+        /// create the user service object
+        /// </summary>
+        private readonly BLUsers _objBLUsers;
+        #endregion
+
+
+        #region Constructor
+        /// <summary>
+        /// initialize the object
+        /// </summary>
+        public CLDataController()
+        {
+            _objBLUsers = new BLUsers();
+        }
+        #endregion
         /// <summary>
         ///  Get the user data and store into cache
         /// </summary>
         /// <returns>users data</returns>
         [HttpGet]
-        [Route("api/data/")]
+        [Route("api/data")]
         public IHttpActionResult GetResult()
         {
-            string[][] result = new string[5][]
-            {
-                new string[]{"Dev","Nakum"},
-                new string[]{"Kishan","Nakum"},
-                new string[]{"Raj","Mandaviya"},
-                new string[]{"Pratham","Modi"},
-                new string[]{"Tushar","Gohil"},
-            };
-
-
-            for (int i = 0; i < result.Length; i++)
-            {
-                BLCache.Add((i+1).ToString(), result[i]);
-            }
-            return Ok(result);
+            string[][] getUserData = _objBLUsers.DisplayAndAddCache();
+            return Ok(getUserData);
         }
 
         /// <summary>
@@ -42,14 +46,19 @@ namespace HttpCaching.Controllers
         [Route("api/data/{id}")]
         public IHttpActionResult GetResultById(string id)
         {
-            object data = BLCache.Get(id);
-            if(data == null)
-            {
-                return BadRequest("Not Found");
-            }
-            BLCache.Remove(id);
+            object data = _objBLUsers.GetUserById(id);
             return Ok(data);
         }
 
+        /// <summary>
+        /// Get the cache data
+        /// </summary>
+        /// <returns>available cache data</returns>
+        [HttpGet]
+        [Route("api/data/all")]
+        public IHttpActionResult GetAllCacheData()
+        {
+            return Ok(BLCache.GetAllCache());
+        }
     }
 }

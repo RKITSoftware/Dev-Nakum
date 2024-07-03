@@ -162,13 +162,17 @@
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Business Logic\BLConvertModel.cs" />
     <Compile Include="Business Logic\BLDbConnection.cs" />
+    <Compile Include="Business Logic\BLEnums.cs" />
     <Compile Include="Business Logic\BLStudent.cs" />
     <Compile Include="Controllers\CLStudentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Students.cs" />
+    <Compile Include="Models\DTO\DtoStu01.cs" />
+    <Compile Include="Models\Response.cs" />
+    <Compile Include="Models\POCO\Stu01.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

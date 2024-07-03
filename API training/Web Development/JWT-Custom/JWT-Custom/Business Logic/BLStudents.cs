@@ -62,6 +62,7 @@ namespace JWT_Custom.Business_Logic
             BLJwt objBLJwt = new BLJwt();
             string name = objBLJwt.VerifyToken(token);
 
+            // changes
             if(name == null)
             {
                 return null;

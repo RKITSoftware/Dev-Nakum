@@ -6,10 +6,21 @@ using System.Net;
 
 namespace SocialMediaAPI.Filters
 {
+    /// <summary>
+    /// Mange the all exception
+    /// </summary>
     public class CustomExceptionFilter : IExceptionFilter
     {
-        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
+        #region Private Member
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+        #endregion
+
+        #region Public Method
+        /// <summary>
+        ///  when exception is occurred
+        /// </summary>
+        /// <param name="context"></param>
         public void OnException(ExceptionContext context)
         {
             // Log the exception
@@ -31,7 +42,8 @@ namespace SocialMediaAPI.Filters
 
             // Set the exception as handled
             context.ExceptionHandled = true;
-        }
+        } 
+        #endregion
     }
 
 }

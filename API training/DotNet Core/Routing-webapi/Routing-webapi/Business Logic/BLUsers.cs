@@ -1,4 +1,5 @@
-﻿using Routing_webapi.Model;
+﻿using Microsoft.AspNetCore.Mvc;
+using Routing_webapi.Model;
 
 namespace Routing_webapi.Business_Logic
 {
@@ -8,17 +9,31 @@ namespace Routing_webapi.Business_Logic
     public class BLUsers
     {
         #region Private Member
+
+        /// <summary>
+        /// User's id
+        /// </summary>
         private static int _id = 1;
+
+        /// <summary>
+        /// manage the list of the all users
+        /// </summary>
         private static List<Use01> _lstUse01 = new List<Use01>();
         #endregion
 
 
         #region Public Method
-        public bool AddUser(Use01 objUse01)
+        
+        /// <summary>
+        /// Add users into list
+        /// </summary>
+        /// <param name="objUse01">object of the user</param>
+        /// <returns></returns>
+        public EmptyResult AddUser(Use01 objUse01)
         {
             objUse01.E01F01 = _id++;
             _lstUse01.Add(objUse01);
-            return true;
+            return new EmptyResult();
         }
 
         /// <summary>
@@ -32,9 +47,10 @@ namespace Routing_webapi.Business_Logic
         /// </summary>
         /// <param name="id">user id</param>
         /// <returns>object of the user</returns>
-        public Use01 GetUser(int id)
+        public JsonResult GetUser(int id)
         {
-            return _lstUse01.FirstOrDefault(u => u.E01F01 == id);
+            Use01 objUse01 = _lstUse01.FirstOrDefault(u => u.E01F01 == id);
+            return new JsonResult(objUse01);
         }
         #endregion 
     }

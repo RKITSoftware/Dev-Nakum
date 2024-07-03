@@ -2,6 +2,10 @@ namespace Dependency_Injection
 {
     public class Program
     {
+        /// <summary>
+        /// entry point of th program
+        /// </summary>
+        /// <param name="args"></param>
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);

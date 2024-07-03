@@ -1,63 +1,98 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Debugging
 {
+    /// <summary>
+    ///  manage the type of debugging
+    /// </summary>
     public class Program
     {
+
+        /// <summary>
+        /// Add two number
+        /// </summary>
+        /// <param name="a">number 1</param>
+        /// <param name="b">number 2</param>
+        /// <returns>addition of two number</returns>
         static int AddNumbers(int a, int b)
         {
             // Set a breakpoint here to debug
             if (a == 7)
             {
-                a++;
+                a++;        // hit: when b == 5
             }
 
             return a + b;
         }
-        
+
+        /// <summary>
+        /// multiplication between two number
+        /// </summary>
+        /// <param name="a">number 1</param>
+        /// <param name="b">number 2</param>
+        /// <returns>multiplication of two number</returns>
         static int Multiplication(int a, int b)
         {
-            // Set a breakpoint here to debug
+            // condition expression : if b==5
             return a * b;
         }
 
-        public static bool check()
+        /// <summary>
+        /// generate the random number and check number is above 50 or not
+        /// </summary>
+        /// <returns>true if number is greater than 50 or else false</returns>
+        public static bool Check()
         {
             Random objRandom = new Random();
 
+            //generate the random value between 1 to 100
             int num = objRandom.Next(1, 101);
             bool ans = num > 50;
 
-            if(ans==true)
+            if(ans)
             {
                 return true;
             }
             return false;
         }
-        
-        public static bool check2()
+
+        /// <summary>
+        /// traverse the loop and check the condition
+        /// </summary>
+        /// <returns>true if number is greater than 50 or else false</returns>
+        public static bool Check2()
         {
             for(int i = 0; i < 10; i++)
             {
-                if (check())
-                    continue;
-
-                if(i==2)
+                if (Check())
                 {
-                    Console.WriteLine("dependent checkpoint executes");
+                    continue;       // trace point : get the custom message in the output window
+                }
+
+                if(i==2)        // temporary check point
+                {
+                    Console.WriteLine("temporary checkpoint executes");
                 }
                 Console.WriteLine($"The value of {i}");
             }
-            return check();
+            return Check();
         }
 
+        /// <summary>
+        /// Start the main program 
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
+
+            // conditional compilations
+            #if DEBUG
+                Console.WriteLine("Debug mode is enabled");
+            #else 
+                Console.WriteLine("Debug mode is disabled");
+            #endif
+
+
             Console.WriteLine("Enter the first number:");
             int num1 = int.Parse(Console.ReadLine());
 
@@ -68,12 +103,15 @@ namespace Debugging
             int mul = Multiplication(num1, num2);
 
             Console.WriteLine($"Addition of two numbers: {sum}");
-            Console.WriteLine($"multiplication of two numbers: {sum}");
+            Console.WriteLine($"multiplication of two numbers: {mul}");
 
-            if (check2())
+            if (Check2())
             {
-                Console.WriteLine("Hello World");
+                Console.WriteLine("Hello World");       // dependent on breakpoint line no 97
             }
+
+            Console.ReadLine();
         }
     }
+
 }

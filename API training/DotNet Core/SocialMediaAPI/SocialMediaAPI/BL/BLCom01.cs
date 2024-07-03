@@ -140,7 +140,7 @@ namespace SocialMediaAPI.BL
             if (OperationType == enmOperationType.A)
             {
                 // to check whether post is available or not.
-                bool isPostExist = _objValidation.IsExist<POS01>(_objCOM01.M01F02, x => x.S01F01);
+                bool isPostExist = _objValidation.IsExist<POS01>(_objCOM01.M01F02, S01 => S01.S01F01);
                 if (!isPostExist)
                 {
                     objResponse.IsError = true;
@@ -150,7 +150,7 @@ namespace SocialMediaAPI.BL
             if (OperationType == enmOperationType.E)
             {
                 // to check whether comment is available or not.
-                bool isCommentExist = _objValidation.IsExist<COM01>(_objCOM01.M01F01, x => x.M01F01);
+                bool isCommentExist = _objValidation.IsExist<COM01>(_objCOM01.M01F01, M01 => M01.M01F01);
                 if (!isCommentExist)
                 {
                     objResponse.IsError = true;
@@ -179,18 +179,19 @@ namespace SocialMediaAPI.BL
 
             if (OperationType == enmOperationType.A)
             {
+                bool isCommentAdded = false;
                 using (IDbConnection db = _dbFactory.OpenDbConnection())
                 {
-                    bool isCommentAdded = db.Insert(_objCOM01) > 0;
-                    if (!isCommentAdded)
-                    {
-                        objResponse.IsError = true;
-                        objResponse.Message = "something went wrong while adding comment";
-                    }
-                    else
-                    {
-                        objResponse.Message = "comment is added successfully";
-                    }
+                    isCommentAdded = db.Insert(_objCOM01) > 0;
+                }
+                if (!isCommentAdded)
+                {
+                    objResponse.IsError = true;
+                    objResponse.Message = "something went wrong while adding comment";
+                }
+                else
+                {
+                    objResponse.Message = "comment is added successfully";
                 }
             }
             if (OperationType == enmOperationType.E)
@@ -219,9 +220,12 @@ namespace SocialMediaAPI.BL
         public Response ValidationOnDelete(int commentId)
         {
             objResponse = new Response();
+            bool isCommentExist = false;
+            int userId = 0, userIdFromComment = 0;
+
             if (OperationType == enmOperationType.D)
             {
-                bool isCommentExist = _objValidation.IsExist<COM01>(commentId, x => x.M01F01);
+                isCommentExist = _objValidation.IsExist<COM01>(commentId, x => x.M01F01);
                 if (!isCommentExist)
                 {
                     objResponse.IsError = true;
@@ -229,8 +233,8 @@ namespace SocialMediaAPI.BL
                 }
                 else
                 {
-                    int userId = Convert.ToInt32(HttpContext.User.FindFirst("id")?.Value);
-                    int userIdFromComment = GetUserId(commentId);
+                    userId = Convert.ToInt32(HttpContext.User.FindFirst("id")?.Value);
+                    userIdFromComment = GetUserId(commentId);
 
                     if (userIdFromComment != userId)
                     {
@@ -254,21 +258,21 @@ namespace SocialMediaAPI.BL
         public Response Delete()
         {
             objResponse = new Response();
-
+            bool isCommetDeleted = false;
             if (OperationType == enmOperationType.D)
             {
                 using (IDbConnection db = _dbFactory.OpenDbConnection())
                 {
-                    bool isCommetDeleted = db.DeleteById<COM01>(_objCOM01.M01F01) > 0;
-                    if (!isCommetDeleted)
-                    {
-                        objResponse.IsError = true;
-                        objResponse.Message = "something went wrong while deleting the comment";
-                    }
-                    else
-                    {
-                        objResponse.Message = "comment is successfully deleted";
-                    }
+                    isCommetDeleted = db.DeleteById<COM01>(_objCOM01.M01F01) > 0;
+                }
+                if (!isCommetDeleted)
+                {
+                    objResponse.IsError = true;
+                    objResponse.Message = "something went wrong while deleting the comment";
+                }
+                else
+                {
+                    objResponse.Message = "comment is successfully deleted";
                 }
             }
             return objResponse;
@@ -282,7 +286,7 @@ namespace SocialMediaAPI.BL
         public Response GetAllCommentsOnPost(int id)
         {
             objResponse = new Response();
-            DataTable dtAllCommentsOnPost =  _objIDBCom01.GetAllCommentsOnPost(id);
+            DataTable dtAllCommentsOnPost = _objIDBCom01.GetAllCommentsOnPost(id);
             objResponse.Data = dtAllCommentsOnPost;
             return objResponse;
         }

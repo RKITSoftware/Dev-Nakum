@@ -95,7 +95,7 @@
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Business Logic\BLFindArea.cs" />
+    <Compile Include="BL\BLFindArea.cs" />
     <Compile Include="Controllers\CLShapeOfAreaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

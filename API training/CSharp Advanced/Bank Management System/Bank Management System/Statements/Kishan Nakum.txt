@@ -28,3 +28,9 @@ Email : kishan@gmail.com
 Type  : Deposit
 Money : 1200
 --------------------
+Id    : 6
+Name  : Kishan Nakum
+Email : kishan@gmail.com
+Type  : Withdraw
+Money : 200
+--------------------

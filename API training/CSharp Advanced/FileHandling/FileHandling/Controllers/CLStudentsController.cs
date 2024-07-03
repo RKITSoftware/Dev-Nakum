@@ -1,6 +1,7 @@
 ﻿using FileHandling.Business_Logic;
 using FileHandling.Models;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -15,34 +16,57 @@ namespace FileHandling.Controllers
     public class CLStudentsController : ApiController
     {
         #region Private Member
+        /// <summary>
+        /// file path for download the file
+        /// </summary>
         private static string _filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "FileUpload", "studentData.txt");
-        //private static string _filePath2 = HttpContext.Current.Server.MapPath("~/FileUpload");
+
+        /// <summary>
+        /// create the object of the student services
+        /// </summary>
+        private readonly BLStudent _objBLStudent;
         #endregion
 
-        #region Public Method
+        #region Constoller
 
+        /// <summary>
+        /// initialize the object of the student services
+        /// </summary>
+        public CLStudentsController()
+        {
+            _objBLStudent = new BLStudent();
+        }
+        
+        #endregion
+
+
+        #region Public Method
 
         /// <summary>
         /// Get all the student which is listed on list
         /// </summary>
-        /// <returns></returns>
+        /// <returns>list of the </returns>
         [HttpGet]
         [Route("api/students")]
-        public IHttpActionResult GetAllStudents() => Ok(BLStudent.GetAllStudents());
+        public IHttpActionResult GetAllStudents()
+        {
+            List<Students> lstStudents = _objBLStudent.GetAllStudents();
+            return Ok(lstStudents);
+        }
 
         /// <summary>
         /// get the student based on student id
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">student id</param>
+        /// <returns>student object if student id found or else response message</returns>
         [HttpGet]
         [Route("api/students/{id}")]
         public IHttpActionResult GetStudentById(int id)
         {
-            Students objStudents = BLStudent.GetStudentById(id);
-            if(objStudents == null)
+            Students objStudents = _objBLStudent.GetStudentById(id);
+            if (objStudents == null)
             {
-                return BadRequest($"Student id {id} is not found");
+                return Ok($"Student id {id} is not found");
             }
             return Ok(objStudents);
         }
@@ -50,34 +74,37 @@ namespace FileHandling.Controllers
         /// <summary>
         /// Create the student
         /// </summary>
-        /// <param name="objStudents"></param>
-        /// <returns></returns>
+        /// <param name="objStudents">object of the student</param>
+        /// <returns>response message</returns>
         [HttpPost]
         [Route("api/students")]
-        public IHttpActionResult CreateStudent(Students objStudents) => Ok(BLStudent.CreateStudent(objStudents));
+        public IHttpActionResult CreateStudent(Students objStudents)
+        {
+            _objBLStudent.CreateStudent(objStudents);
+            return Ok("Student is successfully added");
+        }
 
         /// <summary>
         /// delete the student based on student id 
         /// </summary>
         /// <param name="id">student id</param>
-        /// <returns></returns>
+        /// <returns>response message</returns>
         [HttpDelete]
         [Route("api/students/{id}")]
         public IHttpActionResult DeleteStudent(int id)
         {
-            Students objStudent = BLStudent.GetStudentById(id);
-            if(objStudent == null)
+            bool isDeleted = _objBLStudent.DeleteStudentById(id);
+            if (isDeleted)
             {
-                return BadRequest($"Student id {id} is not found");
+                return Ok("Successfully deleted the students");
             }
-            BLStudent.DeleteStudentById(objStudent);
-            return Ok("Successfully deleted the students");
+            return Ok("student is not found");
         }
 
         /// <summary>
         /// create the file and write into it
         /// </summary>
-        /// <returns></returns>
+        /// <returns>response messages</returns>
         /// <exception cref="Exception"></exception>
         [HttpGet]
         [Route("api/students/write")]
@@ -85,7 +112,8 @@ namespace FileHandling.Controllers
         {
             try
             {
-                return Ok(BLStudent.FileWrite());
+                string mes = _objBLStudent.FileWrite();
+                return Ok(mes);
             }
             catch (Exception ex)
             {
@@ -97,7 +125,7 @@ namespace FileHandling.Controllers
         /// <summary>
         /// download the file
         /// </summary>
-        /// <returns></returns>
+        /// <returns>response</returns>
         /// <exception cref="Exception"></exception>
         [HttpGet]
         [Route("api/students/download")]
@@ -139,17 +167,17 @@ namespace FileHandling.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("api/students/upload")]
-        public IHttpActionResult UploadFile()
+        public IHttpActionResult UploadFile( )
         {
             try
             {
-                if (BLStudent.UploadFile())
+                if (_objBLStudent.UploadFile())
                 {
-                    return Ok("File(s) uploaded successfully");
+                    return Ok("File uploaded successfully");
                 }
                 else
                 {
-                    return BadRequest("No files attached with request or file already exists");
+                    return Ok("No files attached with request or file already exists");
                 }
             }
             catch (Exception ex)
@@ -163,19 +191,12 @@ namespace FileHandling.Controllers
         /// Read the file and display the text
         /// </summary>
         /// <returns></returns>
-        [HttpPost]
+        [HttpGet]
         [Route("api/students/read")]
         public IHttpActionResult ReadData()
         {
-            try
-            {
-                string str = BLStudent.ReadData();
-                return Ok(str);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            string str = _objBLStudent.ReadData();
+            return Ok(str);
         }
 
         /// <summary>
@@ -186,14 +207,11 @@ namespace FileHandling.Controllers
         [Route("api/students/file")]
         public IHttpActionResult DeleteFile()
         {
-            try
+            if (_objBLStudent.DeleteFile())
             {
-                return Ok(BLStudent.DeleteFile());
+                return Ok("File deleted successfully");
             }
-            catch (Exception ex)
-            {
-                return InternalServerError(ex);
-            }
+            return Ok("File is not exist");
         }
 
         /// <summary>
@@ -206,14 +224,13 @@ namespace FileHandling.Controllers
         {
             try
             {
-                return Ok(BLStudent.FileInfo());
+                return Ok(_objBLStudent.FileInfo());
             }
             catch (Exception ex)
             {
                 return InternalServerError(ex);
             }
         }
-        
         #endregion
     }
 }

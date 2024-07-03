@@ -13,10 +13,19 @@ namespace Dependency_Injection.Controllers
     public class CLUsersController : ControllerBase
     {
         #region Private member
+
+        /// <summary>
+        /// create the object of the user interface
+        /// </summary>
         private readonly IUsers _users;
         #endregion
 
         #region Constructor
+
+        /// <summary>
+        /// initialize the object of the user interface
+        /// </summary>
+        /// <param name="users"></param>
         public CLUsersController(IUsers users)
         {
             _users = users;

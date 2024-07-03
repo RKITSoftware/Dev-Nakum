@@ -1,6 +1,6 @@
 ﻿using DataBase_With_C_.Business_Logic;
 using DataBase_With_C_.Models;
-using System;
+using DataBase_With_C_.Models.DTO;
 using System.Web.Http;
 
 namespace DataBase_With_C_.Controllers
@@ -11,7 +11,29 @@ namespace DataBase_With_C_.Controllers
     public class CLStudentsController : ApiController
     {
         #region Private Member
-        private BLStudents objBLStudents = new BLStudents(); // Business Logic layer instance
+        /// <summary>
+        /// create the object of the student services
+        /// </summary>
+        private readonly BLStudents _objBLStudents; 
+        #endregion
+
+        #region Public Member
+        /// <summary>
+        /// create the object of the response model
+        /// </summary>
+        public Response objResponse;
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// initialize the object
+        /// </summary>
+        public CLStudentsController()
+        {
+            _objBLStudents = new BLStudents();
+            objResponse = new Response();
+        }
         #endregion
 
         #region Public Methods
@@ -21,16 +43,10 @@ namespace DataBase_With_C_.Controllers
         /// </summary>
         [HttpGet]
         [Route("api/students")]
-        public IHttpActionResult GetAllStudents()
+        public Response GetAllStudents()
         {
-            try
-            {
-                return Ok(objBLStudents.GetAllStudents()); // Return all students if successful
-            }
-            catch (Exception)
-            {
-                return InternalServerError(); // Return 500 Internal Server Error for any exception
-            }
+            objResponse = _objBLStudents.GetAllStudents();
+            return objResponse;
         }
 
         /// <summary>
@@ -38,21 +54,10 @@ namespace DataBase_With_C_.Controllers
         /// </summary>
         [HttpGet]
         [Route("api/students/{id}")]
-        public IHttpActionResult GetStudentById(int id)
+        public Response GetStudentById(int id)
         {
-            try
-            {
-                Stu01 objStu01 = objBLStudents.GetStudent(id); // Get student by ID
-                if (objStu01 == null)
-                {
-                    return BadRequest($"Student id {id} is not found"); // Return 400 Bad Request if student not found
-                }
-                return Ok(objStu01); // Return student if successful
-            }
-            catch (Exception)
-            {
-                return InternalServerError(); // Return 500 Internal Server Error for any exception
-            }
+            objResponse = _objBLStudents.GetStudent(id);
+            return objResponse;
         }
 
         /// <summary>
@@ -60,13 +65,17 @@ namespace DataBase_With_C_.Controllers
         /// </summary>
         [HttpPost]
         [Route("api/students")]
-        public IHttpActionResult AddStudent(Stu01 objStu01)
+        public Response AddStudent(DtoStu01 objDtoStu01)
         {
-            if (objBLStudents.AddStudent(objStu01))
+            _objBLStudents.OperationTypes = EnmOperationTypes.A;
+            _objBLStudents.PreSave(objDtoStu01);
+            objResponse = _objBLStudents.ValidationOnSave();
+
+            if (!objResponse.IsError)
             {
-                return Ok("User added Successfully"); // Return success message if addition is successful
+                objResponse = _objBLStudents.Save();
             }
-            return BadRequest("Something went wrong"); // Return 400 Bad Request if something goes wrong
+            return objResponse;
         }
 
         /// <summary>
@@ -74,13 +83,17 @@ namespace DataBase_With_C_.Controllers
         /// </summary>
         [HttpPut]
         [Route("api/students/{id}")]
-        public IHttpActionResult UpdateStudent(int id, Stu01 objStu01)
+        public Response UpdateStudent(int id, DtoStu01 objDtoStu01)
         {
-            if (objBLStudents.UpdateStudent(id, objStu01))
+            _objBLStudents.OperationTypes = EnmOperationTypes.E;
+            _objBLStudents.PreSave(objDtoStu01,id);
+            objResponse = _objBLStudents.ValidationOnSave();
+
+            if (!objResponse.IsError)
             {
-                return Ok("User updated Successfully"); // Return success message if update is successful
+                objResponse = _objBLStudents.Save();
             }
-            return BadRequest("Something went wrong"); // Return 400 Bad Request if something goes wrong
+            return objResponse;
         }
 
         /// <summary>
@@ -88,13 +101,16 @@ namespace DataBase_With_C_.Controllers
         /// </summary>
         [HttpDelete]
         [Route("api/students/{id}")]
-        public IHttpActionResult DeleteStudent(int id)
+        public Response DeleteStudent(int id)
         {
-            if (objBLStudents.DeleteStudent(id))
+            _objBLStudents.OperationTypes = EnmOperationTypes.D;
+            objResponse = _objBLStudents.ValidationOnDelete(id);
+
+            if (!objResponse.IsError)
             {
-                return Ok("User deleted Successfully"); // Return success message if deletion is successful
+                objResponse = _objBLStudents.Delete();
             }
-            return BadRequest("Something went wrong"); // Return 400 Bad Request if something goes wrong
+            return objResponse;
         }
         #endregion
     }

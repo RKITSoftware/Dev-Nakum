@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Routing_webapi.Business_Logic;
 using Routing_webapi.Model;
-using System.Dynamic;
 
 namespace Routing_webapi.Controllers
 {
@@ -10,10 +9,18 @@ namespace Routing_webapi.Controllers
     public class CLProductsController : ControllerBase
     {
         #region Private Member
-        BLProducts _objBLProducts;
+
+        /// <summary>
+        /// Create the object of product services
+        /// </summary>
+        private readonly BLProducts _objBLProducts;
         #endregion
 
         #region Constructor
+
+        /// <summary>
+        /// initialize the object of the product services
+        /// </summary>
         public CLProductsController()
         {
             _objBLProducts = new BLProducts();
@@ -30,12 +37,8 @@ namespace Routing_webapi.Controllers
         [HttpPost]
         public IActionResult AddProducts([FromBody] Pro01 objPro01)
         {
-            bool products = _objBLProducts.AddProduct(objPro01);
-            if(products)
-            {
-                return Ok("Product added successfully");
-            }
-            return BadRequest("Something went wrong");
+            _objBLProducts.AddProduct(objPro01);
+            return Ok("Product added successfully");
         }
 
         /// <summary>
@@ -43,7 +46,10 @@ namespace Routing_webapi.Controllers
         /// </summary>
         /// <returns>list of all the products</returns>
         [HttpGet]
-        public IActionResult GetALLProducts() { return Ok(_objBLProducts.GetAllProducts()); }
+        public IActionResult GetALLProducts()
+        {
+            return Ok(_objBLProducts.GetAllProducts());
+        }
 
         /// <summary>
         /// get the products based on product id
@@ -53,21 +59,22 @@ namespace Routing_webapi.Controllers
         [HttpGet("{id}")]
         public IActionResult GetProductById(int id)
         {
-            Pro01 product = _objBLProducts.GetProductById(id);
-            if (product == null)
+            JsonResult product = _objBLProducts.GetProductById(id);
+            if (product.Value == null)
             {
                 return NotFound("Products is not found");
             }
-            return Ok(product);
+            return Ok(product.Value);
         }
 
 
         // Action Method
+
         /// <summary>
         /// Display the content
         /// </summary>
         /// <returns></returns>
-        [HttpGet("api/content")]
+        [HttpGet("content")]
         public ContentResult ContentResult()
         {
             return Content("Hello from content result");

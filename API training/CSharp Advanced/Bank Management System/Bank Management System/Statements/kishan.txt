@@ -1,0 +1,36 @@
+Id: 1
+Name  : Kishan
+Email : kishan@gmail.com
+Type  : D
+Money : 2230
+--------------------
+Id: 2
+Name  : Kishan
+Email : kishan@gmail.com
+Type  : D
+Money : 2230
+--------------------
+Id: 3
+Name  : Kishan
+Email : kishan@gmail.com
+Type  : W
+Money : 1230
+--------------------
+Id: 4
+Name  : Kishan
+Email : kishan@gmail.com
+Type  : W
+Money : 1230
+--------------------
+Id: 5
+Name  : Kishan
+Email : kishan@gmail.com
+Type  : D
+Money : 1200
+--------------------
+Id: 6
+Name  : Kishan
+Email : kishan@gmail.com
+Type  : W
+Money : 200
+--------------------

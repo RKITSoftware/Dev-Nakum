@@ -10,13 +10,21 @@ namespace Cryptography
     public class AES
     {
         #region Private Member
-        private AesCryptoServiceProvider objAES;
+
+        /// <summary>
+        /// create the object of the AesCryptoServiceProvider
+        /// </summary>
+        private AesCryptoServiceProvider _objAES;
         #endregion
 
         #region Constructor
+
+        /// <summary>
+        /// initialize the object of the AesCryptoServiceProvider
+        /// </summary>
         public AES()
         {
-            objAES = new AesCryptoServiceProvider();
+            _objAES = new AesCryptoServiceProvider();
         }
         #endregion
 
@@ -28,8 +36,9 @@ namespace Cryptography
         /// <returns>encrypted message</returns>
         public string Encrypt(string plainText)
         {
+            //convert into bytes
             byte[] plainBytes = Encoding.UTF8.GetBytes(plainText);  
-            using(ICryptoTransform objCryptoTransform = objAES.CreateEncryptor())
+            using(ICryptoTransform objCryptoTransform = _objAES.CreateEncryptor())
             {
                 byte[] encryptedByte = objCryptoTransform.TransformFinalBlock(plainBytes, 0, plainBytes.Length);        
                 return Convert.ToBase64String(encryptedByte);
@@ -45,7 +54,7 @@ namespace Cryptography
         {
             byte[] encryptedTextByte = Convert.FromBase64String(encryptedText);
 
-            using(ICryptoTransform objCryptoTransform = objAES.CreateDecryptor())
+            using(ICryptoTransform objCryptoTransform = _objAES.CreateDecryptor())
             {
                 byte[] descryptedByte = objCryptoTransform.TransformFinalBlock(encryptedTextByte, 0, encryptedTextByte.Length); 
                 return Encoding.UTF8.GetString(descryptedByte);

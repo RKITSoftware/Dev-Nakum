@@ -11,7 +11,7 @@
   "profiles": {
     "Routing_webapi": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
+      " ": true,
       "launchBrowser": true,
       "launchUrl": "swagger",
       "applicationUrl": "https://localhost:7030;http://localhost:5129",

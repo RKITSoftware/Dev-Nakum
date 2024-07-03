@@ -2,7 +2,8 @@ USE employee_dev;
 
 -- count the rows
 SELECT
-	COUNT(DISTINCT P01F03) AS "Total Count" 
+	COUNT(P01F03) AS "Total Count", 
+	COUNT(*) AS "Total all Count" 
 FROM
 	EMP01
 WHERE 

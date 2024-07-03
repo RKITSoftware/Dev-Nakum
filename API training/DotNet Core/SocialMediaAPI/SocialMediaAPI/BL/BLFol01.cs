@@ -120,10 +120,11 @@ namespace SocialMediaAPI.BL
         /// <param name="objDTOFOL01">DTO object containing follower data.</param>
         public void PreSave(DTOFOL01 objDTOFOL01)
         {
+            int userId = 0;
             if (OperationType == enmOperationType.A)
             {
                 _objFOL01 = objDTOFOL01.MapDtoToPoco<DTOFOL01, FOL01>(null);
-                int userId = Convert.ToInt32(HttpContext.User.FindFirst("Id")?.Value);
+                userId = Convert.ToInt32(HttpContext.User.FindFirst("Id")?.Value);
                 _objFOL01.L01F02 = userId;
             }
         }
@@ -135,6 +136,7 @@ namespace SocialMediaAPI.BL
         public Response ValidationOnSave()
         {
             objResponse = new Response();
+            bool isUserExist = false, isFollowingUserExist = false;
 
             if (OperationType == enmOperationType.A)
             {
@@ -144,8 +146,8 @@ namespace SocialMediaAPI.BL
                     objResponse.Message = "It is not possible to add or remove yourself from the following.";
                     return objResponse;
                 }
-                bool isUserExist = _objValidation.IsExist<USE01>(_objFOL01.L01F02, x => x.E01F01);
-                bool isFollowingUserExist = _objValidation.IsExist<USE01>(_objFOL01.L01F03, x => x.E01F01);
+                isUserExist = _objValidation.IsExist<USE01>(_objFOL01.L01F02, x => x.E01F01);
+                isFollowingUserExist = _objValidation.IsExist<USE01>(_objFOL01.L01F03, x => x.E01F01);
 
                 if (!isUserExist)
                 {
@@ -168,22 +170,22 @@ namespace SocialMediaAPI.BL
         public Response Save()
         {
             objResponse = new Response();
-
+            bool isAdded = false;
             using (IDbConnection db = _dbFactory.OpenDbConnection())
             {
-                bool isAdded = db.Insert(_objFOL01) > 0;
-
-                if (!isAdded)
-                {
-                    objResponse.IsError = true;
-                    objResponse.Message = "Something went wrong while following the user.";
-                }
-                else
-                {
-                    objResponse.Message = "Successfully followed the user.";
-                }
-                return objResponse;
+                isAdded = db.Insert(_objFOL01) > 0;
             }
+
+            if (!isAdded)
+            {
+                objResponse.IsError = true;
+                objResponse.Message = "Something went wrong while following the user.";
+            }
+            else
+            {
+                objResponse.Message = "Successfully followed the user.";
+            }
+            return objResponse;
         }
 
         /// <summary>
@@ -194,10 +196,11 @@ namespace SocialMediaAPI.BL
         public Response ValidationOnDelete(DTOFOL01 objDTOFOL01)
         {
             objResponse = new Response();
-
+            int userId = 0;
+            bool isUserExist = false, isFollowingUserExist = false;
             if (OperationType == enmOperationType.D)
             {
-                int userId = Convert.ToInt32(HttpContext.User.FindFirst("Id")?.Value);
+                userId = Convert.ToInt32(HttpContext.User.FindFirst("Id")?.Value);
 
                 if (objDTOFOL01.L01F03 == userId)
                 {
@@ -205,8 +208,9 @@ namespace SocialMediaAPI.BL
                     objResponse.Message = "It is not possible to add or remove yourself from the following.";
                     return objResponse;
                 }
-                bool isUserExist = _objValidation.IsExist<USE01>(userId, x => x.E01F01);
-                bool isFollowingUserExist = _objValidation.IsExist<USE01>(objDTOFOL01.L01F03, x => x.E01F01);
+
+                isUserExist = _objValidation.IsExist<USE01>(userId, x => x.E01F01);
+                isFollowingUserExist = _objValidation.IsExist<USE01>(objDTOFOL01.L01F03, x => x.E01F01);
 
                 if (!isUserExist)
                 {
@@ -242,22 +246,22 @@ namespace SocialMediaAPI.BL
         public Response Remove()
         {
             objResponse = new Response();
-
+            bool isRemoved = false;
             using (IDbConnection db = _dbFactory.OpenDbConnection())
             {
-                bool isRemoved = db.DeleteWhere<FOL01>("L01F02 = {0} && L01F03 = {1}", new object[] { _objFOL01.L01F02, _objFOL01.L01F03 }) > 0;
+                isRemoved = db.DeleteWhere<FOL01>("L01F02 = {0} && L01F03 = {1}", new object[] { _objFOL01.L01F02, _objFOL01.L01F03 }) > 0;
 
-                if (!isRemoved)
-                {
-                    objResponse.IsError = true;
-                    objResponse.Message = "Something went wrong while removing the following user.";
-                }
-                else
-                {
-                    objResponse.Message = "Successfully removed the user.";
-                }
-                return objResponse;
             }
+            if (!isRemoved)
+            {
+                objResponse.IsError = true;
+                objResponse.Message = "Something went wrong while removing the following user.";
+            }
+            else
+            {
+                objResponse.Message = "Successfully removed the user.";
+            }
+            return objResponse;
         }
 
         #endregion
